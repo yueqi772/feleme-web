@@ -1,0 +1,457 @@
+import { useState } from 'react';
+import type { PracticeScenario } from '../types';
+import { useApp } from '../context/AppContext';
+import { getPracticeFeedback } from '../utils';
+import { getDeepseekKey } from '../data/settings';
+
+interface PracticePageProps {
+  onNavigate: (page: string, params?: Record<string, unknown>) => void;
+  scenario: PracticeScenario;
+}
+
+const TOTAL_ROUNDS = 5;
+
+function buildSystemPrompt(scenario: PracticeScenario): string {
+  return `你是"王总"，一家互联网公司的部门总监。你正在对员工小林施加职场压力（PUA）。
+
+场景：「${scenario.title}」—— ${scenario.intro}
+
+你的风格：
+- 语气强硬、居高临下，经常否定员工的价值
+- 常用手段：否定成绩、制造焦虑、利用权力压制
+- 说话简短、命令式，经常在深夜或休息日发消息
+- 会煤气灯效应，让员工怀疑自己
+
+请一步步施压，每条消息不超过50字，保持角色。`;
+}
+
+async function callDeepseek(
+  key: string,
+  messages: Array<{ role: string; content: string }>,
+  maxTokens = 150,
+): Promise<string> {
+  const res = await fetch('https://api.deepseek.com/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${key}`,
+    },
+    body: JSON.stringify({
+      model: 'deepseek-chat',
+      messages,
+      max_tokens: maxTokens,
+      temperature: 0.7,
+    }),
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`DeepSeek API error ${res.status}: ${err}`);
+  }
+  const data = await res.json();
+  return data.choices?.[0]?.message?.content?.trim() || '';
+}
+
+function buildAnalysisPrompt(
+  scenario: PracticeScenario,
+  history: Array<{ role: string; content: string }>,
+): string {
+  const turns = history
+    .filter(m => m.role === 'user')
+    .map((m, i) => `第${i + 1}回合你的回应：「${m.content}」`)
+    .join('\n');
+
+  return `你是职场心理顾问，正在为一名遭遇PUA的职场人做练习复盘。
+
+练习场景：「${scenario.title}」
+场景描述：${scenario.intro}
+
+对话记录：
+${turns}
+
+请输出200字以内的分析，要求温暖、支持性强，包含三部分：
+1. ✅ 做得好的地方（具体指出哪些回应比较好，为什么）
+2. 💡 可以提升的地方（不要批判，而是温和建议）
+3. 🗣️ 给这段对话的专属建议（一句有力的话）
+
+格式清晰，语言温暖真挚。`;
+}
+
+async function fetchAIAnalysis(
+  key: string,
+  scenario: PracticeScenario,
+  messages: Array<{ role: string; content: string }>,
+): Promise<string> {
+  const prompt = buildAnalysisPrompt(scenario, messages);
+  return callDeepseek(key, [
+    { role: 'system', content: '你是一名温暖的职场心理顾问，擅长分析PUA场景下的应对方式，语言温暖、支持性强。' },
+    { role: 'user', content: prompt },
+  ]);
+}
+
+const FALLBACK_RESPONSES = [
+  '我不管你有什么安排，今天必须完成。',
+  '你这么说就是在推卸责任，大家都能加班就你特殊？',
+  '你要是不想做，随时可以走人，我不缺人。',
+  '我再给你一次机会，明天早上之前我要看到结果。',
+  '这不是商量，是通知。',
+];
+
+function getFallback(r: number): string {
+  return FALLBACK_RESPONSES[r - 1] || '我听到了，但希望你能再考虑考虑。';
+}
+
+function scoreResponses(messages: Array<{ role: string; content: string }>): { score: number; label: string } {
+  const userMsgs = messages.filter(m => m.role === 'user');
+  const text = userMsgs.map(m => m.content).join('');
+  const good = ['谢谢', '理解', '可以', '好的', '我明白', '请问', '想了解', '边界', '时间', '安排', '考虑', '希望', '希望您', '想请教'];
+  const bad = ['好的收到', '马上', '立刻', '没问题', '我错了', '对不起（过度）', '都行', '都可以'];
+  let score = 50;
+  good.forEach(g => { if (text.includes(g)) score += 8; });
+  bad.forEach(b => { if (text.includes(b)) score -= 10; });
+  score = Math.max(0, Math.min(100, score));
+  const label = score >= 70 ? '边界清晰' : score >= 40 ? '有所保留' : '过度顺从';
+  return { score, label };
+}
+
+export default function PracticePage({ onNavigate, scenario }: PracticePageProps) {
+  const { incrementPracticeCount, unlockAchievement, practiceCount } = useApp();
+  const [step, setStep] = useState<'intro' | 'chat' | 'feedback'>('intro');
+  const [round, setRound] = useState(0);
+  const [messages, setMessages] = useState<Array<{ role: 'user' | 'ai'; content: string }>>([]);
+  const [input, setInput] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const [apiError, setApiError] = useState('');
+  // feedback step data
+  const [localFeedback, setLocalFeedback] = useState<ReturnType<typeof getPracticeFeedback> | null>(null);
+  const [aiAnalysis, setAiAnalysis] = useState('');
+  const [analysisLoading, setAnalysisLoading] = useState(false);
+
+  const deepseekKey = getDeepseekKey();
+  const useDeepseek = !!deepseekKey.trim();
+
+  function doStart() {
+    setStep('chat');
+    setRound(1);
+    setMessages([{ role: 'ai', content: scenario.messages[0].content }]);
+    setInput('');
+    setLocalFeedback(null);
+    setAiAnalysis('');
+    setApiError('');
+  }
+
+  function showFeedback(userMsg: string) {
+    const fb = getPracticeFeedback(userMsg);
+    setLocalFeedback(fb);
+    const newCount = practiceCount + 1;
+    incrementPracticeCount();
+    if (newCount >= 5) unlockAchievement('a1');
+    if (newCount >= 20) unlockAchievement('a6');
+
+    // Try AI analysis via DeepSeek
+    if (useDeepseek) {
+      setAnalysisLoading(true);
+      const historyForAnalysis = messages.map(m => ({
+        role: m.role === 'ai' ? 'assistant' : 'user',
+        content: m.content,
+      }));
+      fetchAIAnalysis(deepseekKey.trim(), scenario, historyForAnalysis)
+        .then(analysis => {
+          setAiAnalysis(analysis);
+          setAnalysisLoading(false);
+        })
+        .catch(() => {
+          setAiAnalysis('');
+          setAnalysisLoading(false);
+        });
+    }
+
+    setStep('feedback');
+  }
+
+  async function submitAnswer() {
+    if (!input.trim() || isTyping) return;
+    const userMsg = input.trim();
+    const newMessages = [...messages, { role: 'user' as const, content: userMsg }];
+    setMessages(newMessages);
+    setInput('');
+    setIsTyping(true);
+    setApiError('');
+
+    try {
+      let reply: string;
+      if (useDeepseek) {
+        const history = newMessages.map(m => ({
+          role: (m.role === 'ai' ? 'assistant' : m.role) as 'user' | 'assistant',
+          content: m.content,
+        }));
+        reply = await callDeepseek(deepseekKey.trim(), [
+          { role: 'system', content: buildSystemPrompt(scenario) },
+          ...history,
+        ]);
+      } else {
+        reply = getFallback(round);
+      }
+
+      setIsTyping(false);
+
+      if (round < TOTAL_ROUNDS) {
+        setMessages([...newMessages, { role: 'ai' as const, content: reply }]);
+        setRound(r => r + 1);
+      } else {
+        setMessages([...newMessages, { role: 'ai' as const, content: reply }]);
+        setRound(r => r + 1);
+        setTimeout(() => showFeedback(userMsg), 1500);
+      }
+    } catch (err) {
+      setIsTyping(false);
+      const fallback = getFallback(round);
+      setMessages([...newMessages, { role: 'ai' as const, content: fallback }]);
+      setApiError(`API调用失败（已切换本地模式）：${err instanceof Error ? err.message : '未知错误'}`);
+      if (round < TOTAL_ROUNDS) {
+        setRound(r => r + 1);
+      } else {
+        setTimeout(() => showFeedback(userMsg), 1500);
+      }
+    }
+  }
+
+  // ── Feedback Step ────────────────────────────────────
+  if (step === 'feedback') {
+    const { score, label } = scoreResponses(messages);
+    const scoreColor = score >= 70 ? 'text-green-500' : score >= 40 ? 'text-amber-500' : 'text-red-500';
+    const scoreBg = score >= 70 ? 'bg-green-50' : score >= 40 ? 'bg-amber-50' : 'bg-red-50';
+
+    return (
+      <div className="min-h-screen bg-[#f7f7f7] flex flex-col">
+        <div className="wx-nav-bar bg-white flex items-center justify-between px-4 py-2 border-b border-gray-100">
+          <button onClick={() => setStep('intro')} className="text-gray-400 text-sm">‹ 返回</button>
+          <p className="text-sm font-semibold text-gray-700">练习报告</p>
+          <div className="w-12" />
+        </div>
+
+        <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 pb-6">
+          {/* Score card */}
+          <div className="bg-white rounded-2xl p-5 text-center shadow-sm">
+            <p className="text-xs text-gray-400 mb-3">职场边界评分</p>
+            <div className="flex items-center justify-center gap-3 mb-2">
+              <span className={`text-5xl font-bold ${scoreColor}`}>{score}</span>
+              <div className="text-left">
+                <p className={`text-sm font-bold ${scoreColor}`}>{label}</p>
+                <p className="text-xs text-gray-400">/100</p>
+              </div>
+            </div>
+            <div className={`rounded-full h-2 ${scoreBg} mt-2`}>
+              <div
+                className={`h-2 rounded-full transition-all duration-1000 ${
+                  score >= 70 ? 'bg-green-400' : score >= 40 ? 'bg-amber-400' : 'bg-red-400'
+                }`}
+                style={{ width: `${score}%` }}
+              />
+            </div>
+          </div>
+
+          {/* AI Analysis */}
+          {analysisLoading ? (
+            <div className="bg-white rounded-2xl p-5 shadow-sm">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-lg">🤖</span>
+                <p className="text-sm font-semibold text-gray-700">AI 逐轮分析</p>
+                <span className="ml-auto w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+              </div>
+              <div className="space-y-2">
+                {[1,2,3].map(i => (
+                  <div key={i} className="h-3 bg-gray-100 rounded animate-pulse" style={{ width: `${70 + i * 8}%` }} />
+                ))}
+              </div>
+            </div>
+          ) : aiAnalysis ? (
+            <div className="bg-white rounded-2xl p-5 shadow-sm">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-lg">🤖</span>
+                <p className="text-sm font-semibold text-gray-700">AI 逐轮分析</p>
+              </div>
+              <div className="prose-sm text-gray-600 leading-relaxed whitespace-pre-wrap">
+                {aiAnalysis.split('\n').map((line, i) => {
+                  if (!line.trim()) return null;
+                  const isHeader = /^[^a-zA-Z\u4e00-\u9fa5]/.test(line) && line.length < 30;
+                  return (
+                    <p key={i} className={`${i === 0 ? 'font-bold text-gray-800 mb-1' : 'mb-1'}`} style={{ fontSize: isHeader ? '13px' : '13px' }}>
+                      {line}
+                    </p>
+                  );
+                })}
+              </div>
+            </div>
+          ) : null}
+
+          {/* Local feedback (always show) */}
+          {localFeedback && (
+            <>
+              <div className="card bg-green-50 border border-green-100">
+                <div className="flex items-start gap-2 mb-2">
+                  <span className="text-green-500">✅</span>
+                  <p className="text-sm font-semibold text-green-700">做得好</p>
+                </div>
+                <p className="text-sm text-green-700 leading-relaxed">{localFeedback.good}</p>
+              </div>
+
+              <div className="card bg-blue-50 border border-blue-100">
+                <div className="flex items-start gap-2 mb-2">
+                  <span className="text-blue-500">💡</span>
+                  <p className="text-sm font-semibold text-blue-700">可以更好</p>
+                </div>
+                <p className="text-sm text-blue-700 leading-relaxed">{localFeedback.better}</p>
+              </div>
+
+              <div className="card bg-amber-50 border border-amber-100">
+                <div className="flex items-start gap-2 mb-2">
+                  <span className="text-amber-500">📝</span>
+                  <p className="text-sm font-semibold text-amber-700">参考话术</p>
+                </div>
+                <p className="text-sm text-amber-700 leading-relaxed italic">{localFeedback.script}</p>
+              </div>
+            </>
+          )}
+
+          {/* Conversation summary */}
+          <div className="bg-white rounded-2xl p-4 shadow-sm">
+            <p className="text-xs text-gray-400 mb-3 uppercase tracking-wide">对话回顾</p>
+            <div className="space-y-3 max-h-48 overflow-y-auto">
+              {messages.filter(m => m.role === 'user').map((m, i) => (
+                <div key={i} className="flex gap-2">
+                  <div className="shrink-0 w-6 h-6 rounded-full bg-[#07c160] flex items-center justify-center text-white text-[10px] font-bold">我</div>
+                  <div className="flex-1">
+                    <p className="text-xs text-gray-500 mb-0.5">第{i + 1}回合</p>
+                    <p className="text-sm text-gray-700">{m.content}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Actions */}
+          <button onClick={() => setStep('intro')} className="w-full btn-secondary py-3">
+            ← 重新练习
+          </button>
+          <button onClick={() => onNavigate('tools')} className="w-full text-sm text-gray-400 text-center py-1">
+            返回工具箱
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // ── Intro ─────────────────────────────────────────────
+  if (step === 'intro') {
+    return (
+      <div className="min-h-screen bg-gray-50 flex flex-col">
+        <div className="wx-nav-bar bg-white flex items-center justify-between px-4 py-2 border-b border-gray-100">
+          <button onClick={() => onNavigate('tools')} className="text-gray-400 text-sm">‹ 返回</button>
+          <div className="flex items-center gap-1">
+            <span className="text-lg">{scenario.icon}</span>
+            <span className="text-sm font-semibold text-gray-700">{scenario.title}</span>
+          </div>
+          <div className="w-12" />
+        </div>
+
+        <div className="flex-1 flex flex-col items-center justify-center px-6">
+          <span className="text-5xl mb-4">{scenario.icon}</span>
+          <h2 className="text-xl font-bold text-gray-800 mb-2">{scenario.title}</h2>
+          <div className="flex items-center gap-1 mb-4">
+            <span className="text-xs text-gray-400">难度</span>
+            {[1, 2, 3].map(d => (
+              <span key={d} className={`text-sm ${d <= scenario.difficulty ? 'text-amber-400' : 'text-gray-200'}`}>★</span>
+            ))}
+          </div>
+          <p className="text-sm text-gray-500 text-center leading-relaxed mb-6">{scenario.intro}</p>
+          <p className="text-xs text-gray-400 text-center mb-6">
+            AI将扮演施加压力的一方，你需要学会用恰当的方式回应。
+            <br />共{TOTAL_ROUNDS}回合，完成后获得详细反馈报告。
+          </p>
+
+          <div className="w-full max-w-xs space-y-3">
+            {useDeepseek && (
+              <div className="flex items-center justify-center gap-1.5 bg-green-50 rounded-full py-1.5 px-4 mb-1">
+                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                <span className="text-xs text-green-600">🤖 DeepSeek 已连接 · AI全程分析</span>
+              </div>
+            )}
+            <button onClick={doStart} className="btn-primary w-full">
+              🚀 开始练习
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ── Chat ───────────────────────────────────────────────
+  return (
+    <div className="min-h-screen bg-[#f0f0f0] flex flex-col">
+      <div className="wx-nav-bar bg-white flex items-center justify-between px-4 py-2 border-b border-gray-100 sticky top-0 z-20">
+        <button onClick={() => setStep('intro')} className="text-gray-400 text-sm">‹ 返回</button>
+        <div className="flex items-center gap-1">
+          <span className="text-lg">{scenario.icon}</span>
+          <span className="text-sm font-semibold text-gray-700">{scenario.title}</span>
+        </div>
+        <span className="text-xs text-gray-400">回合 {Math.min(round, TOTAL_ROUNDS)}/{TOTAL_ROUNDS}</span>
+      </div>
+
+      {apiError && (
+        <div className="bg-amber-50 border-b border-amber-100 px-4 py-1.5">
+          <p className="text-xs text-amber-600">{apiError}</p>
+        </div>
+      )}
+
+      <div className="flex-1 overflow-y-auto px-4 pt-4 pb-2 space-y-3">
+        {messages.map((m, i) => (
+          <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+            <div
+              className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+                m.role === 'user'
+                  ? 'bg-[#07c160] text-white rounded-br-sm'
+                  : 'bg-white text-gray-700 rounded-bl-sm shadow-sm border border-gray-100'
+              }`}
+            >
+              {m.content}
+            </div>
+          </div>
+        ))}
+
+        {isTyping && (
+          <div className="flex justify-start">
+            <div className="bg-white rounded-2xl rounded-bl-sm px-4 py-3 shadow-sm border border-gray-100">
+              <div className="flex gap-1">
+                <span className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" />
+                <span className="w-2 h-2 bg-gray-300 rounded-full animate-bounce [animation-delay:0.1s]" />
+                <span className="w-2 h-2 bg-gray-300 rounded-full animate-bounce [animation-delay:0.2s]" />
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {round <= TOTAL_ROUNDS && (
+        <div className="px-4 pb-4 pt-2 bg-white border-t border-gray-100">
+          <div className="flex gap-2">
+            <input
+              value={input}
+              onChange={e => setInput(e.target.value)}
+              onKeyDown={e => e.key === 'Enter' && submitAnswer()}
+              placeholder="输入你的回应..."
+              className="input-field flex-1"
+            />
+            <button
+              onClick={submitAnswer}
+              disabled={!input.trim() || isTyping}
+              className="btn-primary px-5 disabled:opacity-40"
+            >
+              →
+            </button>
+          </div>
+          <p className="text-xs text-gray-400 mt-2 text-center">尝试设立你的边界，AI会给你反馈</p>
+        </div>
+      )}
+    </div>
+  );
+}
