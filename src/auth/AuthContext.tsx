@@ -8,6 +8,7 @@
  */
 
 import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
+import { handleMiniProgramLogin } from './miniprogram';
 
 export interface WechatUser {
   openid: string;
@@ -46,6 +47,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [wechatUser, setWechatUser] = useState<WechatUser | null>(loadSavedUser);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // 启动时检测是否从小程序 WebView 传来登录态
+  useEffect(() => {
+    const mpData = handleMiniProgramLogin();
+    if (mpData) {
+      setWechatUser({
+        openid: '',  // 小程序没有 openid，用 nickname 作标识
+        nickname: mpData.nickname || '微信用户',
+        headimgurl: mpData.avatar || '',
+      });
+    }
+  }, []);
 
   // 将用户信息持久化到 localStorage
   useEffect(() => {

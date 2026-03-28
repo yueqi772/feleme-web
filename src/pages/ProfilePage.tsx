@@ -3,7 +3,8 @@ import { useApp } from '../context/AppContext';
 import { useAuth } from '../auth/AuthContext';
 import { EMOTION_MAP } from '../data';
 import { getRiskInfo, formatTime } from '../utils';
-import { isWechatLoginConfigured } from '../auth/wechat';
+import { isWechatLoginConfigured, getWechatAuthUrl } from '../auth/wechat';
+import { isRunningInMiniProgram } from '../auth/miniprogram';
 import type { Industry, WorkYears } from '../types';
 
 interface ProfilePageProps {
@@ -26,10 +27,20 @@ export default function ProfilePage({ onNavigate }: ProfilePageProps) {
   const unlockedAchievements = achievements.filter(a => a.unlocked);
   const today = new Date().toISOString().slice(0, 10);
   const todayDiaries = diaries.filter(d => d.date === today);
+  const inMiniProgram = isRunningInMiniProgram();
 
   const handleSaveApiKey = () => {
     setDeepseekKey(apiKeyInput.trim());
     setShowSettings(false);
+  };
+
+  const handleMpLoginHint = () => {
+    // 在 H5 环境提示用户打开小程序
+    wx?.showModal?.({
+      title: '请在微信小程序中登录',
+      content: '请在微信中搜索"职场清醒笔记"小程序 → 首页 → 点击"微信授权登录"',
+      showCancel: false,
+    }) || alert('请在微信中搜索"职场清醒笔记"小程序，从首页点击"微信授权登录"');
   };
 
   return (
@@ -76,6 +87,11 @@ export default function ProfilePage({ onNavigate }: ProfilePageProps) {
                 退出登录
               </button>
             </div>
+          ) : inMiniProgram ? (
+            // 小程序环境：不显示登录按钮（由小程序容器处理登录）
+            <div className="bg-white/10 text-white/70 text-xs text-center py-2 rounded-lg">
+              {inMiniProgram ? '小程序环境登录' : '请在小程序内登录'}
+            </div>
           ) : isWechatLoginConfigured() ? (
             <button
               onClick={loginWithWechat}
@@ -97,9 +113,13 @@ export default function ProfilePage({ onNavigate }: ProfilePageProps) {
               )}
             </button>
           ) : (
-            <div className="bg-amber-500/20 text-amber-100 text-xs px-3 py-2 rounded-lg">
-              ⚠️ 微信登录未配置（见 .env.example 说明）
-            </div>
+            // 未配置任何登录方式时，提示用户打开小程序
+            <button
+              onClick={handleMpLoginHint}
+              className="w-full bg-white/15 hover:bg-white/25 text-white text-sm py-2.5 rounded-lg font-medium transition-colors"
+            >
+              打开小程序登录
+            </button>
           )}
         </div>
       </div>
