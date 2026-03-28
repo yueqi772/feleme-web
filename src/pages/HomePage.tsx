@@ -9,7 +9,7 @@ interface HomePageProps {
 const EMOTIONS = ['愤怒', '委屈', '焦虑', '失落', '麻木'] as const;
 
 export default function HomePage({ onNavigate }: HomePageProps) {
-  const { testHistory, diaries, userIndustry, userWorkYears, practiceCount } = useApp();
+  const { testHistory, diaries, userIndustry, userWorkYears, practiceCount, appName } = useApp();
   const today = new Date();
   const currentMonth = today.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long' });
 
@@ -34,7 +34,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         <div className="flex items-center justify-between mb-1">
           <div>
             <p className="text-sm opacity-80">{userIndustry} · {userWorkYears}</p>
-            <h1 className="text-xl font-bold mt-0.5">职场清醒笔记</h1>
+            <h1 className="text-xl font-bold mt-0.5">{appName}</h1>
           </div>
           <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-lg">🌿</div>
         </div>

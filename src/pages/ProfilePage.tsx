@@ -12,12 +12,22 @@ const INDUSTRIES: Industry[] = ['互联网', '教育', '金融', '医疗', '其�
 const WORK_YEARS: WorkYears[] = ['1年以内', '1-3年', '3-5年', '5年以上'];
 
 export default function ProfilePage({ onNavigate }: ProfilePageProps) {
-  const { testHistory, diaries, achievements, practiceCount, favoriteScripts, setUserInfo, userIndustry, userWorkYears, joinDate } = useApp();
+  const {
+    testHistory, diaries, achievements, practiceCount, favoriteScripts,
+    setUserInfo, userIndustry, userWorkYears, joinDate,
+    isDarkMode, toggleDarkMode, deepseekKey, setDeepseekKey, appName,
+  } = useApp();
   const [showSettings, setShowSettings] = useState(false);
+  const [apiKeyInput, setApiKeyInput] = useState(deepseekKey);
 
   const unlockedAchievements = achievements.filter(a => a.unlocked);
   const today = new Date().toISOString().slice(0, 10);
   const todayDiaries = diaries.filter(d => d.date === today);
+
+  const handleSaveApiKey = () => {
+    setDeepseekKey(apiKeyInput.trim());
+    setShowSettings(false);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -26,7 +36,7 @@ export default function ProfilePage({ onNavigate }: ProfilePageProps) {
         <div className="flex items-center gap-3">
           <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center text-3xl">🌿</div>
           <div>
-            <h1 className="text-lg font-bold">职场清醒笔记</h1>
+            <h1 className="text-lg font-bold">{appName}</h1>
             <p className="text-sm opacity-80">{userIndustry} · {userWorkYears}</p>
             <p className="text-xs opacity-60 mt-0.5">使用 {Math.floor((Date.now() - new Date(joinDate).getTime()) / (1000 * 60 * 60 * 24))} 天</p>
           </div>
@@ -116,7 +126,7 @@ export default function ProfilePage({ onNavigate }: ProfilePageProps) {
             <span className="text-gray-300">›</span>
           </button>
           {showSettings && (
-            <div className="space-y-2 mt-2 pt-2 border-t">
+            <div className="space-y-3 mt-2 pt-2 border-t">
               <div>
                 <label className="text-xs text-gray-500">行业</label>
                 <select
@@ -137,12 +147,42 @@ export default function ProfilePage({ onNavigate }: ProfilePageProps) {
                   {WORK_YEARS.map(y => <option key={y} value={y}>{y}</option>)}
                 </select>
               </div>
+              <div>
+                <label className="text-xs text-gray-500">DeepSeek API Key</label>
+                <div className="flex gap-2 mt-1">
+                  <input
+                    type="password"
+                    value={apiKeyInput}
+                    onChange={e => setApiKeyInput(e.target.value)}
+                    placeholder="sk-..."
+                    className="flex-1 bg-gray-50 rounded-lg px-3 py-2 text-sm"
+                  />
+                  <button onClick={handleSaveApiKey} className="bg-brand-500 text-white text-xs px-3 py-2 rounded-lg">
+                    保存
+                  </button>
+                </div>
+                <p className="text-[10px] text-gray-400 mt-1">
+                  {deepseekKey ? '✅ 已设置' : '⚠️ 未设置，请填写后保存'}
+                </p>
+              </div>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span>🌙</span>
+                  <span className="text-sm text-gray-700">暗黑模式</span>
+                </div>
+                <button
+                  onClick={toggleDarkMode}
+                  className={`w-12 h-6 rounded-full transition-colors relative ${isDarkMode ? 'bg-brand-500' : 'bg-gray-200'}`}
+                >
+                  <span className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow transition-transform ${isDarkMode ? 'translate-x-7' : 'translate-x-1'}`} />
+                </button>
+              </div>
             </div>
           )}
         </div>
 
         <div className="text-center py-4">
-          <p className="text-xs text-gray-300">职场清醒笔记 v1.0</p>
+          <p className="text-xs text-gray-300">{appName} v1.0</p>
           <p className="text-xs text-gray-300 mt-0.5">你的感受是真实的</p>
         </div>
       </div>

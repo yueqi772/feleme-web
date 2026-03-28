@@ -1,5 +1,5 @@
-import { useState, useCallback } from 'react';
-import { AppProvider } from './context/AppContext';
+import { useState, useCallback, useEffect } from 'react';
+import { AppProvider, useApp } from './context/AppContext';
 import HomePage from './pages/HomePage';
 import TestPage from './pages/TestPage';
 import ReportPage from './pages/ReportPage';
@@ -13,6 +13,7 @@ import PostDetailPage from './pages/PostDetailPage';
 import ProfilePage from './pages/ProfilePage';
 import TestHistoryPage from './pages/TestHistoryPage';
 import LeaveDecisionPage from './pages/LeaveDecisionPage';
+import OnboardingPage from './pages/OnboardingPage';
 import type { TestResult, ScriptItem, PracticeScenario, Post } from './types';
 
 type PageName = 'home' | 'test' | 'report' | 'tools'
@@ -53,8 +54,16 @@ function ActionButton({ page, onNavigate }: { page: PageName; onNavigate: (p: st
 }
 
 function AppContent() {
-  const [currentPage, setCurrentPage] = useState<PageName>('home');
+  const { onboardingDone } = useApp();
+  const [currentPage, setCurrentPage] = useState<PageName>(onboardingDone ? 'home' : 'onboarding' as PageName);
   const [pageParams, setPageParams] = useState<Record<string, unknown>>({});
+
+  // Sync when onboardingDone changes
+  useEffect(() => {
+    if (!onboardingDone && currentPage !== 'onboarding') {
+      setCurrentPage('onboarding');
+    }
+  }, [onboardingDone]);
 
   const navigate = useCallback((page: string, params?: Record<string, unknown>) => {
     setPageParams(params || {});
@@ -62,6 +71,9 @@ function AppContent() {
   }, []);
 
   function renderPage() {
+    if (!onboardingDone) {
+      return <OnboardingPage onNavigate={navigate} />;
+    }
     switch (currentPage) {
       case 'home': return <HomePage onNavigate={navigate} />;
       case 'test': return <TestPage onNavigate={navigate} />;
@@ -81,6 +93,10 @@ function AppContent() {
   }
 
   const isTabPage = TAB_PAGES.includes(currentPage);
+
+  if (!onboardingDone) {
+    return <div className="min-h-screen bg-white max-w-md mx-auto">{renderPage()}</div>;
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 max-w-md mx-auto relative flex flex-col" style={{ height: '100vh' }}>

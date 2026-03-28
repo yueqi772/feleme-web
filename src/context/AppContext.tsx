@@ -16,6 +16,9 @@ interface AppState {
   userIndustry: Industry;
   userWorkYears: WorkYears;
   deepseekKey: string;
+  onboardingDone: boolean;
+  isDarkMode: boolean;
+  appName: string;
 }
 
 interface AppContextType extends AppState {
@@ -31,6 +34,8 @@ interface AppContextType extends AppState {
   toggleFavoriteScript: (scriptId: string) => void;
   incrementPracticeCount: () => void;
   setDeepseekKey: (key: string) => void;
+  completeOnboarding: () => void;
+  toggleDarkMode: () => void;
 }
 
 const AppContext = createContext<AppContextType | null>(null);
@@ -59,6 +64,9 @@ function persist(state: AppState) {
       userIndustry: state.userIndustry,
       userWorkYears: state.userWorkYears,
       deepseekKey: state.deepseekKey,
+      onboardingDone: state.onboardingDone,
+      isDarkMode: state.isDarkMode,
+      appName: state.appName,
     }));
   } catch {}
 }
@@ -80,10 +88,21 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       userIndustry: saved.userIndustry || '互联网',
       userWorkYears: saved.userWorkYears || '1-3年',
       deepseekKey: saved.deepseekKey || '',
+      onboardingDone: saved.onboardingDone ?? false,
+      isDarkMode: saved.isDarkMode ?? false,
+      appName: saved.appName || 'Feleme',
     };
   });
 
   useEffect(() => { persist(state); }, [state]);
+
+  useEffect(() => {
+    if (state.isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [state.isDarkMode]);
 
   const saveTestResult = useCallback((result: TestResult) => {
     setState(s => ({ ...s, testHistory: [result, ...s.testHistory].slice(0, 20), currentTestResult: result }));
@@ -123,12 +142,19 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const setDeepseekKey = useCallback((key: string) => {
     setState(s => ({ ...s, deepseekKey: key }));
   }, []);
+  const completeOnboarding = useCallback(() => {
+    setState(s => ({ ...s, onboardingDone: true, joinDate: new Date().toISOString() }));
+  }, []);
+  const toggleDarkMode = useCallback(() => {
+    setState(s => ({ ...s, isDarkMode: !s.isDarkMode }));
+  }, []);
 
   return (
     <AppContext.Provider value={{
       ...state, saveTestResult, saveDiary, addChatMessage, addPost,
       toggleLike, toggleResonate, addComment, unlockAchievement,
       setUserInfo, toggleFavoriteScript, incrementPracticeCount, setDeepseekKey,
+      completeOnboarding, toggleDarkMode,
     }}>
       {children}
     </AppContext.Provider>
