@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import { AppProvider, useApp } from './context/AppContext';
+import { AuthProvider } from './auth/AuthContext';
 import HomePage from './pages/HomePage';
 import TestPage from './pages/TestPage';
 import ReportPage from './pages/ReportPage';
@@ -14,12 +15,14 @@ import ProfilePage from './pages/ProfilePage';
 import TestHistoryPage from './pages/TestHistoryPage';
 import LeaveDecisionPage from './pages/LeaveDecisionPage';
 import OnboardingPage from './pages/OnboardingPage';
+import WechatCallbackPage from './pages/WechatCallbackPage';
 import type { TestResult, ScriptItem, PracticeScenario, Post } from './types';
 
 type PageName = 'home' | 'test' | 'report' | 'tools'
   | 'scripts-detail' | 'practice'
   | 'treehole' | 'community' | 'new-post' | 'post-detail'
-  | 'profile' | 'test-history' | 'leave-decision';
+  | 'profile' | 'test-history' | 'leave-decision'
+  | 'wechat-callback';
 
 const PAGE_TITLES: Record<PageName, string> = {
   home: '职场清醒笔记', test: '识别测试', report: '测试报告',
@@ -27,6 +30,7 @@ const PAGE_TITLES: Record<PageName, string> = {
   treehole: '情绪树洞', community: '互助社区', 'new-post': '发布帖子',
   'post-detail': '帖子详情', profile: '我的',
   'test-history': '测试历史', 'leave-decision': '去留决策',
+  'wechat-callback': '微信登录',
 };
 
 const TAB_PAGES: PageName[] = ['home', 'tools', 'treehole', 'community', 'profile'];
@@ -55,15 +59,21 @@ function ActionButton({ page, onNavigate }: { page: PageName; onNavigate: (p: st
 
 function AppContent() {
   const { onboardingDone } = useApp();
-  const [currentPage, setCurrentPage] = useState<PageName>(onboardingDone ? 'home' : 'onboarding' as PageName);
+
+  // 微信回调页面通过 URL 路径检测（Vite SPA 直接加载 /wechat-callback 时生效）
+  const isCallbackRoute = typeof window !== 'undefined' && window.location.pathname.includes('wechat-callback');
+
+  const [currentPage, setCurrentPage] = useState<PageName>(
+    isCallbackRoute ? 'wechat-callback'
+      : (onboardingDone ? 'home' : 'onboarding') as PageName
+  );
   const [pageParams, setPageParams] = useState<Record<string, unknown>>({});
 
-  // Sync when onboardingDone changes
   useEffect(() => {
-    if (!onboardingDone && currentPage !== 'onboarding') {
+    if (!onboardingDone && currentPage !== 'onboarding' && currentPage !== 'wechat-callback') {
       setCurrentPage('onboarding');
     }
-  }, [onboardingDone]);
+  }, [onboardingDone, currentPage]);
 
   const navigate = useCallback((page: string, params?: Record<string, unknown>) => {
     setPageParams(params || {});
@@ -71,6 +81,9 @@ function AppContent() {
   }, []);
 
   function renderPage() {
+    if (currentPage === 'wechat-callback') {
+      return <WechatCallbackPage onNavigate={navigate} />;
+    }
     if (!onboardingDone) {
       return <OnboardingPage onNavigate={navigate} />;
     }
@@ -94,13 +107,12 @@ function AppContent() {
 
   const isTabPage = TAB_PAGES.includes(currentPage);
 
-  if (!onboardingDone) {
+  if (currentPage === 'wechat-callback' || !onboardingDone) {
     return <div className="min-h-screen bg-white max-w-md mx-auto">{renderPage()}</div>;
   }
 
   return (
     <div className="min-h-screen bg-gray-50 max-w-md mx-auto relative flex flex-col" style={{ height: '100vh' }}>
-      {/* Unified Top Bar */}
       <div className="bg-white border-b border-gray-100 flex items-center justify-between px-4 shrink-0" style={{ height: '48px' }}>
         <div className="w-14">
           {!isTabPage && (
@@ -116,13 +128,9 @@ function AppContent() {
           <ActionButton page={currentPage} onNavigate={navigate} />
         </div>
       </div>
-
-      {/* Page Content */}
       <div className="flex-1 overflow-y-auto">
         {renderPage()}
       </div>
-
-      {/* Tab Bar */}
       {isTabPage && (
         <div className="bg-white border-t border-gray-100 shrink-0">
           <div className="flex">
@@ -148,7 +156,9 @@ function AppContent() {
 export default function App() {
   return (
     <AppProvider>
-      <AppContent />
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
     </AppProvider>
   );
 }
