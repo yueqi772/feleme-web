@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { getRiskInfo, formatDate } from '../utils';
-import { image_synthesize } from 'image_synthesize';
 import type { TestResult } from '../types';
 
 interface TestHistoryPageProps {
@@ -13,35 +12,7 @@ export default function TestHistoryPage({ onNavigate }: TestHistoryPageProps) {
   const [generatingId, setGeneratingId] = useState<string | null>(null);
 
   const generateSharePoster = async (t: TestResult) => {
-    setGeneratingId(t.id);
-    const risk = getRiskInfo(t.score);
-    const dateStr = formatDate(t.date);
-    const prompt = `A clean, modern social media share card for workplace wellness app "${appName}". Square 1:1 format. 
-
-Card layout: White rounded card on light gray background. Top has app name "${appName} · 职场清醒笔记" in small text. Center has large score ${t.score}/100 in bold teal (#0d9488). Below shows risk level "${risk.level}" with emoji ${risk.emoji}. Bottom shows date "${dateStr}" and tagline "你的感受是真实的". 
-
-Style: Modern Chinese app aesthetic, minimal, professional, warm. Soft shadow, rounded corners. Decorative leaf 🌿 icon. No English text except score.`;
-
-    try {
-      const result = await image_synthesize({
-        requests: [{
-          prompt,
-          output_file: `/tmp/poster_${t.id}.png`,
-          aspect_ratio: '1:1',
-          resolution: '1K',
-        }],
-      });
-      if (result?.[0]?.output_file) {
-        // Trigger download
-        const link = document.createElement('a');
-        link.href = `file://${result[0].output_file}`;
-        link.download = `${appName}_测试报告_${t.date}.png`;
-        link.click();
-      }
-    } catch (e) {
-      console.error('Failed to generate poster:', e);
-    }
-    setGeneratingId(null);
+    alert('海报功能即将上线');
   };
 
   return (

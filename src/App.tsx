@@ -22,7 +22,7 @@ type PageName = 'home' | 'test' | 'report' | 'tools'
   | 'scripts-detail' | 'practice'
   | 'treehole' | 'community' | 'new-post' | 'post-detail'
   | 'profile' | 'test-history' | 'leave-decision'
-  | 'wechat-callback';
+  | 'onboarding' | 'wechat-callback';
 
 const PAGE_TITLES: Record<PageName, string> = {
   home: '职场清醒笔记', test: '识别测试', report: '测试报告',
@@ -30,7 +30,7 @@ const PAGE_TITLES: Record<PageName, string> = {
   treehole: '情绪树洞', community: '互助社区', 'new-post': '发布帖子',
   'post-detail': '帖子详情', profile: '我的',
   'test-history': '测试历史', 'leave-decision': '去留决策',
-  'wechat-callback': '微信登录',
+  'onboarding': '欢迎', 'wechat-callback': '微信登录',
 };
 
 const TAB_PAGES: PageName[] = ['home', 'tools', 'treehole', 'community', 'profile'];
