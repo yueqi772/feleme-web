@@ -1,9 +1,11 @@
 import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { handleMiniProgramLogin } from './miniprogram';
 import { getWechatAuthUrl, isWechatLoginConfigured, validateState } from './wechat';
+import { setOpenid, cloudSyncAll, getOpenid } from '../cloud';
 
 export interface WechatUser {
   openid: string;
+  unionid?: string;
   nickname: string;
   headimgurl: string;
 }
@@ -37,13 +39,34 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const mpData = handleMiniProgramLogin();
     if (mpData) {
-      setWechatUser({ openid: '', nickname: mpData.nickname || '微信用户', headimgurl: mpData.avatar || '' });
+      const openid = mpData.openid || '';
+      if (openid) setOpenid(openid);
+      const user: WechatUser = {
+        openid,
+        unionid: mpData.unionid || '',
+        nickname: mpData.nickname || '微信用户',
+        headimgurl: mpData.avatar || '',
+      };
+      setWechatUser(user);
+      if (openid) {
+        try {
+          const raw = localStorage.getItem('zhichang_qingxing_v1');
+          if (raw) cloudSyncAll(JSON.parse(raw));
+        } catch (_) { /* ignore */ }
+      }
+    } else {
+      const savedOpenid = getOpenid();
+      if (savedOpenid) console.log('[auth] restored openid:', savedOpenid);
     }
   }, []);
 
   useEffect(() => {
-    if (wechatUser) localStorage.setItem(STORAGE_KEY, JSON.stringify(wechatUser));
-    else localStorage.removeItem(STORAGE_KEY);
+    if (wechatUser) {
+      if (wechatUser.openid) setOpenid(wechatUser.openid);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(wechatUser));
+    } else {
+      localStorage.removeItem(STORAGE_KEY);
+    }
   }, [wechatUser]);
 
   const loginWithWechat = useCallback(() => {
@@ -54,14 +77,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const handleWechatCallback = useCallback(async (code: string, state: string) => {
     if (!validateState(state)) { setError('授权验证失败'); return; }
-    setIsLoading(true); setError(null);
+    setIsLoading(true);
+    setError(null);
     try {
-      const response = await fetch(`${import.meta.env.VITE_AUTH_SERVER_URL || 'http://localhost:3001'}/auth/wechat/exchange`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ code, state }),
-      });
-      const data = await response.json();
+      const response = await fetch(
+        `${import.meta.env.VITE_AUTH_SERVER_URL || 'http://localhost:3001'}/auth/wechat/exchange`,
+        { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ code, state }) }
+      );
+      const data = await response.json() as { error?: string; openid?: string; nickname?: string; headimgurl?: string };
       if (!response.ok || data.error) throw new Error(data.error || '登录失败');
-      setWechatUser({ openid: data.openid!, nickname: data.nickname || '微信用户', headimgurl: data.headimgurl || '' });
+      const openid = data.openid || '';
+      if (openid) setOpenid(openid);
+      const user: WechatUser = { openid, nickname: data.nickname || '微信用户', headimgurl: data.headimgurl || '' };
+      setWechatUser(user);
+      cloudSyncAll({});
     } catch (err) {
       setError(err instanceof Error ? err.message : '登录失败');
     } finally {
@@ -73,12 +102,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setWechatUser(null);
     sessionStorage.removeItem('wechat_oauth_state');
     sessionStorage.removeItem('pre_login_path');
+    try { localStorage.removeItem('_feleme_openid'); } catch (_) { /* ignore */ }
   }, []);
 
-  const clearError = useCallback(() => setError(null), []);
+  const clearError = useCallback(() => { setError(null); }, []);
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn: wechatUser !== null, wechatUser, isLoading, error, loginWithWechat, handleWechatCallback, logout, clearError }}>
+    <AuthContext.Provider value={{
+      isLoggedIn: wechatUser !== null, wechatUser, isLoading, error,
+      loginWithWechat, handleWechatCallback, logout, clearError,
+    }}>
       {children}
     </AuthContext.Provider>
   );
