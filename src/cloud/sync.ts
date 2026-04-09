@@ -1,1 +1,250 @@
-LyoqCiAqIOS6keaVsOaNruW6k+WQjOatpeaooeWdlyAtIOS/ruWkjeeJiAogKgogKiDpgJrkv6Hljp/nkIbvvJoKICogLSBINSDihpIg5bCP56iL5bqP77yad3gubWluaVByb2dyYW0ucG9zdE1lc3NhZ2Ug4oaSIHdlYnZpZXcgYmluZG1lc3NhZ2UKICogLSDlsI/nqIvluo8g4oaSIEg177yad3gubWluaVByb2dyYW0ucG9zdE1lc3NhZ2Ug4oaSIEg1IHdpbmRvdy5hZGRFdmVudExpc3RlbmVyKCdtZXNzYWdlJykKICoKICog5YWz6ZSu5L+u5aSN77yaCiAqIC0g5q+P5p2h5raI5oGv5bimIG1zZ0lk77yM5bCP56iL5bqP5Y6f5qC35Zue5Lyg77yM5a6e546w5Y+M5ZCR56Gu6K6kCiAqIC0g5LiN5L6d6LWWIE1QX1JFQURZIOaPoeaJi++8jOS7u+S9leaXtuWIu+ebtOaOpeWPkea2iOaBrwogKiAtIOWPkemAgeWksei0peaXtiBjb25zb2xlLmVycm9yIOaYjuehruWRiuefpQogKi8KCmRlY2xhcmUgY29uc3Qgd3g6IGFueTsKCmxldCBfb3BlbmlkID0gJyc7CmNvbnN0IF9wZW5kaW5nOiBNYXA8c3RyaW5nLCAoZGF0YTogdW5rbm93bikgPT4gdm9pZD4gPSBuZXcgTWFwKCk7CmxldCBfbXNnU2VxID0gMDsKCi8vIOKUgOKUgOKUgCDnm5HlkKzlsI/nqIvluo/lm57lpI0g4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACmlmICh0eXBlb2Ygd2luZG93ICE9PSAndW5kZWZpbmVkJykgewogIHdpbmRvdy5hZGRFdmVudExpc3RlbmVyKCdtZXNzYWdlJywgKGU6IE1lc3NhZ2VFdmVudCkgPT4gewogICAgY29uc3QgZCA9IGUuZGF0YTsKICAgIGlmICghZCB8fCAhZC5tc2dJZCkgcmV0dXJuOwogICAgY29uc3QgcmVzb2x2ZSA9IF9wZW5kaW5nLmdldChkLm1zZ0lkKTsKICAgIGlmIChyZXNvbHZlKSB7IF9wZW5kaW5nLmRlbGV0ZShkLm1zZ0lkKTsgcmVzb2x2ZShkKTsgfQogICAgZWxzZSB7IGNvbnNvbGUud2FybignW2Nsb3VkIHN5bmNdIOacquaJvuWIsOW+heWkhOeQhuWbnuiwgyBtc2dJZDonLCBkLm1zZ0lkKTsgfQogIH0pOwogIGNvbnNvbGUubG9nKCdbY2xvdWQgc3luY10gSDUg5raI5oGv55uR5ZCs5Zmo5bey5rOo5YaMJyk7Cn0KCi8vIOKUgOKUgOKUgCDmoLjlv4PvvJrlj5HpgIHmtojmga/nu5nlsI/nqIvluo8g4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACmZ1bmN0aW9uIHBvc3RUb01pbmlQcm9ncmFtKHR5cGU6IHN0cmluZywgcGF5bG9hZDogUmVjb3JkPHN0cmluZywgdW5rbm93bj4gPSB7fSk6IFByb21pc2U8dW5rbm93bj4gewogIHJldHVybiBuZXcgUHJvbWlzZSgocmVzb2x2ZSkgPT4gewogICAgY29uc3QgbXNnSWQgPSBgbXNnXyR7KytfbXNnU2VxfV8ke0RhdGUubm93KCl9YDsKICAgIGNvbnN0IHRpbWVyID0gc2V0VGltZW91dCgoKSA9PiB7CiAgICAgIF9wZW5kaW5nLmRlbGV0ZShtc2dJZCk7CiAgICAgIGNvbnNvbGUuZXJyb3IoYFtjbG91ZCBzeW5jXSDmtojmga8g6LaF5pe2OiAke3R5cGV9YCwgcGF5bG9hZCk7CiAgICAgIHJlc29sdmUoeyBzdWNjZXNzOiBmYWxzZSwgZXJyb3I6ICfmtojmga/otoXml7bvvIzlsI/nqIvluo/mnKrlk43lupQnIH0pOwogICAgfSwgMTIwMDApOwoKICAgIF9wZW5kaW5nLnNldChtc2dJZCwgKGRhdGE6IHVua25vd24pID0+IHsKICAgICAgY2xlYXJUaW1lb3V0KHRpbWVyKTsKICAgICAgcmVzb2x2ZShkYXRhKTsKICAgIH0pOwoKICAgIHRyeSB7CiAgICAgICh3eCBhcyBhbnkpLm1pbmlQcm9ncmFtLnBvc3RNZXNzYWdlKHsgZGF0YTogeyBtc2dJZCwgdHlwZSwgcGF5bG9hZCB9IH0pOwogICAgICBjb25zb2xlLmxvZyhgW2Nsb3VkIHN5bmNdIOW3suWPkemAgSDihpIg5bCP56iL5bqPOiAke3R5cGV9YCwgcGF5bG9hZCk7CiAgICB9IGNhdGNoIChlcnIpIHsKICAgICAgY2xlYXJUaW1lb3V0KHRpbWVyKTsKICAgICAgX3BlbmRpbmcuZGVsZXRlKG1zZ0lkKTsKICAgICAgY29uc29sZS5lcnJvcihgW2Nsb3VkIHN5bmNdIHBvc3RNZXNzYWdlIOWksei0pTogJHt0eXBlfWAsIGVycik7CiAgICAgIHJlc29sdmUoeyBzdWNjZXNzOiBmYWxzZSwgZXJyb3I6IFN0cmluZyhlcnIpIH0pOwogICAgfQogIH0pOwp9CgovLyDilIDilIDilIAg5YWs5byA5Ye95pWwIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgAoKZXhwb3J0IGZ1bmN0aW9uIHNldE9wZW5pZChvcGVuaWQ6IHN0cmluZykgeyBfb3BlbmlkID0gb3BlbmlkOyB9CmV4cG9ydCBmdW5jdGlvbiBnZXRPcGVuaWQoKTogc3RyaW5nIHsgcmV0dXJuIF9vcGVuaWQ7IH0KCi8qKiDmtYvor5Xov57pgJrmgKfvvIhXZWJWaWV3IOKGkiDlsI/nqIvluo8g4oaSIOS6keWHveaVsO+8iSAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gcGluZ01wKCk6IFByb21pc2U8Ym9vbGVhbj4gewogIGNvbnN0IHIgPSBhd2FpdCBwb3N0VG9NaW5pUHJvZ3JhbSgnUElORycsIHt9KSBhcyB7IHR5cGU/OiBzdHJpbmcgfTsKICBjb25zdCBvayA9IHI/LnR5cGUgPT09ICdQT05HJzsKICBjb25zb2xlLmxvZygnW2Nsb3VkIHN5bmNdIHBpbmcg57uT5p6cOicsIG9rKTsKICByZXR1cm4gb2s7Cn0KCi8qKiDlrZjlgqjmtYvor5Xnu5PmnpwgKi8KZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGNsb3VkU2F2ZVRlc3RSZXN1bHQocmVzdWx0OiBSZWNvcmQ8c3RyaW5nLCB1bmtub3duPik6IFByb21pc2U8dm9pZD4gewogIGF3YWl0IHBvc3RUb01pbmlQcm9ncmFtKCdEQl9BREQnLCB7CiAgICBjb2xsZWN0aW9uOiAndGVzdEhpc3RvcnknLAogICAgZGF0YTogeyAuLi5yZXN1bHQsIGxvY2FsSWQ6IFN0cmluZyhyZXN1bHRbJ2lkJ10gfHwgJycpLCBjcmVhdGVkQXQ6IERhdGUubm93KCkgfSwKICB9KTsKfQoKLyoqIOWtmOWCqOaDhee7quaXpeiusCAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gY2xvdWRTYXZlRGlhcnkoZGlhcnk6IFJlY29yZDxzdHJpbmcsIHVua25vd24+KTogUHJvbWlzZTx2b2lkPiB7CiAgYXdhaXQgcG9zdFRvTWluaVByb2dyYW0oJ0RCX0FERCcsIHsKICAgIGNvbGxlY3Rpb246ICdkaWFyaWVzJywKICAgIGRhdGE6IHsgLi4uZGlhcnksIGxvY2FsSWQ6IFN0cmluZyhkaWFyeVsnaWQnXSB8fCAnJyksIGNyZWF0ZWRBdDogRGF0ZS5ub3coKSB9LAogIH0pOwp9CgovKiog5pel6K6w6L+95Yqg5a+56K+d5raI5oGvICovCmV4cG9ydCBhc3luYyBmdW5jdGlvbiBjbG91ZEFkZENoYXRNZXNzYWdlKGRpYXJ5SWQ6IHN0cmluZywgbWVzc2FnZTogUmVjb3JkPHN0cmluZywgdW5rbm93bj4pOiBQcm9taXNlPHZvaWQ+IHsKICBhd2FpdCBwb3N0VG9NaW5pUHJvZ3JhbSgnREJfQUREJywgewogICAgY29sbGVjdGlvbjogJ2RpYXJ5TWVzc2FnZXMnLAogICAgZGF0YTogeyBkaWFyeUlkLCAuLi5tZXNzYWdlLCBsb2NhbElkOiBTdHJpbmcobWVzc2FnZVsnaWQnXSB8fCAnJyksIGNyZWF0ZWRBdDogRGF0ZS5ub3coKSB9LAogIH0pOwp9CgovKiog5Y+R5biD56S+5Yy65biW5a2QICovCmV4cG9ydCBhc3luYyBmdW5jdGlvbiBjbG91ZEFkZFBvc3QocG9zdDogUmVjb3JkPHN0cmluZywgdW5rbm93bj4pOiBQcm9taXNlPHZvaWQ+IHsKICBhd2FpdCBwb3N0VG9NaW5pUHJvZ3JhbSgnREJfQUREJywgewogICAgY29sbGVjdGlvbjogJ3Bvc3RzJywKICAgIGRhdGE6IHsgLi4ucG9zdCwgbG9jYWxJZDogU3RyaW5nKHBvc3RbJ2lkJ10gfHwgJycpLCBjcmVhdGVkQXQ6IERhdGUubm93KCkgfSwKICB9KTsKfQoKLyoqIOW4luWtkOeCuei1niAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gY2xvdWRUb2dnbGVMaWtlKHBvc3RJZDogc3RyaW5nLCBjbG91ZElkOiBzdHJpbmcsIGxpa2VkOiBib29sZWFuKTogUHJvbWlzZTx2b2lkPiB7CiAgaWYgKCFjbG91ZElkKSByZXR1cm47CiAgYXdhaXQgcG9zdFRvTWluaVByb2dyYW0oJ0RCX1VQREFURScsIHsKICAgIGNvbGxlY3Rpb246ICdwb3N0cycsCiAgICBkYXRhOiB7IGxpa2VzX2RlbHRhOiBsaWtlZCA/IDEgOiAtMSB9LAogICAgcXVlcnk6IHsgX2lkOiBjbG91ZElkIH0sCiAgfSk7Cn0KCi8qKiDluJblrZDlhbHpuKMgKi8KZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGNsb3VkVG9nZ2xlUmVzb25hdGUocG9zdElkOiBzdHJpbmcsIGNsb3VkSWQ6IHN0cmluZywgcmVzb25hdGVkOiBib29sZWFuKTogUHJvbWlzZTx2b2lkPiB7CiAgaWYgKCFjbG91ZElkKSByZXR1cm47CiAgYXdhaXQgcG9zdFRvTWluaVByb2dyYW0oJ0RCX1VQREFURScsIHsKICAgIGNvbGxlY3Rpb246ICdwb3N0cycsCiAgICBkYXRhOiB7IHJlc29uYW5jZXNfZGVsdGE6IHJlc29uYXRlZCA/IDEgOiAtMSB9LAogICAgcXVlcnk6IHsgX2lkOiBjbG91ZElkIH0sCiAgfSk7Cn0KCi8qKiDmt7vliqDor4TorrogKi8KZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGNsb3VkQWRkQ29tbWVudChjb21tZW50OiBSZWNvcmQ8c3RyaW5nLCB1bmtub3duPik6IFByb21pc2U8dm9pZD4gewogIGF3YWl0IHBvc3RUb01pbmlQcm9ncmFtKCdEQl9BREQnLCB7CiAgICBjb2xsZWN0aW9uOiAnY29tbWVudHMnLAogICAgZGF0YTogeyAuLi5jb21tZW50LCBsb2NhbElkOiBTdHJpbmcoY29tbWVudFsnaWQnXSB8fCAnJyksIGNyZWF0ZWRBdDogRGF0ZS5ub3coKSB9LAogIH0pOwp9CgovKiog6Kej6ZSB5oiQ5bCxICovCmV4cG9ydCBhc3luYyBmdW5jdGlvbiBjbG91ZFVubG9ja0FjaGlldmVtZW50KGFjaGlldmVtZW50OiBSZWNvcmQ8c3RyaW5nLCB1bmtub3duPik6IFByb21pc2U8dm9pZD4gewogIGF3YWl0IHBvc3RUb01pbmlQcm9ncmFtKCdEQl9BREQnLCB7CiAgICBjb2xsZWN0aW9uOiAnYWNoaWV2ZW1lbnRzJywKICAgIGRhdGE6IHsgLi4uYWNoaWV2ZW1lbnQsIG9wZW5pZDogX29wZW5pZCwgdW5sb2NrZWQ6IHRydWUsIHVubG9ja2VkQXQ6IG5ldyBEYXRlKCkudG9JU09TdHJpbmcoKSB9LAogIH0pOwp9CgovKiog5pu05paw55So5oi35qGj5qGIICovCmV4cG9ydCBhc3luYyBmdW5jdGlvbiBjbG91ZFVwZGF0ZVVzZXJQcm9maWxlKHByb2ZpbGU6IFJlY29yZDxzdHJpbmcsIHVua25vd24+KTogUHJvbWlzZTx2b2lkPiB7CiAgaWYgKCFfb3BlbmlkKSB7IGNvbnNvbGUud2FybignW2Nsb3VkIHN5bmNdIGNsb3VkVXBkYXRlVXNlclByb2ZpbGU6IOaXoCBvcGVuaWQnKTsgcmV0dXJuOyB9CiAgYXdhaXQgcG9zdFRvTWluaVByb2dyYW0oJ0RCX1NFVCcsIHsKICAgIGNvbGxlY3Rpb246ICd1c2VyUHJvZmlsZScsCiAgICBkYXRhOiB7IC4uLnByb2ZpbGUsIG9wZW5pZDogX29wZW5pZCwgdXBkYXRlZEF0OiBEYXRlLm5vdygpIH0sCiAgICBxdWVyeTogeyBvcGVuaWQ6IF9vcGVuaWQgfSwKICB9KTsKfQoKLyoqIOivneacr+aUtuiXjyAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gY2xvdWRUb2dnbGVGYXZvcml0ZVNjcmlwdChzY3JpcHRJZDogc3RyaW5nLCBsaWtlZDogYm9vbGVhbik6IFByb21pc2U8dm9pZD4gewogIGlmICghX29wZW5pZCkgcmV0dXJuOwogIGF3YWl0IHBvc3RUb01pbmlQcm9ncmFtKCdEQl9TRVQnLCB7CiAgICBjb2xsZWN0aW9uOiAndXNlclByb2ZpbGUnLAogICAgZGF0YTogeyBvcGVuaWQ6IF9vcGVuaWQsIGZhdm9yaXRlU2NyaXB0czogbGlrZWQgPyBbc2NyaXB0SWRdIDogW10sIHVwZGF0ZWRBdDogRGF0ZS5ub3coKSB9LAogICAgcXVlcnk6IHsgb3BlbmlkOiBfb3BlbmlkIH0sCiAgfSk7Cn0KCi8qKiDnu4PkuaDmrKHmlbAgKzEgKi8KZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGNsb3VkSW5jcmVtZW50UHJhY3RpY2VDb3VudCgpOiBQcm9taXNlPHZvaWQ+IHsKICBpZiAoIV9vcGVuaWQpIHJldHVybjsKICBhd2FpdCBwb3N0VG9NaW5pUHJvZ3JhbSgnREJfSU5DUicsIHsKICAgIGNvbGxlY3Rpb246ICd1c2VyUHJvZmlsZScsCiAgICBkYXRhOiB7IG9wZW5pZDogX29wZW5pZCwgcHJhY3RpY2VDb3VudF9kZWx0YTogMSB9LAogICAgcXVlcnk6IHsgb3BlbmlkOiBfb3BlbmlkIH0sCiAgfSk7Cn0KCi8qKiDmibnph4/lkIzmraUgKi8KZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGNsb3VkU3luY0FsbChsb2NhbERhdGE6IFJlY29yZDxzdHJpbmcsIHVua25vd24+KTogUHJvbWlzZTx2b2lkPiB7CiAgaWYgKCFfb3BlbmlkKSByZXR1cm47CiAgY29uc3QgbGlzdHM6IEFycmF5PHsga2V5OiBzdHJpbmc7IGZuOiAoaXRlbTogUmVjb3JkPHN0cmluZywgdW5rbm93bj4pID0+IFByb21pc2U8dm9pZD4gfT4gPSBbCiAgICB7IGtleTogJ3Rlc3RIaXN0b3J5JywgZm46IGNsb3VkU2F2ZVRlc3RSZXN1bHQgfSwKICAgIHsga2V5OiAnZGlhcmllcycsIGZuOiBjbG91ZFNhdmVEaWFyeSB9LAogICAgeyBrZXk6ICdwb3N0cycsIGZuOiBjbG91ZEFkZFBvc3QgfSwKICBdOwogIGZvciAoY29uc3QgeyBrZXksIGZuIH0gb2YgbGlzdHMpIHsKICAgIGNvbnN0IGFyciA9IGxvY2FsRGF0YVtrZXldOwogICAgaWYgKCFBcnJheS5pc0FycmF5KGFycikpIGNvbnRpbnVlOwogICAgZm9yIChjb25zdCBpdGVtIG9mIGFyciBhcyBSZWNvcmQ8c3RyaW5nLCB1bmtub3duPltdKSB7CiAgICAgIGlmIChpdGVtPy5pZCkgewogICAgICAgIHRyeSB7IGF3YWl0IGZuKGl0ZW0pOyB9IGNhdGNoIChlKSB7IGNvbnNvbGUuZXJyb3IoJ1tjbG91ZCBzeW5jXSDmibnph4/lkIzmraXlpLHotKU6Jywga2V5LCBlKTsgfQogICAgICB9CiAgICB9CiAgfQp9Cg==
+/**
+ * 云数据库同步模块
+ *
+ * 通信方案（双轨）：
+ * - 优先：tcb-js-sdk 直连云数据库（不依赖 postMessage，实时生效）
+ * - 降级：wx.miniProgram.postMessage（仅在 SDK 不可用时使用）
+ *
+ * 为什么需要双轨：
+ * - wx.miniProgram.postMessage 存在平台限制：bindmessage 只在后退/销毁/分享时才触发
+ * - tcb-js-sdk 直接 HTTP 调用云函数，无此限制
+ */
+
+import cloudbase from '@cloudbase/js-sdk';
+
+// ─── 云开发配置 ──────────────────────────────────────────
+const ENV_ID = 'cloudbase-3g22c9ce5bcf0e55';
+
+// 延迟初始化，避免 SSR 报错
+let _app: ReturnType<typeof cloudbase> | null = null;
+let _db: ReturnType<ReturnType<typeof cloudbase>['database']> | null = null;
+let _sdkReady = false;
+
+function getDb() {
+  if (_db) return _db;
+  try {
+    _app = cloudbase({
+      env: ENV_ID,
+    });
+    _db = _app.database();
+    _sdkReady = true;
+    console.log('[cloud sync] tcb-js-sdk 初始化成功');
+  } catch (e) {
+    console.warn('[cloud sync] tcb-js-sdk 初始化失败，将降级使用 postMessage:', e);
+    _sdkReady = false;
+  }
+  return _db;
+}
+
+// ─── postMessage 降级方案 ────────────────────────────────
+declare const wx: any;
+
+let _openid = '';
+const _pending: Map<string, (data: unknown) => void> = new Map();
+let _msgSeq = 0;
+
+// 监听小程序回复（降级方案使用）
+if (typeof window !== 'undefined') {
+  window.addEventListener('message', (e: MessageEvent) => {
+    const d = e.data;
+    if (!d || !d.msgId) return;
+    const resolve = _pending.get(d.msgId);
+    if (resolve) { _pending.delete(d.msgId); resolve(d); }
+    else { console.warn('[cloud sync] 未找到待处理回调 msgId:', d.msgId); }
+  });
+  console.log('[cloud sync] H5 消息监听器已注册');
+}
+
+function postToMiniProgram(type: string, payload: Record<string, unknown> = {}): Promise<unknown> {
+  return new Promise((resolve) => {
+    const msgId = `msg_${++_msgSeq}_${Date.now()}`;
+    const timer = setTimeout(() => {
+      _pending.delete(msgId);
+      console.error(`[cloud sync] 消息超时: ${type}`, payload);
+      resolve({ success: false, error: '消息超时，小程序未响应' });
+    }, 12000);
+
+    _pending.set(msgId, (data: unknown) => {
+      clearTimeout(timer);
+      resolve(data);
+    });
+
+    try {
+      (wx as any).miniProgram.postMessage({ data: { msgId, type, payload } });
+      console.log(`[cloud sync] 已发送 → 小程序: ${type}`, payload);
+    } catch (err) {
+      clearTimeout(timer);
+      _pending.delete(msgId);
+      console.error(`[cloud sync] postMessage 失败: ${type}`, err);
+      resolve({ success: false, error: String(err) });
+    }
+  });
+}
+
+// ─── 公开函数 ────────────────────────────────────────────
+
+export function setOpenid(openid: string) { _openid = openid; }
+export function getOpenid(): string { return _openid; }
+
+/** 测试连通性 */
+export async function pingMp(): Promise<boolean> {
+  const db = getDb();
+  if (db) {
+    console.log('[cloud sync] ping: tcb-js-sdk 可用');
+    return true;
+  }
+  const r = await postToMiniProgram('PING', {}) as { type?: string };
+  const ok = r?.type === 'PONG';
+  console.log('[cloud sync] ping 结果:', ok);
+  return ok;
+}
+
+// ─── 通用写入（优先 SDK，降级 postMessage）────────────────
+
+async function dbAdd(collection: string, data: Record<string, unknown>): Promise<void> {
+  const db = getDb();
+  if (db && _sdkReady) {
+    try {
+      await db.collection('feleme_' + collection).add({ data: { ...data, createdAt: Date.now() } });
+      console.log(`[cloud sync] SDK 写入成功: ${collection}`);
+      return;
+    } catch (e) {
+      console.warn(`[cloud sync] SDK 写入失败，降级 postMessage: ${collection}`, e);
+    }
+  }
+  // 降级
+  await postToMiniProgram('DB_ADD', { collection, data: { ...data, createdAt: Date.now() } });
+}
+
+async function dbUpdate(collection: string, query: Record<string, unknown>, data: Record<string, unknown>): Promise<void> {
+  const db = getDb();
+  if (db && _sdkReady) {
+    try {
+      const _ = db.command;
+      // 处理 _delta 风格增量字段
+      const setData: Record<string, unknown> = {};
+      const incData: Record<string, unknown> = {};
+      for (const [k, v] of Object.entries(data)) {
+        if (k.endsWith('_delta')) {
+          incData[k.replace(/_delta$/, '')] = _.inc(v as number);
+        } else {
+          setData[k] = v;
+        }
+      }
+      const updateData: Record<string, unknown> = {};
+      if (Object.keys(setData).length) Object.assign(updateData, setData);
+      if (Object.keys(incData).length) Object.assign(updateData, incData);
+      await db.collection('feleme_' + collection).where(query).update({ data: updateData });
+      console.log(`[cloud sync] SDK 更新成功: ${collection}`);
+      return;
+    } catch (e) {
+      console.warn(`[cloud sync] SDK 更新失败，降级 postMessage: ${collection}`, e);
+    }
+  }
+  await postToMiniProgram('DB_UPDATE', { collection, query, data });
+}
+
+async function dbSet(collection: string, query: Record<string, unknown>, data: Record<string, unknown>): Promise<void> {
+  const db = getDb();
+  if (db && _sdkReady) {
+    try {
+      const col = db.collection('feleme_' + collection);
+      const existing = await col.where(query).limit(1).get();
+      if ((existing.data as unknown[]).length > 0) {
+        const oldId = (existing.data as Array<{ _id: string }>)[0]._id;
+        await col.doc(oldId).remove();
+      }
+      await col.add({ data: { ...query, ...data, createdAt: Date.now() } });
+      console.log(`[cloud sync] SDK upsert 成功: ${collection}`);
+      return;
+    } catch (e) {
+      console.warn(`[cloud sync] SDK upsert 失败，降级 postMessage: ${collection}`, e);
+    }
+  }
+  await postToMiniProgram('DB_SET', { collection, query, data });
+}
+
+// ─── 业务函数 ────────────────────────────────────────────
+
+/** 存储测试结果 */
+export async function cloudSaveTestResult(result: Record<string, unknown>): Promise<void> {
+  await dbAdd('testHistory', { ...result, localId: String(result['id'] || '') });
+}
+
+/** 存储情绪日记 */
+export async function cloudSaveDiary(diary: Record<string, unknown>): Promise<void> {
+  await dbAdd('diaries', { ...diary, localId: String(diary['id'] || '') });
+}
+
+/** 日记追加对话消息 */
+export async function cloudAddChatMessage(diaryId: string, message: Record<string, unknown>): Promise<void> {
+  await dbAdd('diaryMessages', { diaryId, ...message, localId: String(message['id'] || '') });
+}
+
+/** 发布社区帖子 */
+export async function cloudAddPost(post: Record<string, unknown>): Promise<void> {
+  await dbAdd('posts', { ...post, localId: String(post['id'] || '') });
+}
+
+/** 帖子点赞 */
+export async function cloudToggleLike(postId: string, cloudId: string, liked: boolean): Promise<void> {
+  if (!cloudId) return;
+  await dbUpdate('posts', { _id: cloudId }, { likes_delta: liked ? 1 : -1 });
+}
+
+/** 帖子共鸣 */
+export async function cloudToggleResonate(postId: string, cloudId: string, resonated: boolean): Promise<void> {
+  if (!cloudId) return;
+  await dbUpdate('posts', { _id: cloudId }, { resonances_delta: resonated ? 1 : -1 });
+}
+
+/** 添加评论 */
+export async function cloudAddComment(comment: Record<string, unknown>): Promise<void> {
+  await dbAdd('comments', { ...comment, localId: String(comment['id'] || '') });
+}
+
+/** 解锁成就 */
+export async function cloudUnlockAchievement(achievement: Record<string, unknown>): Promise<void> {
+  await dbAdd('achievements', { ...achievement, openid: _openid, unlocked: true, unlockedAt: new Date().toISOString() });
+}
+
+/** 更新用户档案 */
+export async function cloudUpdateUserProfile(profile: Record<string, unknown>): Promise<void> {
+  if (!_openid) { console.warn('[cloud sync] cloudUpdateUserProfile: 无 openid'); return; }
+  await dbSet('userProfile', { openid: _openid }, { ...profile, openid: _openid, updatedAt: Date.now() });
+}
+
+/** 话术收藏 */
+export async function cloudToggleFavoriteScript(scriptId: string, liked: boolean): Promise<void> {
+  if (!_openid) return;
+  await dbSet('userProfile', { openid: _openid }, {
+    openid: _openid,
+    favoriteScripts: liked ? [scriptId] : [],
+    updatedAt: Date.now(),
+  });
+}
+
+/** 练习次数 +1 */
+export async function cloudIncrementPracticeCount(): Promise<void> {
+  if (!_openid) return;
+  await dbUpdate('userProfile', { openid: _openid }, { practiceCount_delta: 1 });
+}
+
+/** 批量同步 */
+export async function cloudSyncAll(localData: Record<string, unknown>): Promise<void> {
+  if (!_openid) return;
+  const lists: Array<{ key: string; fn: (item: Record<string, unknown>) => Promise<void> }> = [
+    { key: 'testHistory', fn: cloudSaveTestResult },
+    { key: 'diaries', fn: cloudSaveDiary },
+    { key: 'posts', fn: cloudAddPost },
+  ];
+  for (const { key, fn } of lists) {
+    const arr = localData[key];
+    if (!Array.isArray(arr)) continue;
+    for (const item of arr as Record<string, unknown>[]) {
+      if (item?.id) {
+        try { await fn(item); } catch (e) { console.error('[cloud sync] 批量同步失败:', key, e); }
+      }
+    }
+  }
+}
