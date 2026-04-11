@@ -1,1 +1,124 @@
-aW1wb3J0IFJlYWN0LCB7IGNyZWF0ZUNvbnRleHQsIHVzZUNvbnRleHQsIHVzZVN0YXRlLCB1c2VDYWxsYmFjaywgdXNlRWZmZWN0IH0gZnJvbSAncmVhY3QnOwppbXBvcnQgeyBoYW5kbGVNaW5pUHJvZ3JhbUxvZ2luIH0gZnJvbSAnLi9taW5pcHJvZ3JhbSc7CmltcG9ydCB7IGdldFdlY2hhdEF1dGhVcmwsIGlzV2VjaGF0TG9naW5Db25maWd1cmVkLCB2YWxpZGF0ZVN0YXRlIH0gZnJvbSAnLi93ZWNoYXQnOwppbXBvcnQgeyBzZXRPcGVuaWQsIGNsb3VkU3luY0FsbCwgZ2V0T3BlbmlkIH0gZnJvbSAnLi4vY2xvdWQnOwoKZXhwb3J0IGludGVyZmFjZSBXZWNoYXRVc2VyIHsKICBvcGVuaWQ6IHN0cmluZzsKICB1bmlvbmlkPzogc3RyaW5nOwogIG5pY2tuYW1lOiBzdHJpbmc7CiAgaGVhZGltZ3VybDogc3RyaW5nOwp9CgppbnRlcmZhY2UgQXV0aENvbnRleHRUeXBlIHsKICBpc0xvZ2dlZEluOiBib29sZWFuOwogIHdlY2hhdFVzZXI6IFdlY2hhdFVzZXIgfCBudWxsOwogIGlzTG9hZGluZzogYm9vbGVhbjsKICBlcnJvcjogc3RyaW5nIHwgbnVsbDsKICBsb2dpbldpdGhXZWNoYXQ6ICgpID0+IHZvaWQ7CiAgaGFuZGxlV2VjaGF0Q2FsbGJhY2s6IChjb2RlOiBzdHJpbmcsIHN0YXRlOiBzdHJpbmcpID0+IFByb21pc2U8dm9pZD47CiAgbG9nb3V0OiAoKSA9PiB2b2lkOwogIGNsZWFyRXJyb3I6ICgpID0+IHZvaWQ7Cn0KCmNvbnN0IEF1dGhDb250ZXh0ID0gY3JlYXRlQ29udGV4dDxBdXRoQ29udGV4dFR5cGUgfCBudWxsPihudWxsKTsKY29uc3QgU1RPUkFHRV9LRVkgPSAnZmVsZW1lX3dlY2hhdF91c2VyJzsKCmZ1bmN0aW9uIGxvYWRTYXZlZFVzZXIoKTogV2VjaGF0VXNlciB8IG51bGwgewogIHRyeSB7CiAgICBjb25zdCByYXcgPSBsb2NhbFN0b3JhZ2UuZ2V0SXRlbShTVE9SQUdFX0tFWSk7CiAgICByZXR1cm4gcmF3ID8gSlNPTi5wYXJzZShyYXcpIDogbnVsbDsKICB9IGNhdGNoIHsgcmV0dXJuIG51bGw7IH0KfQoKZXhwb3J0IGZ1bmN0aW9uIEF1dGhQcm92aWRlcih7IGNoaWxkcmVuIH06IHsgY2hpbGRyZW46IFJlYWN0LlJlYWN0Tm9kZSB9KSB7CiAgY29uc3QgW3dlY2hhdFVzZXIsIHNldFdlY2hhdFVzZXJdID0gdXNlU3RhdGU8V2VjaGF0VXNlciB8IG51bGw+KGxvYWRTYXZlZFVzZXIpOwogIGNvbnN0IFtpc0xvYWRpbmcsIHNldElzTG9hZGluZ10gPSB1c2VTdGF0ZShmYWxzZSk7CiAgY29uc3QgW2Vycm9yLCBzZXRFcnJvcl0gPSB1c2VTdGF0ZTxzdHJpbmcgfCBudWxsPihudWxsKTsKCiAgdXNlRWZmZWN0KCgpID0+IHsKICAgIGNvbnN0IG1wRGF0YSA9IGhhbmRsZU1pbmlQcm9ncmFtTG9naW4oKTsKICAgIGlmIChtcERhdGEpIHsKICAgICAgY29uc3Qgb3BlbmlkID0gbXBEYXRhLm9wZW5pZCB8fCAnJzsKICAgICAgaWYgKG9wZW5pZCkgc2V0T3BlbmlkKG9wZW5pZCk7CiAgICAgIGNvbnN0IHVzZXI6IFdlY2hhdFVzZXIgPSB7CiAgICAgICAgb3BlbmlkLAogICAgICAgIHVuaW9uaWQ6IG1wRGF0YS51bmlvbmlkIHx8ICcnLAogICAgICAgIG5pY2tuYW1lOiBtcERhdGEubmlja25hbWUgfHwgJ+W+ruS/oeeUqOaItycsCiAgICAgICAgaGVhZGltZ3VybDogbXBEYXRhLmF2YXRhciB8fCAnJywKICAgICAgfTsKICAgICAgc2V0V2VjaGF0VXNlcih1c2VyKTsKICAgICAgaWYgKG9wZW5pZCkgewogICAgICAgIHRyeSB7CiAgICAgICAgICBjb25zdCByYXcgPSBsb2NhbFN0b3JhZ2UuZ2V0SXRlbSgnemhpY2hhbmdfcWluZ3hpbmdfdjEnKTsKICAgICAgICAgIGlmIChyYXcpIGNsb3VkU3luY0FsbChKU09OLnBhcnNlKHJhdykpOwogICAgICAgIH0gY2F0Y2ggKF8pIHsgLyogaWdub3JlICovIH0KICAgICAgfQogICAgfSBlbHNlIHsKICAgICAgY29uc3Qgc2F2ZWRPcGVuaWQgPSBnZXRPcGVuaWQoKTsKICAgICAgaWYgKHNhdmVkT3BlbmlkKSBjb25zb2xlLmxvZygnW2F1dGhdIHJlc3RvcmVkIG9wZW5pZDonLCBzYXZlZE9wZW5pZCk7CiAgICB9CiAgfSwgW10pOwoKICB1c2VFZmZlY3QoKCkgPT4gewogICAgaWYgKHdlY2hhdFVzZXIpIHsKICAgICAgaWYgKHdlY2hhdFVzZXIub3BlbmlkKSBzZXRPcGVuaWQod2VjaGF0VXNlci5vcGVuaWQpOwogICAgICBsb2NhbFN0b3JhZ2Uuc2V0SXRlbShTVE9SQUdFX0tFWSwgSlNPTi5zdHJpbmdpZnkod2VjaGF0VXNlcikpOwogICAgfSBlbHNlIHsKICAgICAgbG9jYWxTdG9yYWdlLnJlbW92ZUl0ZW0oU1RPUkFHRV9LRVkpOwogICAgfQogIH0sIFt3ZWNoYXRVc2VyXSk7CgogIGNvbnN0IGxvZ2luV2l0aFdlY2hhdCA9IHVzZUNhbGxiYWNrKCgpID0+IHsKICAgIGlmICghaXNXZWNoYXRMb2dpbkNvbmZpZ3VyZWQoKSkgeyBzZXRFcnJvcign5b6u5L+h55m75b2V5pyq6YWN572uJyk7IHJldHVybjsgfQogICAgc2Vzc2lvblN0b3JhZ2Uuc2V0SXRlbSgncHJlX2xvZ2luX3BhdGgnLCB3aW5kb3cubG9jYXRpb24ucGF0aG5hbWUpOwogICAgd2luZG93LmxvY2F0aW9uLmhyZWYgPSBnZXRXZWNoYXRBdXRoVXJsKCk7CiAgfSwgW10pOwoKICBjb25zdCBoYW5kbGVXZWNoYXRDYWxsYmFjayA9IHVzZUNhbGxiYWNrKGFzeW5jIChjb2RlOiBzdHJpbmcsIHN0YXRlOiBzdHJpbmcpID0+IHsKICAgIGlmICghdmFsaWRhdGVTdGF0ZShzdGF0ZSkpIHsgc2V0RXJyb3IoJ+aOiOadg+mqjOivgeWksei0pScpOyByZXR1cm47IH0KICAgIHNldElzTG9hZGluZyh0cnVlKTsKICAgIHNldEVycm9yKG51bGwpOwogICAgdHJ5IHsKICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaCgKICAgICAgICBgJHtpbXBvcnQubWV0YS5lbnYuVklURV9BVVRIX1NFUlZFUl9VUkwgfHwgJ2h0dHA6Ly9sb2NhbGhvc3Q6MzAwMSd9L2F1dGgvd2VjaGF0L2V4Y2hhbmdlYCwKICAgICAgICB7IG1ldGhvZDogJ1BPU1QnLCBoZWFkZXJzOiB7ICdDb250ZW50LVR5cGUnOiAnYXBwbGljYXRpb24vanNvbicgfSwgYm9keTogSlNPTi5zdHJpbmdpZnkoeyBjb2RlLCBzdGF0ZSB9KSB9CiAgICAgICk7CiAgICAgIGNvbnN0IGRhdGEgPSBhd2FpdCByZXNwb25zZS5qc29uKCkgYXMgeyBlcnJvcj86IHN0cmluZzsgb3BlbmlkPzogc3RyaW5nOyBuaWNrbmFtZT86IHN0cmluZzsgaGVhZGltZ3VybD86IHN0cmluZyB9OwogICAgICBpZiAoIXJlc3BvbnNlLm9rIHx8IGRhdGEuZXJyb3IpIHRocm93IG5ldyBFcnJvcihkYXRhLmVycm9yIHx8ICfnmbvlvZXlpLHotKUnKTsKICAgICAgY29uc3Qgb3BlbmlkID0gZGF0YS5vcGVuaWQgfHwgJyc7CiAgICAgIGlmIChvcGVuaWQpIHNldE9wZW5pZChvcGVuaWQpOwogICAgICBjb25zdCB1c2VyOiBXZWNoYXRVc2VyID0geyBvcGVuaWQsIG5pY2tuYW1lOiBkYXRhLm5pY2tuYW1lIHx8ICflvq7kv6HnlKjmiLcnLCBoZWFkaW1ndXJsOiBkYXRhLmhlYWRpbWd1cmwgfHwgJycgfTsKICAgICAgc2V0V2VjaGF0VXNlcih1c2VyKTsKICAgICAgY2xvdWRTeW5jQWxsKHt9KTsKICAgIH0gY2F0Y2ggKGVycikgewogICAgICBzZXRFcnJvcihlcnIgaW5zdGFuY2VvZiBFcnJvciA/IGVyci5tZXNzYWdlIDogJ+eZu+W9leWksei0pScpOwogICAgfSBmaW5hbGx5IHsKICAgICAgc2V0SXNMb2FkaW5nKGZhbHNlKTsKICAgIH0KICB9LCBbXSk7CgogIGNvbnN0IGxvZ291dCA9IHVzZUNhbGxiYWNrKCgpID0+IHsKICAgIHNldFdlY2hhdFVzZXIobnVsbCk7CiAgICBzZXNzaW9uU3RvcmFnZS5yZW1vdmVJdGVtKCd3ZWNoYXRfb2F1dGhfc3RhdGUnKTsKICAgIHNlc3Npb25TdG9yYWdlLnJlbW92ZUl0ZW0oJ3ByZV9sb2dpbl9wYXRoJyk7CiAgICB0cnkgeyBsb2NhbFN0b3JhZ2UucmVtb3ZlSXRlbSgnX2ZlbGVtZV9vcGVuaWQnKTsgfSBjYXRjaCAoXykgeyAvKiBpZ25vcmUgKi8gfQogIH0sIFtdKTsKCiAgY29uc3QgY2xlYXJFcnJvciA9IHVzZUNhbGxiYWNrKCgpID0+IHsgc2V0RXJyb3IobnVsbCk7IH0sIFtdKTsKCiAgcmV0dXJuICgKICAgIDxBdXRoQ29udGV4dC5Qcm92aWRlciB2YWx1ZT17ewogICAgICBpc0xvZ2dlZEluOiB3ZWNoYXRVc2VyICE9PSBudWxsLCB3ZWNoYXRVc2VyLCBpc0xvYWRpbmcsIGVycm9yLAogICAgICBsb2dpbldpdGhXZWNoYXQsIGhhbmRsZVdlY2hhdENhbGxiYWNrLCBsb2dvdXQsIGNsZWFyRXJyb3IsCiAgICB9fT4KICAgICAge2NoaWxkcmVufQogICAgPC9BdXRoQ29udGV4dC5Qcm92aWRlcj4KICApOwp9CgpleHBvcnQgZnVuY3Rpb24gdXNlQXV0aCgpIHsKICBjb25zdCBjdHggPSB1c2VDb250ZXh0KEF1dGhDb250ZXh0KTsKICBpZiAoIWN0eCkgdGhyb3cgbmV3IEVycm9yKCd1c2VBdXRoIG11c3QgYmUgdXNlZCB3aXRoaW4gQXV0aFByb3ZpZGVyJyk7CiAgcmV0dXJuIGN0eDsKfQo=
+import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
+import { handleMiniProgramLogin } from './miniprogram';
+import { getWechatAuthUrl, isWechatLoginConfigured, validateState } from './wechat';
+import { setOpenid, cloudSyncAll, getOpenid } from '../cloud';
+
+export interface WechatUser {
+  openid: string;
+  unionid?: string;
+  nickname: string;
+  headimgurl: string;
+}
+
+interface AuthContextType {
+  isLoggedIn: boolean;
+  wechatUser: WechatUser | null;
+  isLoading: boolean;
+  error: string | null;
+  loginWithWechat: () => void;
+  handleWechatCallback: (code: string, state: string) => Promise<void>;
+  logout: () => void;
+  clearError: () => void;
+}
+
+const AuthContext = createContext<AuthContextType | null>(null);
+const STORAGE_KEY = 'feleme_wechat_user';
+
+function loadSavedUser(): WechatUser | null {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch { return null; }
+}
+
+export function AuthProvider({ children }: { children: React.ReactNode }) {
+  const [wechatUser, setWechatUser] = useState<WechatUser | null>(loadSavedUser);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const mpData = handleMiniProgramLogin();
+    if (mpData) {
+      const openid = mpData.openid || '';
+      if (openid) setOpenid(openid);
+      const user: WechatUser = {
+        openid,
+        unionid: mpData.unionid || '',
+        nickname: mpData.nickname || '微信用户',
+        headimgurl: mpData.avatar || '',
+      };
+      setWechatUser(user);
+      if (openid) {
+        try {
+          const raw = localStorage.getItem('zhichang_qingxing_v1');
+          if (raw) cloudSyncAll(JSON.parse(raw));
+        } catch (_) { /* ignore */ }
+      }
+    } else {
+      const savedOpenid = getOpenid();
+      if (savedOpenid) console.log('[auth] restored openid:', savedOpenid);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (wechatUser) {
+      if (wechatUser.openid) setOpenid(wechatUser.openid);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(wechatUser));
+    } else {
+      localStorage.removeItem(STORAGE_KEY);
+    }
+  }, [wechatUser]);
+
+  const loginWithWechat = useCallback(() => {
+    if (!isWechatLoginConfigured()) { setError('微信登录未配置'); return; }
+    sessionStorage.setItem('pre_login_path', window.location.pathname);
+    window.location.href = getWechatAuthUrl();
+  }, []);
+
+  const handleWechatCallback = useCallback(async (code: string, state: string) => {
+    if (!validateState(state)) { setError('授权验证失败'); return; }
+    setIsLoading(true);
+    setError(null);
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_AUTH_SERVER_URL || 'http://localhost:3001'}/auth/wechat/exchange`,
+        { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ code, state }) }
+      );
+      const data = await response.json() as { error?: string; openid?: string; nickname?: string; headimgurl?: string };
+      if (!response.ok || data.error) throw new Error(data.error || '登录失败');
+      const openid = data.openid || '';
+      if (openid) setOpenid(openid);
+      const user: WechatUser = { openid, nickname: data.nickname || '微信用户', headimgurl: data.headimgurl || '' };
+      setWechatUser(user);
+      cloudSyncAll({});
+    } catch (err) {
+      setError(err instanceof Error ? err.message : '登录失败');
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  const logout = useCallback(() => {
+    setWechatUser(null);
+    sessionStorage.removeItem('wechat_oauth_state');
+    sessionStorage.removeItem('pre_login_path');
+    try { localStorage.removeItem('_feleme_openid'); } catch (_) { /* ignore */ }
+  }, []);
+
+  const clearError = useCallback(() => { setError(null); }, []);
+
+  return (
+    <AuthContext.Provider value={{
+      isLoggedIn: wechatUser !== null, wechatUser, isLoading, error,
+      loginWithWechat, handleWechatCallback, logout, clearError,
+    }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
+
+export function useAuth() {
+  const ctx = useContext(AuthContext);
+  if (!ctx) throw new Error('useAuth must be used within AuthProvider');
+  return ctx;
+}

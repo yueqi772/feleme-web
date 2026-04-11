@@ -1,1 +1,115 @@
-aW1wb3J0IHR5cGUgeyBUZXN0UmVzdWx0IH0gZnJvbSAnLi4vdHlwZXMnOwppbXBvcnQgeyBnZXRSaXNrSW5mbywgZm9ybWF0RGF0ZSB9IGZyb20gJy4uL3V0aWxzJzsKaW1wb3J0IHsgUFVBX1RZUEVfQ09MT1JTIH0gZnJvbSAnLi4vZGF0YSc7CgppbnRlcmZhY2UgUmVwb3J0UGFnZVByb3BzIHsKICBvbk5hdmlnYXRlOiAocGFnZTogc3RyaW5nLCBwYXJhbXM/OiBSZWNvcmQ8c3RyaW5nLCB1bmtub3duPikgPT4gdm9pZDsKICByZXN1bHQ6IFRlc3RSZXN1bHQ7Cn0KCmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIFJlcG9ydFBhZ2UoeyBvbk5hdmlnYXRlLCByZXN1bHQgfTogUmVwb3J0UGFnZVByb3BzKSB7CiAgY29uc3QgcmlzayA9IGdldFJpc2tJbmZvKHJlc3VsdC5zY29yZSk7CiAgY29uc3Qgc29ydGVkVHlwZXMgPSBPYmplY3QuZW50cmllcyhyZXN1bHQuY291bnRzKQogICAgLmZpbHRlcigoWywgY10pID0+IGMgPiAwKQogICAgLnNvcnQoKFssIGFdLCBbLCBiXSkgPT4gYiAtIGEpIGFzIFtzdHJpbmcsIG51bWJlcl1bXTsKCiAgcmV0dXJuICgKICAgIDxkaXYgY2xhc3NOYW1lPSJtaW4taC1zY3JlZW4gYmctZ3JheS01MCI+CiAgICAgIDxkaXYgY2xhc3NOYW1lPSJ3eC1uYXYtYmFyIGJnLXRyYW5zcGFyZW50IGZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktYmV0d2VlbiBweC00IHB5LTIiPgogICAgICAgIDxidXR0b24gb25DbGljaz17KCkgPT4gb25OYXZpZ2F0ZSgnaG9tZScpfSBjbGFzc05hbWU9InctOCBoLTggcm91bmRlZC1mdWxsIGJnLXdoaXRlLzgwIGZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyIHRleHQtZ3JheS01MDAiPuKclTwvYnV0dG9uPgogICAgICAgIDxzcGFuIGNsYXNzTmFtZT0idGV4dC1zbSBmb250LXNlbWlib2xkIHRleHQtZ3JheS03MDAiPuS+puaOouaKpeWRijwvc3Bhbj4KICAgICAgICA8ZGl2IGNsYXNzTmFtZT0idy04IiAvPgogICAgICA8L2Rpdj4KCiAgICAgIDxkaXYgY2xhc3NOYW1lPSJweC00IHNwYWNlLXktNCBwdC0yIHBiLTgiPgogICAgICAgIHsvKiBIZXJvIFNjb3JlICovfQogICAgICAgIDxkaXYgY2xhc3NOYW1lPXtgY2FyZCB0ZXh0LWNlbnRlciBweS04ICR7cmlzay5iZ31gfT4KICAgICAgICAgIDxwIGNsYXNzTmFtZT0idGV4dC1zbSB0ZXh0LWdyYXktNTAwIG1iLTIiPuS9oOeahOiBjOWcuueOr+WigzwvcD4KICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciBnYXAtMiBtYi0yIj4KICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJ0ZXh0LTV4bCI+e3Jpc2suZW1vaml9PC9zcGFuPgogICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0idGV4dC1sZWZ0Ij4KICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9e2B0ZXh0LTN4bCBmb250LWJvbGQgJHtyaXNrLmNvbG9yfWB9PntyZXN1bHQuc2NvcmV9PC9wPgogICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT0idGV4dC1zbSB0ZXh0LWdyYXktNTAwIj4vMTAwPC9wPgogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgIDwvZGl2PgogICAgICAgICAgPHAgY2xhc3NOYW1lPXtgdGFnIHRleHQtc20gcHgtNCBweS0xLjUgJHtyaXNrLmJnfSAke3Jpc2suY29sb3J9IG14LWF1dG9gfSBzdHlsZT17eyB3aWR0aDogJ2ZpdC1jb250ZW50JyB9fT4KICAgICAgICAgICAge3Jpc2suZGVzY30KICAgICAgICAgIDwvcD4KICAgICAgICAgIDxwIGNsYXNzTmFtZT0idGV4dC14cyB0ZXh0LWdyYXktNDAwIG10LTMiPuivhuWIq+WHhuehrueOhyB7TWF0aC5yb3VuZCgocmVzdWx0LnRvdGFsQW5zd2VyZWQgLyAxMikgKiAxMDApfSUgwrcge2Zvcm1hdERhdGUocmVzdWx0LmRhdGUpfTwvcD4KICAgICAgICA8L2Rpdj4KCiAgICAgICAgey8qIEhvdGxpbmVzIGZvciBoaWdoIHJpc2sgKi99CiAgICAgICAge3Jlc3VsdC5yaXNrTGV2ZWwgPT09ICfpq5jljbEnICYmICgKICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJjYXJkIGJnLXJlZC01MCBib3JkZXIgYm9yZGVyLXJlZC0xMDAiPgogICAgICAgICAgICA8cCBjbGFzc05hbWU9InRleHQtc20gZm9udC1zZW1pYm9sZCB0ZXh0LXJlZC03MDAgbWItMiI+4pqg77iPIOWmguaenOS9oOeOsOWcqOaEn+WIsOW+iOmavuWPly4uLjwvcD4KICAgICAgICAgICAgPHAgY2xhc3NOYW1lPSJ0ZXh0LXhzIHRleHQtcmVkLTYwMCBtYi0yIj7kvaDkuI3mmK/kuIDkuKrkurrjgILku6XkuIvotYTmupDlj6/ku6XluK7kvaDvvJo8L3A+CiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJzcGFjZS15LTIiPgogICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJiZy13aGl0ZSByb3VuZGVkLWxnIHAtMyI+CiAgICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9InRleHQteHMgZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktNzAwIj7lhajlm73lv4PnkIbmj7Tliqnng63nur88L3A+CiAgICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9InRleHQtc20gdGV4dC1yZWQtNjAwIGZvbnQtYm9sZCI+NDAwLTE2MS05OTk1PC9wPgogICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPSJ0ZXh0LXhzIHRleHQtZ3JheS00MDAiPjI05bCP5pe2PC9wPgogICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJiZy13aGl0ZSByb3VuZGVkLWxnIHAtMyI+CiAgICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9InRleHQteHMgZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktNzAwIj7ljJfkuqzlv4PnkIbljbHmnLrnoJTnqbbkuI7lubLpooTkuK3lv4M8L3A+CiAgICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9InRleHQtc20gdGV4dC1yZWQtNjAwIGZvbnQtYm9sZCI+MDEwLTgyOTUxMzMyPC9wPgogICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPSJ0ZXh0LXhzIHRleHQtZ3JheS00MDAiPjI05bCP5pe2PC9wPgogICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgIDwvZGl2PgogICAgICAgICl9CgogICAgICAgIHsvKiBQcm9ibGVtIFR5cGVzICovfQogICAgICAgIHtzb3J0ZWRUeXBlcy5sZW5ndGggPiAwID8gKAogICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImNhcmQiPgogICAgICAgICAgICA8cCBjbGFzc05hbWU9InRleHQtc20gZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktNzAwIG1iLTMiPuWPkeeOsOeahOmXrumimOihjOS4ujwvcD4KICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9InNwYWNlLXktMyI+CiAgICAgICAgICAgICAge3NvcnRlZFR5cGVzLm1hcCgoW3R5cGUsIGNvdW50XSkgPT4gewogICAgICAgICAgICAgICAgY29uc3QgaW5mbyA9IFBVQV9UWVBFX0NPTE9SU1t0eXBlXSB8fCBQVUFfVFlQRV9DT0xPUlNbJ+WQpuWumuS7t+WAvCddOwogICAgICAgICAgICAgICAgcmV0dXJuICgKICAgICAgICAgICAgICAgICAgPGRpdiBrZXk9e3R5cGV9IGNsYXNzTmFtZT0iZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTMiPgogICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT0idGV4dC14bCI+e2luZm8uZW1vaml9PC9zcGFuPgogICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJmbGV4LTEiPgogICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktYmV0d2VlbiBtYi0xIj4KICAgICAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJ0ZXh0LXNtIGZvbnQtbWVkaXVtIHRleHQtZ3JheS03MDAiPnt0eXBlfTwvc3Bhbj4KICAgICAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJ0ZXh0LXhzIHRleHQtZ3JheS00MDAiPsOXIHtjb3VudH3mrKE8L3NwYW4+CiAgICAgICAgICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJwcm9ncmVzcy1iYXIiPgogICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0icHJvZ3Jlc3MtZmlsbCIgc3R5bGU9e3sgd2lkdGg6IGAkeyhjb3VudCAvIDIpICogMTAwfSVgLCBiYWNrZ3JvdW5kOiAnI2Y4NzE3MScgfX0gLz4KICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgICAgICk7CiAgICAgICAgICAgICAgfSl9CiAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgPC9kaXY+CiAgICAgICAgKSA6ICgKICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJjYXJkIHRleHQtY2VudGVyIHB5LTYiPgogICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9InRleHQtM3hsIj7wn46JPC9zcGFuPgogICAgICAgICAgICA8cCBjbGFzc05hbWU9InRleHQtc20gdGV4dC1ncmF5LTUwMCBtdC0yIj7lnKjmiYDmnInlnLrmma/kuK3vvIzkvaDpg73msqHmnInlj5HnjrDpl67popjooYzkuLo8L3A+CiAgICAgICAgICA8L2Rpdj4KICAgICAgICApfQoKICAgICAgICB7LyogUXVvdGUgKi99CiAgICAgICAgPGRpdiBjbGFzc05hbWU9ImNhcmQgYmctYnJhbmQtNTAgdGV4dC1jZW50ZXIiPgogICAgICAgICAgPHAgY2xhc3NOYW1lPSJ0ZXh0LWxnIGl0YWxpYyB0ZXh0LWJyYW5kLTcwMCI+IuS9oOeahOaEn+WPl+aYr+ecn+WunueahOOAgiI8L3A+CiAgICAgICAgICA8cCBjbGFzc05hbWU9InRleHQteHMgdGV4dC1icmFuZC01MDAgbXQtMSI+4oCUIOiBjOWcuua4hemGkueslOiusDwvcD4KICAgICAgICA8L2Rpdj4KCiAgICAgICAgey8qIEFjdGlvbnMgKi99CiAgICAgICAgPGRpdiBjbGFzc05hbWU9ImZsZXggZ2FwLTMiPgogICAgICAgICAgPGJ1dHRvbiBvbkNsaWNrPXsoKSA9PiBvbk5hdmlnYXRlKCd0cmVlaG9sZScpfSBjbGFzc05hbWU9ImZsZXgtMSBidG4tcHJpbWFyeSBweS0zIj4KICAgICAgICAgICAg8J+MsyDljrvmoJHmtJ7lgL7or4kKICAgICAgICAgIDwvYnV0dG9uPgogICAgICAgICAgPGJ1dHRvbiBvbkNsaWNrPXsoKSA9PiBvbk5hdmlnYXRlKCd0b29scycsIHsgdGFiOiAnc2NyaXB0cycgfSl9IGNsYXNzTmFtZT0iZmxleC0xIGJ0bi1zZWNvbmRhcnkgcHktMyI+CiAgICAgICAgICAgIPCfm6HvuI8g5a2m5bqU5a+55oqA5benCiAgICAgICAgICA8L2J1dHRvbj4KICAgICAgICA8L2Rpdj4KCiAgICAgICAgey8qIEhpc3RvZ3JhbSBvZiB0ZXN0IGhpc3RvcnkgY291bGQgZ28gaGVyZSAqL30KICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iY2FyZCI+CiAgICAgICAgICA8cCBjbGFzc05hbWU9InRleHQteHMgdGV4dC1ncmF5LTQwMCB0ZXh0LWNlbnRlciI+5L2g55qE5rWL6K+V57uT5p6c5bey5L+d5a2Y77yM5Y+v5Lul5Zyo44CM5oiR55qE44CN4oaS44CM6K+G5Yir5rWL6K+V5Y6G5Y+y44CN5Lit5p+l55yLPC9wPgogICAgICAgIDwvZGl2PgogICAgICA8L2Rpdj4KICAgIDwvZGl2PgogICk7Cn0K
+import type { TestResult } from '../types';
+import { getRiskInfo, formatDate } from '../utils';
+import { PUA_TYPE_COLORS } from '../data';
+
+interface ReportPageProps {
+  onNavigate: (page: string, params?: Record<string, unknown>) => void;
+  result: TestResult;
+}
+
+export default function ReportPage({ onNavigate, result }: ReportPageProps) {
+  const risk = getRiskInfo(result.score);
+  const sortedTypes = Object.entries(result.counts)
+    .filter(([, c]) => c > 0)
+    .sort(([, a], [, b]) => b - a) as [string, number][];
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <div className="wx-nav-bar bg-transparent flex items-center justify-between px-4 py-2">
+        <button onClick={() => onNavigate('home')} className="w-8 h-8 rounded-full bg-white/80 flex items-center justify-center text-gray-500">✕</button>
+        <span className="text-sm font-semibold text-gray-700">侦探报告</span>
+        <div className="w-8" />
+      </div>
+
+      <div className="px-4 space-y-4 pt-2 pb-8">
+        {/* Hero Score */}
+        <div className={`card text-center py-8 ${risk.bg}`}>
+          <p className="text-sm text-gray-500 mb-2">你的职场环境</p>
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <span className="text-5xl">{risk.emoji}</span>
+            <div className="text-left">
+              <p className={`text-3xl font-bold ${risk.color}`}>{result.score}</p>
+              <p className="text-sm text-gray-500">/100</p>
+            </div>
+          </div>
+          <p className={`tag text-sm px-4 py-1.5 ${risk.bg} ${risk.color} mx-auto`} style={{ width: 'fit-content' }}>
+            {risk.desc}
+          </p>
+          <p className="text-xs text-gray-400 mt-3">识别准确率 {Math.round((result.totalAnswered / 12) * 100)}% · {formatDate(result.date)}</p>
+        </div>
+
+        {/* Hotlines for high risk */}
+        {result.riskLevel === '高危' && (
+          <div className="card bg-red-50 border border-red-100">
+            <p className="text-sm font-semibold text-red-700 mb-2">⚠️ 如果你现在感到很难受...</p>
+            <p className="text-xs text-red-600 mb-2">你不是一个人。以下资源可以帮你：</p>
+            <div className="space-y-2">
+              <div className="bg-white rounded-lg p-3">
+                <p className="text-xs font-semibold text-gray-700">全国心理援助热线</p>
+                <p className="text-sm text-red-600 font-bold">400-161-9995</p>
+                <p className="text-xs text-gray-400">24小时</p>
+              </div>
+              <div className="bg-white rounded-lg p-3">
+                <p className="text-xs font-semibold text-gray-700">北京心理危机研究与干预中心</p>
+                <p className="text-sm text-red-600 font-bold">010-82951332</p>
+                <p className="text-xs text-gray-400">24小时</p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Problem Types */}
+        {sortedTypes.length > 0 ? (
+          <div className="card">
+            <p className="text-sm font-semibold text-gray-700 mb-3">发现的问题行为</p>
+            <div className="space-y-3">
+              {sortedTypes.map(([type, count]) => {
+                const info = PUA_TYPE_COLORS[type] || PUA_TYPE_COLORS['否定价值'];
+                return (
+                  <div key={type} className="flex items-center gap-3">
+                    <span className="text-xl">{info.emoji}</span>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-sm font-medium text-gray-700">{type}</span>
+                        <span className="text-xs text-gray-400">× {count}次</span>
+                      </div>
+                      <div className="progress-bar">
+                        <div className="progress-fill" style={{ width: `${(count / 2) * 100}%`, background: '#f87171' }} />
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          <div className="card text-center py-6">
+            <span className="text-3xl">🎉</span>
+            <p className="text-sm text-gray-500 mt-2">在所有场景中，你都没有发现问题行为</p>
+          </div>
+        )}
+
+        {/* Quote */}
+        <div className="card bg-brand-50 text-center">
+          <p className="text-lg italic text-brand-700">"你的感受是真实的。"</p>
+          <p className="text-xs text-brand-500 mt-1">— 职场清醒笔记</p>
+        </div>
+
+        {/* Actions */}
+        <div className="flex gap-3">
+          <button onClick={() => onNavigate('treehole')} className="flex-1 btn-primary py-3">
+            🌳 去树洞倾诉
+          </button>
+          <button onClick={() => onNavigate('tools', { tab: 'scripts' })} className="flex-1 btn-secondary py-3">
+            🛡️ 学应对技巧
+          </button>
+        </div>
+
+        {/* Histogram of test history could go here */}
+        <div className="card">
+          <p className="text-xs text-gray-400 text-center">你的测试结果已保存，可以在「我的」→「识别测试历史」中查看</p>
+        </div>
+      </div>
+    </div>
+  );
+}

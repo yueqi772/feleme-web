@@ -1,1 +1,77 @@
-aW1wb3J0IHsgdXNlU3RhdGUgfSBmcm9tICdyZWFjdCc7CmltcG9ydCB7IHVzZUFwcCB9IGZyb20gJy4uL2NvbnRleHQvQXBwQ29udGV4dCc7CmltcG9ydCB7IGdldFJpc2tJbmZvLCBmb3JtYXREYXRlIH0gZnJvbSAnLi4vdXRpbHMnOwppbXBvcnQgdHlwZSB7IFRlc3RSZXN1bHQgfSBmcm9tICcuLi90eXBlcyc7CgppbnRlcmZhY2UgVGVzdEhpc3RvcnlQYWdlUHJvcHMgewogIG9uTmF2aWdhdGU6IChwYWdlOiBzdHJpbmcsIHBhcmFtcz86IFJlY29yZDxzdHJpbmcsIHVua25vd24+KSA9PiB2b2lkOwp9CgpleHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBUZXN0SGlzdG9yeVBhZ2UoeyBvbk5hdmlnYXRlIH06IFRlc3RIaXN0b3J5UGFnZVByb3BzKSB7CiAgY29uc3QgeyB0ZXN0SGlzdG9yeSwgYXBwTmFtZSB9ID0gdXNlQXBwKCk7CiAgY29uc3QgW2dlbmVyYXRpbmdJZCwgc2V0R2VuZXJhdGluZ0lkXSA9IHVzZVN0YXRlPHN0cmluZyB8IG51bGw+KG51bGwpOwoKICBjb25zdCBnZW5lcmF0ZVNoYXJlUG9zdGVyID0gYXN5bmMgKHQ6IFRlc3RSZXN1bHQpID0+IHsKICAgIGFsZXJ0KCfmtbfmiqXlip/og73ljbPlsIbkuIrnur8nKTsKICB9OwoKICByZXR1cm4gKAogICAgPGRpdiBjbGFzc05hbWU9Im1pbi1oLXNjcmVlbiBiZy1ncmF5LTUwIj4KICAgICAgPGRpdiBjbGFzc05hbWU9Ind4LW5hdi1iYXIgYmctd2hpdGUgZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuIHB4LTQgcHktMiI+CiAgICAgICAgPGJ1dHRvbiBvbkNsaWNrPXsoKSA9PiBvbk5hdmlnYXRlKCdwcm9maWxlJyl9IGNsYXNzTmFtZT0idGV4dC1icmFuZC01MDAgdGV4dC1zbSI+4oaQIOi/lOWbnjwvYnV0dG9uPgogICAgICAgIDxzcGFuIGNsYXNzTmFtZT0idGV4dC1zbSBmb250LXNlbWlib2xkIHRleHQtZ3JheS03MDAiPuivhuWIq+a1i+ivleWOhuWPsjwvc3Bhbj4KICAgICAgPC9kaXY+CgogICAgICA8ZGl2IGNsYXNzTmFtZT0icHgtNCBwdC00IHNwYWNlLXktNCBwYi04Ij4KICAgICAgICB7dGVzdEhpc3RvcnkubGVuZ3RoID09PSAwICYmICgKICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJ0ZXh0LWNlbnRlciBweS0xNiI+CiAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT0idGV4dC00eGwiPvCflI08L3NwYW4+CiAgICAgICAgICAgIDxwIGNsYXNzTmFtZT0idGV4dC1zbSB0ZXh0LWdyYXktNDAwIG10LTIiPui/mOayoeaciea1i+ivleiusOW9lTwvcD4KICAgICAgICAgICAgPGJ1dHRvbiBvbkNsaWNrPXsoKSA9PiBvbk5hdmlnYXRlKCd0ZXN0Jyl9IGNsYXNzTmFtZT0iYnRuLXByaW1hcnkgdGV4dC1zbSBtdC00Ij7ljrvmtYvor5U8L2J1dHRvbj4KICAgICAgICAgIDwvZGl2PgogICAgICAgICl9CiAgICAgICAge3Rlc3RIaXN0b3J5Lm1hcCgodCwgaSkgPT4gewogICAgICAgICAgY29uc3QgcmlzayA9IGdldFJpc2tJbmZvKHQuc2NvcmUpOwogICAgICAgICAgY29uc3QgdG9wVHlwZXMgPSBPYmplY3QuZW50cmllcyh0LmNvdW50cykKICAgICAgICAgICAgLmZpbHRlcigoWywgY10pID0+IGMgPiAwKQogICAgICAgICAgICAuc29ydCgoWywgYV0sIFssIGJdKSA9PiBiIC0gYSkKICAgICAgICAgICAgLnNsaWNlKDAsIDIpOwogICAgICAgICAgcmV0dXJuICgKICAgICAgICAgICAgPGRpdiBrZXk9e3QuaWR9IGNsYXNzTmFtZT0iY2FyZCI+CiAgICAgICAgICAgICAgPGJ1dHRvbgogICAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4gb25OYXZpZ2F0ZSgncmVwb3J0JywgeyByZXN1bHQ6IHQgfSl9CiAgICAgICAgICAgICAgICBjbGFzc05hbWU9InctZnVsbCB0ZXh0LWxlZnQgYWN0aXZlOnNjYWxlLVswLjk5XSB0cmFuc2l0aW9uLXRyYW5zZm9ybSIKICAgICAgICAgICAgICA+CiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuIG1iLTIiPgogICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTIiPgogICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT0idGV4dC14bCI+e3Jpc2suZW1vaml9PC9zcGFuPgogICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT17YHRleHQtc20gZm9udC1zZW1pYm9sZCAke3Jpc2suY29sb3J9YH0+e3Jpc2subGV2ZWx9PC9zcGFuPgogICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT0idGV4dC1sZyBmb250LWJvbGQgdGV4dC1ncmF5LTgwMCI+e3Quc2NvcmV95YiGPC9zcGFuPgogICAgICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJ0ZXh0LXhzIHRleHQtZ3JheS00MDAiPntpID09PSAwID8gJ+acgOaWsCcgOiBgIyR7dGVzdEhpc3RvcnkubGVuZ3RoIC0gaX1gfTwvc3Bhbj4KICAgICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPSJ0ZXh0LXhzIHRleHQtZ3JheS01MDAgbWItMiI+e2Zvcm1hdERhdGUodC5kYXRlKX08L3A+CiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleCBnYXAtMiBmbGV4LXdyYXAiPgogICAgICAgICAgICAgICAgICB7dG9wVHlwZXMubWFwKChbdHlwZSwgY291bnRdKSA9PiAoCiAgICAgICAgICAgICAgICAgICAgPHNwYW4ga2V5PXt0eXBlfSBjbGFzc05hbWU9InRleHQteHMgdGV4dC1ncmF5LTUwMCI+8J+UuHt0eXBlfSDDl3tjb3VudH08L3NwYW4+CiAgICAgICAgICAgICAgICAgICkpfQogICAgICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgICAgPC9idXR0b24+CiAgICAgICAgICAgICAgPGJ1dHRvbgogICAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4gZ2VuZXJhdGVTaGFyZVBvc3Rlcih0KX0KICAgICAgICAgICAgICAgIGRpc2FibGVkPXtnZW5lcmF0aW5nSWQgPT09IHQuaWR9CiAgICAgICAgICAgICAgICBjbGFzc05hbWU9e2BtdC0zIHctZnVsbCBweS0yIHJvdW5kZWQtbGcgdGV4dC14cyBmb250LW1lZGl1bSBmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciBnYXAtMSB0cmFuc2l0aW9uLXRyYW5zZm9ybSBhY3RpdmU6c2NhbGUtWzAuOThdICR7CiAgICAgICAgICAgICAgICAgIGdlbmVyYXRpbmdJZCA9PT0gdC5pZAogICAgICAgICAgICAgICAgICAgID8gJ2JnLWdyYXktMTAwIHRleHQtZ3JheS00MDAnCiAgICAgICAgICAgICAgICAgICAgOiAnYmctZ3JhZGllbnQtdG8tciBmcm9tLWJyYW5kLTUwIHRvLWJyYW5kLTEwMCB0ZXh0LWJyYW5kLTYwMCcKICAgICAgICAgICAgICAgIH1gfQogICAgICAgICAgICAgID4KICAgICAgICAgICAgICAgIHtnZW5lcmF0aW5nSWQgPT09IHQuaWQgPyAn55Sf5oiQ5LitLi4uJyA6ICfwn46oIOeUn+aIkOWIhuS6q+a1t+aKpSd9CiAgICAgICAgICAgICAgPC9idXR0b24+CiAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgKTsKICAgICAgICB9KX0KICAgICAgPC9kaXY+CiAgICA8L2Rpdj4KICApOwp9Cg==
+import { useState } from 'react';
+import { useApp } from '../context/AppContext';
+import { getRiskInfo, formatDate } from '../utils';
+import type { TestResult } from '../types';
+
+interface TestHistoryPageProps {
+  onNavigate: (page: string, params?: Record<string, unknown>) => void;
+}
+
+export default function TestHistoryPage({ onNavigate }: TestHistoryPageProps) {
+  const { testHistory, appName } = useApp();
+  const [generatingId, setGeneratingId] = useState<string | null>(null);
+
+  const generateSharePoster = async (t: TestResult) => {
+    alert('海报功能即将上线');
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <div className="wx-nav-bar bg-white flex items-center justify-between px-4 py-2">
+        <button onClick={() => onNavigate('profile')} className="text-brand-500 text-sm">← 返回</button>
+        <span className="text-sm font-semibold text-gray-700">识别测试历史</span>
+      </div>
+
+      <div className="px-4 pt-4 space-y-4 pb-8">
+        {testHistory.length === 0 && (
+          <div className="text-center py-16">
+            <span className="text-4xl">🔍</span>
+            <p className="text-sm text-gray-400 mt-2">还没有测试记录</p>
+            <button onClick={() => onNavigate('test')} className="btn-primary text-sm mt-4">去测试</button>
+          </div>
+        )}
+        {testHistory.map((t, i) => {
+          const risk = getRiskInfo(t.score);
+          const topTypes = Object.entries(t.counts)
+            .filter(([, c]) => c > 0)
+            .sort(([, a], [, b]) => b - a)
+            .slice(0, 2);
+          return (
+            <div key={t.id} className="card">
+              <button
+                onClick={() => onNavigate('report', { result: t })}
+                className="w-full text-left active:scale-[0.99] transition-transform"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xl">{risk.emoji}</span>
+                    <span className={`text-sm font-semibold ${risk.color}`}>{risk.level}</span>
+                    <span className="text-lg font-bold text-gray-800">{t.score}分</span>
+                  </div>
+                  <span className="text-xs text-gray-400">{i === 0 ? '最新' : `#${testHistory.length - i}`}</span>
+                </div>
+                <p className="text-xs text-gray-500 mb-2">{formatDate(t.date)}</p>
+                <div className="flex gap-2 flex-wrap">
+                  {topTypes.map(([type, count]) => (
+                    <span key={type} className="text-xs text-gray-500">🔸{type} ×{count}</span>
+                  ))}
+                </div>
+              </button>
+              <button
+                onClick={() => generateSharePoster(t)}
+                disabled={generatingId === t.id}
+                className={`mt-3 w-full py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-transform active:scale-[0.98] ${
+                  generatingId === t.id
+                    ? 'bg-gray-100 text-gray-400'
+                    : 'bg-gradient-to-r from-brand-50 to-brand-100 text-brand-600'
+                }`}
+              >
+                {generatingId === t.id ? '生成中...' : '🎨 生成分享海报'}
+              </button>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}

@@ -1,1 +1,139 @@
-aW1wb3J0IHsgdXNlU3RhdGUgfSBmcm9tICdyZWFjdCc7CmltcG9ydCB7IHVzZUFwcCB9IGZyb20gJy4uL2NvbnRleHQvQXBwQ29udGV4dCc7CmltcG9ydCB7IFBVQV9UWVBFX0NPTE9SUywgSU5EVVNUUllfTUFQIH0gZnJvbSAnLi4vZGF0YSc7CmltcG9ydCB7IGZvcm1hdFRpbWUsIGdlbmVyYXRlSWQgfSBmcm9tICcuLi91dGlscyc7CmltcG9ydCB0eXBlIHsgUG9zdCwgQ29tbWVudCB9IGZyb20gJy4uL3R5cGVzJzsKCmludGVyZmFjZSBQb3N0RGV0YWlsUGFnZVByb3BzIHsKICBvbk5hdmlnYXRlOiAocGFnZTogc3RyaW5nLCBwYXJhbXM/OiBSZWNvcmQ8c3RyaW5nLCB1bmtub3duPikgPT4gdm9pZDsKICBwb3N0OiBQb3N0Owp9CgoKZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gUG9zdERldGFpbFBhZ2UoeyBvbk5hdmlnYXRlLCBwb3N0IH06IFBvc3REZXRhaWxQYWdlUHJvcHMpIHsKICBjb25zdCB7IHBvc3RzLCBjb21tZW50czogYWxsQ29tbWVudHMsIHRvZ2dsZUxpa2UsIHRvZ2dsZVJlc29uYXRlLCBhZGRDb21tZW50LCB1c2VySW5kdXN0cnksIHVzZXJXb3JrWWVhcnMgfSA9IHVzZUFwcCgpOwogIGNvbnN0IFtjb21tZW50SW5wdXQsIHNldENvbW1lbnRJbnB1dF0gPSB1c2VTdGF0ZSgnJyk7CiAgY29uc3QgW3JlcGx5VG8sIHNldFJlcGx5VG9dID0gdXNlU3RhdGU8c3RyaW5nIHwgbnVsbD4obnVsbCk7CiAgY29uc3QgW3Nob3dDb21tZW50Qm94LCBzZXRTaG93Q29tbWVudEJveF0gPSB1c2VTdGF0ZShmYWxzZSk7CiAgY29uc3QgbGl2ZVBvc3QgPSBwb3N0cy5maW5kKHAgPT4gcC5pZCA9PT0gcG9zdC5pZCkgfHwgcG9zdDsKICBjb25zdCBwb3N0Q29tbWVudHMgPSBhbGxDb21tZW50c1twb3N0LmlkXSB8fCBbXTsKICAKICBmdW5jdGlvbiBoYW5kbGVDb21tZW50KCkgewogICAgaWYgKCFjb21tZW50SW5wdXQudHJpbSgpKSByZXR1cm47CiAgICBjb25zdCBjb21tZW50OiBDb21tZW50ID0gewogICAgICBpZDogZ2VuZXJhdGVJZCgpLAogICAgICBwb3N0SWQ6IHBvc3QuaWQsCiAgICAgIGluZHVzdHJ5OiB1c2VySW5kdXN0cnksCiAgICAgIHdvcmtZZWFyczogdXNlcldvcmtZZWFycywKICAgICAgY29udGVudDogY29tbWVudElucHV0LAogICAgICBsaWtlczogMCwKICAgICAgdGltZXN0YW1wOiBEYXRlLm5vdygpLAogICAgfTsKICAgIGFkZENvbW1lbnQocG9zdC5pZCwgY29tbWVudCk7CiAgICBzZXRDb21tZW50SW5wdXQoJycpOwogICAgc2V0U2hvd0NvbW1lbnRCb3goZmFsc2UpOwogIH0KCiAgcmV0dXJuICgKICAgIDxkaXYgY2xhc3NOYW1lPSJtaW4taC1zY3JlZW4gYmctZ3JheS01MCI+CiAgICAgIDxkaXYgY2xhc3NOYW1lPSJ3eC1uYXYtYmFyIGJnLXdoaXRlIGZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktYmV0d2VlbiBweC00IHB5LTIiPgogICAgICAgIDxidXR0b24gb25DbGljaz17KCkgPT4gb25OYXZpZ2F0ZSgnY29tbXVuaXR5Jyl9IGNsYXNzTmFtZT0idGV4dC1icmFuZC01MDAgdGV4dC1zbSI+4oaQIOi/lOWbnjwvYnV0dG9uPgogICAgICAgIDxzcGFuIGNsYXNzTmFtZT0idGV4dC1zbSBmb250LXNlbWlib2xkIHRleHQtZ3JheS03MDAiPuW4luWtkOivpuaDhTwvc3Bhbj4KICAgICAgICAKICAgICAgPC9kaXY+CgogICAgICA8ZGl2IGNsYXNzTmFtZT0icHgtNCBwdC00IHBiLTI0IHNwYWNlLXktNCI+CiAgICAgICAgey8qIFBvc3QgKi99CiAgICAgICAgPGRpdiBjbGFzc05hbWU9ImNhcmQiPgogICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImZsZXggaXRlbXMtY2VudGVyIGdhcC0yIG1iLTMiPgogICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0idy05IGgtOSBiZy1icmFuZC0xMDAgcm91bmRlZC1mdWxsIGZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyIHRleHQtYnJhbmQtNjAwIGZvbnQtYm9sZCB0ZXh0LXNtIj4KICAgICAgICAgICAgICB7SU5EVVNUUllfTUFQW2xpdmVQb3N0LmluZHVzdHJ5XX0KICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgIDxkaXY+CiAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPSJ0ZXh0LXhzIGZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTcwMCI+e2xpdmVQb3N0LmluZHVzdHJ5fSDCtyB7bGl2ZVBvc3Qud29ya1llYXJzfTwvcD4KICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9InRleHQteHMgdGV4dC1ncmF5LTQwMCI+e2Zvcm1hdFRpbWUobGl2ZVBvc3QudGltZXN0YW1wKX08L3A+CiAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgPC9kaXY+CiAgICAgICAgICA8aDIgY2xhc3NOYW1lPSJ0ZXh0LWJhc2UgZm9udC1ib2xkIHRleHQtZ3JheS04MDAgbWItMiI+e2xpdmVQb3N0LnRpdGxlfTwvaDI+CiAgICAgICAgICA8cCBjbGFzc05hbWU9InRleHQtc20gdGV4dC1ncmF5LTYwMCBsZWFkaW5nLXJlbGF4ZWQgd2hpdGVzcGFjZS1wcmUtd3JhcCI+e2xpdmVQb3N0LmNvbnRlbnR9PC9wPgogICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImZsZXggZmxleC13cmFwIGdhcC0xLjUgbXQtMyI+CiAgICAgICAgICAgIHtsaXZlUG9zdC50YWdzLm1hcCh0ID0+IHsKICAgICAgICAgICAgICBjb25zdCBpbmZvID0gUFVBX1RZUEVfQ09MT1JTW3RdOwogICAgICAgICAgICAgIHJldHVybiAoCiAgICAgICAgICAgICAgICA8c3BhbiBrZXk9e3R9IGNsYXNzTmFtZT17YHRhZyB0ZXh0LXhzICR7aW5mby5iZ30gJHtpbmZvLnRleHR9YH0+CiAgICAgICAgICAgICAgICAgIHtpbmZvLmVtb2ppfSB7dH0KICAgICAgICAgICAgICAgIDwvc3Bhbj4KICAgICAgICAgICAgICApOwogICAgICAgICAgICB9KX0KICAgICAgICAgIDwvZGl2PgogICAgICAgIDwvZGl2PgoKICAgICAgICB7LyogQWN0aW9ucyAqL30KICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTQgcHgtMiI+CiAgICAgICAgICA8YnV0dG9uIG9uQ2xpY2s9eygpID0+IHRvZ2dsZUxpa2UobGl2ZVBvc3QuaWQpfSBjbGFzc05hbWU9e2BmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMS41IHRleHQtc20gJHtsaXZlUG9zdC5saWtlZCA/ICd0ZXh0LWJyYW5kLTUwMCcgOiAndGV4dC1ncmF5LTQwMCd9YH0+CiAgICAgICAgICAgIPCfkY0ge2xpdmVQb3N0Lmxpa2VzfQogICAgICAgICAgPC9idXR0b24+CiAgICAgICAgICA8YnV0dG9uIG9uQ2xpY2s9eygpID0+IHRvZ2dsZVJlc29uYXRlKGxpdmVQb3N0LmlkKX0gY2xhc3NOYW1lPXtgZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTEuNSB0ZXh0LXNtICR7bGl2ZVBvc3QucmVzb25hdGVkID8gJ3RleHQtcHVycGxlLTUwMCcgOiAndGV4dC1ncmF5LTQwMCd9YH0+CiAgICAgICAgICAgIPCfpJ0ge2xpdmVQb3N0LnJlc29uYW5jZXN9IOaIkeS5n+aciei/hwogICAgICAgICAgPC9idXR0b24+CiAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9ImZsZXggaXRlbXMtY2VudGVyIGdhcC0xIHRleHQtc20gdGV4dC1ncmF5LTQwMCBtbC1hdXRvIj4KICAgICAgICAgICAg8J+SrCB7bGl2ZVBvc3QuY29tbWVudHN9CiAgICAgICAgICA8L3NwYW4+CiAgICAgICAgPC9kaXY+CgogICAgICAgIHsvKiBDb21tZW50IGlucHV0ICovfQogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJjYXJkIj4KICAgICAgICAgIDxwIGNsYXNzTmFtZT0idGV4dC1zbSBmb250LXNlbWlib2xkIHRleHQtZ3JheS03MDAgbWItMyI+6K+E6K66PC9wPgogICAgICAgICAge3Nob3dDb21tZW50Qm94ID8gKAogICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ic3BhY2UteS0yIj4KICAgICAgICAgICAgICA8dGV4dGFyZWEKICAgICAgICAgICAgICAgIHZhbHVlPXtjb21tZW50SW5wdXR9CiAgICAgICAgICAgICAgICBvbkNoYW5nZT17ZSA9PiBzZXRDb21tZW50SW5wdXQoZS50YXJnZXQudmFsdWUpfQogICAgICAgICAgICAgICAgcGxhY2Vob2xkZXI9IuWGmeS4i+S9oOeahOivhOiuui4uLiIKICAgICAgICAgICAgICAgIHJvd3M9ezN9CiAgICAgICAgICAgICAgICBjbGFzc05hbWU9InctZnVsbCBiZy1ncmF5LTUwIHJvdW5kZWQteGwgcHgtMyBweS0yIHRleHQtc20gcmVzaXplLW5vbmUgZm9jdXM6b3V0bGluZS1ub25lIGZvY3VzOnJpbmctMiBmb2N1czpyaW5nLWJyYW5kLTMwMCIKICAgICAgICAgICAgICAvPgogICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJmbGV4IGdhcC0yIj4KICAgICAgICAgICAgICAgIDxidXR0b24gb25DbGljaz17KCkgPT4geyBzZXRTaG93Q29tbWVudEJveChmYWxzZSk7IHNldENvbW1lbnRJbnB1dCgnJyk7IH19IGNsYXNzTmFtZT0idGV4dC14cyB0ZXh0LWdyYXktNDAwIHB4LTMgcHktMS41Ij7lj5bmtog8L2J1dHRvbj4KICAgICAgICAgICAgICAgIDxidXR0b24gb25DbGljaz17aGFuZGxlQ29tbWVudH0gZGlzYWJsZWQ9eyFjb21tZW50SW5wdXQudHJpbSgpfSBjbGFzc05hbWU9ImJ0bi1wcmltYXJ5IHRleHQteHMgcHgtNCBweS0xLjUgZGlzYWJsZWQ6b3BhY2l0eS01MCI+5Y+R5biDPC9idXR0b24+CiAgICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgKSA6ICgKICAgICAgICAgICAgPGJ1dHRvbiBvbkNsaWNrPXsoKSA9PiBzZXRTaG93Q29tbWVudEJveCh0cnVlKX0gY2xhc3NOYW1lPSJ3LWZ1bGwgcHktMyBiZy1ncmF5LTUwIHJvdW5kZWQteGwgdGV4dC1zbSB0ZXh0LWdyYXktNDAwIHRleHQtY2VudGVyIj4KICAgICAgICAgICAgICDlhpnkuIvkvaDnmoTor4TorrouLi4KICAgICAgICAgICAgPC9idXR0b24+CiAgICAgICAgICApfQogICAgICAgIDwvZGl2PgoKICAgICAgICB7LyogQ29tbWVudHMgKi99CiAgICAgICAge3Bvc3RDb21tZW50cy5sZW5ndGggPiAwICYmICgKICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJzcGFjZS15LTMiPgogICAgICAgICAgICB7cG9zdENvbW1lbnRzLm1hcChjID0+ICgKICAgICAgICAgICAgICA8ZGl2IGtleT17Yy5pZH0gY2xhc3NOYW1lPSJjYXJkIj4KICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMiBtYi0yIj4KICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9InctNyBoLTcgYmctZ3JheS0xMDAgcm91bmRlZC1mdWxsIGZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyIHRleHQteHMgdGV4dC1ncmF5LTUwMCI+CiAgICAgICAgICAgICAgICAgICAge0lORFVTVFJZX01BUFtjLmluZHVzdHJ5XX0KICAgICAgICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT0idGV4dC14cyB0ZXh0LWdyYXktNTAwIj57Yy5pbmR1c3RyeX0gwrcge2Mud29ya1llYXJzfTwvc3Bhbj4KICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJ0ZXh0LXhzIHRleHQtZ3JheS0zMDAgbWwtYXV0byI+e2Zvcm1hdFRpbWUoYy50aW1lc3RhbXApfTwvc3Bhbj4KICAgICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPSJ0ZXh0LXNtIHRleHQtZ3JheS03MDAgbGVhZGluZy1yZWxheGVkIj57Yy5jb250ZW50fTwvcD4KICAgICAgICAgICAgICAgIDxidXR0b24gb25DbGljaz17KCkgPT4gc2V0UmVwbHlUbyhyZXBseVRvID09PSBjLmlkID8gbnVsbCA6IGMuaWQpfSBjbGFzc05hbWU9InRleHQteHMgdGV4dC1ncmF5LTQwMCBtdC0xLjUiPuWbnuWkjTwvYnV0dG9uPgogICAgICAgICAgICAgICAge3JlcGx5VG8gPT09IGMuaWQgJiYgKAogICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ibXQtMiBzcGFjZS15LTEuNSI+CiAgICAgICAgICAgICAgICAgICAge2MucmVwbGllcz8ubWFwKHIgPT4gKAogICAgICAgICAgICAgICAgICAgICAgPGRpdiBrZXk9e3IuaWR9IGNsYXNzTmFtZT0iZmxleCBpdGVtcy1zdGFydCBnYXAtMiBiZy1ncmF5LTUwIHJvdW5kZWQtbGcgcC0yIj4KICAgICAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJ0ZXh0LXhzIHRleHQtZ3JheS01MDAiPntyLmluZHVzdHJ5fcK3e3Iud29ya1llYXJzfTo8L3NwYW4+CiAgICAgICAgICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT0idGV4dC14cyB0ZXh0LWdyYXktNjAwIj57ci5jb250ZW50fTwvcD4KICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICAgICAgICAgICkpfQogICAgICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgICAgICl9CiAgICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgICkpfQogICAgICAgICAgPC9kaXY+CiAgICAgICAgKX0KICAgICAgPC9kaXY+CiAgICA8L2Rpdj4KICApOwp9Cg==
+import { useState } from 'react';
+import { useApp } from '../context/AppContext';
+import { PUA_TYPE_COLORS, INDUSTRY_MAP } from '../data';
+import { formatTime, generateId } from '../utils';
+import type { Post, Comment } from '../types';
+
+interface PostDetailPageProps {
+  onNavigate: (page: string, params?: Record<string, unknown>) => void;
+  post: Post;
+}
+
+
+export default function PostDetailPage({ onNavigate, post }: PostDetailPageProps) {
+  const { posts, comments: allComments, toggleLike, toggleResonate, addComment, userIndustry, userWorkYears } = useApp();
+  const [commentInput, setCommentInput] = useState('');
+  const [replyTo, setReplyTo] = useState<string | null>(null);
+  const [showCommentBox, setShowCommentBox] = useState(false);
+  const livePost = posts.find(p => p.id === post.id) || post;
+  const postComments = allComments[post.id] || [];
+  
+  function handleComment() {
+    if (!commentInput.trim()) return;
+    const comment: Comment = {
+      id: generateId(),
+      postId: post.id,
+      industry: userIndustry,
+      workYears: userWorkYears,
+      content: commentInput,
+      likes: 0,
+      timestamp: Date.now(),
+    };
+    addComment(post.id, comment);
+    setCommentInput('');
+    setShowCommentBox(false);
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <div className="wx-nav-bar bg-white flex items-center justify-between px-4 py-2">
+        <button onClick={() => onNavigate('community')} className="text-brand-500 text-sm">← 返回</button>
+        <span className="text-sm font-semibold text-gray-700">帖子详情</span>
+        
+      </div>
+
+      <div className="px-4 pt-4 pb-24 space-y-4">
+        {/* Post */}
+        <div className="card">
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-9 h-9 bg-brand-100 rounded-full flex items-center justify-center text-brand-600 font-bold text-sm">
+              {INDUSTRY_MAP[livePost.industry]}
+            </div>
+            <div>
+              <p className="text-xs font-semibold text-gray-700">{livePost.industry} · {livePost.workYears}</p>
+              <p className="text-xs text-gray-400">{formatTime(livePost.timestamp)}</p>
+            </div>
+          </div>
+          <h2 className="text-base font-bold text-gray-800 mb-2">{livePost.title}</h2>
+          <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-wrap">{livePost.content}</p>
+          <div className="flex flex-wrap gap-1.5 mt-3">
+            {livePost.tags.map(t => {
+              const info = PUA_TYPE_COLORS[t];
+              return (
+                <span key={t} className={`tag text-xs ${info.bg} ${info.text}`}>
+                  {info.emoji} {t}
+                </span>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Actions */}
+        <div className="flex items-center gap-4 px-2">
+          <button onClick={() => toggleLike(livePost.id)} className={`flex items-center gap-1.5 text-sm ${livePost.liked ? 'text-brand-500' : 'text-gray-400'}`}>
+            👍 {livePost.likes}
+          </button>
+          <button onClick={() => toggleResonate(livePost.id)} className={`flex items-center gap-1.5 text-sm ${livePost.resonated ? 'text-purple-500' : 'text-gray-400'}`}>
+            🤝 {livePost.resonances} 我也有过
+          </button>
+          <span className="flex items-center gap-1 text-sm text-gray-400 ml-auto">
+            💬 {livePost.comments}
+          </span>
+        </div>
+
+        {/* Comment input */}
+        <div className="card">
+          <p className="text-sm font-semibold text-gray-700 mb-3">评论</p>
+          {showCommentBox ? (
+            <div className="space-y-2">
+              <textarea
+                value={commentInput}
+                onChange={e => setCommentInput(e.target.value)}
+                placeholder="写下你的评论..."
+                rows={3}
+                className="w-full bg-gray-50 rounded-xl px-3 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-brand-300"
+              />
+              <div className="flex gap-2">
+                <button onClick={() => { setShowCommentBox(false); setCommentInput(''); }} className="text-xs text-gray-400 px-3 py-1.5">取消</button>
+                <button onClick={handleComment} disabled={!commentInput.trim()} className="btn-primary text-xs px-4 py-1.5 disabled:opacity-50">发布</button>
+              </div>
+            </div>
+          ) : (
+            <button onClick={() => setShowCommentBox(true)} className="w-full py-3 bg-gray-50 rounded-xl text-sm text-gray-400 text-center">
+              写下你的评论...
+            </button>
+          )}
+        </div>
+
+        {/* Comments */}
+        {postComments.length > 0 && (
+          <div className="space-y-3">
+            {postComments.map(c => (
+              <div key={c.id} className="card">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-7 h-7 bg-gray-100 rounded-full flex items-center justify-center text-xs text-gray-500">
+                    {INDUSTRY_MAP[c.industry]}
+                  </div>
+                  <span className="text-xs text-gray-500">{c.industry} · {c.workYears}</span>
+                  <span className="text-xs text-gray-300 ml-auto">{formatTime(c.timestamp)}</span>
+                </div>
+                <p className="text-sm text-gray-700 leading-relaxed">{c.content}</p>
+                <button onClick={() => setReplyTo(replyTo === c.id ? null : c.id)} className="text-xs text-gray-400 mt-1.5">回复</button>
+                {replyTo === c.id && (
+                  <div className="mt-2 space-y-1.5">
+                    {c.replies?.map(r => (
+                      <div key={r.id} className="flex items-start gap-2 bg-gray-50 rounded-lg p-2">
+                        <span className="text-xs text-gray-500">{r.industry}·{r.workYears}:</span>
+                        <p className="text-xs text-gray-600">{r.content}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

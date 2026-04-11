@@ -1,1 +1,17 @@
-Y29uc3QgU1RPUkFHRV9LRVkgPSAnemhpY2hhbmdfcWluZ3hpbmdfZHNfa2V5JzsKCmV4cG9ydCBmdW5jdGlvbiBnZXREZWVwc2Vla0tleSgpOiBzdHJpbmcgewogIHRyeSB7CiAgICBjb25zdCBzdG9yZWQgPSBsb2NhbFN0b3JhZ2UuZ2V0SXRlbShTVE9SQUdFX0tFWSk7CiAgICBpZiAoc3RvcmVkICYmIHN0b3JlZC50cmltKCkpIHJldHVybiBzdG9yZWQudHJpbSgpOwogICAgcmV0dXJuICcnOwogIH0gY2F0Y2ggewogICAgcmV0dXJuICcnOwogIH0KfQoKZXhwb3J0IGZ1bmN0aW9uIHNhdmVEZWVwc2Vla0tleShrZXk6IHN0cmluZyk6IHZvaWQgewogIHRyeSB7CiAgICBsb2NhbFN0b3JhZ2Uuc2V0SXRlbShTVE9SQUdFX0tFWSwga2V5LnRyaW0oKSk7CiAgfSBjYXRjaCB7fQp9Cg==
+const STORAGE_KEY = 'zhichang_qingxing_ds_key';
+
+export function getDeepseekKey(): string {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored && stored.trim()) return stored.trim();
+    return '';
+  } catch {
+    return '';
+  }
+}
+
+export function saveDeepseekKey(key: string): void {
+  try {
+    localStorage.setItem(STORAGE_KEY, key.trim());
+  } catch {}
+}

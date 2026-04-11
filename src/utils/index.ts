@@ -1,1 +1,111 @@
-aW1wb3J0IHR5cGUgeyBQdWFUeXBlLCBSaXNrTGV2ZWwsIEFpUm9sZSwgRW1vdGlvblR5cGUgfSBmcm9tICcuLi90eXBlcyc7CgpleHBvcnQgZnVuY3Rpb24gZ2V0Umlza0luZm8oc2NvcmU6IG51bWJlcik6IHsgbGV2ZWw6IFJpc2tMZXZlbDsgY29sb3I6IHN0cmluZzsgYmc6IHN0cmluZzsgZW1vamk6IHN0cmluZzsgZGVzYzogc3RyaW5nIH0gewogIGlmIChzY29yZSA8PSAzMCkgcmV0dXJuIHsgbGV2ZWw6ICflgaXlurcnLCBjb2xvcjogJ3RleHQtZ3JlZW4tNjAwJywgYmc6ICdiZy1ncmVlbi01MCcsIGVtb2ppOiAn8J+foicsIGRlc2M6ICfogYzlnLrnjq/looPmraPluLgnIH07CiAgZWxzZSBpZiAoc2NvcmUgPD0gNjApIHJldHVybiB7IGxldmVsOiAn6K2m5oiSJywgY29sb3I6ICd0ZXh0LWFtYmVyLTYwMCcsIGJnOiAnYmctYW1iZXItNTAnLCBlbW9qaTogJ/Cfn6EnLCBkZXNjOiAn5a2Y5Zyo6aOO6Zmp77yM5bu66K6u5YWz5rOoJyB9OwogIGVsc2UgcmV0dXJuIHsgbGV2ZWw6ICfpq5jljbEnLCBjb2xvcjogJ3RleHQtcmVkLTYwMCcsIGJnOiAnYmctcmVkLTUwJywgZW1vamk6ICfwn5S0JywgZGVzYzogJ+aYjuaYvlBVQeeJueW+ge+8jOW7uuiuruWvu+axguW4ruWKqScgfTsKfQoKZXhwb3J0IGZ1bmN0aW9uIGNvdW50UHVhVHlwZXMoYW5zd2VyczogUmVjb3JkPG51bWJlciwgYm9vbGVhbj4pOiBSZWNvcmQ8UHVhVHlwZSwgbnVtYmVyPiB7CiAgY29uc3QgY291bnRzOiBSZWNvcmQ8UHVhVHlwZSwgbnVtYmVyPiA9IHsgJ+WQpuWumuS7t+WAvCc6IDAsICfnhaTmsJTnga/mlYjlupQnOiAwLCAn5oOF5oSf5YuS57SiJzogMCwgJ+WtpOeri+aOkuaMpCc6IDAsICfnlLvlpKfppbwnOiAwLCAn6L6555WM5L6154qvJzogMCB9OwogIE9iamVjdC5lbnRyaWVzKGFuc3dlcnMpLmZvckVhY2goKFtxSWQsIGhhc1Byb2JsZW1dKSA9PiB7CiAgICBpZiAoIWhhc1Byb2JsZW0pIHJldHVybjsKICAgIGNvbnN0IHEgPSBwYXJzZUludChxSWQpOwogICAgaWYgKHEgPD0gMikgY291bnRzWyflkKblrprku7flgLwnXSsrOwogICAgZWxzZSBpZiAocSA8PSA0KSBjb3VudHNbJ+eFpOawlOeBr+aViOW6lCddKys7CiAgICBlbHNlIGlmIChxIDw9IDYpIGNvdW50c1sn5oOF5oSf5YuS57SiJ10rKzsKICAgIGVsc2UgaWYgKHEgPD0gOCkgY291bnRzWyflraTnq4vmjpLmjKQnXSsrOwogICAgZWxzZSBpZiAocSA8PSAxMCkgY291bnRzWyfnlLvlpKfppbwnXSsrOwogICAgZWxzZSBjb3VudHNbJ+i+ueeVjOS+teeKryddKys7CiAgfSk7CiAgcmV0dXJuIGNvdW50czsKfQoKZXhwb3J0IGZ1bmN0aW9uIGNhbGNTY29yZShjb3VudHM6IFJlY29yZDxQdWFUeXBlLCBudW1iZXI+KTogbnVtYmVyIHsKICBjb25zdCB0b3RhbCA9IE9iamVjdC52YWx1ZXMoY291bnRzKS5yZWR1Y2UoKGEsIGIpID0+IGEgKyBiLCAwKTsKICByZXR1cm4gTWF0aC5yb3VuZCgodG90YWwgLyAxMikgKiAxMDApOwp9Cgpjb25zdCBFTU9USU9OX1JFU1BPTlNFUzogUmVjb3JkPEVtb3Rpb25UeXBlLCBzdHJpbmc+ID0gewogICfmhKTmgJInOiAn5oiR6IO95oSf6KeJ5Yiw5L2g546w5Zyo55qE5oSk5oCS44CC6YKj56eN6KKr5Y6L5Yi244CB6KKr5ZCm5a6a44CB6KKr5o6n5Yi255qE5oSf6KeJ77yM55yf55qE6K6p5Lq65b6I6Zq+5Y+X44CCJywKICAn5aeU5bGIJzogJ+aIkeW+iOW/g+eWvOS9oOWQrOWIsOi/meS6m+OAguS9oOaYjuaYjuW+iOWKquWKm++8jOWNtOiiq+i/meagt+WvueW+he+8jOWnlOWxiOaYr+WujOWFqOato+W4uOeahOWPjeW6lOOAgicsCiAgJ+eEpuiZkSc6ICfov5nnp43kuI3noa7lrprmgKfluKbmnaXnmoTnhKbomZHlvojmipjno6jkurrjgILkuI3opoHmgKXnnYDnu5noh6rlt7Hmlr3ljovvvIzmhaLmhaLmnaXjgIInLAogICflpLHokL0nOiAn6KKr6L+Z5qC35a+55b6F5LmL5ZCO5oSf5Yiw5aSx6JC977yM6K+05piO5L2g5piv5LiA5Liq5pyJ5oSf5Y+X44CB5b6I6K6k55yf55qE5Lq644CC6L+Z56eN5aSx6JC95Lya5oWi5oWi6L+H5Y6755qE44CCJywKICAn6bq75pyoJzogJ+acieaXtuWAme+8jOW9k+aDhee7quWkquWkmuWkqumHje+8jOWkp+iEkeS8muWQr+WKqOS/neaKpOacuuWItu+8jOiuqeaIkeS7rOaEn+iniSLpurvmnKgi5LqG44CC6L+Z5Lmf5piv5q2j5bi455qE44CCJywKfTsKCmNvbnN0IExJU1RFTklOR19SRVNQT05TRVMgPSBbCiAgJ+iwouiwouS9oOaEv+aEj+ivtOWHuuadpeOAgui/meS6m+ivne+8jOS9oOWPr+iDveW3sue7j+aGi+WcqOW/g+mHjOW+iOS5heS6huOAguiDveWRiuivieaIkeabtOWkmuWQl++8nycsCiAgJ+aIkeWQrOWIsOS6huOAguS9oOeahOaEn+WPl+aYr+ecn+WunueahO+8jOS4jemcgOimgeS4uuWug+i+qeaKpOOAgicsCiAgJ+aIkeWcqOi/memHjOWQrOS9oOivtOOAguaXoOiuuuS9oOaOpeS4i+adpeaDs+WBmuS7gOS5iO+8jOmDveayoeWFs+ezu++8jOaFouaFouadpeOAgicsCiAgJ+i/meecn+eahOW+iOmavuOAguacieaXtuWAme+8jOWFieaYr+aKiuWug+ivtOWHuuadpe+8jOWwseW3sue7j+aYr+S4gOenjeWLh+awlOS6huOAgicsCl07Cgpjb25zdCBBTkFMWVRJQ0FMX1JFU1BPTlNFUyA9IFsKICAn5LuO5L2g5o+P6L+w55qE5oOF5Ya15p2l55yL77yM6L+Z56eN6KGM5Li65qih5byP5YyF5ZCr5LqG5LiA5Lqb5YW45Z6L55qE5pON5o6n54m55b6B77ya5q+U5aaC6YCa6L+H5Y+N5aSN5ZCm5a6a5p2l6K6p5L2g5oCA55aR6Ieq5bex77yM5oiW6ICF5Yi26YCgIuS9oOS4jeWQiOe+pCLnmoTplJnop4nmnaXlraTnq4vkvaDjgILov5nkupvpg73kuI3mmK/mraPluLjnmoTogYzlnLrnrqHnkIbmlrnlvI/jgIInLAogICfmiJHluK7kvaDmorPnkIbkuIDkuIvvvJrkvaDmj4/ov7DnmoTmg4XlhrXljIXlkKvlh6DkuKrlhbjlnovopoHntKDvvJrikaDlhazlvIDotKzkvY4g4pGh5LqL5ZCO5ZCm6K6kIOKRouWIqeeUqOS9oOeahOWWhOaEj+OAgui/meenjee7hOWQiOacrOi6q+WwseaYr+S4gOenjeaTjeaOp+ihjOS4uu+8jOS4jeaYr+S9oOeahOmXrumimOOAgicsCiAgJ+S7juS9oOeahOaPj+i/sOeci++8jOWvueaWueW+iOaThemVv+WItumAoCLmhKfnlprmhJ8i5p2l6K6p5L2g6aG65LuO44CC6L+Z5piv5LiA56eN5oOF5oSf5pON5o6n5omL5q6177yM5Y+r5YGaIuaDheaEn+WLkue0oiLjgILkvaDpnIDopoHnn6XpgZPvvJrov5nkuI3mmK/mraPluLjnmoTogYzlnLrlhbPns7vjgIInLApdOwoKY29uc3QgQUNUSU9OX1JFU1BPTlNFUyA9IFsKICAn6ZKI5a+55L2g5o+P6L+w55qE5oOF5Ya177yM5oiR5pyJ5LiA5Liq5bu66K6u77ya6K6w5b2V5q+P5LiA5qyh5YWz6ZSu5a+56K+d77yM5YyF5ous5pe26Ze044CB5Zyw54K544CB5a+55pa56K+05LqG5LuA5LmI44CB5L2g5oCO5LmI5Zue5bqU55qE44CC5L+d55WZ6K+B5o2u5piv5L+d5oqk6Ieq5bex55qE56ys5LiA5q2l44CCJywKICAn5oiR55qE5bu66K6u5piv77ya5LiL5qyh6YGH5Yiw57G75Ly85oOF5Ya177yM6K+V552A55So5LiA5Y+l566A5Y2V55qE6K+d6K6+56uL6L6555WM77yM5q+U5aaC77yaIuaIkeeQhuino+aCqOeahOaDs+azle+8jOS9hui/meS7tuS6i+aIkemcgOimgeiAg+iZkeS4gOS4i++8jOaYjuWkqeWbnuWkjeaCqOOAgiLkuI3pnIDopoHpgZPmrYnvvIzkuI3pnIDopoHop6Pph4rljp/lm6DjgIInLAogICfkuIDkuKrnq4vljbPlj6/miafooYznmoTlu7rorq7vvJrmiorku4rmmZrnmoTkuovorrDlvZXliLDkvaDnmoTmg4Xnu6rml6Xljobph4zjgILmlbDmja7np6/ntK/kuYvlkI7vvIzkvaDkvJrlr7noh6rlt7HnmoTlpITlooPmnInmm7TmuIXmmbDnmoTliKTmlq3jgILov5nmnKzouqvlsLHmmK/kuIDnp43oh6rmiJHkv53miqTjgIInLApdOwoKZXhwb3J0IGZ1bmN0aW9uIGdldEFJUmVzcG9uc2UoZW1vdGlvbjogRW1vdGlvblR5cGUsIHJvbGU6IEFpUm9sZSwgX3VzZXJNZXNzYWdlOiBzdHJpbmcpOiBzdHJpbmcgewogIGxldCByZXNwb25zZSA9IEVNT1RJT05fUkVTUE9OU0VTW2Vtb3Rpb25dICsgJ1xuXG4nOwogIGxldCBwb29sOiBzdHJpbmdbXTsKICBpZiAocm9sZSA9PT0gJ+a4qeaflOWAvuWQrOiAhScpIHBvb2wgPSBMSVNURU5JTkdfUkVTUE9OU0VTOwogIGVsc2UgaWYgKHJvbGUgPT09ICfnkIbmgKfliIbmnpDluIgnKSBwb29sID0gQU5BTFlUSUNBTF9SRVNQT05TRVM7CiAgZWxzZSBwb29sID0gQUNUSU9OX1JFU1BPTlNFUzsKICByZXNwb25zZSArPSBwb29sW01hdGguZmxvb3IoTWF0aC5yYW5kb20oKSAqIHBvb2wubGVuZ3RoKV07CiAgcmV0dXJuIHJlc3BvbnNlOwp9CgpleHBvcnQgZnVuY3Rpb24gZ2V0UHJhY3RpY2VGZWVkYmFjayh1c2VyTWVzc2FnZTogc3RyaW5nKTogeyBnb29kOiBzdHJpbmc7IGJldHRlcjogc3RyaW5nOyBzY3JpcHQ6IHN0cmluZyB9IHsKICBjb25zdCBoYXNCb3VuZGFyeSA9IC/kuI185peg5rOVfOayoeazlXzlt7Lnu4986ZyA6KaBfOaDs+imgXzluIzmnJt85piO5aSpfOaXqeS4ii8udGVzdCh1c2VyTWVzc2FnZSk7CiAgY29uc3QgaXNTb2Z0ID0gL15b5aW955qE5piO55m955+l6YGT5LqG5Y+v5Lul5aW9IF0rJC8udGVzdCh1c2VyTWVzc2FnZS50cmltKCkpICYmIHVzZXJNZXNzYWdlLmxlbmd0aCA8IDE1OwoKICBpZiAoaGFzQm91bmRhcnkgJiYgdXNlck1lc3NhZ2UubGVuZ3RoID4gMTApIHsKICAgIHJldHVybiB7CiAgICAgIGdvb2Q6ICflvojlpb3vvIHkvaDmuIXmmbDlnLDooajovr7kuobovrnnlYzvvIzlkIzml7bmsqHmnInmv4DljJbnn5vnm77jgIInLAogICAgICBiZXR0ZXI6ICflj6/ku6Xmm7TlhbfkvZPkuIDngrnvvIzmr5TlpoLmmI7noa7or7TmmI7kvaDog73mjqXlj5fnmoTml7bpl7TlkozmlrnlvI/jgIInLAogICAgICBzY3JpcHQ6ICflj6/ku6Xor7TvvJoi5oiR5LuK5aSp5pyJ5LqL77yM5pyA5pma5Y+v5Lul5YiwWOeCueOAguaYjuWkqeS4gOaXqeaIkeS8muesrOS4gOaXtumXtOWkhOeQhu+8jOaCqOeci+i/meagt+WPr+S7peWQl++8nyInLAogICAgfTsKICB9IGVsc2UgaWYgKGlzU29mdCkgewogICAgcmV0dXJuIHsKICAgICAgZ29vZDogJ+S9oOeahOWbnuW6lOWPi+WWhO+8jOi/meW+iOWlveOAgicsCiAgICAgIGJldHRlcjogJ+S4jei/h++8jOmAguW9k+iuvueri+i+ueeVjOS4jeS8muiuqeWFs+ezu+WPmOW3ru+8jOWPjeiAjOS8muiuqeWvueaWueabtOWwiumHjeS9oOOAguivleedgOWKoOWFpeS9oOeahOW6lee6v+OAgicsCiAgICAgIHNjcmlwdDogJ+WPr+S7peWcqOWQjumdouWKoOS4gOWPpe+8miLlvZPnhLbvvIzlpoLmnpznnJ/nmoTlvojntKfmgKXvvIzlj6/ku6XmiZPnlLXor53nu5nmiJHjgIIi5pei6K6+5LqG6L6555WM77yM5Y+I6KGo6L6+5LqG54G15rS75oCn44CCJywKICAgIH07CiAgfSBlbHNlIHsKICAgIHJldHVybiB7CiAgICAgIGdvb2Q6ICfkvaDnmoTmhJ/lj5fmmK/lr7nnmoTvvIzpnaLlr7nov5nnp43mg4XlhrXmhJ/liLDkuLrpmr7lvojmraPluLjjgIInLAogICAgICBiZXR0ZXI6ICfor5Xor5XnlKgi5YWI5o6l5L2P5oOF57uq77yM5YaN57uZ6L6555WMIueahOaWueW8j+OAguS4jeimgeebtOaOpeivtCLkuI0i77yM5L2G6KaB5riF5pmw6KGo6L6+5L2g6IO95o6l5Y+X55qE6IyD5Zu044CCJywKICAgICAgc2NyaXB0OiAn6K+V6K+V6L+Z5Liq77yaIuaIkeeQhuino+i/meS4qumcgOaxguW+iOaApe+8iOaOpeS9j+aDhee7qu+8ieOAguaIkeS7iuWkqeeahOaDheWGteaYr1hY77yI6K+05piO6L6555WM77yJ77yM5L2G5oiR5Y+v5Lul5piO5aSp5LiA5pep5aSE55CG77yM5oKo55yL5Y+v5Lul5ZCX77yfIicsCiAgICB9OwogIH0KfQoKZXhwb3J0IGZ1bmN0aW9uIGZvcm1hdERhdGUoZGF0ZVN0cjogc3RyaW5nKTogc3RyaW5nIHsKICByZXR1cm4gbmV3IERhdGUoZGF0ZVN0cikudG9Mb2NhbGVEYXRlU3RyaW5nKCd6aC1DTicsIHsKICAgIHllYXI6ICdudW1lcmljJywgbW9udGg6ICdsb25nJywgZGF5OiAnbnVtZXJpYycsCiAgfSk7Cn0KCmV4cG9ydCBmdW5jdGlvbiBmb3JtYXRUaW1lKHRzOiBudW1iZXIpOiBzdHJpbmcgewogIGNvbnN0IGRpZmYgPSBEYXRlLm5vdygpIC0gdHM7CiAgY29uc3QgbWlucyA9IE1hdGguZmxvb3IoZGlmZiAvIDYwMDAwKTsKICBjb25zdCBob3VycyA9IE1hdGguZmxvb3IoZGlmZiAvIDM2MDAwMDApOwogIGNvbnN0IGRheXMgPSBNYXRoLmZsb29yKGRpZmYgLyA4NjQwMDAwMCk7CiAgaWYgKG1pbnMgPCAxKSByZXR1cm4gJ+WImuWImic7CiAgaWYgKG1pbnMgPCA2MCkgcmV0dXJuIGAke21pbnN95YiG6ZKf5YmNYDsKICBpZiAoaG91cnMgPCAyNCkgcmV0dXJuIGAke2hvdXJzfeWwj+aXtuWJjWA7CiAgaWYgKGRheXMgPCA3KSByZXR1cm4gYCR7ZGF5c33lpKnliY1gOwogIHJldHVybiBuZXcgRGF0ZSh0cykudG9Mb2NhbGVEYXRlU3RyaW5nKCd6aC1DTicsIHsgbW9udGg6ICdzaG9ydCcsIGRheTogJ251bWVyaWMnIH0pOwp9CgpleHBvcnQgZnVuY3Rpb24gZ2VuZXJhdGVJZCgpOiBzdHJpbmcgewogIHJldHVybiBEYXRlLm5vdygpLnRvU3RyaW5nKDM2KSArIE1hdGgucmFuZG9tKCkudG9TdHJpbmcoMzYpLnNsaWNlKDIsIDcpOwp9Cg==
+import type { PuaType, RiskLevel, AiRole, EmotionType } from '../types';
+
+export function getRiskInfo(score: number): { level: RiskLevel; color: string; bg: string; emoji: string; desc: string } {
+  if (score <= 30) return { level: '健康', color: 'text-green-600', bg: 'bg-green-50', emoji: '🟢', desc: '职场环境正常' };
+  else if (score <= 60) return { level: '警戒', color: 'text-amber-600', bg: 'bg-amber-50', emoji: '🟡', desc: '存在风险，建议关注' };
+  else return { level: '高危', color: 'text-red-600', bg: 'bg-red-50', emoji: '🔴', desc: '明显PUA特征，建议寻求帮助' };
+}
+
+export function countPuaTypes(answers: Record<number, boolean>): Record<PuaType, number> {
+  const counts: Record<PuaType, number> = { '否定价值': 0, '煤气灯效应': 0, '情感勒索': 0, '孤立排挤': 0, '画大饼': 0, '边界侵犯': 0 };
+  Object.entries(answers).forEach(([qId, hasProblem]) => {
+    if (!hasProblem) return;
+    const q = parseInt(qId);
+    if (q <= 2) counts['否定价值']++;
+    else if (q <= 4) counts['煤气灯效应']++;
+    else if (q <= 6) counts['情感勒索']++;
+    else if (q <= 8) counts['孤立排挤']++;
+    else if (q <= 10) counts['画大饼']++;
+    else counts['边界侵犯']++;
+  });
+  return counts;
+}
+
+export function calcScore(counts: Record<PuaType, number>): number {
+  const total = Object.values(counts).reduce((a, b) => a + b, 0);
+  return Math.round((total / 12) * 100);
+}
+
+const EMOTION_RESPONSES: Record<EmotionType, string> = {
+  '愤怒': '我能感觉到你现在的愤怒。那种被压制、被否定、被控制的感觉，真的让人很难受。',
+  '委屈': '我很心疼你听到这些。你明明很努力，却被这样对待，委屈是完全正常的反应。',
+  '焦虑': '这种不确定性带来的焦虑很折磨人。不要急着给自己施压，慢慢来。',
+  '失落': '被这样对待之后感到失落，说明你是一个有感受、很认真的人。这种失落会慢慢过去的。',
+  '麻木': '有时候，当情绪太多太重，大脑会启动保护机制，让我们感觉"麻木"了。这也是正常的。',
+};
+
+const LISTENING_RESPONSES = [
+  '谢谢你愿意说出来。这些话，你可能已经憋在心里很久了。能告诉我更多吗？',
+  '我听到了。你的感受是真实的，不需要为它辩护。',
+  '我在这里听你说。无论你接下来想做什么，都没关系，慢慢来。',
+  '这真的很难。有时候，光是把它说出来，就已经是一种勇气了。',
+];
+
+const ANALYTICAL_RESPONSES = [
+  '从你描述的情况来看，这种行为模式包含了一些典型的操控特征：比如通过反复否定来让你怀疑自己，或者制造"你不合群"的错觉来孤立你。这些都不是正常的职场管理方式。',
+  '我帮你梳理一下：你描述的情况包含几个典型要素：①公开贬低 ②事后否认 ③利用你的善意。这种组合本身就是一种操控行为，不是你的问题。',
+  '从你的描述看，对方很擅长制造"愧疚感"来让你顺从。这是一种情感操控手段，叫做"情感勒索"。你需要知道：这不是正常的职场关系。',
+];
+
+const ACTION_RESPONSES = [
+  '针对你描述的情况，我有一个建议：记录每一次关键对话，包括时间、地点、对方说了什么、你怎么回应的。保留证据是保护自己的第一步。',
+  '我的建议是：下次遇到类似情况，试着用一句简单的话设立边界，比如："我理解您的想法，但这件事我需要考虑一下，明天回复您。"不需要道歉，不需要解释原因。',
+  '一个立即可执行的建议：把今晚的事记录到你的情绪日历里。数据积累之后，你会对自己的处境有更清晰的判断。这本身就是一种自我保护。',
+];
+
+export function getAIResponse(emotion: EmotionType, role: AiRole, _userMessage: string): string {
+  let response = EMOTION_RESPONSES[emotion] + '\n\n';
+  let pool: string[];
+  if (role === '温柔倾听者') pool = LISTENING_RESPONSES;
+  else if (role === '理性分析师') pool = ANALYTICAL_RESPONSES;
+  else pool = ACTION_RESPONSES;
+  response += pool[Math.floor(Math.random() * pool.length)];
+  return response;
+}
+
+export function getPracticeFeedback(userMessage: string): { good: string; better: string; script: string } {
+  const hasBoundary = /不|无法|没法|已经|需要|想要|希望|明天|早上/.test(userMessage);
+  const isSoft = /^[好的明白知道了可以好 ]+$/.test(userMessage.trim()) && userMessage.length < 15;
+
+  if (hasBoundary && userMessage.length > 10) {
+    return {
+      good: '很好！你清晰地表达了边界，同时没有激化矛盾。',
+      better: '可以更具体一点，比如明确说明你能接受的时间和方式。',
+      script: '可以说："我今天有事，最晚可以到X点。明天一早我会第一时间处理，您看这样可以吗？"',
+    };
+  } else if (isSoft) {
+    return {
+      good: '你的回应友善，这很好。',
+      better: '不过，适当设立边界不会让关系变差，反而会让对方更尊重你。试着加入你的底线。',
+      script: '可以在后面加一句："当然，如果真的很紧急，可以打电话给我。"既设了边界，又表达了灵活性。',
+    };
+  } else {
+    return {
+      good: '你的感受是对的，面对这种情况感到为难很正常。',
+      better: '试试用"先接住情绪，再给边界"的方式。不要直接说"不"，但要清晰表达你能接受的范围。',
+      script: '试试这个："我理解这个需求很急（接住情绪）。我今天的情况是XX（说明边界），但我可以明天一早处理，您看可以吗？"',
+    };
+  }
+}
+
+export function formatDate(dateStr: string): string {
+  return new Date(dateStr).toLocaleDateString('zh-CN', {
+    year: 'numeric', month: 'long', day: 'numeric',
+  });
+}
+
+export function formatTime(ts: number): string {
+  const diff = Date.now() - ts;
+  const mins = Math.floor(diff / 60000);
+  const hours = Math.floor(diff / 3600000);
+  const days = Math.floor(diff / 86400000);
+  if (mins < 1) return '刚刚';
+  if (mins < 60) return `${mins}分钟前`;
+  if (hours < 24) return `${hours}小时前`;
+  if (days < 7) return `${days}天前`;
+  return new Date(ts).toLocaleDateString('zh-CN', { month: 'short', day: 'numeric' });
+}
+
+export function generateId(): string {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+}

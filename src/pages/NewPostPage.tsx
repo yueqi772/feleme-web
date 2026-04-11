@@ -1,1 +1,126 @@
-aW1wb3J0IHsgdXNlU3RhdGUgfSBmcm9tICdyZWFjdCc7CmltcG9ydCB7IHVzZUFwcCB9IGZyb20gJy4uL2NvbnRleHQvQXBwQ29udGV4dCc7CmltcG9ydCB7IFBVQV9UWVBFX0NPTE9SUyB9IGZyb20gJy4uL2RhdGEnOwppbXBvcnQgdHlwZSB7IEluZHVzdHJ5LCBXb3JrWWVhcnMsIFB1YVR5cGUsIFBvc3RUeXBlIH0gZnJvbSAnLi4vdHlwZXMnOwoKaW50ZXJmYWNlIE5ld1Bvc3RQYWdlUHJvcHMgewogIG9uTmF2aWdhdGU6IChwYWdlOiBzdHJpbmcsIHBhcmFtcz86IFJlY29yZDxzdHJpbmcsIHVua25vd24+KSA9PiB2b2lkOwp9Cgpjb25zdCBJTkRVU1RSSUVTOiBJbmR1c3RyeVtdID0gWyfkupLogZTnvZEnLCAn5pWZ6IKyJywgJ+mHkeiejScsICfljLvnlpcnLCAn5YW25LuWJ107CmNvbnN0IFdPUktfWUVBUlM6IFdvcmtZZWFyc1tdID0gWycx5bm05Lul5YaFJywgJzEtM+W5tCcsICczLTXlubQnLCAnNeW5tOS7peS4iiddOwpjb25zdCBQT1NUX1RZUEVTOiBQb3N0VHlwZVtdID0gWyflkJDmp70nLCAn57uP6aqMJywgJ+axguWKqSddOwpjb25zdCBQVUFfVEFHUzogUHVhVHlwZVtdID0gWyfnlLvlpKfppbwnLCAn54Wk5rCU54Gv5pWI5bqUJywgJ+aDheaEn+WLkue0oicsICfovrnnlYzkvrXniq8nLCAn5ZCm5a6a5Lu35YC8J107CgpleHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBOZXdQb3N0UGFnZSh7IG9uTmF2aWdhdGUgfTogTmV3UG9zdFBhZ2VQcm9wcykgewogIGNvbnN0IHsgYWRkUG9zdCwgdXNlckluZHVzdHJ5LCB1c2VyV29ya1llYXJzLCB1bmxvY2tBY2hpZXZlbWVudCB9ID0gdXNlQXBwKCk7CiAgY29uc3QgW3Bvc3RUeXBlLCBzZXRQb3N0VHlwZV0gPSB1c2VTdGF0ZTxQb3N0VHlwZT4oJ+WQkOanvScpOwogIGNvbnN0IFtpbmR1c3RyeSwgc2V0SW5kdXN0cnldID0gdXNlU3RhdGU8SW5kdXN0cnk+KHVzZXJJbmR1c3RyeSk7CiAgY29uc3QgW3dvcmtZZWFycywgc2V0V29ya1llYXJzXSA9IHVzZVN0YXRlPFdvcmtZZWFycz4odXNlcldvcmtZZWFycyk7CiAgY29uc3QgW3RpdGxlLCBzZXRUaXRsZV0gPSB1c2VTdGF0ZSgnJyk7CiAgY29uc3QgW2NvbnRlbnQsIHNldENvbnRlbnRdID0gdXNlU3RhdGUoJycpOwogIGNvbnN0IFt0YWdzLCBzZXRUYWdzXSA9IHVzZVN0YXRlPFB1YVR5cGVbXT4oW10pOwoKICBmdW5jdGlvbiBzdWJtaXQoKSB7CiAgICBpZiAoIXRpdGxlLnRyaW0oKSB8fCAhY29udGVudC50cmltKCkpIHJldHVybjsKICAgIGNvbnN0IHBvc3QgPSB7CiAgICAgIGlkOiBEYXRlLm5vdygpLnRvU3RyaW5nKDM2KSwKICAgICAgdHlwZTogcG9zdFR5cGUsCiAgICAgIGluZHVzdHJ5LAogICAgICB3b3JrWWVhcnMsCiAgICAgIHRpdGxlLAogICAgICBjb250ZW50LAogICAgICB0YWdzLAogICAgICBsaWtlczogMCwKICAgICAgcmVzb25hbmNlczogMCwKICAgICAgY29tbWVudHM6IDAsCiAgICAgIHRpbWVzdGFtcDogRGF0ZS5ub3coKSwKICAgIH07CiAgICBhZGRQb3N0KHBvc3QpOwogICAgdW5sb2NrQWNoaWV2ZW1lbnQoJ2E0Jyk7CiAgICBvbk5hdmlnYXRlKCdjb21tdW5pdHknKTsKICB9CgogIHJldHVybiAoCiAgICA8ZGl2IGNsYXNzTmFtZT0ibWluLWgtc2NyZWVuIGJnLWdyYXktNTAiPgogICAgICA8ZGl2IGNsYXNzTmFtZT0id3gtbmF2LWJhciBiZy13aGl0ZSBmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW4gcHgtNCBweS0yIj4KICAgICAgICA8YnV0dG9uIG9uQ2xpY2s9eygpID0+IG9uTmF2aWdhdGUoJ2NvbW11bml0eScpfSBjbGFzc05hbWU9InRleHQtZ3JheS00MDAgdGV4dC1zbSI+5Y+W5raIPC9idXR0b24+CiAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJ0ZXh0LXNtIGZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTcwMCI+5Y+R5biD5biW5a2QPC9zcGFuPgogICAgICAgIDxidXR0b24gb25DbGljaz17c3VibWl0fSBkaXNhYmxlZD17IXRpdGxlLnRyaW0oKSB8fCAhY29udGVudC50cmltKCl9IGNsYXNzTmFtZT0idGV4dC1icmFuZC01MDAgdGV4dC1zbSBmb250LXNlbWlib2xkIGRpc2FibGVkOm9wYWNpdHktNDAiPuWPkeW4gzwvYnV0dG9uPgogICAgICA8L2Rpdj4KCiAgICAgIDxkaXYgY2xhc3NOYW1lPSJweC00IHNwYWNlLXktNCBwdC00IHBiLTgiPgogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJjYXJkIj4KICAgICAgICAgIDxwIGNsYXNzTmFtZT0idGV4dC14cyBmb250LXNlbWlib2xkIHRleHQtZ3JheS03MDAgbWItMiI+5biW5a2Q57G75Z6LPC9wPgogICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImZsZXggZ2FwLTIiPgogICAgICAgICAgICB7UE9TVF9UWVBFUy5tYXAodCA9PiB7CiAgICAgICAgICAgICAgY29uc3QgaWNvbnM6IFJlY29yZDxQb3N0VHlwZSwgc3RyaW5nPiA9IHsgJ+WQkOanvSc6ICfwn5OiJywgJ+e7j+mqjCc6ICfwn5KhJywgJ+axguWKqSc6ICfinZMnIH07CiAgICAgICAgICAgICAgcmV0dXJuICgKICAgICAgICAgICAgICAgIDxidXR0b24KICAgICAgICAgICAgICAgICAga2V5PXt0fQogICAgICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBzZXRQb3N0VHlwZSh0KX0KICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lPXtgZmxleC0xIHB5LTIgcm91bmRlZC14bCB0ZXh0LXNtIGJvcmRlci0yIHRyYW5zaXRpb24tY29sb3JzICR7cG9zdFR5cGUgPT09IHQgPyAnYm9yZGVyLWJyYW5kLTQwMCBiZy1icmFuZC01MCB0ZXh0LWJyYW5kLTcwMCcgOiAnYm9yZGVyLWdyYXktMjAwIHRleHQtZ3JheS00MDAnfWB9CiAgICAgICAgICAgICAgICA+CiAgICAgICAgICAgICAgICAgIHtpY29uc1t0XX17dH0KICAgICAgICAgICAgICAgIDwvYnV0dG9uPgogICAgICAgICAgICAgICk7CiAgICAgICAgICAgIH0pfQogICAgICAgICAgPC9kaXY+CiAgICAgICAgPC9kaXY+CgogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJjYXJkIj4KICAgICAgICAgIDxwIGNsYXNzTmFtZT0idGV4dC14cyBmb250LXNlbWlib2xkIHRleHQtZ3JheS03MDAgbWItMiI+5L2g55qE6Lqr5Lu977yI5qih57OK5pi+56S677yJPC9wPgogICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImZsZXggZ2FwLTIiPgogICAgICAgICAgICA8c2VsZWN0IHZhbHVlPXtpbmR1c3RyeX0gb25DaGFuZ2U9e2UgPT4gc2V0SW5kdXN0cnkoZS50YXJnZXQudmFsdWUgYXMgSW5kdXN0cnkpfSBjbGFzc05hbWU9ImZsZXgtMSBiZy1ncmF5LTUwIHJvdW5kZWQteGwgcHgtMyBweS0yIHRleHQtc20iPgogICAgICAgICAgICAgIHtJTkRVU1RSSUVTLm1hcChpID0+IDxvcHRpb24ga2V5PXtpfSB2YWx1ZT17aX0+e2l9PC9vcHRpb24+KX0KICAgICAgICAgICAgPC9zZWxlY3Q+CiAgICAgICAgICAgIDxzZWxlY3QgdmFsdWU9e3dvcmtZZWFyc30gb25DaGFuZ2U9e2UgPT4gc2V0V29ya1llYXJzKGUudGFyZ2V0LnZhbHVlIGFzIFdvcmtZZWFycyl9IGNsYXNzTmFtZT0iZmxleC0xIGJnLWdyYXktNTAgcm91bmRlZC14bCBweC0zIHB5LTIgdGV4dC1zbSI+CiAgICAgICAgICAgICAge1dPUktfWUVBUlMubWFwKHkgPT4gPG9wdGlvbiBrZXk9e3l9IHZhbHVlPXt5fT57eX08L29wdGlvbj4pfQogICAgICAgICAgICA8L3NlbGVjdD4KICAgICAgICAgIDwvZGl2PgogICAgICAgICAgPHAgY2xhc3NOYW1lPSJ0ZXh0LXhzIHRleHQtZ3JheS00MDAgbXQtMS41Ij7ihpIg5bCG5pi+56S65Li6ICJ7aW5kdXN0cnl9wrd7d29ya1llYXJzfSI8L3A+CiAgICAgICAgPC9kaXY+CgogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJjYXJkIj4KICAgICAgICAgIDxpbnB1dAogICAgICAgICAgICB2YWx1ZT17dGl0bGV9CiAgICAgICAgICAgIG9uQ2hhbmdlPXtlID0+IHNldFRpdGxlKGUudGFyZ2V0LnZhbHVlLnNsaWNlKDAsIDMwKSl9CiAgICAgICAgICAgIHBsYWNlaG9sZGVyPSLlhpnkuKrmoIfpopguLi7vvIgzMOWtl+WGhe+8iSIKICAgICAgICAgICAgY2xhc3NOYW1lPSJ3LWZ1bGwgYmctdHJhbnNwYXJlbnQgdGV4dC1zbSBmb250LXNlbWlib2xkIHRleHQtZ3JheS04MDAgcGxhY2Vob2xkZXItZ3JheS0zMDAgZm9jdXM6b3V0bGluZS1ub25lIgogICAgICAgICAgLz4KICAgICAgICAgIDxwIGNsYXNzTmFtZT0idGV4dC14cyB0ZXh0LWdyYXktNDAwIHRleHQtcmlnaHQiPnt0aXRsZS5sZW5ndGh9LzMwPC9wPgogICAgICAgIDwvZGl2PgoKICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iY2FyZCI+CiAgICAgICAgICA8dGV4dGFyZWEKICAgICAgICAgICAgdmFsdWU9e2NvbnRlbnR9CiAgICAgICAgICAgIG9uQ2hhbmdlPXtlID0+IHNldENvbnRlbnQoZS50YXJnZXQudmFsdWUpfQogICAgICAgICAgICBwbGFjZWhvbGRlcj0i6K+06K+05L2g55qE5pWF5LqLLi4u77yIMTAwMOWtl+WGhe+8iSIKICAgICAgICAgICAgbWF4TGVuZ3RoPXsxMDAwfQogICAgICAgICAgICByb3dzPXs4fQogICAgICAgICAgICBjbGFzc05hbWU9InctZnVsbCBiZy10cmFuc3BhcmVudCB0ZXh0LXNtIHRleHQtZ3JheS03MDAgcGxhY2Vob2xkZXItZ3JheS0zMDAgcmVzaXplLW5vbmUgZm9jdXM6b3V0bGluZS1ub25lIgogICAgICAgICAgLz4KICAgICAgICAgIDxwIGNsYXNzTmFtZT0idGV4dC14cyB0ZXh0LWdyYXktNDAwIHRleHQtcmlnaHQiPntjb250ZW50Lmxlbmd0aH0vMTAwMDwvcD4KICAgICAgICA8L2Rpdj4KCiAgICAgICAgPGRpdiBjbGFzc05hbWU9ImNhcmQiPgogICAgICAgICAgPHAgY2xhc3NOYW1lPSJ0ZXh0LXhzIGZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTcwMCBtYi0yIj7ogYzlnLrljovlipvnsbvlnovvvIjlj6/lpJrpgInvvIk8L3A+CiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleCBmbGV4LXdyYXAgZ2FwLTIiPgogICAgICAgICAgICB7UFVBX1RBR1MubWFwKHQgPT4gewogICAgICAgICAgICAgIGNvbnN0IGluZm8gPSBQVUFfVFlQRV9DT0xPUlNbdF07CiAgICAgICAgICAgICAgcmV0dXJuICgKICAgICAgICAgICAgICAgIDxidXR0b24KICAgICAgICAgICAgICAgICAga2V5PXt0fQogICAgICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBzZXRUYWdzKHRzID0+IHRzLmluY2x1ZGVzKHQpID8gdHMuZmlsdGVyKHggPT4geCAhPT0gdCkgOiBbLi4udHMsIHRdKX0KICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lPXtgdGFnIHRyYW5zaXRpb24tY29sb3JzICR7dGFncy5pbmNsdWRlcyh0KSA/IGAke2luZm8uYmd9ICR7aW5mby50ZXh0fSByaW5nLTEgcmluZy1jdXJyZW50YCA6ICdiZy1ncmF5LTEwMCB0ZXh0LWdyYXktNDAwJ31gfQogICAgICAgICAgICAgICAgPgogICAgICAgICAgICAgICAgICB7aW5mby5lbW9qaX0ge3R9CiAgICAgICAgICAgICAgICA8L2J1dHRvbj4KICAgICAgICAgICAgICApOwogICAgICAgICAgICB9KX0KICAgICAgICAgIDwvZGl2PgogICAgICAgIDwvZGl2PgogICAgICA8L2Rpdj4KICAgIDwvZGl2PgogICk7Cn0K
+import { useState } from 'react';
+import { useApp } from '../context/AppContext';
+import { PUA_TYPE_COLORS } from '../data';
+import type { Industry, WorkYears, PuaType, PostType } from '../types';
+
+interface NewPostPageProps {
+  onNavigate: (page: string, params?: Record<string, unknown>) => void;
+}
+
+const INDUSTRIES: Industry[] = ['互联网', '教育', '金融', '医疗', '其他'];
+const WORK_YEARS: WorkYears[] = ['1年以内', '1-3年', '3-5年', '5年以上'];
+const POST_TYPES: PostType[] = ['吐槽', '经验', '求助'];
+const PUA_TAGS: PuaType[] = ['画大饼', '煤气灯效应', '情感勒索', '边界侵犯', '否定价值'];
+
+export default function NewPostPage({ onNavigate }: NewPostPageProps) {
+  const { addPost, userIndustry, userWorkYears, unlockAchievement } = useApp();
+  const [postType, setPostType] = useState<PostType>('吐槽');
+  const [industry, setIndustry] = useState<Industry>(userIndustry);
+  const [workYears, setWorkYears] = useState<WorkYears>(userWorkYears);
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [tags, setTags] = useState<PuaType[]>([]);
+
+  function submit() {
+    if (!title.trim() || !content.trim()) return;
+    const post = {
+      id: Date.now().toString(36),
+      type: postType,
+      industry,
+      workYears,
+      title,
+      content,
+      tags,
+      likes: 0,
+      resonances: 0,
+      comments: 0,
+      timestamp: Date.now(),
+    };
+    addPost(post);
+    unlockAchievement('a4');
+    onNavigate('community');
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <div className="wx-nav-bar bg-white flex items-center justify-between px-4 py-2">
+        <button onClick={() => onNavigate('community')} className="text-gray-400 text-sm">取消</button>
+        <span className="text-sm font-semibold text-gray-700">发布帖子</span>
+        <button onClick={submit} disabled={!title.trim() || !content.trim()} className="text-brand-500 text-sm font-semibold disabled:opacity-40">发布</button>
+      </div>
+
+      <div className="px-4 space-y-4 pt-4 pb-8">
+        <div className="card">
+          <p className="text-xs font-semibold text-gray-700 mb-2">帖子类型</p>
+          <div className="flex gap-2">
+            {POST_TYPES.map(t => {
+              const icons: Record<PostType, string> = { '吐槽': '📢', '经验': '💡', '求助': '❓' };
+              return (
+                <button
+                  key={t}
+                  onClick={() => setPostType(t)}
+                  className={`flex-1 py-2 rounded-xl text-sm border-2 transition-colors ${postType === t ? 'border-brand-400 bg-brand-50 text-brand-700' : 'border-gray-200 text-gray-400'}`}
+                >
+                  {icons[t]}{t}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="card">
+          <p className="text-xs font-semibold text-gray-700 mb-2">你的身份（模糊显示）</p>
+          <div className="flex gap-2">
+            <select value={industry} onChange={e => setIndustry(e.target.value as Industry)} className="flex-1 bg-gray-50 rounded-xl px-3 py-2 text-sm">
+              {INDUSTRIES.map(i => <option key={i} value={i}>{i}</option>)}
+            </select>
+            <select value={workYears} onChange={e => setWorkYears(e.target.value as WorkYears)} className="flex-1 bg-gray-50 rounded-xl px-3 py-2 text-sm">
+              {WORK_YEARS.map(y => <option key={y} value={y}>{y}</option>)}
+            </select>
+          </div>
+          <p className="text-xs text-gray-400 mt-1.5">→ 将显示为 "{industry}·{workYears}"</p>
+        </div>
+
+        <div className="card">
+          <input
+            value={title}
+            onChange={e => setTitle(e.target.value.slice(0, 30))}
+            placeholder="写个标题...（30字内）"
+            className="w-full bg-transparent text-sm font-semibold text-gray-800 placeholder-gray-300 focus:outline-none"
+          />
+          <p className="text-xs text-gray-400 text-right">{title.length}/30</p>
+        </div>
+
+        <div className="card">
+          <textarea
+            value={content}
+            onChange={e => setContent(e.target.value)}
+            placeholder="说说你的故事...（1000字内）"
+            maxLength={1000}
+            rows={8}
+            className="w-full bg-transparent text-sm text-gray-700 placeholder-gray-300 resize-none focus:outline-none"
+          />
+          <p className="text-xs text-gray-400 text-right">{content.length}/1000</p>
+        </div>
+
+        <div className="card">
+          <p className="text-xs font-semibold text-gray-700 mb-2">职场压力类型（可多选）</p>
+          <div className="flex flex-wrap gap-2">
+            {PUA_TAGS.map(t => {
+              const info = PUA_TYPE_COLORS[t];
+              return (
+                <button
+                  key={t}
+                  onClick={() => setTags(ts => ts.includes(t) ? ts.filter(x => x !== t) : [...ts, t])}
+                  className={`tag transition-colors ${tags.includes(t) ? `${info.bg} ${info.text} ring-1 ring-current` : 'bg-gray-100 text-gray-400'}`}
+                >
+                  {info.emoji} {t}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

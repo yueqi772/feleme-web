@@ -1,1 +1,64 @@
-LyoqCiAqIENsb3VkQmFzZSDkupHlh73mlbAgSFRUUCDosIPnlKjlsYLvvIhINS/lsI/nqIvluo/pgJrnlKjvvIkKICog6ZuG5ZCI5ZG95ZCN6KeE6IyD77yaZmVsZW1lX3tjb2xsZWN0aW9ufQogKgogKiDkvb/nlKjmlrnlvI/vvJoKICogICBpbXBvcnQgeyB0Y2IgfSBmcm9tICdAL2Nsb3VkL3RjYic7CiAqICAgYXdhaXQgdGNiLmNvbGxlY3Rpb24oJ3Rlc3RIaXN0b3J5JywgJ2FkZCcsIHsgc2NvcmU6IDg1IH0pOwogKiAgIGF3YWl0IHRjYi5jb2xsZWN0aW9uKCd0ZXN0SGlzdG9yeScsICdsaXN0Jyk7CiAqLwoKZXhwb3J0IGludGVyZmFjZSBUY2JSZXNwb25zZTxUID0gdW5rbm93bj4gewogIHN1Y2Nlc3M6IGJvb2xlYW47CiAgZGF0YT86IFQ7CiAgZXJyb3I/OiBzdHJpbmc7CiAgbGlzdD86IFRbXTsKICBpZD86IHN0cmluZzsKICB1cGRhdGVkPzogbnVtYmVyOwogIHJlbW92ZWQ/OiBudW1iZXI7CiAgYWN0aW9uPzogc3RyaW5nOwp9Cgpjb25zdCBDTE9VREJBU0VfRU5WID0gJ2Nsb3VkYmFzZS0zZzIyYzljZTViY2YwZTU1JzsKY29uc3QgVENCX0hUVFBfQkFTRSA9IGBodHRwczovLyR7Q0xPVURCQVNFX0VOVn0uc2VydmljZS5jbG91ZGJhc2UuY25gOwoKY29uc3QgSEVBREVSUyA9IHsgJ0NvbnRlbnQtVHlwZSc6ICdhcHBsaWNhdGlvbi9qc29uJywgJ3NvdXJjZSc6ICdoNS13ZWJ2aWV3JyB9OwoKYXN5bmMgZnVuY3Rpb24gY2FsbEZ1bmN0aW9uKG5hbWU6IHN0cmluZywgZGF0YTogUmVjb3JkPHN0cmluZywgdW5rbm93bj4pOiBQcm9taXNlPFRjYlJlc3BvbnNlPiB7CiAgdHJ5IHsKICAgIGNvbnN0IHJlcyA9IGF3YWl0IGZldGNoKGAke1RDQl9IVFRQX0JBU0V9LyR7bmFtZX1gLCB7CiAgICAgIG1ldGhvZDogJ1BPU1QnLCBoZWFkZXJzOiBIRUFERVJTLCBib2R5OiBKU09OLnN0cmluZ2lmeShkYXRhKSwKICAgIH0pOwogICAgaWYgKCFyZXMub2spIHRocm93IG5ldyBFcnJvcihgSFRUUCAke3Jlcy5zdGF0dXN9YCk7CiAgICByZXR1cm4gYXdhaXQgcmVzLmpzb24oKTsKICB9IGNhdGNoIChlcnI6IGFueSkgewogICAgY29uc29sZS5lcnJvcihgW2Nsb3VkXSAke25hbWV9IGVycm9yOmAsIGVycik7CiAgICByZXR1cm4geyBzdWNjZXNzOiBmYWxzZSwgZXJyb3I6IGVyci5tZXNzYWdlIHx8ICfnvZHnu5zor7fmsYLlpLHotKUnIH07CiAgfQp9CgpleHBvcnQgYXN5bmMgZnVuY3Rpb24gY29sbGVjdGlvbigKICBjb2xsZWN0aW9uOiBzdHJpbmcsIGFjdGlvbjogc3RyaW5nLCBkYXRhPzogUmVjb3JkPHN0cmluZywgdW5rbm93bj4sCiAgcXVlcnk/OiBSZWNvcmQ8c3RyaW5nLCB1bmtub3duPiwgb3BlbmlkID0gJycsIGxpbWl0ID0gMjAsIHNraXAgPSAwCik6IFByb21pc2U8VGNiUmVzcG9uc2U+IHsKICByZXR1cm4gY2FsbEZ1bmN0aW9uKCd0Y2InLCB7IGNvbGxlY3Rpb24sIGFjdGlvbiwgZGF0YSwgcXVlcnksIG9wZW5pZCwgbGltaXQsIHNraXAgfSk7Cn0KCmV4cG9ydCBjb25zdCB0ZXN0SGlzdG9yeSA9IHsKICBhZGQocjogUmVjb3JkPHN0cmluZywgdW5rbm93bj4pIHsgcmV0dXJuIGNvbGxlY3Rpb24oJ3Rlc3RIaXN0b3J5JywgJ2FkZCcsIHIpOyB9LAogIGxpc3QobCA9IDIwLCBzID0gMCkgeyByZXR1cm4gY29sbGVjdGlvbigndGVzdEhpc3RvcnknLCAnbGlzdCcsIHVuZGVmaW5lZCwgdW5kZWZpbmVkLCAnJywgbCwgcyk7IH0sCn07CgpleHBvcnQgY29uc3QgZGlhcmllcyA9IHsKICBhZGQocjogUmVjb3JkPHN0cmluZywgdW5rbm93bj4pIHsgcmV0dXJuIGNvbGxlY3Rpb24oJ2RpYXJpZXMnLCAnYWRkJywgcik7IH0sCiAgbGlzdChsID0gMjAsIHMgPSAwKSB7IHJldHVybiBjb2xsZWN0aW9uKCdkaWFyaWVzJywgJ2xpc3QnLCB1bmRlZmluZWQsIHVuZGVmaW5lZCwgJycsIGwsIHMpOyB9LAp9OwoKZXhwb3J0IGNvbnN0IHBvc3RzID0gewogIGFkZChyOiBSZWNvcmQ8c3RyaW5nLCB1bmtub3duPikgeyByZXR1cm4gY29sbGVjdGlvbigncG9zdHMnLCAnYWRkJywgcik7IH0sCiAgbGlzdChsID0gMjAsIHMgPSAwKSB7IHJldHVybiBjb2xsZWN0aW9uKCdwb3N0cycsICdsaXN0QWxsJywgdW5kZWZpbmVkLCB1bmRlZmluZWQsICcnLCBsLCBzKTsgfSwKfTsKCmV4cG9ydCBhc3luYyBmdW5jdGlvbiBpbml0VXNlcihkYXRhOiB7IG9wZW5pZDogc3RyaW5nOyBuaWNrbmFtZT86IHN0cmluZzsgYXZhdGFyVXJsPzogc3RyaW5nIH0pIHsKICByZXR1cm4gY2FsbEZ1bmN0aW9uKCdpbml0VXNlcicsIGRhdGEpOwp9Cg==
+/**
+ * CloudBase 云函数 HTTP 调用层（H5/小程序通用）
+ * 集合命名规范：feleme_{collection}
+ *
+ * 使用方式：
+ *   import { tcb } from '@/cloud/tcb';
+ *   await tcb.collection('testHistory', 'add', { score: 85 });
+ *   await tcb.collection('testHistory', 'list');
+ */
+
+export interface TcbResponse<T = unknown> {
+  success: boolean;
+  data?: T;
+  error?: string;
+  list?: T[];
+  id?: string;
+  updated?: number;
+  removed?: number;
+  action?: string;
+}
+
+const CLOUDBASE_ENV = 'cloudbase-3g22c9ce5bcf0e55';
+const TCB_HTTP_BASE = `https://${CLOUDBASE_ENV}.service.cloudbase.cn`;
+
+const HEADERS = { 'Content-Type': 'application/json', 'source': 'h5-webview' };
+
+async function callFunction(name: string, data: Record<string, unknown>): Promise<TcbResponse> {
+  try {
+    const res = await fetch(`${TCB_HTTP_BASE}/${name}`, {
+      method: 'POST', headers: HEADERS, body: JSON.stringify(data),
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  } catch (err: any) {
+    console.error(`[cloud] ${name} error:`, err);
+    return { success: false, error: err.message || '网络请求失败' };
+  }
+}
+
+export async function collection(
+  collection: string, action: string, data?: Record<string, unknown>,
+  query?: Record<string, unknown>, openid = '', limit = 20, skip = 0
+): Promise<TcbResponse> {
+  return callFunction('tcb', { collection, action, data, query, openid, limit, skip });
+}
+
+export const testHistory = {
+  add(r: Record<string, unknown>) { return collection('testHistory', 'add', r); },
+  list(l = 20, s = 0) { return collection('testHistory', 'list', undefined, undefined, '', l, s); },
+};
+
+export const diaries = {
+  add(r: Record<string, unknown>) { return collection('diaries', 'add', r); },
+  list(l = 20, s = 0) { return collection('diaries', 'list', undefined, undefined, '', l, s); },
+};
+
+export const posts = {
+  add(r: Record<string, unknown>) { return collection('posts', 'add', r); },
+  list(l = 20, s = 0) { return collection('posts', 'listAll', undefined, undefined, '', l, s); },
+};
+
+export async function initUser(data: { openid: string; nickname?: string; avatarUrl?: string }) {
+  return callFunction('initUser', data);
+}

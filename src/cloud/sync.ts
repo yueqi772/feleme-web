@@ -15,15 +15,19 @@ import cloudbase from '@cloudbase/js-sdk';
 // ─── 云开发配置 ──────────────────────────────────────────
 const ENV_ID = 'cloudbase-3g22c9ce5bcf0e55';
 
-// 延迟初始化，避免 SSR 报错
-let _app: ReturnType<typeof cloudbase> | null = null;
-let _db: ReturnType<ReturnType<typeof cloudbase>['database']> | null = null;
-let _sdkReady = false;
+type CloudbaseApp = ReturnType<typeof cloudbase.init>;
+type CloudbaseDb = ReturnType<CloudbaseApp['database']>;
 
-function getDb() {
+// 延迟初始化，避免 SSR 报错
+let _app: CloudbaseApp | null = null;
+let _db: CloudbaseDb | null = null;
+let _sdkReady = false;
+let _authReadyPromise: Promise<boolean> | null = null;
+
+function getDb(): CloudbaseDb | null {
   if (_db) return _db;
   try {
-    _app = cloudbase({
+    _app = cloudbase.init({
       env: ENV_ID,
     });
     _db = _app.database();
@@ -36,12 +40,68 @@ function getDb() {
   return _db;
 }
 
+async function ensureCloudAuth(): Promise<boolean> {
+  const db = getDb();
+  if (!db || !_app || !_sdkReady) return false;
+  if (_authReadyPromise) return _authReadyPromise;
+
+  _authReadyPromise = (async () => {
+    try {
+      const auth = _app!.auth();
+      const loginState = auth.hasLoginState();
+      if (loginState) {
+        console.log('[cloud sync] 已存在云开发登录态');
+        return true;
+      }
+      console.log('[cloud sync] 无登录态，开始匿名登录');
+      await auth.signInAnonymously();
+      console.log('[cloud sync] 匿名登录成功');
+      return true;
+    } catch (err) {
+      console.error('[cloud sync] 匿名登录失败:', err);
+      visualDebug(`[cloud auth fail] ${String(err).slice(0, 80)}`);
+      return false;
+    }
+  })();
+
+  const ok = await _authReadyPromise;
+  if (!ok) _authReadyPromise = null;
+  return ok;
+}
+
 // ─── postMessage 降级方案 ────────────────────────────────
-declare const wx: any;
+declare const wx: {
+  miniProgram?: {
+    postMessage: (payload: { data: { msgId: string; type: string; payload: Record<string, unknown> } }) => void;
+  };
+};
 
 let _openid = '';
 const _pending: Map<string, (data: unknown) => void> = new Map();
 let _msgSeq = 0;
+
+function visualDebug(message: string) {
+  try {
+    if (typeof window !== 'undefined' && typeof window.alert === 'function') {
+      window.alert(message);
+    }
+  } catch (err) {
+    console.warn('[cloud sync] visualDebug alert 失败', err);
+  }
+
+  try {
+    const toastMsgId = `debug_${++_msgSeq}_${Date.now()}`;
+    wx.miniProgram?.postMessage({
+      data: {
+        msgId: toastMsgId,
+        type: 'DEBUG_TOAST',
+        payload: { title: message.slice(0, 7), fullText: message },
+      },
+    });
+  } catch (err) {
+    console.warn('[cloud sync] DEBUG_TOAST 发送失败', err);
+  }
+}
 
 // 监听小程序回复（降级方案使用）
 if (typeof window !== 'undefined') {
@@ -70,7 +130,7 @@ function postToMiniProgram(type: string, payload: Record<string, unknown> = {}):
     });
 
     try {
-      (wx as any).miniProgram.postMessage({ data: { msgId, type, payload } });
+      wx.miniProgram?.postMessage({ data: { msgId, type, payload } });
       console.log(`[cloud sync] 已发送 → 小程序: ${type}`, payload);
     } catch (err) {
       clearTimeout(timer);
@@ -102,18 +162,42 @@ export async function pingMp(): Promise<boolean> {
 // ─── 通用写入（优先 SDK，降级 postMessage）────────────────
 
 async function dbAdd(collection: string, data: Record<string, unknown>): Promise<void> {
+  const finalData = { ...data, createdAt: Date.now() };
+  console.log('[cloud sync] dbAdd start', { collection, data: finalData, sdkReady: _sdkReady });
   const db = getDb();
-  if (db && _sdkReady) {
-    try {
-      await db.collection('feleme_' + collection).add({ data: { ...data, createdAt: Date.now() } });
-      console.log(`[cloud sync] SDK 写入成功: ${collection}`);
-      return;
-    } catch (e) {
-      console.warn(`[cloud sync] SDK 写入失败，降级 postMessage: ${collection}`, e);
+  if (_app && db && _sdkReady) {
+    const authOk = await ensureCloudAuth();
+    if (authOk) {
+      try {
+        const res = await _app.callFunction({
+          name: 'tcb',
+          data: {
+            collection,
+            action: 'add',
+            data: finalData,
+          },
+        });
+        const result = (res && typeof res === 'object' && 'result' in res)
+          ? (res.result as { success?: boolean; id?: string; error?: string })
+          : null;
+        if (result?.success) {
+          console.log(`[cloud sync] 云函数写入成功: ${collection}`, result);
+          visualDebug(`[fn ok] ${collection}`);
+          return;
+        }
+        console.warn(`[cloud sync] 云函数写入返回失败: ${collection}`, result);
+        visualDebug(`[fn fail:${collection}] ${result?.error || 'unknown'}`);
+      } catch (e) {
+        console.warn(`[cloud sync] 云函数写入异常，降级 postMessage: ${collection}`, e);
+        visualDebug(`[fn error:${collection}] ${String(e).slice(0, 80)}`);
+      }
+    } else {
+      visualDebug(`[auth not ready] ${collection}`);
     }
   }
-  // 降级
-  await postToMiniProgram('DB_ADD', { collection, data: { ...data, createdAt: Date.now() } });
+  console.log('[cloud sync] dbAdd fallback to postMessage', { collection, data: finalData });
+  visualDebug(`[fallback postMessage] ${collection}`);
+  await postToMiniProgram('DB_ADD', { collection, data: finalData });
 }
 
 async function dbUpdate(collection: string, query: Record<string, unknown>, data: Record<string, unknown>): Promise<void> {
@@ -173,7 +257,11 @@ export async function cloudSaveTestResult(result: Record<string, unknown>): Prom
 
 /** 存储情绪日记 */
 export async function cloudSaveDiary(diary: Record<string, unknown>): Promise<void> {
-  await dbAdd('diaries', { ...diary, localId: String(diary['id'] || '') });
+  const payload = { ...diary, localId: String(diary['id'] || '') };
+  console.log('[cloud sync] cloudSaveDiary hit', payload);
+  visualDebug('[cloud] saveDiary');
+  await dbAdd('diaries', payload);
+  console.log('[cloud sync] cloudSaveDiary done', diary['id'] || payload.localId || 'unknown');
 }
 
 /** 日记追加对话消息 */

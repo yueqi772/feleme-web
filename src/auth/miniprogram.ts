@@ -1,1 +1,36 @@
-ZXhwb3J0IGludGVyZmFjZSBNaW5pUHJvZ3JhbUxvZ2luRGF0YSB7CiAgb3BlbmlkOiBzdHJpbmc7CiAgdW5pb25pZD86IHN0cmluZzsKICBuaWNrbmFtZTogc3RyaW5nOwogIGF2YXRhcjogc3RyaW5nOwogIGdlbmRlcjogbnVtYmVyOwogIHByb3ZpbmNlOiBzdHJpbmc7CiAgY2l0eTogc3RyaW5nOwogIGZyb206ICdtaW5pcHJvZ3JhbSc7Cn0KCmV4cG9ydCBmdW5jdGlvbiBoYW5kbGVNaW5pUHJvZ3JhbUxvZ2luKCk6IE1pbmlQcm9ncmFtTG9naW5EYXRhIHwgbnVsbCB7CiAgdHJ5IHsKICAgIGNvbnN0IHBhcmFtcyA9IG5ldyBVUkxTZWFyY2hQYXJhbXMod2luZG93LmxvY2F0aW9uLnNlYXJjaCk7CiAgICBjb25zdCBmcm9tID0gcGFyYW1zLmdldCgnZnJvbScpOwogICAgY29uc3QgbXBMb2dpbiA9IHBhcmFtcy5nZXQoJ19fbXBfbG9naW4nKTsKICAgIGlmIChmcm9tICE9PSAnbWluaXByb2dyYW0nIHx8IG1wTG9naW4gIT09ICcxJykgcmV0dXJuIG51bGw7CgogICAgcmV0dXJuIHsKICAgICAgb3BlbmlkOiBkZWNvZGVVUklDb21wb25lbnQocGFyYW1zLmdldCgnb3BlbmlkJykgfHwgJycpLAogICAgICB1bmlvbmlkOiBkZWNvZGVVUklDb21wb25lbnQocGFyYW1zLmdldCgndW5pb25pZCcpIHx8ICcnKSwKICAgICAgbmlja25hbWU6IGRlY29kZVVSSUNvbXBvbmVudChwYXJhbXMuZ2V0KCduaWNrbmFtZScpIHx8ICcnKSwKICAgICAgYXZhdGFyOiBkZWNvZGVVUklDb21wb25lbnQocGFyYW1zLmdldCgnYXZhdGFyJykgfHwgJycpLAogICAgICBnZW5kZXI6IE51bWJlcihwYXJhbXMuZ2V0KCdnZW5kZXInKSB8fCAwKSwKICAgICAgcHJvdmluY2U6IGRlY29kZVVSSUNvbXBvbmVudChwYXJhbXMuZ2V0KCdwcm92aW5jZScpIHx8ICcnKSwKICAgICAgY2l0eTogZGVjb2RlVVJJQ29tcG9uZW50KHBhcmFtcy5nZXQoJ2NpdHknKSB8fCAnJyksCiAgICAgIGZyb206ICdtaW5pcHJvZ3JhbScsCiAgICB9OwogIH0gY2F0Y2ggeyByZXR1cm4gbnVsbDsgfQp9CgpleHBvcnQgZnVuY3Rpb24gaXNSdW5uaW5nSW5NaW5pUHJvZ3JhbSgpOiBib29sZWFuIHsKICB0cnkgewogICAgcmV0dXJuIG5ldyBVUkxTZWFyY2hQYXJhbXMod2luZG93LmxvY2F0aW9uLnNlYXJjaCkuZ2V0KCdmcm9tJykgPT09ICdtaW5pcHJvZ3JhbSc7CiAgfSBjYXRjaCB7IHJldHVybiBmYWxzZTsgfQp9Cg==
+export interface MiniProgramLoginData {
+  openid: string;
+  unionid?: string;
+  nickname: string;
+  avatar: string;
+  gender: number;
+  province: string;
+  city: string;
+  from: 'miniprogram';
+}
+
+export function handleMiniProgramLogin(): MiniProgramLoginData | null {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const from = params.get('from');
+    const mpLogin = params.get('__mp_login');
+    if (from !== 'miniprogram' || mpLogin !== '1') return null;
+
+    return {
+      openid: decodeURIComponent(params.get('openid') || ''),
+      unionid: decodeURIComponent(params.get('unionid') || ''),
+      nickname: decodeURIComponent(params.get('nickname') || ''),
+      avatar: decodeURIComponent(params.get('avatar') || ''),
+      gender: Number(params.get('gender') || 0),
+      province: decodeURIComponent(params.get('province') || ''),
+      city: decodeURIComponent(params.get('city') || ''),
+      from: 'miniprogram',
+    };
+  } catch { return null; }
+}
+
+export function isRunningInMiniProgram(): boolean {
+  try {
+    return new URLSearchParams(window.location.search).get('from') === 'miniprogram';
+  } catch { return false; }
+}

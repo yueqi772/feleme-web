@@ -1,1 +1,279 @@
-ZXhwb3J0IHR5cGUgTW9vZEtleSA9CiAgfCAnZXhjaXRlZCcgfCAnY29uZmlkZW50JyB8ICduZXJ2b3VzJyB8ICdjb25mdXNlZCcKICB8ICdhbnhpb3VzJyB8ICdzYWQnIHwgJ2h1bWlsaWF0ZWQnIHwgJ2lzb2xhdGVkJwogIHwgJ2dhc2xpdCcgfCAnaG9wZWZ1bCcgfCAnYW5ncnknIHwgJ3Zpb2xhdGVkJwogIHwgJ2VtcG93ZXJlZCcgfCAnYnJva2VuJyB8ICdkZXRlcm1pbmVkJzsKCmludGVyZmFjZSBNb29kQ29uZmlnIHsKICBoZWFkVGlsdDogbnVtYmVyOwogIGV5ZVN0YXRlOiAnbm9ybWFsJyB8ICdoYXBweScgfCAnc2FkJyB8ICdhbmdyeScgfCAnc2NhcmVkJyB8ICdjbG9zZWQnOwogIG1vdXRoU3RhdGU6ICduZXV0cmFsJyB8ICdzbWlsZScgfCAnZnJvd24nIHwgJ29wZW4nIHwgJ2dyaW1hY2UnIHwgJ3RlZXRoJzsKICBib2R5TGVhbjogbnVtYmVyOwogIGxlZnRBcm1BbmdsZTogbnVtYmVyOwogIHJpZ2h0QXJtQW5nbGU6IG51bWJlcjsKICBsZWZ0QXJtQmVuZDogbnVtYmVyOwogIHJpZ2h0QXJtQmVuZDogbnVtYmVyOwogIGxlZnRGaXN0OiBib29sZWFuOwogIHJpZ2h0RmlzdDogYm9vbGVhbjsKICBjb2xvcjogc3RyaW5nOwogIHNoaXJ0RGFyazogc3RyaW5nOwogIGJsdXNoOiBib29sZWFuOwogIHN3ZWF0OiBib29sZWFuOwogIHRlYXJzOiBib29sZWFuOwogIHNoYWtlOiBib29sZWFuOwogIGRyb29wOiBudW1iZXI7CiAgYXJtSGFuZzogbnVtYmVyOwogIGxhYmVsOiBzdHJpbmc7Cn0KCmNvbnN0IE1PT0Q6IFJlY29yZDxNb29kS2V5LCBNb29kQ29uZmlnPiA9IHsKICBleGNpdGVkOiAgICB7IGhlYWRUaWx0OiAtNSwgIGV5ZVN0YXRlOiAnaGFwcHknLCAgbW91dGhTdGF0ZTogJ3NtaWxlJywgICBib2R5TGVhbjogNSwgIGxlZnRBcm1BbmdsZTogLTIwLCByaWdodEFybUFuZ2xlOiAyMCwgIGxlZnRBcm1CZW5kOiAxMCwgcmlnaHRBcm1CZW5kOiAxMCwgbGVmdEZpc3Q6IGZhbHNlLCByaWdodEZpc3Q6IGZhbHNlLCBjb2xvcjogJyNmZWY5YzMnLCBzaGlydERhcms6ICcjZmRlMDQ3JywgYmx1c2g6IHRydWUsICBzd2VhdDogZmFsc2UsIHRlYXJzOiBmYWxzZSwgc2hha2U6IGZhbHNlLCBkcm9vcDogMCwgICAgYXJtSGFuZzogMCwgICBsYWJlbDogJ+WFhea7oeacn+W+hScgfSwKICBjb25maWRlbnQ6ICB7IGhlYWRUaWx0OiAwLCAgIGV5ZVN0YXRlOiAnbm9ybWFsJywgbW91dGhTdGF0ZTogJ3NtaWxlJywgICBib2R5TGVhbjogMCwgIGxlZnRBcm1BbmdsZTogLTMwLCByaWdodEFybUFuZ2xlOiAzMCwgIGxlZnRBcm1CZW5kOiAwLCAgcmlnaHRBcm1CZW5kOiAwLCAgbGVmdEZpc3Q6IGZhbHNlLCByaWdodEZpc3Q6IGZhbHNlLCBjb2xvcjogJyNiZmRiZmUnLCBzaGlydERhcms6ICcjOTNjNWZkJywgYmx1c2g6IGZhbHNlLCBzd2VhdDogZmFsc2UsIHRlYXJzOiBmYWxzZSwgc2hha2U6IGZhbHNlLCBkcm9vcDogMCwgICAgYXJtSGFuZzogMCwgICBsYWJlbDogJ+iHquS/oea7oea7oScgfSwKICBuZXJ2b3VzOiAgICB7IGhlYWRUaWx0OiA2LCAgIGV5ZVN0YXRlOiAnc2NhcmVkJywgbW91dGhTdGF0ZTogJ25ldXRyYWwnLCBib2R5TGVhbjogLTMsIGxlZnRBcm1BbmdsZTogLTYwLCByaWdodEFybUFuZ2xlOiA0MCwgIGxlZnRBcm1CZW5kOiAyMCwgcmlnaHRBcm1CZW5kOiAwLCAgbGVmdEZpc3Q6IGZhbHNlLCByaWdodEZpc3Q6IGZhbHNlLCBjb2xvcjogJyNmZWQ3YWEnLCBzaGlydERhcms6ICcjZmI5MjNjJywgYmx1c2g6IGZhbHNlLCBzd2VhdDogdHJ1ZSwgIHRlYXJzOiBmYWxzZSwgc2hha2U6IGZhbHNlLCBkcm9vcDogMCwgICAgYXJtSGFuZzogMCwgICBsYWJlbDogJ+e0p+W8oOS4jeWuiScgfSwKICBjb25mdXNlZDogICB7IGhlYWRUaWx0OiAxMiwgIGV5ZVN0YXRlOiAnc2FkJywgICAgbW91dGhTdGF0ZTogJ25ldXRyYWwnLCBib2R5TGVhbjogLTUsIGxlZnRBcm1BbmdsZTogLTQwLCByaWdodEFybUFuZ2xlOiA0MCwgIGxlZnRBcm1CZW5kOiAyMCwgcmlnaHRBcm1CZW5kOiAyMCwgbGVmdEZpc3Q6IGZhbHNlLCByaWdodEZpc3Q6IGZhbHNlLCBjb2xvcjogJyNlNWU3ZWInLCBzaGlydERhcms6ICcjOWNhM2FmJywgYmx1c2g6IGZhbHNlLCBzd2VhdDogZmFsc2UsIHRlYXJzOiBmYWxzZSwgc2hha2U6IGZhbHNlLCBkcm9vcDogMCwgICAgYXJtSGFuZzogMCwgICBsYWJlbDogJ+WbsOaDkeS4jeinoycgfSwKICBhbnhpb3VzOiAgICB7IGhlYWRUaWx0OiA1LCAgIGV5ZVN0YXRlOiAnc2NhcmVkJywgbW91dGhTdGF0ZTogJ29wZW4nLCAgICBib2R5TGVhbjogLTQsIGxlZnRBcm1BbmdsZTogLTcwLCByaWdodEFybUFuZ2xlOiA3MCwgIGxlZnRBcm1CZW5kOiAzMCwgcmlnaHRBcm1CZW5kOiAzMCwgbGVmdEZpc3Q6IGZhbHNlLCByaWdodEZpc3Q6IGZhbHNlLCBjb2xvcjogJyNmZGU2OGEnLCBzaGlydERhcms6ICcjZjU5ZTBiJywgYmx1c2g6IGZhbHNlLCBzd2VhdDogdHJ1ZSwgIHRlYXJzOiBmYWxzZSwgc2hha2U6IHRydWUsICBkcm9vcDogMC4zLCAgYXJtSGFuZzogMC4zLCBsYWJlbDogJ+eEpuiZkeS4jeWuiScgfSwKICBzYWQ6ICAgICAgICB7IGhlYWRUaWx0OiAyMCwgIGV5ZVN0YXRlOiAnc2FkJywgICAgbW91dGhTdGF0ZTogJ2Zyb3duJywgICBib2R5TGVhbjogLTEwLGxlZnRBcm1BbmdsZTogLTYwLCByaWdodEFybUFuZ2xlOiA2MCwgIGxlZnRBcm1CZW5kOiA1MCwgcmlnaHRBcm1CZW5kOiA1MCwgbGVmdEZpc3Q6IGZhbHNlLCByaWdodEZpc3Q6IGZhbHNlLCBjb2xvcjogJyNkZGQ2ZmUnLCBzaGlydERhcms6ICcjYTc4YmZhJywgYmx1c2g6IGZhbHNlLCBzd2VhdDogZmFsc2UsIHRlYXJzOiB0cnVlLCAgc2hha2U6IGZhbHNlLCBkcm9vcDogMC41LCAgYXJtSGFuZzogMC41LCBsYWJlbDogJ+mavui/h+WkseiQvScgfSwKICBodW1pbGlhdGVkOiB7IGhlYWRUaWx0OiAyNSwgIGV5ZVN0YXRlOiAnc2FkJywgICAgbW91dGhTdGF0ZTogJ2Zyb3duJywgICBib2R5TGVhbjogLTE1LGxlZnRBcm1BbmdsZTogLTkwLCByaWdodEFybUFuZ2xlOiA5MCwgIGxlZnRBcm1CZW5kOiA3MCwgcmlnaHRBcm1CZW5kOiA3MCwgbGVmdEZpc3Q6IHRydWUsICByaWdodEZpc3Q6IHRydWUsICBjb2xvcjogJyNmY2U3ZjMnLCBzaGlydERhcms6ICcjZjlhOGQ0JywgYmx1c2g6IHRydWUsICBzd2VhdDogZmFsc2UsIHRlYXJzOiB0cnVlLCAgc2hha2U6IHRydWUsICBkcm9vcDogMC44LCAgYXJtSGFuZzogMC43LCBsYWJlbDogJ+iiq+e+nui+seS6hicgfSwKICBpc29sYXRlZDogICB7IGhlYWRUaWx0OiAxOCwgIGV5ZVN0YXRlOiAnc2FkJywgICAgbW91dGhTdGF0ZTogJ25ldXRyYWwnLCBib2R5TGVhbjogLTEwLGxlZnRBcm1BbmdsZTogLTgwLCByaWdodEFybUFuZ2xlOiA4MCwgIGxlZnRBcm1CZW5kOiA2MCwgcmlnaHRBcm1CZW5kOiA2MCwgbGVmdEZpc3Q6IGZhbHNlLCByaWdodEZpc3Q6IGZhbHNlLCBjb2xvcjogJyNmM2Y0ZjYnLCBzaGlydERhcms6ICcjZDFkNWRiJywgYmx1c2g6IGZhbHNlLCBzd2VhdDogZmFsc2UsIHRlYXJzOiBmYWxzZSwgc2hha2U6IGZhbHNlLCBkcm9vcDogMC43LCAgYXJtSGFuZzogMC42LCBsYWJlbDogJ+iiq+WtpOeriycgfSwKICBnYXNsaXQ6ICAgICB7IGhlYWRUaWx0OiAxNSwgIGV5ZVN0YXRlOiAnc2FkJywgICAgbW91dGhTdGF0ZTogJ25ldXRyYWwnLCBib2R5TGVhbjogLTgsIGxlZnRBcm1BbmdsZTogLTcwLCByaWdodEFybUFuZ2xlOiA3MCwgIGxlZnRBcm1CZW5kOiA1MCwgcmlnaHRBcm1CZW5kOiA1MCwgbGVmdEZpc3Q6IGZhbHNlLCByaWdodEZpc3Q6IGZhbHNlLCBjb2xvcjogJyNmZGU2OGEnLCBzaGlydERhcms6ICcjZDk3NzA2JywgYmx1c2g6IGZhbHNlLCBzd2VhdDogZmFsc2UsIHRlYXJzOiBmYWxzZSwgc2hha2U6IGZhbHNlLCBkcm9vcDogMC42LCAgYXJtSGFuZzogMC41LCBsYWJlbDogJ+iHquaIkeaAgOeWkScgfSwKICBob3BlZnVsOiAgIHsgaGVhZFRpbHQ6IC0zLCAgZXllU3RhdGU6ICdoYXBweScsICBtb3V0aFN0YXRlOiAnc21pbGUnLCAgIGJvZHlMZWFuOiAzLCAgbGVmdEFybUFuZ2xlOiAtMTAsIHJpZ2h0QXJtQW5nbGU6IDEwLCAgbGVmdEFybUJlbmQ6IDAsICByaWdodEFybUJlbmQ6IDAsICBsZWZ0RmlzdDogZmFsc2UsIHJpZ2h0RmlzdDogZmFsc2UsIGNvbG9yOiAnI2JiZjdkMCcsIHNoaXJ0RGFyazogJyM0YWRlODAnLCBibHVzaDogdHJ1ZSwgIHN3ZWF0OiBmYWxzZSwgdGVhcnM6IGZhbHNlLCBzaGFrZTogZmFsc2UsIGRyb29wOiAwLCAgICBhcm1IYW5nOiAwLCAgIGxhYmVsOiAn5b+D5a2Y5biM5pybJyB9LAogIGFuZ3J5OiAgICAgeyBoZWFkVGlsdDogLTEwLCBleWVTdGF0ZTogJ2FuZ3J5JywgIG1vdXRoU3RhdGU6ICd0ZWV0aCcsICBib2R5TGVhbjogMTIsIGxlZnRBcm1BbmdsZTogLTk1LCByaWdodEFybUFuZ2xlOiA5NSwgIGxlZnRBcm1CZW5kOiAwLCAgcmlnaHRBcm1CZW5kOiAwLCAgbGVmdEZpc3Q6IHRydWUsICByaWdodEZpc3Q6IHRydWUsICBjb2xvcjogJyNmZWNhY2EnLCBzaGlydERhcms6ICcjZWY0NDQ0JywgYmx1c2g6IGZhbHNlLCBzd2VhdDogZmFsc2UsIHRlYXJzOiBmYWxzZSwgc2hha2U6IHRydWUsICBkcm9vcDogMCwgICAgYXJtSGFuZzogMCwgICBsYWJlbDogJ+aEpOaAkuS4jea7oScgfSwKICB2aW9sYXRlZDogIHsgaGVhZFRpbHQ6IDEyLCAgZXllU3RhdGU6ICdzY2FyZWQnLCBtb3V0aFN0YXRlOiAnb3BlbicsICAgIGJvZHlMZWFuOiAtOCwgbGVmdEFybUFuZ2xlOiAtOTAsIHJpZ2h0QXJtQW5nbGU6IDkwLCAgbGVmdEFybUJlbmQ6IDQwLCByaWdodEFybUJlbmQ6IDQwLCBsZWZ0RmlzdDogdHJ1ZSwgIHJpZ2h0RmlzdDogdHJ1ZSwgIGNvbG9yOiAnI2ZlZTJlMicsIHNoaXJ0RGFyazogJyNkYzI2MjYnLCBibHVzaDogZmFsc2UsIHN3ZWF0OiB0cnVlLCAgdGVhcnM6IGZhbHNlLCBzaGFrZTogdHJ1ZSwgIGRyb29wOiAwLjQsICBhcm1IYW5nOiAwLjQsIGxhYmVsOiAn6L6555WM6KKr5L6154qvJyB9LAogIGVtcG93ZXJlZDogeyBoZWFkVGlsdDogLTEwLCBleWVTdGF0ZTogJ2hhcHB5JywgIG1vdXRoU3RhdGU6ICdzbWlsZScsICAgYm9keUxlYW46IDAsICBsZWZ0QXJtQW5nbGU6IC04MCwgcmlnaHRBcm1BbmdsZTogODAsICBsZWZ0QXJtQmVuZDogMCwgIHJpZ2h0QXJtQmVuZDogMCwgIGxlZnRGaXN0OiBmYWxzZSwgcmlnaHRGaXN0OiBmYWxzZSwgY29sb3I6ICcjYTdmM2QwJywgc2hpcnREYXJrOiAnIzM0ZDM5OScsIGJsdXNoOiB0cnVlLCAgc3dlYXQ6IGZhbHNlLCB0ZWFyczogZmFsc2UsIHNoYWtlOiBmYWxzZSwgZHJvb3A6IDAsICAgIGFybUhhbmc6IDAsICAgbGFiZWw6ICflhYXmu6Hlipvph48nIH0sCiAgYnJva2VuOiAgICB7IGhlYWRUaWx0OiAzMCwgIGV5ZVN0YXRlOiAnc2FkJywgICAgbW91dGhTdGF0ZTogJ2Zyb3duJywgICBib2R5TGVhbjogLTE4LGxlZnRBcm1BbmdsZTogLTgwLCByaWdodEFybUFuZ2xlOiA4MCwgIGxlZnRBcm1CZW5kOiA4MCwgcmlnaHRBcm1CZW5kOiA4MCwgbGVmdEZpc3Q6IGZhbHNlLCByaWdodEZpc3Q6IGZhbHNlLCBjb2xvcjogJyNkMWQ1ZGInLCBzaGlydERhcms6ICcjOWNhM2FmJywgYmx1c2g6IGZhbHNlLCBzd2VhdDogZmFsc2UsIHRlYXJzOiB0cnVlLCAgc2hha2U6IGZhbHNlLCBkcm9vcDogMSwgICAgYXJtSGFuZzogMC45LCBsYWJlbDogJ+eyvueWsuWKm+WwvScgfSwKICBkZXRlcm1pbmVkOnsgaGVhZFRpbHQ6IC04LCAgZXllU3RhdGU6ICdhbmdyeScsICBtb3V0aFN0YXRlOiAnbmV1dHJhbCcsIGJvZHlMZWFuOiA4LCAgbGVmdEFybUFuZ2xlOiAtOTAsIHJpZ2h0QXJtQW5nbGU6IDkwLCAgbGVmdEFybUJlbmQ6IDAsICByaWdodEFybUJlbmQ6IDAsICBsZWZ0RmlzdDogdHJ1ZSwgIHJpZ2h0RmlzdDogdHJ1ZSwgIGNvbG9yOiAnI2ZlZjA4YScsIHNoaXJ0RGFyazogJyNmNTllMGInLCBibHVzaDogZmFsc2UsIHN3ZWF0OiBmYWxzZSwgdGVhcnM6IGZhbHNlLCBzaGFrZTogZmFsc2UsIGRyb29wOiAwLCAgICBhcm1IYW5nOiAwLCAgIGxhYmVsOiAn5LiL5a6a5Yaz5b+DJyB9LAp9OwoKLy8gQ2VudGVyZWQgbW91dGg6IGZhY2UgY2VudGVyIHg9NTAsIG1vdXRoIGNlbnRlcmVkIGF0IHg9NTAKLy8gRXllcyBhdCB4PTMzIChsZWZ0KSBhbmQgeD02NyAocmlnaHQpLCBzbyBtb3V0aCBzaG91bGQgYmUgYXJvdW5kIHg9NTAKCmludGVyZmFjZSBQcm9wcyB7CiAgbW9vZDogTW9vZEtleTsKICBzaXplPzogbnVtYmVyOwogIHNob3dMYWJlbD86IGJvb2xlYW47Cn0KCmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIERpZ2l0YWxIdW1hbih7IG1vb2QsIHNpemUgPSAxMjAsIHNob3dMYWJlbCA9IHRydWUgfTogUHJvcHMpIHsKICBjb25zdCBjZmcgPSBNT09EW21vb2RdIHx8IE1PT0QuY29uZmlkZW50OwoKICBjb25zdCBzaGFraW5nID0gY2ZnLnNoYWtlOwogIGNvbnN0IGNyeWluZyA9IGNmZy50ZWFyczsKCiAgcmV0dXJuICgKICAgIDxkaXYgc3R5bGU9e3sgd2lkdGg6IHNpemUsIHVzZXJTZWxlY3Q6ICdub25lJywgcG9zaXRpb246ICdyZWxhdGl2ZScgfX0+CiAgICAgIDxkaXYgc3R5bGU9e3sgYW5pbWF0aW9uOiBzaGFraW5nID8gJ2JvZHktc2hha2UgMC4yNXMgZWFzZS1pbi1vdXQgaW5maW5pdGUnIDogJ25vbmUnIH19PgogICAgICAgIDxzdmcKICAgICAgICAgIHZpZXdCb3g9IjAgMCAxMDAgMTY1IgogICAgICAgICAgd2lkdGg9e3NpemV9CiAgICAgICAgICBoZWlnaHQ9e3NpemUgKiAoMTY1IC8gMTAwKX0KICAgICAgICAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgICAgICAgIHN0eWxlPXt7IG92ZXJmbG93OiAndmlzaWJsZScgfX0KICAgICAgICA+CiAgICAgICAgICA8ZWxsaXBzZSBjeD17NTAgKyBjZmcuYm9keUxlYW4gKiAwLjR9IGN5PSIxNjEiIHJ4PXsyOCAtIGNmZy5kcm9vcCAqIDV9IHJ5PXs1IC0gY2ZnLmRyb29wICogMn0gZmlsbD0icmdiYSgwLDAsMCwwLjA4KSIgLz4KCiAgICAgICAgICA8ZyBzdHlsZT17ewogICAgICAgICAgICB0cmFuc2Zvcm1PcmlnaW46ICc1MHB4IDExOHB4JywKICAgICAgICAgICAgdHJhbnNmb3JtOiBgcm90YXRlKCR7Y2ZnLmJvZHlMZWFuICogMC4zNX1kZWcpYCwKICAgICAgICAgICAgdHJhbnNpdGlvbjogJ3RyYW5zZm9ybSAwLjZzIGN1YmljLWJlemllcigwLjM0LDEuNTYsMC42NCwxKScsCiAgICAgICAgICB9fT4KICAgICAgICAgICAgey8qIExlZ3MgKi99CiAgICAgICAgICAgIDxyZWN0IHg9IjM1IiB5PSIxMTgiIHdpZHRoPSIxMiIgaGVpZ2h0PSI0MCIgcng9IjYiIGZpbGw9e2NmZy5jb2xvcn0gLz4KICAgICAgICAgICAgPHJlY3QgeD0iNTMiIHk9IjExOCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjQwIiByeD0iNiIgZmlsbD17Y2ZnLmNvbG9yfSAvPgogICAgICAgICAgICA8ZWxsaXBzZSBjeD0iNDEiIGN5PSIxNTciIHJ4PSIxMCIgcnk9IjYiIGZpbGw9IiM0YTM3MjgiIC8+CiAgICAgICAgICAgIDxlbGxpcHNlIGN4PSI1OSIgY3k9IjE1NyIgcng9IjEwIiByeT0iNiIgZmlsbD0iIzRhMzcyOCIgLz4KCiAgICAgICAgICAgIHsvKiBCb2R5ICovfQogICAgICAgICAgICA8cmVjdCB4PSIyOCIgeT0iNjUiIHdpZHRoPSI0NCIgaGVpZ2h0PSI1NiIgcng9IjEzIiBmaWxsPXtjZmcuY29sb3J9IC8+CiAgICAgICAgICAgIDxyZWN0IHg9IjI4IiB5PSI2NSIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjU2IiByeD0iMTMiIGZpbGw9e2NmZy5zaGlydERhcmt9IG9wYWNpdHk9IjAuMTUiIC8+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00MCA2NSBMNTAgNzggTDYwIDY1IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC42IiAvPgogICAgICAgICAgICA8cmVjdCB4PSI0NiIgeT0iNjgiIHdpZHRoPSI4IiBoZWlnaHQ9IjUwIiByeD0iNCIgZmlsbD17Y2ZnLnNoaXJ0RGFya30gb3BhY2l0eT0iMC4wOCIgLz4KCiAgICAgICAgICAgIHsvKiBMRUZUIEFSTSAqL30KICAgICAgICAgICAgPGcgc3R5bGU9e3sKICAgICAgICAgICAgICB0cmFuc2Zvcm1PcmlnaW46ICcyOHB4IDcycHgnLAogICAgICAgICAgICAgIHRyYW5zZm9ybTogYHJvdGF0ZSgke2NmZy5sZWZ0QXJtQW5nbGUgKyBjZmcuYXJtSGFuZyAqIDMwICsgKGNyeWluZyA/IDEwIDogMCl9ZGVnKWAsCiAgICAgICAgICAgICAgdHJhbnNpdGlvbjogJ3RyYW5zZm9ybSAwLjZzIGN1YmljLWJlemllcigwLjM0LDEuNTYsMC42NCwxKScsCiAgICAgICAgICAgIH19PgogICAgICAgICAgICAgIDxyZWN0IHg9IjciIHk9IjY2IiB3aWR0aD0iMjMiIGhlaWdodD0iMTQiIHJ4PSI3IiBmaWxsPXtjZmcuY29sb3J9IC8+CiAgICAgICAgICAgICAgPGcgc3R5bGU9e3sKICAgICAgICAgICAgICAgIHRyYW5zZm9ybU9yaWdpbjogJzE4cHggODBweCcsCiAgICAgICAgICAgICAgICB0cmFuc2Zvcm06IGByb3RhdGUoJHtjZmcubGVmdEFybUJlbmQgKyBjZmcuYXJtSGFuZyAqIDQwICsgKGNmZy5sZWZ0RmlzdCA/IC0yMCA6IDApfWRlZylgLAogICAgICAgICAgICAgICAgdHJhbnNpdGlvbjogJ3RyYW5zZm9ybSAwLjZzIGN1YmljLWJlemllcigwLjM0LDEuNTYsMC42NCwxKScsCiAgICAgICAgICAgICAgfX0+CiAgICAgICAgICAgICAgICA8cmVjdCB4PSI4IiB5PSI3OCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjEzIiByeD0iNi41IiBmaWxsPXtjZmcuY29sb3J9IG9wYWNpdHk9IjAuOTIiIC8+CiAgICAgICAgICAgICAgICB7Y2ZnLmxlZnRGaXN0ID8gKAogICAgICAgICAgICAgICAgICA8Zz4KICAgICAgICAgICAgICAgICAgICA8Y2lyY2xlIGN4PSIxOCIgY3k9IjkzIiByPSI4IiBmaWxsPSIjZmNkOWI4IiAvPgogICAgICAgICAgICAgICAgICAgIDxyZWN0IHg9IjExIiB5PSI4NiIgd2lkdGg9IjE0IiBoZWlnaHQ9IjE0IiByeD0iNCIgZmlsbD0iI2ZjZDliOCIgLz4KICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgKSA6ICgKICAgICAgICAgICAgICAgICAgPD4KICAgICAgICAgICAgICAgICAgICA8Y2lyY2xlIGN4PSIxOCIgY3k9IjkzIiByPSI2LjUiIGZpbGw9IiNmY2Q5YjgiIC8+CiAgICAgICAgICAgICAgICAgICAge1swLDEsMiwzXS5tYXAoaSA9PiAoCiAgICAgICAgICAgICAgICAgICAgICA8ZWxsaXBzZSBrZXk9e2l9IGN4PXsxMiArIGkgKiAyLjh9IGN5PXsxMDF9IHJ4PSIyLjIiIHJ5PSIzLjUiIGZpbGw9IiNmY2Q5YjgiIC8+CiAgICAgICAgICAgICAgICAgICAgKSl9CiAgICAgICAgICAgICAgICAgIDwvPgogICAgICAgICAgICAgICAgKX0KICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDwvZz4KCiAgICAgICAgICAgIHsvKiBSSUdIVCBBUk0gKi99CiAgICAgICAgICAgIDxnIHN0eWxlPXt7CiAgICAgICAgICAgICAgdHJhbnNmb3JtT3JpZ2luOiAnNzJweCA3MnB4JywKICAgICAgICAgICAgICB0cmFuc2Zvcm06IGByb3RhdGUoJHtjZmcucmlnaHRBcm1BbmdsZSAtIGNmZy5hcm1IYW5nICogMzAgLSAoY3J5aW5nID8gMTAgOiAwKX1kZWcpYCwKICAgICAgICAgICAgICB0cmFuc2l0aW9uOiAndHJhbnNmb3JtIDAuNnMgY3ViaWMtYmV6aWVyKDAuMzQsMS41NiwwLjY0LDEpJywKICAgICAgICAgICAgfX0+CiAgICAgICAgICAgICAgPHJlY3QgeD0iNzAiIHk9IjY2IiB3aWR0aD0iMjMiIGhlaWdodD0iMTQiIHJ4PSI3IiBmaWxsPXtjZmcuY29sb3J9IC8+CiAgICAgICAgICAgICAgPGcgc3R5bGU9e3sKICAgICAgICAgICAgICAgIHRyYW5zZm9ybU9yaWdpbjogJzgycHggODBweCcsCiAgICAgICAgICAgICAgICB0cmFuc2Zvcm06IGByb3RhdGUoJHstY2ZnLnJpZ2h0QXJtQmVuZCAtIGNmZy5hcm1IYW5nICogNDAgKyAoY2ZnLnJpZ2h0RmlzdCA/IDIwIDogMCl9ZGVnKWAsCiAgICAgICAgICAgICAgICB0cmFuc2l0aW9uOiAndHJhbnNmb3JtIDAuNnMgY3ViaWMtYmV6aWVyKDAuMzQsMS41NiwwLjY0LDEpJywKICAgICAgICAgICAgICB9fT4KICAgICAgICAgICAgICAgIDxyZWN0IHg9IjcyIiB5PSI3OCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjEzIiByeD0iNi41IiBmaWxsPXtjZmcuY29sb3J9IG9wYWNpdHk9IjAuOTIiIC8+CiAgICAgICAgICAgICAgICB7Y2ZnLnJpZ2h0RmlzdCA/ICgKICAgICAgICAgICAgICAgICAgPGc+CiAgICAgICAgICAgICAgICAgICAgPGNpcmNsZSBjeD0iODIiIGN5PSI5MyIgcj0iOCIgZmlsbD0iI2ZjZDliOCIgLz4KICAgICAgICAgICAgICAgICAgICA8cmVjdCB4PSI3NSIgeT0iODYiIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCIgcng9IjQiIGZpbGw9IiNmY2Q5YjgiIC8+CiAgICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgICkgOiAoCiAgICAgICAgICAgICAgICAgIDw+CiAgICAgICAgICAgICAgICAgICAgPGNpcmNsZSBjeD0iODIiIGN5PSI5MyIgcj0iNi41IiBmaWxsPSIjZmNkOWI4IiAvPgogICAgICAgICAgICAgICAgICAgIHtbMCwxLDIsM10ubWFwKGkgPT4gKAogICAgICAgICAgICAgICAgICAgICAgPGVsbGlwc2Uga2V5PXtpfSBjeD17NzYgKyBpICogMi44fSBjeT17MTAxfSByeD0iMi4yIiByeT0iMy41IiBmaWxsPSIjZmNkOWI4IiAvPgogICAgICAgICAgICAgICAgICAgICkpfQogICAgICAgICAgICAgICAgICA8Lz4KICAgICAgICAgICAgICAgICl9CiAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CgogICAgICAgICAgICB7LyogTmVjayAqL30KICAgICAgICAgICAgPHJlY3QgeD0iNDMiIHk9IjU1IiB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHJ4PSI1IiBmaWxsPSIjZmNkOWI4IiAvPgoKICAgICAgICAgICAgey8qIEhFQUQgKi99CiAgICAgICAgICAgIDxnIHN0eWxlPXt7CiAgICAgICAgICAgICAgdHJhbnNmb3JtT3JpZ2luOiAnNTBweCA0NXB4JywKICAgICAgICAgICAgICB0cmFuc2Zvcm06IGByb3RhdGUoJHtjZmcuaGVhZFRpbHQgKyBjZmcuZHJvb3AgKiAyMH1kZWcpIHRyYW5zbGF0ZVkoJHtjZmcuZHJvb3AgKiA4fXB4KWAsCiAgICAgICAgICAgICAgdHJhbnNpdGlvbjogJ3RyYW5zZm9ybSAwLjdzIGN1YmljLWJlemllcigwLjM0LDEuNTYsMC42NCwxKScsCiAgICAgICAgICAgIH19PgogICAgICAgICAgICAgIDxjaXJjbGUgY3g9IjUwIiBjeT0iMzgiIHI9IjMzIiBmaWxsPSIjZmNkOWI4IiAvPgoKICAgICAgICAgICAgICB7LyogSGFpciAqL30KICAgICAgICAgICAgICA8cGF0aCBkPSJNMTcgMzIgUTE3IDcgNTAgNyBRODMgNyA4MyAzMiBRNzcgMTQgNTAgMTQgUTIzIDE0IDE3IDMyWiIgZmlsbD0iIzNkMjMxNCIgLz4KICAgICAgICAgICAgICA8cGF0aCBkPSJNMTcgMzggUTEzIDI3IDE4IDE5IFEyMiAyOCAyMiA0MVoiIGZpbGw9IiMzZDIzMTQiIC8+CiAgICAgICAgICAgICAgPHBhdGggZD0iTTgzIDM4IFE4NyAyNyA4MiAxOSBRNzggMjggNzggNDFaIiBmaWxsPSIjM2QyMzE0IiAvPgogICAgICAgICAgICAgIHtjZmcuZHJvb3AgPiAwLjUgJiYgKAogICAgICAgICAgICAgICAgPHBhdGggZD0iTTE3IDMyIFExMiA0NSAxNSA1NSBRMjAgNDggMjIgNDBaIiBmaWxsPSIjM2QyMzE0IiBvcGFjaXR5PSIwLjciIC8+CiAgICAgICAgICAgICAgKX0KCiAgICAgICAgICAgICAgey8qIEV5ZWJyb3dzICovfQogICAgICAgICAgICAgIDxwYXRoCiAgICAgICAgICAgICAgICBkPXtjZmcuZXllU3RhdGUgPT09ICdhbmdyeScgPyAiTTIzIDI5IEwzNyAzMyIgOiBjZmcuZXllU3RhdGUgPT09ICdzYWQnID8gIk0yMyAzMCBRMzAgMzMgMzcgMzEiIDogIk0yMyAzMSBRMzAgMjggMzcgMzEifQogICAgICAgICAgICAgICAgc3Ryb2tlPSIjM2QyMzE0IiBzdHJva2VXaWR0aD17Y2ZnLmV5ZVN0YXRlID09PSAnYW5ncnknID8gJzMnIDogJzIuNSd9IHN0cm9rZUxpbmVjYXA9InJvdW5kIiBmaWxsPSJub25lIgogICAgICAgICAgICAgIC8+CiAgICAgICAgICAgICAgPHBhdGgKICAgICAgICAgICAgICAgIGQ9e2NmZy5leWVTdGF0ZSA9PT0gJ2FuZ3J5JyA/ICJNNjMgMzMgTDc3IDI5IiA6IGNmZy5leWVTdGF0ZSA9PT0gJ3NhZCcgPyAiTTYzIDMxIFE3MCAzMyA3NyAzMCIgOiAiTTYzIDMxIFE3MCAyOCA3NyAzMSJ9CiAgICAgICAgICAgICAgICBzdHJva2U9IiMzZDIzMTQiIHN0cm9rZVdpZHRoPXtjZmcuZXllU3RhdGUgPT09ICdhbmdyeScgPyAnMycgOiAnMi41J30gc3Ryb2tlTGluZWNhcD0icm91bmQiIGZpbGw9Im5vbmUiCiAgICAgICAgICAgICAgLz4KCiAgICAgICAgICAgICAgey8qIExFRlQgRVlFICovfQogICAgICAgICAgICAgIDxlbGxpcHNlIGN4PSIzMyIgY3k9IjM5IiByeD0iNi41IiByeT0iNS41IiBmaWxsPSJ3aGl0ZSIgLz4KICAgICAgICAgICAgICB7Y2ZnLmV5ZVN0YXRlID09PSAnbm9ybWFsJyAgJiYgPGVsbGlwc2UgY3g9IjMzIiBjeT0iMzkuNSIgcng9IjQuNSIgcnk9IjUuNSIgZmlsbD0iIzFhMWEyZSIgLz59CiAgICAgICAgICAgICAge2NmZy5leWVTdGF0ZSA9PT0gJ2hhcHB5JyAgICYmIDxwYXRoIGQ9Ik0yOSAzOSBRMzMgMzQgMzcgMzkiIHN0cm9rZT0iIzFhMWEyZSIgc3Ryb2tlV2lkdGg9IjIuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlTGluZWNhcD0icm91bmQiIC8+fQogICAgICAgICAgICAgIHtjZmcuZXllU3RhdGUgPT09ICdzYWQnICAgICAmJiA8PjxlbGxpcHNlIGN4PSIzMyIgY3k9IjQwLjUiIHJ4PSI0LjUiIHJ5PSI1IiBmaWxsPSIjMWExYTJlIiAvPjxwYXRoIGQ9Ik0yOCAzMyBMMzcgMzYiIHN0cm9rZT0iIzFhMWEyZSIgc3Ryb2tlV2lkdGg9IjIiIHN0cm9rZUxpbmVjYXA9InJvdW5kIiAvPjwvPn0KICAgICAgICAgICAgICB7Y2ZnLmV5ZVN0YXRlID09PSAnYW5ncnknICAmJiA8PjxlbGxpcHNlIGN4PSIzMyIgY3k9IjQwLjUiIHJ4PSI0LjUiIHJ5PSI0LjUiIGZpbGw9IiMxYTFhMmUiIC8+PHBhdGggZD0iTTI4IDMzIEwzNyAzNiIgc3Ryb2tlPSIjMWExYTJlIiBzdHJva2VXaWR0aD0iMi41IiBzdHJva2VMaW5lY2FwPSJyb3VuZCIgLz48Lz59CiAgICAgICAgICAgICAge2NmZy5leWVTdGF0ZSA9PT0gJ3NjYXJlZCcgJiYgPD48ZWxsaXBzZSBjeD0iMzMiIGN5PSIzOSIgcng9IjciIHJ5PSI4IiBmaWxsPSIjMWExYTJlIiAvPjxjaXJjbGUgY3g9IjMzIiBjeT0iMzciIHI9IjIuNSIgZmlsbD0id2hpdGUiIC8+PC8+fQogICAgICAgICAgICAgIHtjZmcuZXllU3RhdGUgPT09ICdjbG9zZWQnICAmJiA8cGF0aCBkPSJNMjkgMzkgUTMzIDQzIDM3IDM5IiBzdHJva2U9IiMxYTFhMmUiIHN0cm9rZVdpZHRoPSIyLjUiIGZpbGw9Im5vbmUiIHN0cm9rZUxpbmVjYXA9InJvdW5kIiAvPn0KCiAgICAgICAgICAgICAgey8qIFJJR0hUIEVZRSAqL30KICAgICAgICAgICAgICA8ZWxsaXBzZSBjeD0iNjciIGN5PSIzOSIgcng9IjYuNSIgcnk9IjUuNSIgZmlsbD0id2hpdGUiIC8+CiAgICAgICAgICAgICAge2NmZy5leWVTdGF0ZSA9PT0gJ25vcm1hbCcgICYmIDxlbGxpcHNlIGN4PSI2NyIgY3k9IjM5LjUiIHJ4PSI0LjUiIHJ5PSI1LjUiIGZpbGw9IiMxYTFhMmUiIC8+fQogICAgICAgICAgICAgIHtjZmcuZXllU3RhdGUgPT09ICdoYXBweScgICYmIDxwYXRoIGQ9Ik02MyAzOSBRNjcgMzQgNzEgMzkiIHN0cm9rZT0iIzFhMWEyZSIgc3Ryb2tlV2lkdGg9IjIuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlTGluZWNhcD0icm91bmQiIC8+fQogICAgICAgICAgICAgIHtjZmcuZXllU3RhdGUgPT09ICdzYWQnICAgICYmIDw+PGVsbGlwc2UgY3g9IjY3IiBjeT0iNDAuNSIgcng9IjQuNSIgcnk9IjUiIGZpbGw9IiMxYTFhMmUiIC8+PHBhdGggZD0iTTYzIDM2IEw3MiAzMyIgc3Ryb2tlPSIjMWExYTJlIiBzdHJva2VXaWR0aD0iMiIgc3Ryb2tlTGluZWNhcD0icm91bmQiIC8+PC8+fQogICAgICAgICAgICAgIHtjZmcuZXllU3RhdGUgPT09ICdhbmdyeScgICYmIDw+PGVsbGlwc2UgY3g9IjY3IiBjeT0iNDAuNSIgcng9IjQuNSIgcnk9IjQuNSIgZmlsbD0iIzFhMWEyZSIgLz48cGF0aCBkPSJNNjMgMzYgTDcyIDMzIiBzdHJva2U9IiMxYTFhMmUiIHN0cm9rZVdpZHRoPSIyLjUiIHN0cm9rZUxpbmVjYXA9InJvdW5kIiAvPjwvPn0KICAgICAgICAgICAgICB7Y2ZnLmV5ZVN0YXRlID09PSAnc2NhcmVkJyAmJiA8PjxlbGxpcHNlIGN4PSI2NyIgY3k9IjM5IiByeD0iNyIgcnk9IjgiIGZpbGw9IiMxYTFhMmUiIC8+PGNpcmNsZSBjeD0iNjciIGN5PSIzNyIgcj0iMi41IiBmaWxsPSJ3aGl0ZSIgLz48Lz59CiAgICAgICAgICAgICAge2NmZy5leWVTdGF0ZSA9PT0gJ2Nsb3NlZCcgICYmIDxwYXRoIGQ9Ik02MyAzOSBRNjcgNDMgNzEgMzkiIHN0cm9rZT0iIzFhMWEyZSIgc3Ryb2tlV2lkdGg9IjIuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlTGluZWNhcD0icm91bmQiIC8+fQoKICAgICAgICAgICAgICB7LyogVEVBUlMgKi99CiAgICAgICAgICAgICAge2NyeWluZyAmJiAoCiAgICAgICAgICAgICAgICA8Zz4KICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTI2IDQzIFEyNCA1MCAyNSA2MCBRMjYgNjggMjQgNzUiIHN0cm9rZT0iIzYwYTVmYSIgc3Ryb2tlV2lkdGg9IjIuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlTGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuOCI+CiAgICAgICAgICAgICAgICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iZCIgdmFsdWVzPSJNMjYgNDMgUTI0IDUwIDI1IDYwIFEyNiA2OCAyNCA3NTtNMjYgNDMgUTI4IDUwIDI3IDYwIFEyNiA2OCAyOCA3NTtNMjYgNDMgUTI0IDUwIDI1IDYwIFEyNiA2OCAyNCA3NSIgZHVyPSIxLjJzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgLz4KICAgICAgICAgICAgICAgICAgPC9wYXRoPgogICAgICAgICAgICAgICAgICA8Y2lyY2xlIGN4PSIyNCIgY3k9Ijc2IiByPSIzLjUiIGZpbGw9IiM2MGE1ZmEiIG9wYWNpdHk9IjAuODUiPgogICAgICAgICAgICAgICAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9ImN5IiB2YWx1ZXM9Ijc2OzEwMDs3NiIgZHVyPSIxLjRzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgLz4KICAgICAgICAgICAgICAgICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjAuODU7MDswLjg1IiBkdXI9IjEuNHMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiAvPgogICAgICAgICAgICAgICAgICA8L2NpcmNsZT4KICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTc0IDQzIFE3NiA1MCA3NSA2MCBRNzQgNjggNzYgNzUiIHN0cm9rZT0iIzYwYTVmYSIgc3Ryb2tlV2lkdGg9IjIuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlTGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuOCI+CiAgICAgICAgICAgICAgICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iZCIgdmFsdWVzPSJNNzQgNDMgUTc2IDUwIDc1IDYwIFE3NCA2OCA3NiA3NTtNNzQgNDMgUTcyIDUwIDczIDYwIFE3NCA2OCA3MiA3NTtNNzQgNDMgUTc2IDUwIDc1IDYwIFE3NCA2OCA3NiA3NSIgZHVyPSIxLjJzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgYmVnaW49IjAuNHMiIC8+CiAgICAgICAgICAgICAgICAgIDwvcGF0aD4KICAgICAgICAgICAgICAgICAgPGNpcmNsZSBjeD0iNzYiIGN5PSI3NiIgcj0iMy41IiBmaWxsPSIjNjBhNWZhIiBvcGFjaXR5PSIwLjg1Ij4KICAgICAgICAgICAgICAgICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJjeSIgdmFsdWVzPSI3NjsxMDA7NzYiIGR1cj0iMS41cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGJlZ2luPSIwLjRzIiAvPgogICAgICAgICAgICAgICAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMC44NTswOzAuODUiIGR1cj0iMS41cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGJlZ2luPSIwLjRzIiAvPgogICAgICAgICAgICAgICAgICA8L2NpcmNsZT4KICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICApfQoKICAgICAgICAgICAgICB7LyogQmx1c2ggKi99CiAgICAgICAgICAgICAge2NmZy5ibHVzaCAmJiAoCiAgICAgICAgICAgICAgICA8PgogICAgICAgICAgICAgICAgICA8ZWxsaXBzZSBjeD0iMjAiIGN5PSI0NiIgcng9IjgiIHJ5PSI1IiBmaWxsPSIjZjg3MTcxIiBvcGFjaXR5PSIwLjM1IiAvPgogICAgICAgICAgICAgICAgICA8ZWxsaXBzZSBjeD0iODAiIGN5PSI0NiIgcng9IjgiIHJ5PSI1IiBmaWxsPSIjZjg3MTcxIiBvcGFjaXR5PSIwLjM1IiAvPgogICAgICAgICAgICAgICAgPC8+CiAgICAgICAgICAgICAgKX0KCiAgICAgICAgICAgICAgey8qIFN3ZWF0ICovfQogICAgICAgICAgICAgIHtjZmcuc3dlYXQgJiYgKAogICAgICAgICAgICAgICAgPGc+CiAgICAgICAgICAgICAgICAgIDxlbGxpcHNlIGN4PSI4MiIgY3k9IjIwIiByeD0iMy41IiByeT0iNSIgZmlsbD0iIzdkZDNmYyIgb3BhY2l0eT0iMC44NSI+CiAgICAgICAgICAgICAgICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iY3kiIHZhbHVlcz0iMjA7MTY7MjAiIGR1cj0iMS4zcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIC8+CiAgICAgICAgICAgICAgICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIwLjg1OzAuMzswLjg1IiBkdXI9IjEuM3MiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiAvPgogICAgICAgICAgICAgICAgICA8L2VsbGlwc2U+CiAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgICAgKX0KCiAgICAgICAgICAgICAgey8qIEFuZ3J5IHZlaW4gKi99CiAgICAgICAgICAgICAge2NmZy5leWVTdGF0ZSA9PT0gJ2FuZ3J5JyAmJiAoCiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNNzggMTggUTgyIDEyIDg1IDE2IFE4MiAyMCA3OCAxOFoiIGZpbGw9IiNkYzI2MjYiIG9wYWNpdHk9IjAuNyI+CiAgICAgICAgICAgICAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMC43OzAuMzswLjciIGR1cj0iMC42cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIC8+CiAgICAgICAgICAgICAgICA8L3BhdGg+CiAgICAgICAgICAgICAgKX0KCiAgICAgICAgICAgICAgey8qIE5vc2Ug4oCUIHNtYWxsIGNlbnRlcmVkICovfQogICAgICAgICAgICAgIDxwYXRoIGQ9Ik00OCA0NyBRNTAgNTAgNTIgNDciIHN0cm9rZT0iI2Q0YTg4MiIgc3Ryb2tlV2lkdGg9IjEuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlTGluZWNhcD0icm91bmQiIC8+CgogICAgICAgICAgICAgIHsvKiBNT1VUSCDigJQgYWxsIGNlbnRlcmVkIGF0IHg9NTAgKi99CiAgICAgICAgICAgICAge2NmZy5tb3V0aFN0YXRlID09PSAnbmV1dHJhbCcgJiYgPHBhdGggZD0iTTQzIDU2IFE1MCA1OCA1NyA1NiIgc3Ryb2tlPSIjMWExYTJlIiBzdHJva2VXaWR0aD0iMi41IiBzdHJva2VMaW5lY2FwPSJyb3VuZCIgZmlsbD0ibm9uZSIgLz59CiAgICAgICAgICAgICAge2NmZy5tb3V0aFN0YXRlID09PSAnc21pbGUnICAmJiA8cGF0aCBkPSJNNDIgNTQgUTUwIDYyIDU4IDU0IiBzdHJva2U9IiMxYTFhMmUiIHN0cm9rZVdpZHRoPSIyLjUiIHN0cm9rZUxpbmVjYXA9InJvdW5kIiBmaWxsPSJub25lIiAvPn0KICAgICAgICAgICAgICB7Y2ZnLm1vdXRoU3RhdGUgPT09ICdmcm93bicgICYmIDxwYXRoIGQ9Ik00MiA2MiBRNTAgNTQgNTggNjIiIHN0cm9rZT0iIzFhMWEyZSIgc3Ryb2tlV2lkdGg9IjIuNSIgc3Ryb2tlTGluZWNhcD0icm91bmQiIGZpbGw9Im5vbmUiIC8+fQogICAgICAgICAgICAgIHtjZmcubW91dGhTdGF0ZSA9PT0gJ29wZW4nICAgICYmIDxlbGxpcHNlIGN4PSI1MCIgY3k9IjU3IiByeD0iNyIgcnk9IjciIGZpbGw9IiMxYTFhMmUiIC8+fQogICAgICAgICAgICAgIHtjZmcubW91dGhTdGF0ZSA9PT0gJ2dyaW1hY2UnICYmIDxwYXRoIGQ9Ik00MiA1NSBRNDYgNTAgNTAgNTYgUTU0IDYyIDU4IDU1IiBzdHJva2U9IiMxYTFhMmUiIHN0cm9rZVdpZHRoPSIyLjUiIHN0cm9rZUxpbmVjYXA9InJvdW5kIiBmaWxsPSJub25lIiAvPn0KICAgICAgICAgICAgICB7Y2ZnLm1vdXRoU3RhdGUgPT09ICd0ZWV0aCcgICAmJiAoCiAgICAgICAgICAgICAgICA8PgogICAgICAgICAgICAgICAgICA8cmVjdCB4PSI0MiIgeT0iNTQiIHdpZHRoPSIxNiIgaGVpZ2h0PSI5IiByeD0iMi41IiBmaWxsPSJ3aGl0ZSIgLz4KICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTQyIDU4IFE1MCA1NCA1OCA1OCIgc3Ryb2tlPSIjMWExYTJlIiBzdHJva2VXaWR0aD0iMS41IiBmaWxsPSJub25lIiAvPgogICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNNDQgNTQgTDQ0IDYzIE00NyA1NCBMNDcgNjMgTTUwIDU0IEw1MCA2MyBNNTMgNTQgTDUzIDYzIE01NiA1NCBMNTYgNjMiIHN0cm9rZT0iI2RkZCIgc3Ryb2tlV2lkdGg9IjAuNSIgLz4KICAgICAgICAgICAgICAgIDwvPgogICAgICAgICAgICAgICl9CiAgICAgICAgICAgIDwvZz4KICAgICAgICAgIDwvZz4KICAgICAgICA8L3N2Zz4KICAgICAgPC9kaXY+CgogICAgICB7c2hvd0xhYmVsICYmICgKICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iYWJzb2x1dGUgLWJvdHRvbS01IGxlZnQtMCByaWdodC0wIHRleHQtY2VudGVyIj4KICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT0idGV4dC14cyB0ZXh0LWdyYXktNTAwIGZvbnQtbWVkaXVtIj57Y2ZnLmxhYmVsfTwvc3Bhbj4KICAgICAgICA8L2Rpdj4KICAgICAgKX0KCiAgICAgIDxzdHlsZT57YAogICAgICAgIEBrZXlmcmFtZXMgYm9keS1zaGFrZSB7CiAgICAgICAgICAwJSwgMTAwJSB7IHRyYW5zZm9ybTogdHJhbnNsYXRlWCgwKSByb3RhdGUoMCk7IH0KICAgICAgICAgIDIwJSB7IHRyYW5zZm9ybTogdHJhbnNsYXRlWCgtM3B4KSByb3RhdGUoLTFkZWcpOyB9CiAgICAgICAgICA0MCUgeyB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoM3B4KSByb3RhdGUoMWRlZyk7IH0KICAgICAgICAgIDYwJSB7IHRyYW5zZm9ybTogdHJhbnNsYXRlWCgtMnB4KSByb3RhdGUoLTAuNWRlZyk7IH0KICAgICAgICAgIDgwJSB7IHRyYW5zZm9ybTogdHJhbnNsYXRlWCgycHgpIHJvdGF0ZSgwLjVkZWcpOyB9CiAgICAgICAgfQogICAgICBgfTwvc3R5bGU+CiAgICA8L2Rpdj4KICApOwp9Cg==
+export type MoodKey =
+  | 'excited' | 'confident' | 'nervous' | 'confused'
+  | 'anxious' | 'sad' | 'humiliated' | 'isolated'
+  | 'gaslit' | 'hopeful' | 'angry' | 'violated'
+  | 'empowered' | 'broken' | 'determined';
+
+interface MoodConfig {
+  headTilt: number;
+  eyeState: 'normal' | 'happy' | 'sad' | 'angry' | 'scared' | 'closed';
+  mouthState: 'neutral' | 'smile' | 'frown' | 'open' | 'grimace' | 'teeth';
+  bodyLean: number;
+  leftArmAngle: number;
+  rightArmAngle: number;
+  leftArmBend: number;
+  rightArmBend: number;
+  leftFist: boolean;
+  rightFist: boolean;
+  color: string;
+  shirtDark: string;
+  blush: boolean;
+  sweat: boolean;
+  tears: boolean;
+  shake: boolean;
+  droop: number;
+  armHang: number;
+  label: string;
+}
+
+const MOOD: Record<MoodKey, MoodConfig> = {
+  excited:    { headTilt: -5,  eyeState: 'happy',  mouthState: 'smile',   bodyLean: 5,  leftArmAngle: -20, rightArmAngle: 20,  leftArmBend: 10, rightArmBend: 10, leftFist: false, rightFist: false, color: '#fef9c3', shirtDark: '#fde047', blush: true,  sweat: false, tears: false, shake: false, droop: 0,    armHang: 0,   label: '充满期待' },
+  confident:  { headTilt: 0,   eyeState: 'normal', mouthState: 'smile',   bodyLean: 0,  leftArmAngle: -30, rightArmAngle: 30,  leftArmBend: 0,  rightArmBend: 0,  leftFist: false, rightFist: false, color: '#bfdbfe', shirtDark: '#93c5fd', blush: false, sweat: false, tears: false, shake: false, droop: 0,    armHang: 0,   label: '自信满满' },
+  nervous:    { headTilt: 6,   eyeState: 'scared', mouthState: 'neutral', bodyLean: -3, leftArmAngle: -60, rightArmAngle: 40,  leftArmBend: 20, rightArmBend: 0,  leftFist: false, rightFist: false, color: '#fed7aa', shirtDark: '#fb923c', blush: false, sweat: true,  tears: false, shake: false, droop: 0,    armHang: 0,   label: '紧张不安' },
+  confused:   { headTilt: 12,  eyeState: 'sad',    mouthState: 'neutral', bodyLean: -5, leftArmAngle: -40, rightArmAngle: 40,  leftArmBend: 20, rightArmBend: 20, leftFist: false, rightFist: false, color: '#e5e7eb', shirtDark: '#9ca3af', blush: false, sweat: false, tears: false, shake: false, droop: 0,    armHang: 0,   label: '困惑不解' },
+  anxious:    { headTilt: 5,   eyeState: 'scared', mouthState: 'open',    bodyLean: -4, leftArmAngle: -70, rightArmAngle: 70,  leftArmBend: 30, rightArmBend: 30, leftFist: false, rightFist: false, color: '#fde68a', shirtDark: '#f59e0b', blush: false, sweat: true,  tears: false, shake: true,  droop: 0.3,  armHang: 0.3, label: '焦虑不安' },
+  sad:        { headTilt: 20,  eyeState: 'sad',    mouthState: 'frown',   bodyLean: -10,leftArmAngle: -60, rightArmAngle: 60,  leftArmBend: 50, rightArmBend: 50, leftFist: false, rightFist: false, color: '#ddd6fe', shirtDark: '#a78bfa', blush: false, sweat: false, tears: true,  shake: false, droop: 0.5,  armHang: 0.5, label: '难过失落' },
+  humiliated: { headTilt: 25,  eyeState: 'sad',    mouthState: 'frown',   bodyLean: -15,leftArmAngle: -90, rightArmAngle: 90,  leftArmBend: 70, rightArmBend: 70, leftFist: true,  rightFist: true,  color: '#fce7f3', shirtDark: '#f9a8d4', blush: true,  sweat: false, tears: true,  shake: true,  droop: 0.8,  armHang: 0.7, label: '被羞辱了' },
+  isolated:   { headTilt: 18,  eyeState: 'sad',    mouthState: 'neutral', bodyLean: -10,leftArmAngle: -80, rightArmAngle: 80,  leftArmBend: 60, rightArmBend: 60, leftFist: false, rightFist: false, color: '#f3f4f6', shirtDark: '#d1d5db', blush: false, sweat: false, tears: false, shake: false, droop: 0.7,  armHang: 0.6, label: '被孤立' },
+  gaslit:     { headTilt: 15,  eyeState: 'sad',    mouthState: 'neutral', bodyLean: -8, leftArmAngle: -70, rightArmAngle: 70,  leftArmBend: 50, rightArmBend: 50, leftFist: false, rightFist: false, color: '#fde68a', shirtDark: '#d97706', blush: false, sweat: false, tears: false, shake: false, droop: 0.6,  armHang: 0.5, label: '自我怀疑' },
+  hopeful:   { headTilt: -3,  eyeState: 'happy',  mouthState: 'smile',   bodyLean: 3,  leftArmAngle: -10, rightArmAngle: 10,  leftArmBend: 0,  rightArmBend: 0,  leftFist: false, rightFist: false, color: '#bbf7d0', shirtDark: '#4ade80', blush: true,  sweat: false, tears: false, shake: false, droop: 0,    armHang: 0,   label: '心存希望' },
+  angry:     { headTilt: -10, eyeState: 'angry',  mouthState: 'teeth',  bodyLean: 12, leftArmAngle: -95, rightArmAngle: 95,  leftArmBend: 0,  rightArmBend: 0,  leftFist: true,  rightFist: true,  color: '#fecaca', shirtDark: '#ef4444', blush: false, sweat: false, tears: false, shake: true,  droop: 0,    armHang: 0,   label: '愤怒不满' },
+  violated:  { headTilt: 12,  eyeState: 'scared', mouthState: 'open',    bodyLean: -8, leftArmAngle: -90, rightArmAngle: 90,  leftArmBend: 40, rightArmBend: 40, leftFist: true,  rightFist: true,  color: '#fee2e2', shirtDark: '#dc2626', blush: false, sweat: true,  tears: false, shake: true,  droop: 0.4,  armHang: 0.4, label: '边界被侵犯' },
+  empowered: { headTilt: -10, eyeState: 'happy',  mouthState: 'smile',   bodyLean: 0,  leftArmAngle: -80, rightArmAngle: 80,  leftArmBend: 0,  rightArmBend: 0,  leftFist: false, rightFist: false, color: '#a7f3d0', shirtDark: '#34d399', blush: true,  sweat: false, tears: false, shake: false, droop: 0,    armHang: 0,   label: '充满力量' },
+  broken:    { headTilt: 30,  eyeState: 'sad',    mouthState: 'frown',   bodyLean: -18,leftArmAngle: -80, rightArmAngle: 80,  leftArmBend: 80, rightArmBend: 80, leftFist: false, rightFist: false, color: '#d1d5db', shirtDark: '#9ca3af', blush: false, sweat: false, tears: true,  shake: false, droop: 1,    armHang: 0.9, label: '精疲力尽' },
+  determined:{ headTilt: -8,  eyeState: 'angry',  mouthState: 'neutral', bodyLean: 8,  leftArmAngle: -90, rightArmAngle: 90,  leftArmBend: 0,  rightArmBend: 0,  leftFist: true,  rightFist: true,  color: '#fef08a', shirtDark: '#f59e0b', blush: false, sweat: false, tears: false, shake: false, droop: 0,    armHang: 0,   label: '下定决心' },
+};
+
+// Centered mouth: face center x=50, mouth centered at x=50
+// Eyes at x=33 (left) and x=67 (right), so mouth should be around x=50
+
+interface Props {
+  mood: MoodKey;
+  size?: number;
+  showLabel?: boolean;
+}
+
+export default function DigitalHuman({ mood, size = 120, showLabel = true }: Props) {
+  const cfg = MOOD[mood] || MOOD.confident;
+
+  const shaking = cfg.shake;
+  const crying = cfg.tears;
+
+  return (
+    <div style={{ width: size, userSelect: 'none', position: 'relative' }}>
+      <div style={{ animation: shaking ? 'body-shake 0.25s ease-in-out infinite' : 'none' }}>
+        <svg
+          viewBox="0 0 100 165"
+          width={size}
+          height={size * (165 / 100)}
+          xmlns="http://www.w3.org/2000/svg"
+          style={{ overflow: 'visible' }}
+        >
+          <ellipse cx={50 + cfg.bodyLean * 0.4} cy="161" rx={28 - cfg.droop * 5} ry={5 - cfg.droop * 2} fill="rgba(0,0,0,0.08)" />
+
+          <g style={{
+            transformOrigin: '50px 118px',
+            transform: `rotate(${cfg.bodyLean * 0.35}deg)`,
+            transition: 'transform 0.6s cubic-bezier(0.34,1.56,0.64,1)',
+          }}>
+            {/* Legs */}
+            <rect x="35" y="118" width="12" height="40" rx="6" fill={cfg.color} />
+            <rect x="53" y="118" width="12" height="40" rx="6" fill={cfg.color} />
+            <ellipse cx="41" cy="157" rx="10" ry="6" fill="#4a3728" />
+            <ellipse cx="59" cy="157" rx="10" ry="6" fill="#4a3728" />
+
+            {/* Body */}
+            <rect x="28" y="65" width="44" height="56" rx="13" fill={cfg.color} />
+            <rect x="28" y="65" width="44" height="56" rx="13" fill={cfg.shirtDark} opacity="0.15" />
+            <path d="M40 65 L50 78 L60 65" fill="white" opacity="0.6" />
+            <rect x="46" y="68" width="8" height="50" rx="4" fill={cfg.shirtDark} opacity="0.08" />
+
+            {/* LEFT ARM */}
+            <g style={{
+              transformOrigin: '28px 72px',
+              transform: `rotate(${cfg.leftArmAngle + cfg.armHang * 30 + (crying ? 10 : 0)}deg)`,
+              transition: 'transform 0.6s cubic-bezier(0.34,1.56,0.64,1)',
+            }}>
+              <rect x="7" y="66" width="23" height="14" rx="7" fill={cfg.color} />
+              <g style={{
+                transformOrigin: '18px 80px',
+                transform: `rotate(${cfg.leftArmBend + cfg.armHang * 40 + (cfg.leftFist ? -20 : 0)}deg)`,
+                transition: 'transform 0.6s cubic-bezier(0.34,1.56,0.64,1)',
+              }}>
+                <rect x="8" y="78" width="20" height="13" rx="6.5" fill={cfg.color} opacity="0.92" />
+                {cfg.leftFist ? (
+                  <g>
+                    <circle cx="18" cy="93" r="8" fill="#fcd9b8" />
+                    <rect x="11" y="86" width="14" height="14" rx="4" fill="#fcd9b8" />
+                  </g>
+                ) : (
+                  <>
+                    <circle cx="18" cy="93" r="6.5" fill="#fcd9b8" />
+                    {[0,1,2,3].map(i => (
+                      <ellipse key={i} cx={12 + i * 2.8} cy={101} rx="2.2" ry="3.5" fill="#fcd9b8" />
+                    ))}
+                  </>
+                )}
+              </g>
+            </g>
+
+            {/* RIGHT ARM */}
+            <g style={{
+              transformOrigin: '72px 72px',
+              transform: `rotate(${cfg.rightArmAngle - cfg.armHang * 30 - (crying ? 10 : 0)}deg)`,
+              transition: 'transform 0.6s cubic-bezier(0.34,1.56,0.64,1)',
+            }}>
+              <rect x="70" y="66" width="23" height="14" rx="7" fill={cfg.color} />
+              <g style={{
+                transformOrigin: '82px 80px',
+                transform: `rotate(${-cfg.rightArmBend - cfg.armHang * 40 + (cfg.rightFist ? 20 : 0)}deg)`,
+                transition: 'transform 0.6s cubic-bezier(0.34,1.56,0.64,1)',
+              }}>
+                <rect x="72" y="78" width="20" height="13" rx="6.5" fill={cfg.color} opacity="0.92" />
+                {cfg.rightFist ? (
+                  <g>
+                    <circle cx="82" cy="93" r="8" fill="#fcd9b8" />
+                    <rect x="75" y="86" width="14" height="14" rx="4" fill="#fcd9b8" />
+                  </g>
+                ) : (
+                  <>
+                    <circle cx="82" cy="93" r="6.5" fill="#fcd9b8" />
+                    {[0,1,2,3].map(i => (
+                      <ellipse key={i} cx={76 + i * 2.8} cy={101} rx="2.2" ry="3.5" fill="#fcd9b8" />
+                    ))}
+                  </>
+                )}
+              </g>
+            </g>
+
+            {/* Neck */}
+            <rect x="43" y="55" width="14" height="14" rx="5" fill="#fcd9b8" />
+
+            {/* HEAD */}
+            <g style={{
+              transformOrigin: '50px 45px',
+              transform: `rotate(${cfg.headTilt + cfg.droop * 20}deg) translateY(${cfg.droop * 8}px)`,
+              transition: 'transform 0.7s cubic-bezier(0.34,1.56,0.64,1)',
+            }}>
+              <circle cx="50" cy="38" r="33" fill="#fcd9b8" />
+
+              {/* Hair */}
+              <path d="M17 32 Q17 7 50 7 Q83 7 83 32 Q77 14 50 14 Q23 14 17 32Z" fill="#3d2314" />
+              <path d="M17 38 Q13 27 18 19 Q22 28 22 41Z" fill="#3d2314" />
+              <path d="M83 38 Q87 27 82 19 Q78 28 78 41Z" fill="#3d2314" />
+              {cfg.droop > 0.5 && (
+                <path d="M17 32 Q12 45 15 55 Q20 48 22 40Z" fill="#3d2314" opacity="0.7" />
+              )}
+
+              {/* Eyebrows */}
+              <path
+                d={cfg.eyeState === 'angry' ? "M23 29 L37 33" : cfg.eyeState === 'sad' ? "M23 30 Q30 33 37 31" : "M23 31 Q30 28 37 31"}
+                stroke="#3d2314" strokeWidth={cfg.eyeState === 'angry' ? '3' : '2.5'} strokeLinecap="round" fill="none"
+              />
+              <path
+                d={cfg.eyeState === 'angry' ? "M63 33 L77 29" : cfg.eyeState === 'sad' ? "M63 31 Q70 33 77 30" : "M63 31 Q70 28 77 31"}
+                stroke="#3d2314" strokeWidth={cfg.eyeState === 'angry' ? '3' : '2.5'} strokeLinecap="round" fill="none"
+              />
+
+              {/* LEFT EYE */}
+              <ellipse cx="33" cy="39" rx="6.5" ry="5.5" fill="white" />
+              {cfg.eyeState === 'normal'  && <ellipse cx="33" cy="39.5" rx="4.5" ry="5.5" fill="#1a1a2e" />}
+              {cfg.eyeState === 'happy'   && <path d="M29 39 Q33 34 37 39" stroke="#1a1a2e" strokeWidth="2.5" fill="none" strokeLinecap="round" />}
+              {cfg.eyeState === 'sad'     && <><ellipse cx="33" cy="40.5" rx="4.5" ry="5" fill="#1a1a2e" /><path d="M28 33 L37 36" stroke="#1a1a2e" strokeWidth="2" strokeLinecap="round" /></>}
+              {cfg.eyeState === 'angry'  && <><ellipse cx="33" cy="40.5" rx="4.5" ry="4.5" fill="#1a1a2e" /><path d="M28 33 L37 36" stroke="#1a1a2e" strokeWidth="2.5" strokeLinecap="round" /></>}
+              {cfg.eyeState === 'scared' && <><ellipse cx="33" cy="39" rx="7" ry="8" fill="#1a1a2e" /><circle cx="33" cy="37" r="2.5" fill="white" /></>}
+              {cfg.eyeState === 'closed'  && <path d="M29 39 Q33 43 37 39" stroke="#1a1a2e" strokeWidth="2.5" fill="none" strokeLinecap="round" />}
+
+              {/* RIGHT EYE */}
+              <ellipse cx="67" cy="39" rx="6.5" ry="5.5" fill="white" />
+              {cfg.eyeState === 'normal'  && <ellipse cx="67" cy="39.5" rx="4.5" ry="5.5" fill="#1a1a2e" />}
+              {cfg.eyeState === 'happy'  && <path d="M63 39 Q67 34 71 39" stroke="#1a1a2e" strokeWidth="2.5" fill="none" strokeLinecap="round" />}
+              {cfg.eyeState === 'sad'    && <><ellipse cx="67" cy="40.5" rx="4.5" ry="5" fill="#1a1a2e" /><path d="M63 36 L72 33" stroke="#1a1a2e" strokeWidth="2" strokeLinecap="round" /></>}
+              {cfg.eyeState === 'angry'  && <><ellipse cx="67" cy="40.5" rx="4.5" ry="4.5" fill="#1a1a2e" /><path d="M63 36 L72 33" stroke="#1a1a2e" strokeWidth="2.5" strokeLinecap="round" /></>}
+              {cfg.eyeState === 'scared' && <><ellipse cx="67" cy="39" rx="7" ry="8" fill="#1a1a2e" /><circle cx="67" cy="37" r="2.5" fill="white" /></>}
+              {cfg.eyeState === 'closed'  && <path d="M63 39 Q67 43 71 39" stroke="#1a1a2e" strokeWidth="2.5" fill="none" strokeLinecap="round" />}
+
+              {/* TEARS */}
+              {crying && (
+                <g>
+                  <path d="M26 43 Q24 50 25 60 Q26 68 24 75" stroke="#60a5fa" strokeWidth="2.5" fill="none" strokeLinecap="round" opacity="0.8">
+                    <animate attributeName="d" values="M26 43 Q24 50 25 60 Q26 68 24 75;M26 43 Q28 50 27 60 Q26 68 28 75;M26 43 Q24 50 25 60 Q26 68 24 75" dur="1.2s" repeatCount="indefinite" />
+                  </path>
+                  <circle cx="24" cy="76" r="3.5" fill="#60a5fa" opacity="0.85">
+                    <animate attributeName="cy" values="76;100;76" dur="1.4s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" values="0.85;0;0.85" dur="1.4s" repeatCount="indefinite" />
+                  </circle>
+                  <path d="M74 43 Q76 50 75 60 Q74 68 76 75" stroke="#60a5fa" strokeWidth="2.5" fill="none" strokeLinecap="round" opacity="0.8">
+                    <animate attributeName="d" values="M74 43 Q76 50 75 60 Q74 68 76 75;M74 43 Q72 50 73 60 Q74 68 72 75;M74 43 Q76 50 75 60 Q74 68 76 75" dur="1.2s" repeatCount="indefinite" begin="0.4s" />
+                  </path>
+                  <circle cx="76" cy="76" r="3.5" fill="#60a5fa" opacity="0.85">
+                    <animate attributeName="cy" values="76;100;76" dur="1.5s" repeatCount="indefinite" begin="0.4s" />
+                    <animate attributeName="opacity" values="0.85;0;0.85" dur="1.5s" repeatCount="indefinite" begin="0.4s" />
+                  </circle>
+                </g>
+              )}
+
+              {/* Blush */}
+              {cfg.blush && (
+                <>
+                  <ellipse cx="20" cy="46" rx="8" ry="5" fill="#f87171" opacity="0.35" />
+                  <ellipse cx="80" cy="46" rx="8" ry="5" fill="#f87171" opacity="0.35" />
+                </>
+              )}
+
+              {/* Sweat */}
+              {cfg.sweat && (
+                <g>
+                  <ellipse cx="82" cy="20" rx="3.5" ry="5" fill="#7dd3fc" opacity="0.85">
+                    <animate attributeName="cy" values="20;16;20" dur="1.3s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" values="0.85;0.3;0.85" dur="1.3s" repeatCount="indefinite" />
+                  </ellipse>
+                </g>
+              )}
+
+              {/* Angry vein */}
+              {cfg.eyeState === 'angry' && (
+                <path d="M78 18 Q82 12 85 16 Q82 20 78 18Z" fill="#dc2626" opacity="0.7">
+                  <animate attributeName="opacity" values="0.7;0.3;0.7" dur="0.6s" repeatCount="indefinite" />
+                </path>
+              )}
+
+              {/* Nose — small centered */}
+              <path d="M48 47 Q50 50 52 47" stroke="#d4a882" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+
+              {/* MOUTH — all centered at x=50 */}
+              {cfg.mouthState === 'neutral' && <path d="M43 56 Q50 58 57 56" stroke="#1a1a2e" strokeWidth="2.5" strokeLinecap="round" fill="none" />}
+              {cfg.mouthState === 'smile'  && <path d="M42 54 Q50 62 58 54" stroke="#1a1a2e" strokeWidth="2.5" strokeLinecap="round" fill="none" />}
+              {cfg.mouthState === 'frown'  && <path d="M42 62 Q50 54 58 62" stroke="#1a1a2e" strokeWidth="2.5" strokeLinecap="round" fill="none" />}
+              {cfg.mouthState === 'open'    && <ellipse cx="50" cy="57" rx="7" ry="7" fill="#1a1a2e" />}
+              {cfg.mouthState === 'grimace' && <path d="M42 55 Q46 50 50 56 Q54 62 58 55" stroke="#1a1a2e" strokeWidth="2.5" strokeLinecap="round" fill="none" />}
+              {cfg.mouthState === 'teeth'   && (
+                <>
+                  <rect x="42" y="54" width="16" height="9" rx="2.5" fill="white" />
+                  <path d="M42 58 Q50 54 58 58" stroke="#1a1a2e" strokeWidth="1.5" fill="none" />
+                  <path d="M44 54 L44 63 M47 54 L47 63 M50 54 L50 63 M53 54 L53 63 M56 54 L56 63" stroke="#ddd" strokeWidth="0.5" />
+                </>
+              )}
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      {showLabel && (
+        <div className="absolute -bottom-5 left-0 right-0 text-center">
+          <span className="text-xs text-gray-500 font-medium">{cfg.label}</span>
+        </div>
+      )}
+
+      <style>{`
+        @keyframes body-shake {
+          0%, 100% { transform: translateX(0) rotate(0); }
+          20% { transform: translateX(-3px) rotate(-1deg); }
+          40% { transform: translateX(3px) rotate(1deg); }
+          60% { transform: translateX(-2px) rotate(-0.5deg); }
+          80% { transform: translateX(2px) rotate(0.5deg); }
+        }
+      `}</style>
+    </div>
+  );
+}

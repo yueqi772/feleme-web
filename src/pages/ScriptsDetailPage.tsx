@@ -1,1 +1,66 @@
-aW1wb3J0IHR5cGUgeyBTY3JpcHRJdGVtIH0gZnJvbSAnLi4vdHlwZXMnOwppbXBvcnQgeyB1c2VBcHAgfSBmcm9tICcuLi9jb250ZXh0L0FwcENvbnRleHQnOwoKaW50ZXJmYWNlIFNjcmlwdHNEZXRhaWxQYWdlUHJvcHMgewogIG9uTmF2aWdhdGU6IChwYWdlOiBzdHJpbmcsIHBhcmFtcz86IFJlY29yZDxzdHJpbmcsIHVua25vd24+KSA9PiB2b2lkOwogIHNjcmlwdDogU2NyaXB0SXRlbTsKfQoKZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gU2NyaXB0c0RldGFpbFBhZ2UoeyBvbk5hdmlnYXRlLCBzY3JpcHQgfTogU2NyaXB0c0RldGFpbFBhZ2VQcm9wcykgewogIGNvbnN0IHsgdG9nZ2xlRmF2b3JpdGVTY3JpcHQsIGZhdm9yaXRlU2NyaXB0cyB9ID0gdXNlQXBwKCk7CiAgY29uc3QgaXNGYXYgPSAoaWQ6IHN0cmluZykgPT4gZmF2b3JpdGVTY3JpcHRzLmluY2x1ZGVzKGlkKTsKCiAgcmV0dXJuICgKICAgIDxkaXYgY2xhc3NOYW1lPSJtaW4taC1zY3JlZW4gYmctZ3JheS01MCI+CiAgICAgIDxkaXYgY2xhc3NOYW1lPSJ3eC1uYXYtYmFyIGJnLXdoaXRlIGZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktYmV0d2VlbiBweC00IHB5LTIiPgogICAgICAgIDxidXR0b24gb25DbGljaz17KCkgPT4gb25OYXZpZ2F0ZSgndG9vbHMnKX0gY2xhc3NOYW1lPSJ0ZXh0LWJyYW5kLTUwMCB0ZXh0LXNtIj7ihpAg6L+U5ZuePC9idXR0b24+CiAgICAgICAgPGRpdiBjbGFzc05hbWU9ImZsZXggaXRlbXMtY2VudGVyIGdhcC0yIj4KICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT0idGV4dC14bCI+e3NjcmlwdC5zY2VuZUljb259PC9zcGFuPgogICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJmb250LXNlbWlib2xkIHRleHQtZ3JheS03MDAiPntzY3JpcHQuc2NlbmV9PC9zcGFuPgogICAgICAgIDwvZGl2PgogICAgICAgIAogICAgICA8L2Rpdj4KCiAgICAgIDxkaXYgY2xhc3NOYW1lPSJweC00IHNwYWNlLXktNCBwdC00IHBiLTgiPgogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJjYXJkIj4KICAgICAgICAgIDxwIGNsYXNzTmFtZT0idGV4dC1zbSBmb250LXNlbWlib2xkIHRleHQtZ3JheS03MDAgbWItMSI+5L2/55So6K+05piOPC9wPgogICAgICAgICAgPHAgY2xhc3NOYW1lPSJ0ZXh0LXhzIHRleHQtZ3JheS01MDAgbGVhZGluZy1yZWxheGVkIj57c2NyaXB0LmJlbmVmaXR9PC9wPgogICAgICAgIDwvZGl2PgoKICAgICAgICA8cCBjbGFzc05hbWU9InRleHQtc20gZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktNzAwIHB4LTEiPuaOqOiNkOivneacrzwvcD4KICAgICAgICB7c2NyaXB0LnNjcmlwdHMubWFwKChzLCBpKSA9PiAoCiAgICAgICAgICA8ZGl2IGtleT17aX0gY2xhc3NOYW1lPSJjYXJkIj4KICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImZsZXggaXRlbXMtc3RhcnQganVzdGlmeS1iZXR3ZWVuIGdhcC0yIj4KICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleC0xIj4KICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT0idGV4dC1zbSB0ZXh0LWdyYXktNzAwIGxlYWRpbmctcmVsYXhlZCI+e3N9PC9wPgogICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICAgIDxidXR0b24KICAgICAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IHsKICAgICAgICAgICAgICAgICAgdG9nZ2xlRmF2b3JpdGVTY3JpcHQoYCR7c2NyaXB0LmlkfS0ke2l9YCk7CiAgICAgICAgICAgICAgICAgIG5hdmlnYXRvci5jbGlwYm9hcmQ/LndyaXRlVGV4dChzKTsKICAgICAgICAgICAgICAgIH19CiAgICAgICAgICAgICAgICBjbGFzc05hbWU9e2BzaHJpbmstMCBweC0zIHB5LTEuNSByb3VuZGVkLWZ1bGwgdGV4dC14cyBib3JkZXIgdHJhbnNpdGlvbi1jb2xvcnMgJHtpc0ZhdihgJHtzY3JpcHQuaWR9LSR7aX1gKSA/ICdiZy1icmFuZC01MCBib3JkZXItYnJhbmQtMzAwIHRleHQtYnJhbmQtNjAwJyA6ICdiZy13aGl0ZSBib3JkZXItZ3JheS0yMDAgdGV4dC1ncmF5LTQwMCd9YH0KICAgICAgICAgICAgICA+CiAgICAgICAgICAgICAgICB7aXNGYXYoYCR7c2NyaXB0LmlkfS0ke2l9YCkgPyAn4piFIOW3suaUtuiXjycgOiAn4piGIOaUtuiXjyd9CiAgICAgICAgICAgICAgPC9idXR0b24+CiAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICB7aXNGYXYoYCR7c2NyaXB0LmlkfS0ke2l9YCkgJiYgKAogICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT0idGV4dC14cyB0ZXh0LWdyZWVuLTYwMCBtdC0xLjUiPuKckyDlt7LlpI3liLbliLDliarotLTmnb88L3A+CiAgICAgICAgICAgICl9CiAgICAgICAgICA8L2Rpdj4KICAgICAgICApKX0KCiAgICAgICAgPGRpdiBjbGFzc05hbWU9ImNhcmQgYmctYW1iZXItNTAiPgogICAgICAgICAgPHAgY2xhc3NOYW1lPSJ0ZXh0LXhzIGZvbnQtc2VtaWJvbGQgdGV4dC1hbWJlci03MDAgbWItMSI+8J+SoSDkvb/nlKjmioDlt6c8L3A+CiAgICAgICAgICA8cCBjbGFzc05hbWU9InRleHQteHMgdGV4dC1hbWJlci02MDAgbGVhZGluZy1yZWxheGVkIj4KICAgICAgICAgICAg5LiN6KaB5q276K6w56Gs6IOM77yM55CG6Kej6IOM5ZCO55qE6YC76L6R77yaPHN0cm9uZz7mib/orqTlr7nmlrnnmoTmg4Xnu6ogKyDmuIXmmbDooajovr7kvaDnmoTovrnnlYwgKyDnu5nlh7rmm7/ku6PmlrnmoYg8L3N0cm9uZz7jgILngbXmtLvov5DnlKjmr5TnhafmkKzor53mnK/mm7TmnInmlYjjgIIKICAgICAgICAgIDwvcD4KICAgICAgICA8L2Rpdj4KCiAgICAgICAgPGJ1dHRvbiBvbkNsaWNrPXsoKSA9PiBvbk5hdmlnYXRlKCdwcmFjdGljZScpfSBjbGFzc05hbWU9InctZnVsbCBidG4tcHJpbWFyeSBweS0zIj4KICAgICAgICAgIPCfjq0g5Y675oOF5pmv57uD5Lmg5a6k5qih5ouf57uD5LmgCiAgICAgICAgPC9idXR0b24+CiAgICAgIDwvZGl2PgogICAgPC9kaXY+CiAgKTsKfQo=
+import type { ScriptItem } from '../types';
+import { useApp } from '../context/AppContext';
+
+interface ScriptsDetailPageProps {
+  onNavigate: (page: string, params?: Record<string, unknown>) => void;
+  script: ScriptItem;
+}
+
+export default function ScriptsDetailPage({ onNavigate, script }: ScriptsDetailPageProps) {
+  const { toggleFavoriteScript, favoriteScripts } = useApp();
+  const isFav = (id: string) => favoriteScripts.includes(id);
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <div className="wx-nav-bar bg-white flex items-center justify-between px-4 py-2">
+        <button onClick={() => onNavigate('tools')} className="text-brand-500 text-sm">← 返回</button>
+        <div className="flex items-center gap-2">
+          <span className="text-xl">{script.sceneIcon}</span>
+          <span className="font-semibold text-gray-700">{script.scene}</span>
+        </div>
+        
+      </div>
+
+      <div className="px-4 space-y-4 pt-4 pb-8">
+        <div className="card">
+          <p className="text-sm font-semibold text-gray-700 mb-1">使用说明</p>
+          <p className="text-xs text-gray-500 leading-relaxed">{script.benefit}</p>
+        </div>
+
+        <p className="text-sm font-semibold text-gray-700 px-1">推荐话术</p>
+        {script.scripts.map((s, i) => (
+          <div key={i} className="card">
+            <div className="flex items-start justify-between gap-2">
+              <div className="flex-1">
+                <p className="text-sm text-gray-700 leading-relaxed">{s}</p>
+              </div>
+              <button
+                onClick={() => {
+                  toggleFavoriteScript(`${script.id}-${i}`);
+                  navigator.clipboard?.writeText(s);
+                }}
+                className={`shrink-0 px-3 py-1.5 rounded-full text-xs border transition-colors ${isFav(`${script.id}-${i}`) ? 'bg-brand-50 border-brand-300 text-brand-600' : 'bg-white border-gray-200 text-gray-400'}`}
+              >
+                {isFav(`${script.id}-${i}`) ? '★ 已收藏' : '☆ 收藏'}
+              </button>
+            </div>
+            {isFav(`${script.id}-${i}`) && (
+              <p className="text-xs text-green-600 mt-1.5">✓ 已复制到剪贴板</p>
+            )}
+          </div>
+        ))}
+
+        <div className="card bg-amber-50">
+          <p className="text-xs font-semibold text-amber-700 mb-1">💡 使用技巧</p>
+          <p className="text-xs text-amber-600 leading-relaxed">
+            不要死记硬背，理解背后的逻辑：<strong>承认对方的情绪 + 清晰表达你的边界 + 给出替代方案</strong>。灵活运用比照搬话术更有效。
+          </p>
+        </div>
+
+        <button onClick={() => onNavigate('practice')} className="w-full btn-primary py-3">
+          🎭 去情景练习室模拟练习
+        </button>
+      </div>
+    </div>
+  );
+}

@@ -1,1 +1,71 @@
-LyoqCiAqIOW+ruS/oeeZu+W9leWbnuiwg+mhtQogKgogKiDlvq7kv6HmjojmnYPlkI7kvJrlm57osIPliLDov5nkuKrpobXpnaLvvIxVUkwg5qC85byP77yaCiAqICAgL3dlY2hhdC1jYWxsYmFjaz9jb2RlPXh4eHgmc3RhdGU9eHh4eAogKgogKiDmnKzpobXpgLvovpHvvJoKICogMS4g5LuOIFVSTCDkuK3mj5Dlj5YgY29kZSDlkowgc3RhdGUKICogMi4g6aqM6K+BIHN0YXRl77yI6Ziy5q2iIENTUkbvvIkKICogMy4g6LCD55SoIGhhbmRsZVdlY2hhdENhbGxiYWNr77yM55SoIGNvZGUg5o2i5Y+W55So5oi35L+h5oGvCiAqIDQuIOaIkOWKn+WQjui3s+i9rOWIsOmmlumhteaIlueZu+W9leWJjeeahOmhtemdogogKi8KCmltcG9ydCB7IHVzZUVmZmVjdCwgdXNlUmVmIH0gZnJvbSAncmVhY3QnOwppbXBvcnQgeyB1c2VBdXRoIH0gZnJvbSAnLi4vYXV0aC9BdXRoQ29udGV4dCc7CgppbnRlcmZhY2UgV2VjaGF0Q2FsbGJhY2tQYWdlUHJvcHMgewogIG9uTmF2aWdhdGU6IChwYWdlOiBzdHJpbmcpID0+IHZvaWQ7Cn0KCmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIFdlY2hhdENhbGxiYWNrUGFnZSh7IG9uTmF2aWdhdGUgfTogV2VjaGF0Q2FsbGJhY2tQYWdlUHJvcHMpIHsKICBjb25zdCB7IGhhbmRsZVdlY2hhdENhbGxiYWNrLCBpc0xvZ2dlZEluLCBlcnJvciB9ID0gdXNlQXV0aCgpOwogIGNvbnN0IGhhc0NhbGxlZCA9IHVzZVJlZihmYWxzZSk7CgogIHVzZUVmZmVjdCgoKSA9PiB7CiAgICBpZiAoaGFzQ2FsbGVkLmN1cnJlbnQgfHwgaXNMb2dnZWRJbikgcmV0dXJuOwogICAgaGFzQ2FsbGVkLmN1cnJlbnQgPSB0cnVlOwoKICAgIGNvbnN0IHBhcmFtcyA9IG5ldyBVUkxTZWFyY2hQYXJhbXMod2luZG93LmxvY2F0aW9uLnNlYXJjaCk7CiAgICBjb25zdCBjb2RlID0gcGFyYW1zLmdldCgnY29kZScpOwogICAgY29uc3Qgc3RhdGUgPSBwYXJhbXMuZ2V0KCdzdGF0ZScpOwoKICAgIGlmICghY29kZSB8fCAhc3RhdGUpIHsKICAgICAgY29uc29sZS5lcnJvcign44CQ5b6u5L+h5Zue6LCD44CR57y65bCRIGNvZGUg5oiWIHN0YXRlIOWPguaVsCcpOwogICAgICByZXR1cm47CiAgICB9CgogICAgaGFuZGxlV2VjaGF0Q2FsbGJhY2soY29kZSwgc3RhdGUpLnRoZW4oKCkgPT4gewogICAgICAvLyDnmbvlvZXmiJDlip/lkI7vvIzot7PovazliLDnmbvlvZXliY3nmoTpobXpnaLmiJbpppbpobUKICAgICAgY29uc3QgcHJlUGF0aCA9IHNlc3Npb25TdG9yYWdlLmdldEl0ZW0oJ3ByZV9sb2dpbl9wYXRoJykgfHwgJ2hvbWUnOwogICAgICBzZXNzaW9uU3RvcmFnZS5yZW1vdmVJdGVtKCdwcmVfbG9naW5fcGF0aCcpOwogICAgICAvLyDmuIXpmaQgVVJMIOS4reeahOaVj+aEn+WPguaVsAogICAgICB3aW5kb3cuaGlzdG9yeS5yZXBsYWNlU3RhdGUoe30sICcnLCBwcmVQYXRoKTsKICAgICAgb25OYXZpZ2F0ZShwcmVQYXRoKTsKICAgIH0pOwogIH0sIFtoYW5kbGVXZWNoYXRDYWxsYmFjaywgaXNMb2dnZWRJbiwgb25OYXZpZ2F0ZV0pOwoKICByZXR1cm4gKAogICAgPGRpdiBjbGFzc05hbWU9Im1pbi1oLXNjcmVlbiBiZy13aGl0ZSBmbGV4IGZsZXgtY29sIGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciBtYXgtdy1tZCBteC1hdXRvIHB4LTYiPgogICAgICB7ZXJyb3IgPyAoCiAgICAgICAgPGRpdiBjbGFzc05hbWU9InRleHQtY2VudGVyIj4KICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJ0ZXh0LTV4bCBtYi00Ij7wn5iUPC9kaXY+CiAgICAgICAgICA8aDIgY2xhc3NOYW1lPSJ0ZXh0LWxnIGZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTgwMCBtYi0yIj7mjojmnYPlpLHotKU8L2gyPgogICAgICAgICAgPHAgY2xhc3NOYW1lPSJ0ZXh0LXNtIHRleHQtZ3JheS01MDAgbWItNiI+e2Vycm9yfTwvcD4KICAgICAgICAgIDxidXR0b24KICAgICAgICAgICAgb25DbGljaz17KCkgPT4gb25OYXZpZ2F0ZSgncHJvZmlsZScpfQogICAgICAgICAgICBjbGFzc05hbWU9ImJnLWJyYW5kLTUwMCB0ZXh0LXdoaXRlIHRleHQtc20gcHgtNiBweS0yLjUgcm91bmRlZC1mdWxsIGZvbnQtbWVkaXVtIgogICAgICAgICAgPgogICAgICAgICAgICDov5Tlm54KICAgICAgICAgIDwvYnV0dG9uPgogICAgICAgIDwvZGl2PgogICAgICApIDogKAogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJ0ZXh0LWNlbnRlciI+CiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0idy0xMiBoLTEyIGJvcmRlci00IGJvcmRlci1icmFuZC0yMDAgYm9yZGVyLXQtYnJhbmQtNTAwIHJvdW5kZWQtZnVsbCBhbmltYXRlLXNwaW4gbXgtYXV0byBtYi00IiAvPgogICAgICAgICAgPGgyIGNsYXNzTmFtZT0idGV4dC1iYXNlIGZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTcwMCI+5q2j5Zyo55m75b2V4oCmPC9oMj4KICAgICAgICAgIDxwIGNsYXNzTmFtZT0idGV4dC1zbSB0ZXh0LWdyYXktNDAwIG10LTIiPuato+WcqOiOt+WPluaCqOeahOW+ruS/oeS/oeaBrzwvcD4KICAgICAgICA8L2Rpdj4KICAgICAgKX0KICAgIDwvZGl2PgogICk7Cn0K
+/**
+ * 微信登录回调页
+ *
+ * 微信授权后会回调到这个页面，URL 格式：
+ *   /wechat-callback?code=xxxx&state=xxxx
+ *
+ * 本页逻辑：
+ * 1. 从 URL 中提取 code 和 state
+ * 2. 验证 state（防止 CSRF）
+ * 3. 调用 handleWechatCallback，用 code 换取用户信息
+ * 4. 成功后跳转到首页或登录前的页面
+ */
+
+import { useEffect, useRef } from 'react';
+import { useAuth } from '../auth/AuthContext';
+
+interface WechatCallbackPageProps {
+  onNavigate: (page: string) => void;
+}
+
+export default function WechatCallbackPage({ onNavigate }: WechatCallbackPageProps) {
+  const { handleWechatCallback, isLoggedIn, error } = useAuth();
+  const hasCalled = useRef(false);
+
+  useEffect(() => {
+    if (hasCalled.current || isLoggedIn) return;
+    hasCalled.current = true;
+
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    const state = params.get('state');
+
+    if (!code || !state) {
+      console.error('【微信回调】缺少 code 或 state 参数');
+      return;
+    }
+
+    handleWechatCallback(code, state).then(() => {
+      // 登录成功后，跳转到登录前的页面或首页
+      const prePath = sessionStorage.getItem('pre_login_path') || 'home';
+      sessionStorage.removeItem('pre_login_path');
+      // 清除 URL 中的敏感参数
+      window.history.replaceState({}, '', prePath);
+      onNavigate(prePath);
+    });
+  }, [handleWechatCallback, isLoggedIn, onNavigate]);
+
+  return (
+    <div className="min-h-screen bg-white flex flex-col items-center justify-center max-w-md mx-auto px-6">
+      {error ? (
+        <div className="text-center">
+          <div className="text-5xl mb-4">😔</div>
+          <h2 className="text-lg font-semibold text-gray-800 mb-2">授权失败</h2>
+          <p className="text-sm text-gray-500 mb-6">{error}</p>
+          <button
+            onClick={() => onNavigate('profile')}
+            className="bg-brand-500 text-white text-sm px-6 py-2.5 rounded-full font-medium"
+          >
+            返回
+          </button>
+        </div>
+      ) : (
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-brand-200 border-t-brand-500 rounded-full animate-spin mx-auto mb-4" />
+          <h2 className="text-base font-semibold text-gray-700">正在登录…</h2>
+          <p className="text-sm text-gray-400 mt-2">正在获取您的微信信息</p>
+        </div>
+      )}
+    </div>
+  );
+}

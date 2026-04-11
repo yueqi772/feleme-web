@@ -1,1 +1,262 @@
-aW1wb3J0IFJlYWN0LCB7IGNyZWF0ZUNvbnRleHQsIHVzZUNvbnRleHQsIHVzZVN0YXRlLCB1c2VFZmZlY3QsIHVzZUNhbGxiYWNrIH0gZnJvbSAncmVhY3QnOwppbXBvcnQgdHlwZSB7CiAgVGVzdFJlc3VsdCwgRGlhcnlFbnRyeSwgQWNoaWV2ZW1lbnQsIFBvc3QsIENvbW1lbnQsCiAgSW5kdXN0cnksIFdvcmtZZWFycywgQ2hhdE1lc3NhZ2UsCn0gZnJvbSAnLi4vdHlwZXMnOwppbXBvcnQgeyBBQ0hJRVZFTUVOVFMsIE1PQ0tfUE9TVFMgfSBmcm9tICcuLi9kYXRhJzsKaW1wb3J0IHsKICBjbG91ZFNhdmVUZXN0UmVzdWx0LCBjbG91ZFNhdmVEaWFyeSwgY2xvdWRBZGRDaGF0TWVzc2FnZSwKICBjbG91ZEFkZFBvc3QsIGNsb3VkVG9nZ2xlTGlrZSwgY2xvdWRUb2dnbGVSZXNvbmF0ZSwKICBjbG91ZEFkZENvbW1lbnQsIGNsb3VkVW5sb2NrQWNoaWV2ZW1lbnQsCiAgY2xvdWRVcGRhdGVVc2VyUHJvZmlsZSwgY2xvdWRUb2dnbGVGYXZvcml0ZVNjcmlwdCwKICBjbG91ZEluY3JlbWVudFByYWN0aWNlQ291bnQsCn0gZnJvbSAnLi4vY2xvdWQnOwoKLy8g4pSA4pSA4pSAIOexu+Wei+WumuS5iSDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAKCmludGVyZmFjZSBBcHBTdGF0ZSB7CiAgdGVzdEhpc3Rvcnk6IFRlc3RSZXN1bHRbXTsKICBjdXJyZW50VGVzdFJlc3VsdDogVGVzdFJlc3VsdCB8IG51bGw7CiAgZGlhcmllczogRGlhcnlFbnRyeVtdOwogIHBvc3RzOiBQb3N0W107CiAgY29tbWVudHM6IFJlY29yZDxzdHJpbmcsIENvbW1lbnRbXT47CiAgYWNoaWV2ZW1lbnRzOiBBY2hpZXZlbWVudFtdOwogIHByYWN0aWNlQ291bnQ6IG51bWJlcjsKICBmYXZvcml0ZVNjcmlwdHM6IHN0cmluZ1tdOwogIHRvdGFsQ29tbWVudExpa2VzOiBudW1iZXI7CiAgam9pbkRhdGU6IHN0cmluZzsKICB1c2VySW5kdXN0cnk6IEluZHVzdHJ5OwogIHVzZXJXb3JrWWVhcnM6IFdvcmtZZWFyczsKICBkZWVwc2Vla0tleTogc3RyaW5nOwogIG9uYm9hcmRpbmdEb25lOiBib29sZWFuOwogIGlzRGFya01vZGU6IGJvb2xlYW47CiAgYXBwTmFtZTogc3RyaW5nOwp9CgppbnRlcmZhY2UgQXBwQ29udGV4dFR5cGUgZXh0ZW5kcyBBcHBTdGF0ZSB7CiAgc2F2ZVRlc3RSZXN1bHQ6IChyZXN1bHQ6IFRlc3RSZXN1bHQpID0+IHZvaWQ7CiAgc2F2ZURpYXJ5OiAoZGlhcnk6IERpYXJ5RW50cnkpID0+IHZvaWQ7CiAgYWRkQ2hhdE1lc3NhZ2U6IChkaWFyeUlkOiBzdHJpbmcsIG1lc3NhZ2U6IENoYXRNZXNzYWdlKSA9PiB2b2lkOwogIGFkZFBvc3Q6IChwb3N0OiBQb3N0KSA9PiB2b2lkOwogIHRvZ2dsZUxpa2U6IChwb3N0SWQ6IHN0cmluZywgY2xvdWRJZD86IHN0cmluZykgPT4gdm9pZDsKICB0b2dnbGVSZXNvbmF0ZTogKHBvc3RJZDogc3RyaW5nLCBjbG91ZElkPzogc3RyaW5nKSA9PiB2b2lkOwogIGFkZENvbW1lbnQ6IChwb3N0SWQ6IHN0cmluZywgY29tbWVudDogQ29tbWVudCkgPT4gdm9pZDsKICB1bmxvY2tBY2hpZXZlbWVudDogKGlkOiBzdHJpbmcpID0+IHZvaWQ7CiAgc2V0VXNlckluZm86IChpbmR1c3RyeTogSW5kdXN0cnksIHdvcmtZZWFyczogV29ya1llYXJzKSA9PiB2b2lkOwogIHRvZ2dsZUZhdm9yaXRlU2NyaXB0OiAoc2NyaXB0SWQ6IHN0cmluZykgPT4gdm9pZDsKICBpbmNyZW1lbnRQcmFjdGljZUNvdW50OiAoKSA9PiB2b2lkOwogIHNldERlZXBzZWVrS2V5OiAoa2V5OiBzdHJpbmcpID0+IHZvaWQ7CiAgY29tcGxldGVPbmJvYXJkaW5nOiAoKSA9PiB2b2lkOwogIHRvZ2dsZURhcmtNb2RlOiAoKSA9PiB2b2lkOwp9Cgpjb25zdCBBcHBDb250ZXh0ID0gY3JlYXRlQ29udGV4dDxBcHBDb250ZXh0VHlwZSB8IG51bGw+KG51bGwpOwpjb25zdCBTVE9SQUdFX0tFWSA9ICd6aGljaGFuZ19xaW5neGluZ192MSc7CgovLyDilIDilIDilIAg5pys5Zyw5oyB5LmF5YyWIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgAoKZnVuY3Rpb24gbG9hZFN0YXRlKCk6IFBhcnRpYWw8QXBwU3RhdGU+IHsKICB0cnkgewogICAgY29uc3QgcmF3ID0gbG9jYWxTdG9yYWdlLmdldEl0ZW0oU1RPUkFHRV9LRVkpOwogICAgcmV0dXJuIHJhdyA/IEpTT04ucGFyc2UocmF3KSA6IHt9OwogIH0gY2F0Y2ggeyByZXR1cm4ge307IH0KfQoKZnVuY3Rpb24gcGVyc2lzdChzdGF0ZTogQXBwU3RhdGUpIHsKICB0cnkgewogICAgbG9jYWxTdG9yYWdlLnNldEl0ZW0oU1RPUkFHRV9LRVksIEpTT04uc3RyaW5naWZ5KHsKICAgICAgdGVzdEhpc3Rvcnk6IHN0YXRlLnRlc3RIaXN0b3J5LAogICAgICBjdXJyZW50VGVzdFJlc3VsdDogc3RhdGUuY3VycmVudFRlc3RSZXN1bHQsCiAgICAgIGRpYXJpZXM6IHN0YXRlLmRpYXJpZXMsCiAgICAgIHBvc3RzOiBzdGF0ZS5wb3N0cywKICAgICAgY29tbWVudHM6IHN0YXRlLmNvbW1lbnRzLAogICAgICBhY2hpZXZlbWVudHM6IHN0YXRlLmFjaGlldmVtZW50cywKICAgICAgcHJhY3RpY2VDb3VudDogc3RhdGUucHJhY3RpY2VDb3VudCwKICAgICAgZmF2b3JpdGVTY3JpcHRzOiBzdGF0ZS5mYXZvcml0ZVNjcmlwdHMsCiAgICAgIHRvdGFsQ29tbWVudExpa2VzOiBzdGF0ZS50b3RhbENvbW1lbnRMaWtlcywKICAgICAgam9pbkRhdGU6IHN0YXRlLmpvaW5EYXRlLAogICAgICB1c2VySW5kdXN0cnk6IHN0YXRlLnVzZXJJbmR1c3RyeSwKICAgICAgdXNlcldvcmtZZWFyczogc3RhdGUudXNlcldvcmtZZWFycywKICAgICAgZGVlcHNlZWtLZXk6IHN0YXRlLmRlZXBzZWVrS2V5LAogICAgICBvbmJvYXJkaW5nRG9uZTogc3RhdGUub25ib2FyZGluZ0RvbmUsCiAgICAgIGlzRGFya01vZGU6IHN0YXRlLmlzRGFya01vZGUsCiAgICAgIGFwcE5hbWU6IHN0YXRlLmFwcE5hbWUsCiAgICB9KSk7CiAgfSBjYXRjaCB7fQp9CgovLyDilIDilIDilIAgUHJvdmlkZXIg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACgpleHBvcnQgZnVuY3Rpb24gQXBwUHJvdmlkZXIoeyBjaGlsZHJlbiB9OiB7IGNoaWxkcmVuOiBSZWFjdC5SZWFjdE5vZGUgfSkgewogIGNvbnN0IFtzdGF0ZSwgc2V0U3RhdGVdID0gdXNlU3RhdGU8QXBwU3RhdGU+KCgpID0+IHsKICAgIGNvbnN0IHNhdmVkID0gbG9hZFN0YXRlKCk7CiAgICByZXR1cm4gewogICAgICB0ZXN0SGlzdG9yeTogc2F2ZWQudGVzdEhpc3RvcnkgfHwgW10sCiAgICAgIGN1cnJlbnRUZXN0UmVzdWx0OiBzYXZlZC5jdXJyZW50VGVzdFJlc3VsdCB8fCBudWxsLAogICAgICBkaWFyaWVzOiBzYXZlZC5kaWFyaWVzIHx8IFtdLAogICAgICBwb3N0czogc2F2ZWQucG9zdHMgfHwgTU9DS19QT1NUUywKICAgICAgY29tbWVudHM6IHNhdmVkLmNvbW1lbnRzIHx8IHt9LAogICAgICBhY2hpZXZlbWVudHM6IHNhdmVkLmFjaGlldmVtZW50cyB8fCBBQ0hJRVZFTUVOVFMsCiAgICAgIHByYWN0aWNlQ291bnQ6IHNhdmVkLnByYWN0aWNlQ291bnQgfHwgMCwKICAgICAgZmF2b3JpdGVTY3JpcHRzOiBzYXZlZC5mYXZvcml0ZVNjcmlwdHMgfHwgW10sCiAgICAgIHRvdGFsQ29tbWVudExpa2VzOiBzYXZlZC50b3RhbENvbW1lbnRMaWtlcyB8fCAwLAogICAgICBqb2luRGF0ZTogc2F2ZWQuam9pbkRhdGUgfHwgbmV3IERhdGUoKS50b0lTT1N0cmluZygpLAogICAgICB1c2VySW5kdXN0cnk6IHNhdmVkLnVzZXJJbmR1c3RyeSB8fCAn5LqS6IGU572RJywKICAgICAgdXNlcldvcmtZZWFyczogc2F2ZWQudXNlcldvcmtZZWFycyB8fCAnMS0z5bm0JywKICAgICAgZGVlcHNlZWtLZXk6IHNhdmVkLmRlZXBzZWVrS2V5IHx8ICcnLAogICAgICBvbmJvYXJkaW5nRG9uZTogc2F2ZWQub25ib2FyZGluZ0RvbmUgPz8gZmFsc2UsCiAgICAgIGlzRGFya01vZGU6IHNhdmVkLmlzRGFya01vZGUgPz8gZmFsc2UsCiAgICAgIGFwcE5hbWU6IHNhdmVkLmFwcE5hbWUgfHwgJ0ZlbGVtZScsCiAgICB9OwogIH0pOwoKICAvLyDnirbmgIHlj5jljJbml7bmjIHkuYXljJbliLAgbG9jYWxTdG9yYWdlCiAgdXNlRWZmZWN0KCgpID0+IHsgcGVyc2lzdChzdGF0ZSk7IH0sIFtzdGF0ZV0pOwoKICAvLyDmmpfpu5HmqKHlvI8gY2xhc3Mg5YiH5o2iCiAgdXNlRWZmZWN0KCgpID0+IHsKICAgIGRvY3VtZW50LmRvY3VtZW50RWxlbWVudC5jbGFzc0xpc3QudG9nZ2xlKCdkYXJrJywgc3RhdGUuaXNEYXJrTW9kZSk7CiAgfSwgW3N0YXRlLmlzRGFya01vZGVdKTsKCiAgLy8g4pSA4pSA4pSAIDEuIOS/neWtmOa1i+ivlee7k+aenCDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAKICBjb25zdCBzYXZlVGVzdFJlc3VsdCA9IHVzZUNhbGxiYWNrKChyZXN1bHQ6IFRlc3RSZXN1bHQpID0+IHsKICAgIHNldFN0YXRlKHMgPT4gKHsKICAgICAgLi4ucywKICAgICAgdGVzdEhpc3Rvcnk6IFtyZXN1bHQsIC4uLnMudGVzdEhpc3RvcnldLnNsaWNlKDAsIDIwKSwKICAgICAgY3VycmVudFRlc3RSZXN1bHQ6IHJlc3VsdCwKICAgIH0pKTsKICAgIGNsb3VkU2F2ZVRlc3RSZXN1bHQocmVzdWx0IGFzIHVua25vd24gYXMgUmVjb3JkPHN0cmluZywgdW5rbm93bj4pOwogIH0sIFtdKTsKCiAgLy8g4pSA4pSA4pSAIDIuIOS/neWtmOaDhee7quaXpeiusCDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAKICBjb25zdCBzYXZlRGlhcnkgPSB1c2VDYWxsYmFjaygoZGlhcnk6IERpYXJ5RW50cnkpID0+IHsKICAgIHNldFN0YXRlKHMgPT4gKHsgLi4ucywgZGlhcmllczogW2RpYXJ5LCAuLi5zLmRpYXJpZXNdIH0pKTsKICAgIGNsb3VkU2F2ZURpYXJ5KGRpYXJ5IGFzIHVua25vd24gYXMgUmVjb3JkPHN0cmluZywgdW5rbm93bj4pOwogIH0sIFtdKTsKCiAgLy8g4pSA4pSA4pSAIDMuIOa3u+WKoOaXpeiusOiBiuWkqea2iOaBryDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAKICBjb25zdCBhZGRDaGF0TWVzc2FnZSA9IHVzZUNhbGxiYWNrKChkaWFyeUlkOiBzdHJpbmcsIG1lc3NhZ2U6IENoYXRNZXNzYWdlKSA9PiB7CiAgICBzZXRTdGF0ZShzID0+ICh7CiAgICAgIC4uLnMsCiAgICAgIGRpYXJpZXM6IHMuZGlhcmllcy5tYXAoZCA9PgogICAgICAgIGQuaWQgPT09IGRpYXJ5SWQgPyB7IC4uLmQsIG1lc3NhZ2VzOiBbLi4uZC5tZXNzYWdlcywgbWVzc2FnZV0gfSA6IGQKICAgICAgKSwKICAgIH0pKTsKICAgIGNsb3VkQWRkQ2hhdE1lc3NhZ2UoZGlhcnlJZCwgbWVzc2FnZSBhcyB1bmtub3duIGFzIFJlY29yZDxzdHJpbmcsIHVua25vd24+KTsKICB9LCBbXSk7CgogIC8vIOKUgOKUgOKUgCA0LiDlj5HluIPnpL7ljLrluJblrZAg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACiAgY29uc3QgYWRkUG9zdCA9IHVzZUNhbGxiYWNrKChwb3N0OiBQb3N0KSA9PiB7CiAgICBzZXRTdGF0ZShzID0+ICh7IC4uLnMsIHBvc3RzOiBbcG9zdCwgLi4ucy5wb3N0c10gfSkpOwogICAgY2xvdWRBZGRQb3N0KHBvc3QgYXMgdW5rbm93biBhcyBSZWNvcmQ8c3RyaW5nLCB1bmtub3duPik7CiAgfSwgW10pOwoKICAvLyDilIDilIDilIAgNS4g5biW5a2Q54K56LWeIC8g5Y+W5raI54K56LWeIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgAogIGNvbnN0IHRvZ2dsZUxpa2UgPSB1c2VDYWxsYmFjaygocG9zdElkOiBzdHJpbmcsIGNsb3VkSWQ/OiBzdHJpbmcpID0+IHsKICAgIHNldFN0YXRlKHMgPT4gKHsKICAgICAgLi4ucywKICAgICAgcG9zdHM6IHMucG9zdHMubWFwKHAgPT4gewogICAgICAgIGlmIChwLmlkICE9PSBwb3N0SWQpIHJldHVybiBwOwogICAgICAgIGNvbnN0IGxpa2VkID0gIXAubGlrZWQ7CiAgICAgICAgcmV0dXJuIHsgLi4ucCwgbGlrZWQsIGxpa2VzOiBsaWtlZCA/IHAubGlrZXMgKyAxIDogcC5saWtlcyAtIDEgfTsKICAgICAgfSksCiAgICB9KSk7CiAgICBpZiAoY2xvdWRJZCkgY2xvdWRUb2dnbGVMaWtlKHBvc3RJZCwgY2xvdWRJZCwgdHJ1ZSk7CiAgfSwgW10pOwoKICAvLyDilIDilIDilIAgNi4g5biW5a2Q5YWx6bijIC8g5Y+W5raI5YWx6bijIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgAogIGNvbnN0IHRvZ2dsZVJlc29uYXRlID0gdXNlQ2FsbGJhY2soKHBvc3RJZDogc3RyaW5nLCBjbG91ZElkPzogc3RyaW5nKSA9PiB7CiAgICBzZXRTdGF0ZShzID0+ICh7CiAgICAgIC4uLnMsCiAgICAgIHBvc3RzOiBzLnBvc3RzLm1hcChwID0+IHsKICAgICAgICBpZiAocC5pZCAhPT0gcG9zdElkKSByZXR1cm4gcDsKICAgICAgICBjb25zdCByZXNvbmF0ZWQgPSAhcC5yZXNvbmF0ZWQ7CiAgICAgICAgcmV0dXJuIHsgLi4ucCwgcmVzb25hdGVkLCByZXNvbmFuY2VzOiByZXNvbmF0ZWQgPyBwLnJlc29uYW5jZXMgKyAxIDogcC5yZXNvbmFuY2VzIC0gMSB9OwogICAgICB9KSwKICAgIH0pKTsKICAgIGlmIChjbG91ZElkKSBjbG91ZFRvZ2dsZVJlc29uYXRlKHBvc3RJZCwgY2xvdWRJZCwgdHJ1ZSk7CiAgfSwgW10pOwoKICAvLyDilIDilIDilIAgNy4g5re75Yqg6K+E6K66IOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgAogIGNvbnN0IGFkZENvbW1lbnQgPSB1c2VDYWxsYmFjaygocG9zdElkOiBzdHJpbmcsIGNvbW1lbnQ6IENvbW1lbnQpID0+IHsKICAgIHNldFN0YXRlKHMgPT4gKHsKICAgICAgLi4ucywKICAgICAgcG9zdHM6IHMucG9zdHMubWFwKHAgPT4gcC5pZCA9PT0gcG9zdElkID8geyAuLi5wLCBjb21tZW50czogcC5jb21tZW50cyArIDEgfSA6IHApLAogICAgICBjb21tZW50czogeyAuLi5zLmNvbW1lbnRzLCBbcG9zdElkXTogWy4uLihzLmNvbW1lbnRzW3Bvc3RJZF0gfHwgW10pLCBjb21tZW50XSB9LAogICAgfSkpOwogICAgY2xvdWRBZGRDb21tZW50KGNvbW1lbnQgYXMgdW5rbm93biBhcyBSZWNvcmQ8c3RyaW5nLCB1bmtub3duPik7CiAgfSwgW10pOwoKICAvLyDilIDilIDilIAgOC4g6Kej6ZSB5oiQ5bCxIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgAogIGNvbnN0IHVubG9ja0FjaGlldmVtZW50ID0gdXNlQ2FsbGJhY2soKGlkOiBzdHJpbmcpID0+IHsKICAgIHNldFN0YXRlKHMgPT4gKHsKICAgICAgLi4ucywKICAgICAgYWNoaWV2ZW1lbnRzOiBzLmFjaGlldmVtZW50cy5tYXAoYSA9PgogICAgICAgIGEuaWQgPT09IGlkICYmICFhLnVubG9ja2VkCiAgICAgICAgICA/IHsgLi4uYSwgdW5sb2NrZWQ6IHRydWUsIHVubG9ja2VkQXQ6IG5ldyBEYXRlKCkudG9JU09TdHJpbmcoKSB9CiAgICAgICAgICA6IGEKICAgICAgKSwKICAgIH0pKTsKICAgIGNvbnN0IGFjaCA9IHN0YXRlLmFjaGlldmVtZW50cy5maW5kKGEgPT4gYS5pZCA9PT0gaWQpOwogICAgaWYgKGFjaCkgY2xvdWRVbmxvY2tBY2hpZXZlbWVudChhY2ggYXMgdW5rbm93biBhcyBSZWNvcmQ8c3RyaW5nLCB1bmtub3duPik7CiAgfSwgW3N0YXRlLmFjaGlldmVtZW50c10pOwoKICAvLyDilIDilIDilIAgOS4g5pu05paw55So5oi35L+h5oGvIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgAogIGNvbnN0IHNldFVzZXJJbmZvID0gdXNlQ2FsbGJhY2soKGluZHVzdHJ5OiBJbmR1c3RyeSwgd29ya1llYXJzOiBXb3JrWWVhcnMpID0+IHsKICAgIHNldFN0YXRlKHMgPT4gKHsgLi4ucywgdXNlckluZHVzdHJ5OiBpbmR1c3RyeSwgdXNlcldvcmtZZWFyczogd29ya1llYXJzIH0pKTsKICAgIGNsb3VkVXBkYXRlVXNlclByb2ZpbGUoeyBpbmR1c3RyeSwgd29ya1llYXJzIH0pOwogIH0sIFtdKTsKCiAgLy8g4pSA4pSA4pSAIDEwLiDor53mnK/mlLbol48gLyDlj5bmtogg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACiAgY29uc3QgdG9nZ2xlRmF2b3JpdGVTY3JpcHQgPSB1c2VDYWxsYmFjaygoc2NyaXB0SWQ6IHN0cmluZykgPT4gewogICAgc2V0U3RhdGUocyA9PiAoewogICAgICAuLi5zLAogICAgICBmYXZvcml0ZVNjcmlwdHM6IHMuZmF2b3JpdGVTY3JpcHRzLmluY2x1ZGVzKHNjcmlwdElkKQogICAgICAgID8gcy5mYXZvcml0ZVNjcmlwdHMuZmlsdGVyKGlkID0+IGlkICE9PSBzY3JpcHRJZCkKICAgICAgICA6IFsuLi5zLmZhdm9yaXRlU2NyaXB0cywgc2NyaXB0SWRdLAogICAgfSkpOwogICAgY29uc3QgbGlrZWQgPSAhc3RhdGUuZmF2b3JpdGVTY3JpcHRzLmluY2x1ZGVzKHNjcmlwdElkKTsKICAgIGlmIChsaWtlZCkgY2xvdWRUb2dnbGVGYXZvcml0ZVNjcmlwdChzY3JpcHRJZCwgbGlrZWQpOwogIH0sIFtzdGF0ZS5mYXZvcml0ZVNjcmlwdHNdKTsKCiAgLy8g4pSA4pSA4pSAIDExLiDnu4PkuaDmrKHmlbAgKzEg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACiAgY29uc3QgaW5jcmVtZW50UHJhY3RpY2VDb3VudCA9IHVzZUNhbGxiYWNrKCgpID0+IHsKICAgIHNldFN0YXRlKHMgPT4gKHsgLi4ucywgcHJhY3RpY2VDb3VudDogcy5wcmFjdGljZUNvdW50ICsgMSB9KSk7CiAgICBjbG91ZEluY3JlbWVudFByYWN0aWNlQ291bnQoKTsKICB9LCBbXSk7CgogIC8vIOKUgOKUgOKUgCDlhbbku5borr7nva4g4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACiAgY29uc3Qgc2V0RGVlcHNlZWtLZXkgPSB1c2VDYWxsYmFjaygoa2V5OiBzdHJpbmcpID0+IHsKICAgIHNldFN0YXRlKHMgPT4gKHsgLi4ucywgZGVlcHNlZWtLZXk6IGtleSB9KSk7CiAgfSwgW10pOwoKICBjb25zdCBjb21wbGV0ZU9uYm9hcmRpbmcgPSB1c2VDYWxsYmFjaygoKSA9PiB7CiAgICBzZXRTdGF0ZShzID0+ICh7IC4uLnMsIG9uYm9hcmRpbmdEb25lOiB0cnVlLCBqb2luRGF0ZTogbmV3IERhdGUoKS50b0lTT1N0cmluZygpIH0pKTsKICB9LCBbXSk7CgogIGNvbnN0IHRvZ2dsZURhcmtNb2RlID0gdXNlQ2FsbGJhY2soKCkgPT4gewogICAgc2V0U3RhdGUocyA9PiAoeyAuLi5zLCBpc0RhcmtNb2RlOiAhcy5pc0RhcmtNb2RlIH0pKTsKICB9LCBbXSk7CgogIHJldHVybiAoCiAgICA8QXBwQ29udGV4dC5Qcm92aWRlciB2YWx1ZT17ewogICAgICAuLi5zdGF0ZSwKICAgICAgc2F2ZVRlc3RSZXN1bHQsIHNhdmVEaWFyeSwgYWRkQ2hhdE1lc3NhZ2UsIGFkZFBvc3QsCiAgICAgIHRvZ2dsZUxpa2UsIHRvZ2dsZVJlc29uYXRlLCBhZGRDb21tZW50LCB1bmxvY2tBY2hpZXZlbWVudCwKICAgICAgc2V0VXNlckluZm8sIHRvZ2dsZUZhdm9yaXRlU2NyaXB0LCBpbmNyZW1lbnRQcmFjdGljZUNvdW50LAogICAgICBzZXREZWVwc2Vla0tleSwgY29tcGxldGVPbmJvYXJkaW5nLCB0b2dnbGVEYXJrTW9kZSwKICAgIH19PgogICAgICB7Y2hpbGRyZW59CiAgICA8L0FwcENvbnRleHQuUHJvdmlkZXI+CiAgKTsKfQoKZXhwb3J0IGZ1bmN0aW9uIHVzZUFwcCgpIHsKICBjb25zdCBjdHggPSB1c2VDb250ZXh0KEFwcENvbnRleHQpOwogIGlmICghY3R4KSB0aHJvdyBuZXcgRXJyb3IoJ3VzZUFwcCBtdXN0IGJlIHdpdGhpbiBBcHBQcm92aWRlcicpOwogIHJldHVybiBjdHg7Cn0K
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import type {
+  TestResult, DiaryEntry, Achievement, Post, Comment,
+  Industry, WorkYears, ChatMessage,
+} from '../types';
+import { ACHIEVEMENTS, MOCK_POSTS } from '../data';
+import {
+  cloudSaveTestResult, cloudSaveDiary, cloudAddChatMessage,
+  cloudAddPost, cloudToggleLike, cloudToggleResonate,
+  cloudAddComment, cloudUnlockAchievement,
+  cloudUpdateUserProfile, cloudToggleFavoriteScript,
+  cloudIncrementPracticeCount,
+} from '../cloud';
+
+// ─── 类型定义 ──────────────────────────────────────────────
+
+interface AppState {
+  testHistory: TestResult[];
+  currentTestResult: TestResult | null;
+  diaries: DiaryEntry[];
+  posts: Post[];
+  comments: Record<string, Comment[]>;
+  achievements: Achievement[];
+  practiceCount: number;
+  favoriteScripts: string[];
+  totalCommentLikes: number;
+  joinDate: string;
+  userIndustry: Industry;
+  userWorkYears: WorkYears;
+  deepseekKey: string;
+  onboardingDone: boolean;
+  isDarkMode: boolean;
+  appName: string;
+}
+
+interface AppContextType extends AppState {
+  saveTestResult: (result: TestResult) => void;
+  saveDiary: (diary: DiaryEntry) => void;
+  addChatMessage: (diaryId: string, message: ChatMessage) => void;
+  addPost: (post: Post) => void;
+  toggleLike: (postId: string, cloudId?: string) => void;
+  toggleResonate: (postId: string, cloudId?: string) => void;
+  addComment: (postId: string, comment: Comment) => void;
+  unlockAchievement: (id: string) => void;
+  setUserInfo: (industry: Industry, workYears: WorkYears) => void;
+  toggleFavoriteScript: (scriptId: string) => void;
+  incrementPracticeCount: () => void;
+  setDeepseekKey: (key: string) => void;
+  completeOnboarding: () => void;
+  toggleDarkMode: () => void;
+}
+
+const AppContext = createContext<AppContextType | null>(null);
+const STORAGE_KEY = 'zhichang_qingxing_v1';
+
+// ─── 本地持久化 ──────────────────────────────────────────────
+
+function loadState(): Partial<AppState> {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch { return {}; }
+}
+
+function persist(state: AppState) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      testHistory: state.testHistory,
+      currentTestResult: state.currentTestResult,
+      diaries: state.diaries,
+      posts: state.posts,
+      comments: state.comments,
+      achievements: state.achievements,
+      practiceCount: state.practiceCount,
+      favoriteScripts: state.favoriteScripts,
+      totalCommentLikes: state.totalCommentLikes,
+      joinDate: state.joinDate,
+      userIndustry: state.userIndustry,
+      userWorkYears: state.userWorkYears,
+      deepseekKey: state.deepseekKey,
+      onboardingDone: state.onboardingDone,
+      isDarkMode: state.isDarkMode,
+      appName: state.appName,
+    }));
+  } catch {}
+}
+
+// ─── Provider ──────────────────────────────────────────────
+
+export function AppProvider({ children }: { children: React.ReactNode }) {
+  const [state, setState] = useState<AppState>(() => {
+    const saved = loadState();
+    return {
+      testHistory: saved.testHistory || [],
+      currentTestResult: saved.currentTestResult || null,
+      diaries: saved.diaries || [],
+      posts: saved.posts || MOCK_POSTS,
+      comments: saved.comments || {},
+      achievements: saved.achievements || ACHIEVEMENTS,
+      practiceCount: saved.practiceCount || 0,
+      favoriteScripts: saved.favoriteScripts || [],
+      totalCommentLikes: saved.totalCommentLikes || 0,
+      joinDate: saved.joinDate || new Date().toISOString(),
+      userIndustry: saved.userIndustry || '互联网',
+      userWorkYears: saved.userWorkYears || '1-3年',
+      deepseekKey: saved.deepseekKey || '',
+      onboardingDone: saved.onboardingDone ?? false,
+      isDarkMode: saved.isDarkMode ?? false,
+      appName: saved.appName || 'Feleme',
+    };
+  });
+
+  // 状态变化时持久化到 localStorage
+  useEffect(() => { persist(state); }, [state]);
+
+  // 暗黑模式 class 切换
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', state.isDarkMode);
+  }, [state.isDarkMode]);
+
+  // ─── 1. 保存测试结果 ─────────────────────────────────────
+  const saveTestResult = useCallback((result: TestResult) => {
+    setState(s => ({
+      ...s,
+      testHistory: [result, ...s.testHistory].slice(0, 20),
+      currentTestResult: result,
+    }));
+    cloudSaveTestResult(result as unknown as Record<string, unknown>);
+  }, []);
+
+  // ─── 2. 保存情绪日记 ────────────────────────────────────
+  const saveDiary = useCallback((diary: DiaryEntry) => {
+    console.log('[app-context] saveDiary hit', diary);
+    if (typeof window !== 'undefined' && typeof window.alert === 'function') {
+      window.alert('[app-context] saveDiary hit');
+    }
+    setState(s => ({ ...s, diaries: [diary, ...s.diaries] }));
+    cloudSaveDiary(diary as unknown as Record<string, unknown>);
+  }, []);
+
+  // ─── 3. 添加日记聊天消息 ────────────────────────────────
+  const addChatMessage = useCallback((diaryId: string, message: ChatMessage) => {
+    setState(s => ({
+      ...s,
+      diaries: s.diaries.map(d =>
+        d.id === diaryId ? { ...d, messages: [...d.messages, message] } : d
+      ),
+    }));
+    cloudAddChatMessage(diaryId, message as unknown as Record<string, unknown>);
+  }, []);
+
+  // ─── 4. 发布社区帖子 ───────────────────────────────────
+  const addPost = useCallback((post: Post) => {
+    setState(s => ({ ...s, posts: [post, ...s.posts] }));
+    cloudAddPost(post as unknown as Record<string, unknown>);
+  }, []);
+
+  // ─── 5. 帖子点赞 / 取消点赞 ─────────────────────────────
+  const toggleLike = useCallback((postId: string, cloudId?: string) => {
+    setState(s => ({
+      ...s,
+      posts: s.posts.map(p => {
+        if (p.id !== postId) return p;
+        const liked = !p.liked;
+        return { ...p, liked, likes: liked ? p.likes + 1 : p.likes - 1 };
+      }),
+    }));
+    if (cloudId) cloudToggleLike(postId, cloudId, true);
+  }, []);
+
+  // ─── 6. 帖子共鸣 / 取消共鸣 ────────────────────────────
+  const toggleResonate = useCallback((postId: string, cloudId?: string) => {
+    setState(s => ({
+      ...s,
+      posts: s.posts.map(p => {
+        if (p.id !== postId) return p;
+        const resonated = !p.resonated;
+        return { ...p, resonated, resonances: resonated ? p.resonances + 1 : p.resonances - 1 };
+      }),
+    }));
+    if (cloudId) cloudToggleResonate(postId, cloudId, true);
+  }, []);
+
+  // ─── 7. 添加评论 ───────────────────────────────────────
+  const addComment = useCallback((postId: string, comment: Comment) => {
+    setState(s => ({
+      ...s,
+      posts: s.posts.map(p => p.id === postId ? { ...p, comments: p.comments + 1 } : p),
+      comments: { ...s.comments, [postId]: [...(s.comments[postId] || []), comment] },
+    }));
+    cloudAddComment(comment as unknown as Record<string, unknown>);
+  }, []);
+
+  // ─── 8. 解锁成就 ───────────────────────────────────────
+  const unlockAchievement = useCallback((id: string) => {
+    setState(s => ({
+      ...s,
+      achievements: s.achievements.map(a =>
+        a.id === id && !a.unlocked
+          ? { ...a, unlocked: true, unlockedAt: new Date().toISOString() }
+          : a
+      ),
+    }));
+    const ach = state.achievements.find(a => a.id === id);
+    if (ach) cloudUnlockAchievement(ach as unknown as Record<string, unknown>);
+  }, [state.achievements]);
+
+  // ─── 9. 更新用户信息 ──────────────────────────────────
+  const setUserInfo = useCallback((industry: Industry, workYears: WorkYears) => {
+    setState(s => ({ ...s, userIndustry: industry, userWorkYears: workYears }));
+    cloudUpdateUserProfile({ industry, workYears });
+  }, []);
+
+  // ─── 10. 话术收藏 / 取消 ────────────────────────────────
+  const toggleFavoriteScript = useCallback((scriptId: string) => {
+    setState(s => ({
+      ...s,
+      favoriteScripts: s.favoriteScripts.includes(scriptId)
+        ? s.favoriteScripts.filter(id => id !== scriptId)
+        : [...s.favoriteScripts, scriptId],
+    }));
+    const liked = !state.favoriteScripts.includes(scriptId);
+    if (liked) cloudToggleFavoriteScript(scriptId, liked);
+  }, [state.favoriteScripts]);
+
+  // ─── 11. 练习次数 +1 ───────────────────────────────────
+  const incrementPracticeCount = useCallback(() => {
+    setState(s => ({ ...s, practiceCount: s.practiceCount + 1 }));
+    cloudIncrementPracticeCount();
+  }, []);
+
+  // ─── 其他设置 ───────────────────────────────────────────
+  const setDeepseekKey = useCallback((key: string) => {
+    setState(s => ({ ...s, deepseekKey: key }));
+  }, []);
+
+  const completeOnboarding = useCallback(() => {
+    setState(s => ({ ...s, onboardingDone: true, joinDate: new Date().toISOString() }));
+  }, []);
+
+  const toggleDarkMode = useCallback(() => {
+    setState(s => ({ ...s, isDarkMode: !s.isDarkMode }));
+  }, []);
+
+  return (
+    <AppContext.Provider value={{
+      ...state,
+      saveTestResult, saveDiary, addChatMessage, addPost,
+      toggleLike, toggleResonate, addComment, unlockAchievement,
+      setUserInfo, toggleFavoriteScript, incrementPracticeCount,
+      setDeepseekKey, completeOnboarding, toggleDarkMode,
+    }}>
+      {children}
+    </AppContext.Provider>
+  );
+}
+
+export function useApp() {
+  const ctx = useContext(AppContext);
+  if (!ctx) throw new Error('useApp must be within AppProvider');
+  return ctx;
+}

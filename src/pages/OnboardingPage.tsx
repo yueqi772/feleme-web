@@ -1,1 +1,188 @@
-aW1wb3J0IHsgdXNlU3RhdGUgfSBmcm9tICdyZWFjdCc7CmltcG9ydCB7IHVzZUFwcCB9IGZyb20gJy4uL2NvbnRleHQvQXBwQ29udGV4dCc7CmltcG9ydCB0eXBlIHsgSW5kdXN0cnksIFdvcmtZZWFycyB9IGZyb20gJy4uL3R5cGVzJzsKCmludGVyZmFjZSBPbmJvYXJkaW5nUGFnZVByb3BzIHsKICBvbk5hdmlnYXRlOiAocGFnZTogc3RyaW5nLCBwYXJhbXM/OiBSZWNvcmQ8c3RyaW5nLCB1bmtub3duPikgPT4gdm9pZDsKfQoKY29uc3QgSU5EVVNUUklFUzogSW5kdXN0cnlbXSA9IFsn5LqS6IGU572RJywgJ+aVmeiCsicsICfph5Hono0nLCAn5Yy755aXJywgJ+WFtuS7liddOwpjb25zdCBXT1JLX1lFQVJTOiBXb3JrWWVhcnNbXSA9IFsnMeW5tOS7peWGhScsICcxLTPlubQnLCAnMy015bm0JywgJzXlubTku6XkuIonXTsKCmNvbnN0IFBBSU5fUE9JTlRTID0gWwogIHsgaWQ6ICfliqDnj60nLCBsYWJlbDogJ+e7j+W4uOWKoOePrScsIGVtb2ppOiAn4o+wJyB9LAogIHsgaWQ6ICflkKblrprku7flgLwnLCBsYWJlbDogJ+iiq+WQpuWumuS7t+WAvCcsIGVtb2ppOiAn8J+SlCcgfSwKICB7IGlkOiAn6aKG5a+85oOF57uqJywgbGFiZWw6ICfpooblr7zmg4Xnu6rkuI3nqLPlrponLCBlbW9qaTogJ/CfmKEnIH0sCiAgeyBpZDogJ+WQjOS6i+aOkuaMpCcsIGxhYmVsOiAn5ZCM5LqL5o6S5oykJywgZW1vamk6ICfwn5q2JyB9LAogIHsgaWQ6ICdQVUHlm7Dmg5EnLCBsYWJlbDogJ+S4jea4healmuiHquW3seaYr+WQpuiiq1BVQScsIGVtb2ppOiAn4p2TJyB9LAogIHsgaWQ6ICflhbbku5YnLCBsYWJlbDogJ+WFtuS7licsIGVtb2ppOiAn8J+SrCcgfSwKXTsKCmNvbnN0IFNURVBTID0gWyfpgInmi6nooYzkuJonLCAn5bel5L2c5bm06ZmQJywgJ+S4u+imgeeXm+eCuScsICflip/og73ku4vnu40nXTsKCmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIE9uYm9hcmRpbmdQYWdlKHsgb25OYXZpZ2F0ZSB9OiBPbmJvYXJkaW5nUGFnZVByb3BzKSB7CiAgY29uc3QgeyBjb21wbGV0ZU9uYm9hcmRpbmcsIHNldFVzZXJJbmZvLCBhcHBOYW1lIH0gPSB1c2VBcHAoKTsKICBjb25zdCBbc3RlcCwgc2V0U3RlcF0gPSB1c2VTdGF0ZSgwKTsKICBjb25zdCBbaW5kdXN0cnksIHNldEluZHVzdHJ5XSA9IHVzZVN0YXRlPEluZHVzdHJ5Pign5LqS6IGU572RJyk7CiAgY29uc3QgW3dvcmtZZWFycywgc2V0V29ya1llYXJzXSA9IHVzZVN0YXRlPFdvcmtZZWFycz4oJzEtM+W5tCcpOwogIGNvbnN0IFtwYWluUG9pbnRzLCBzZXRQYWluUG9pbnRzXSA9IHVzZVN0YXRlPHN0cmluZ1tdPihbXSk7CgogIGNvbnN0IHRvZ2dsZVBhaW5Qb2ludCA9IChpZDogc3RyaW5nKSA9PiB7CiAgICBzZXRQYWluUG9pbnRzKHByZXYgPT4gcHJldi5pbmNsdWRlcyhpZCkgPyBwcmV2LmZpbHRlcihwID0+IHAgIT09IGlkKSA6IFsuLi5wcmV2LCBpZF0pOwogIH07CgogIGNvbnN0IGhhbmRsZUZpbmlzaCA9ICgpID0+IHsKICAgIHNldFVzZXJJbmZvKGluZHVzdHJ5LCB3b3JrWWVhcnMpOwogICAgY29tcGxldGVPbmJvYXJkaW5nKCk7CiAgICBvbk5hdmlnYXRlKCdob21lJyk7CiAgfTsKCiAgY29uc3QgcHJvZ3Jlc3MgPSAoKHN0ZXAgKyAxKSAvIFNURVBTLmxlbmd0aCkgKiAxMDA7CgogIHJldHVybiAoCiAgICA8ZGl2IGNsYXNzTmFtZT0ibWluLWgtc2NyZWVuIGJnLXdoaXRlIG1heC13LW1kIG14LWF1dG8gZmxleCBmbGV4LWNvbCI+CiAgICAgIHsvKiBQcm9ncmVzcyBiYXIgKi99CiAgICAgIDxkaXYgY2xhc3NOYW1lPSJoLTEgYmctZ3JheS0xMDAiPgogICAgICAgIDxkaXYKICAgICAgICAgIGNsYXNzTmFtZT0iaC1mdWxsIGJnLWJyYW5kLTUwMCB0cmFuc2l0aW9uLWFsbCBkdXJhdGlvbi0zMDAiCiAgICAgICAgICBzdHlsZT17eyB3aWR0aDogYCR7cHJvZ3Jlc3N9JWAgfX0KICAgICAgICAvPgogICAgICA8L2Rpdj4KCiAgICAgIHsvKiBTdGVwIGluZGljYXRvciAqL30KICAgICAgPGRpdiBjbGFzc05hbWU9InB4LTYgcHQtNiBwYi0yIj4KICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuIG1iLTIiPgogICAgICAgICAge1NURVBTLm1hcCgobGFiZWwsIGkpID0+ICgKICAgICAgICAgICAgPGRpdiBrZXk9e2xhYmVsfSBjbGFzc05hbWU9ImZsZXggZmxleC1jb2wgaXRlbXMtY2VudGVyIGdhcC0xIj4KICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT17YHctNiBoLTYgcm91bmRlZC1mdWxsIGZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyIHRleHQteHMgZm9udC1tZWRpdW0gdHJhbnNpdGlvbi1jb2xvcnMgJHsKICAgICAgICAgICAgICAgIGkgPCBzdGVwID8gJ2JnLWJyYW5kLTUwMCB0ZXh0LXdoaXRlJyA6CiAgICAgICAgICAgICAgICBpID09PSBzdGVwID8gJ2JnLWJyYW5kLTUwMCB0ZXh0LXdoaXRlJyA6CiAgICAgICAgICAgICAgICAnYmctZ3JheS0yMDAgdGV4dC1ncmF5LTQwMCcKICAgICAgICAgICAgICB9YH0+CiAgICAgICAgICAgICAgICB7aSA8IHN0ZXAgPyAn4pyTJyA6IGkgKyAxfQogICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT17YHRleHQtWzEwcHhdICR7aSA9PT0gc3RlcCA/ICd0ZXh0LWJyYW5kLTUwMCBmb250LW1lZGl1bScgOiAndGV4dC1ncmF5LTQwMCd9YH0+CiAgICAgICAgICAgICAgICB7bGFiZWx9CiAgICAgICAgICAgICAgPC9zcGFuPgogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICkpfQogICAgICAgIDwvZGl2PgogICAgICA8L2Rpdj4KCiAgICAgIHsvKiBTdGVwIGNvbnRlbnQgKi99CiAgICAgIDxkaXYgY2xhc3NOYW1lPSJmbGV4LTEgcHgtNiBwdC00Ij4KICAgICAgICB7c3RlcCA9PT0gMCAmJiAoCiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iYW5pbWF0ZS1mYWRlLWluIj4KICAgICAgICAgICAgPGgyIGNsYXNzTmFtZT0idGV4dC14bCBmb250LWJvbGQgdGV4dC1ncmF5LTgwMCBtYi0xIj7mrKLov47mnaXliLAge2FwcE5hbWV9PC9oMj4KICAgICAgICAgICAgPHAgY2xhc3NOYW1lPSJ0ZXh0LXNtIHRleHQtZ3JheS01MDAgbWItOCI+5ZGK6K+J5oiR5Lus5L2g55qE6IOM5pmv77yM5Lul5L6/5pu05aW95Zyw5biu5Yqp5L2gPC9wPgogICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZ3JpZCBncmlkLWNvbHMtMiBnYXAtMyI+CiAgICAgICAgICAgICAge0lORFVTVFJJRVMubWFwKGluZCA9PiAoCiAgICAgICAgICAgICAgICA8YnV0dG9uCiAgICAgICAgICAgICAgICAgIGtleT17aW5kfQogICAgICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBzZXRJbmR1c3RyeShpbmQpfQogICAgICAgICAgICAgICAgICBjbGFzc05hbWU9e2BweS0zIHB4LTQgcm91bmRlZC14bCBib3JkZXItMiB0ZXh0LXNtIGZvbnQtbWVkaXVtIHRyYW5zaXRpb24tYWxsICR7CiAgICAgICAgICAgICAgICAgICAgaW5kdXN0cnkgPT09IGluZAogICAgICAgICAgICAgICAgICAgICAgPyAnYm9yZGVyLWJyYW5kLTUwMCBiZy1icmFuZC01MCB0ZXh0LWJyYW5kLTYwMCcKICAgICAgICAgICAgICAgICAgICAgIDogJ2JvcmRlci1ncmF5LTIwMCB0ZXh0LWdyYXktNjAwIGJnLWdyYXktNTAnCiAgICAgICAgICAgICAgICAgIH1gfQogICAgICAgICAgICAgICAgPgogICAgICAgICAgICAgICAgICB7aW5kfQogICAgICAgICAgICAgICAgPC9idXR0b24+CiAgICAgICAgICAgICAgKSl9CiAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgPC9kaXY+CiAgICAgICAgKX0KCiAgICAgICAge3N0ZXAgPT09IDEgJiYgKAogICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImFuaW1hdGUtZmFkZS1pbiI+CiAgICAgICAgICAgIDxoMiBjbGFzc05hbWU9InRleHQteGwgZm9udC1ib2xkIHRleHQtZ3JheS04MDAgbWItMSI+5L2g55qE5bel5L2c5bm06ZmQ77yfPC9oMj4KICAgICAgICAgICAgPHAgY2xhc3NOYW1lPSJ0ZXh0LXNtIHRleHQtZ3JheS01MDAgbWItOCI+5biu5Yqp5oiR5Lus5LqG6Kej5L2g55qE6IGM5Zy657uP6aqMPC9wPgogICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ic3BhY2UteS0zIj4KICAgICAgICAgICAgICB7V09SS19ZRUFSUy5tYXAoeWVhcnMgPT4gKAogICAgICAgICAgICAgICAgPGJ1dHRvbgogICAgICAgICAgICAgICAgICBrZXk9e3llYXJzfQogICAgICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBzZXRXb3JrWWVhcnMoeWVhcnMpfQogICAgICAgICAgICAgICAgICBjbGFzc05hbWU9e2B3LWZ1bGwgcHktMyBweC00IHJvdW5kZWQteGwgYm9yZGVyLTIgdGV4dC1zbSBmb250LW1lZGl1bSB0cmFuc2l0aW9uLWFsbCB0ZXh0LWxlZnQgJHsKICAgICAgICAgICAgICAgICAgICB3b3JrWWVhcnMgPT09IHllYXJzCiAgICAgICAgICAgICAgICAgICAgICA/ICdib3JkZXItYnJhbmQtNTAwIGJnLWJyYW5kLTUwIHRleHQtYnJhbmQtNjAwJwogICAgICAgICAgICAgICAgICAgICAgOiAnYm9yZGVyLWdyYXktMjAwIHRleHQtZ3JheS02MDAgYmctZ3JheS01MCcKICAgICAgICAgICAgICAgICAgfWB9CiAgICAgICAgICAgICAgICA+CiAgICAgICAgICAgICAgICAgIHt5ZWFyc30KICAgICAgICAgICAgICAgIDwvYnV0dG9uPgogICAgICAgICAgICAgICkpfQogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgIDwvZGl2PgogICAgICAgICl9CgogICAgICAgIHtzdGVwID09PSAyICYmICgKICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJhbmltYXRlLWZhZGUtaW4iPgogICAgICAgICAgICA8aDIgY2xhc3NOYW1lPSJ0ZXh0LXhsIGZvbnQtYm9sZCB0ZXh0LWdyYXktODAwIG1iLTEiPuS9oOWcqOiBjOWcuuS4remBh+WIsOS6huS7gOS5iO+8nzwvaDI+CiAgICAgICAgICAgIDxwIGNsYXNzTmFtZT0idGV4dC1zbSB0ZXh0LWdyYXktNTAwIG1iLTYiPuWPr+WkmumAie+8jOaIkeS7rOS8muS4uuS9oOaPkOS+m+mSiOWvueaAp+aUr+aMgTwvcD4KICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImdyaWQgZ3JpZC1jb2xzLTIgZ2FwLTMiPgogICAgICAgICAgICAgIHtQQUlOX1BPSU5UUy5tYXAocHQgPT4gKAogICAgICAgICAgICAgICAgPGJ1dHRvbgogICAgICAgICAgICAgICAgICBrZXk9e3B0LmlkfQogICAgICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiB0b2dnbGVQYWluUG9pbnQocHQuaWQpfQogICAgICAgICAgICAgICAgICBjbGFzc05hbWU9e2BweS0zIHB4LTMgcm91bmRlZC14bCBib3JkZXItMiB0ZXh0LXNtIHRyYW5zaXRpb24tYWxsIGZsZXggaXRlbXMtY2VudGVyIGdhcC0yICR7CiAgICAgICAgICAgICAgICAgICAgcGFpblBvaW50cy5pbmNsdWRlcyhwdC5pZCkKICAgICAgICAgICAgICAgICAgICAgID8gJ2JvcmRlci1icmFuZC01MDAgYmctYnJhbmQtNTAgdGV4dC1icmFuZC02MDAnCiAgICAgICAgICAgICAgICAgICAgICA6ICdib3JkZXItZ3JheS0yMDAgdGV4dC1ncmF5LTYwMCBiZy1ncmF5LTUwJwogICAgICAgICAgICAgICAgICB9YH0KICAgICAgICAgICAgICAgID4KICAgICAgICAgICAgICAgICAgPHNwYW4+e3B0LmVtb2ppfTwvc3Bhbj4KICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJ0ZXh0LXhzIj57cHQubGFiZWx9PC9zcGFuPgogICAgICAgICAgICAgICAgPC9idXR0b24+CiAgICAgICAgICAgICAgKSl9CiAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgPC9kaXY+CiAgICAgICAgKX0KCiAgICAgICAge3N0ZXAgPT09IDMgJiYgKAogICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImFuaW1hdGUtZmFkZS1pbiI+CiAgICAgICAgICAgIDxoMiBjbGFzc05hbWU9InRleHQteGwgZm9udC1ib2xkIHRleHQtZ3JheS04MDAgbWItMSI+e2FwcE5hbWV9IOiDveW4ruS9oOWBmuS7gOS5iO+8nzwvaDI+CiAgICAgICAgICAgIDxwIGNsYXNzTmFtZT0idGV4dC1zbSB0ZXh0LWdyYXktNTAwIG1iLTYiPuS6huino+S6p+WTgeaguOW/g+WKn+iDvTwvcD4KICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9InNwYWNlLXktMyI+CiAgICAgICAgICAgICAge1sKICAgICAgICAgICAgICAgIHsgaWNvbjogJ/CflI0nLCB0aXRsZTogJ+ivhuWIq+a1i+ivlScsIGRlc2M6ICfpgJrov4fkuJPkuJrpl67ljbfvvIzor4bliKvkvaDmraPlnKjnu4/ljobnmoTogYzlnLpQVUHlpZfot6/lkozpo47pmannrYnnuqcnLCBjb2xvcjogJ2Zyb20tYmx1ZS01MCB0by1ibHVlLTEwMCcgfSwKICAgICAgICAgICAgICAgIHsgaWNvbjogJ/Cfjq0nLCB0aXRsZTogJ+aDheaZr+e7g+S5oCcsIGRlc2M6ICfkuI5BSeaooeaLn+mrmOWOi+WvueivneWcuuaZr++8jOe7g+S5oOiuvueri+i+ueeVjOOAgeS8mOmbheW6lOWvueeahOivneacrycsIGNvbG9yOiAnZnJvbS1vcmFuZ2UtNTAgdG8tb3JhbmdlLTEwMCcgfSwKICAgICAgICAgICAgICAgIHsgaWNvbjogJ/Cfk50nLCB0aXRsZTogJ+aDhee7quaXpeiusCcsIGRlc2M6ICforrDlvZXmr4/ml6Xmg4Xnu6rlj5jljJbvvIxBSeS8meS8tOmZquS9oOais+eQhuaAnei3r++8jOeci+ingeiHquW3seeahOaEn+WPlycsIGNvbG9yOiAnZnJvbS1ncmVlbi01MCB0by1ncmVlbi0xMDAnIH0sCiAgICAgICAgICAgICAgICB7IGljb246ICfwn5KsJywgdGl0bGU6ICfkupLliqnnpL7ljLonLCBkZXNjOiAn5LiO5pyJ57G75Ly857uP5Y6G55qE5Lq65Lqk5rWB77yM5om+5Yiw5YWx6bij77yM5LiN5YaN5a2k5Y2VJywgY29sb3I6ICdmcm9tLXB1cnBsZS01MCB0by1wdXJwbGUtMTAwJyB9LAogICAgICAgICAgICAgIF0ubWFwKGYgPT4gKAogICAgICAgICAgICAgICAgPGRpdiBrZXk9e2YudGl0bGV9IGNsYXNzTmFtZT17YGNhcmQgYmctZ3JhZGllbnQtdG8tYnIgJHtmLmNvbG9yfSBib3JkZXItMGB9PgogICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleCBpdGVtcy1zdGFydCBnYXAtMyI+CiAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJ0ZXh0LTJ4bCBtdC0wLjUiPntmLmljb259PC9zcGFuPgogICAgICAgICAgICAgICAgICAgIDxkaXY+CiAgICAgICAgICAgICAgICAgICAgICA8aDMgY2xhc3NOYW1lPSJ0ZXh0LXNtIGZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTgwMCI+e2YudGl0bGV9PC9oMz4KICAgICAgICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT0idGV4dC14cyB0ZXh0LWdyYXktNTAwIG10LTAuNSBsZWFkaW5nLXJlbGF4ZWQiPntmLmRlc2N9PC9wPgogICAgICAgICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICAgICkpfQogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgIDwvZGl2PgogICAgICAgICl9CiAgICAgIDwvZGl2PgoKICAgICAgey8qIE5hdmlnYXRpb24gYnV0dG9ucyAqL30KICAgICAgPGRpdiBjbGFzc05hbWU9InB4LTYgcGItOCBwdC00IHNocmluay0wIj4KICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleCBnYXAtMyI+CiAgICAgICAgICB7c3RlcCA+IDAgJiYgKAogICAgICAgICAgICA8YnV0dG9uCiAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4gc2V0U3RlcChzID0+IHMgLSAxKX0KICAgICAgICAgICAgICBjbGFzc05hbWU9ImZsZXgtMSBweS0zIHJvdW5kZWQteGwgYm9yZGVyLTIgYm9yZGVyLWdyYXktMjAwIHRleHQtZ3JheS02MDAgdGV4dC1zbSBmb250LW1lZGl1bSIKICAgICAgICAgICAgPgogICAgICAgICAgICAgIOS4iuS4gOatpQogICAgICAgICAgICA8L2J1dHRvbj4KICAgICAgICAgICl9CiAgICAgICAgICA8YnV0dG9uCiAgICAgICAgICAgIG9uQ2xpY2s9e3N0ZXAgPCBTVEVQUy5sZW5ndGggLSAxID8gKCkgPT4gc2V0U3RlcChzID0+IHMgKyAxKSA6IGhhbmRsZUZpbmlzaH0KICAgICAgICAgICAgY2xhc3NOYW1lPSJmbGV4LTEgcHktMyByb3VuZGVkLXhsIGJnLWJyYW5kLTUwMCB0ZXh0LXdoaXRlIHRleHQtc20gZm9udC1tZWRpdW0gYWN0aXZlOnNjYWxlLTk1IHRyYW5zaXRpb24tdHJhbnNmb3JtIgogICAgICAgICAgPgogICAgICAgICAgICB7c3RlcCA8IFNURVBTLmxlbmd0aCAtIDEgPyAn5LiL5LiA5q2lJyA6ICflvIDlp4vkvb/nlKgg8J+Mvyd9CiAgICAgICAgICA8L2J1dHRvbj4KICAgICAgICA8L2Rpdj4KICAgICAgPC9kaXY+CiAgICA8L2Rpdj4KICApOwp9Cg==
+import { useState } from 'react';
+import { useApp } from '../context/AppContext';
+import type { Industry, WorkYears } from '../types';
+
+interface OnboardingPageProps {
+  onNavigate: (page: string, params?: Record<string, unknown>) => void;
+}
+
+const INDUSTRIES: Industry[] = ['互联网', '教育', '金融', '医疗', '其他'];
+const WORK_YEARS: WorkYears[] = ['1年以内', '1-3年', '3-5年', '5年以上'];
+
+const PAIN_POINTS = [
+  { id: '加班', label: '经常加班', emoji: '⏰' },
+  { id: '否定价值', label: '被否定价值', emoji: '💔' },
+  { id: '领导情绪', label: '领导情绪不稳定', emoji: '😡' },
+  { id: '同事排挤', label: '同事排挤', emoji: '🚶' },
+  { id: 'PUA困惑', label: '不清楚自己是否被PUA', emoji: '❓' },
+  { id: '其他', label: '其他', emoji: '💬' },
+];
+
+const STEPS = ['选择行业', '工作年限', '主要痛点', '功能介绍'];
+
+export default function OnboardingPage({ onNavigate }: OnboardingPageProps) {
+  const { completeOnboarding, setUserInfo, appName } = useApp();
+  const [step, setStep] = useState(0);
+  const [industry, setIndustry] = useState<Industry>('互联网');
+  const [workYears, setWorkYears] = useState<WorkYears>('1-3年');
+  const [painPoints, setPainPoints] = useState<string[]>([]);
+
+  const togglePainPoint = (id: string) => {
+    setPainPoints(prev => prev.includes(id) ? prev.filter(p => p !== id) : [...prev, id]);
+  };
+
+  const handleFinish = () => {
+    setUserInfo(industry, workYears);
+    completeOnboarding();
+    onNavigate('home');
+  };
+
+  const progress = ((step + 1) / STEPS.length) * 100;
+
+  return (
+    <div className="min-h-screen bg-white max-w-md mx-auto flex flex-col">
+      {/* Progress bar */}
+      <div className="h-1 bg-gray-100">
+        <div
+          className="h-full bg-brand-500 transition-all duration-300"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+
+      {/* Step indicator */}
+      <div className="px-6 pt-6 pb-2">
+        <div className="flex items-center justify-between mb-2">
+          {STEPS.map((label, i) => (
+            <div key={label} className="flex flex-col items-center gap-1">
+              <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium transition-colors ${
+                i < step ? 'bg-brand-500 text-white' :
+                i === step ? 'bg-brand-500 text-white' :
+                'bg-gray-200 text-gray-400'
+              }`}>
+                {i < step ? '✓' : i + 1}
+              </div>
+              <span className={`text-[10px] ${i === step ? 'text-brand-500 font-medium' : 'text-gray-400'}`}>
+                {label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Step content */}
+      <div className="flex-1 px-6 pt-4">
+        {step === 0 && (
+          <div className="animate-fade-in">
+            <h2 className="text-xl font-bold text-gray-800 mb-1">欢迎来到 {appName}</h2>
+            <p className="text-sm text-gray-500 mb-8">告诉我们你的背景，以便更好地帮助你</p>
+            <div className="grid grid-cols-2 gap-3">
+              {INDUSTRIES.map(ind => (
+                <button
+                  key={ind}
+                  onClick={() => setIndustry(ind)}
+                  className={`py-3 px-4 rounded-xl border-2 text-sm font-medium transition-all ${
+                    industry === ind
+                      ? 'border-brand-500 bg-brand-50 text-brand-600'
+                      : 'border-gray-200 text-gray-600 bg-gray-50'
+                  }`}
+                >
+                  {ind}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {step === 1 && (
+          <div className="animate-fade-in">
+            <h2 className="text-xl font-bold text-gray-800 mb-1">你的工作年限？</h2>
+            <p className="text-sm text-gray-500 mb-8">帮助我们了解你的职场经验</p>
+            <div className="space-y-3">
+              {WORK_YEARS.map(years => (
+                <button
+                  key={years}
+                  onClick={() => setWorkYears(years)}
+                  className={`w-full py-3 px-4 rounded-xl border-2 text-sm font-medium transition-all text-left ${
+                    workYears === years
+                      ? 'border-brand-500 bg-brand-50 text-brand-600'
+                      : 'border-gray-200 text-gray-600 bg-gray-50'
+                  }`}
+                >
+                  {years}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {step === 2 && (
+          <div className="animate-fade-in">
+            <h2 className="text-xl font-bold text-gray-800 mb-1">你在职场中遇到了什么？</h2>
+            <p className="text-sm text-gray-500 mb-6">可多选，我们会为你提供针对性支持</p>
+            <div className="grid grid-cols-2 gap-3">
+              {PAIN_POINTS.map(pt => (
+                <button
+                  key={pt.id}
+                  onClick={() => togglePainPoint(pt.id)}
+                  className={`py-3 px-3 rounded-xl border-2 text-sm transition-all flex items-center gap-2 ${
+                    painPoints.includes(pt.id)
+                      ? 'border-brand-500 bg-brand-50 text-brand-600'
+                      : 'border-gray-200 text-gray-600 bg-gray-50'
+                  }`}
+                >
+                  <span>{pt.emoji}</span>
+                  <span className="text-xs">{pt.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {step === 3 && (
+          <div className="animate-fade-in">
+            <h2 className="text-xl font-bold text-gray-800 mb-1">{appName} 能帮你做什么？</h2>
+            <p className="text-sm text-gray-500 mb-6">了解产品核心功能</p>
+            <div className="space-y-3">
+              {[
+                { icon: '🔍', title: '识别测试', desc: '通过专业问卷，识别你正在经历的职场PUA套路和风险等级', color: 'from-blue-50 to-blue-100' },
+                { icon: '🎭', title: '情景练习', desc: '与AI模拟高压对话场景，练习设立边界、优雅应对的话术', color: 'from-orange-50 to-orange-100' },
+                { icon: '📝', title: '情绪日记', desc: '记录每日情绪变化，AI伙伴陪你梳理思路，看见自己的感受', color: 'from-green-50 to-green-100' },
+                { icon: '💬', title: '互助社区', desc: '与有类似经历的人交流，找到共鸣，不再孤单', color: 'from-purple-50 to-purple-100' },
+              ].map(f => (
+                <div key={f.title} className={`card bg-gradient-to-br ${f.color} border-0`}>
+                  <div className="flex items-start gap-3">
+                    <span className="text-2xl mt-0.5">{f.icon}</span>
+                    <div>
+                      <h3 className="text-sm font-semibold text-gray-800">{f.title}</h3>
+                      <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{f.desc}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Navigation buttons */}
+      <div className="px-6 pb-8 pt-4 shrink-0">
+        <div className="flex gap-3">
+          {step > 0 && (
+            <button
+              onClick={() => setStep(s => s - 1)}
+              className="flex-1 py-3 rounded-xl border-2 border-gray-200 text-gray-600 text-sm font-medium"
+            >
+              上一步
+            </button>
+          )}
+          <button
+            onClick={step < STEPS.length - 1 ? () => setStep(s => s + 1) : handleFinish}
+            className="flex-1 py-3 rounded-xl bg-brand-500 text-white text-sm font-medium active:scale-95 transition-transform"
+          >
+            {step < STEPS.length - 1 ? '下一步' : '开始使用 🌿'}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
