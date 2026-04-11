@@ -131,9 +131,6 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   // ─── 2. 保存情绪日记 ────────────────────────────────────
   const saveDiary = useCallback((diary: DiaryEntry) => {
     console.log('[app-context] saveDiary hit', diary);
-    if (typeof window !== 'undefined' && typeof window.alert === 'function') {
-      window.alert('[app-context] saveDiary hit');
-    }
     setState(s => ({ ...s, diaries: [diary, ...s.diaries] }));
     cloudSaveDiary(diary as unknown as Record<string, unknown>);
   }, []);

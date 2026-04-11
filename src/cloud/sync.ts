@@ -59,7 +59,6 @@ async function ensureCloudAuth(): Promise<boolean> {
       return true;
     } catch (err) {
       console.error('[cloud sync] 匿名登录失败:', err);
-      visualDebug(`[cloud auth fail] ${String(err).slice(0, 80)}`);
       return false;
     }
   })();
@@ -79,29 +78,6 @@ declare const wx: {
 let _openid = '';
 const _pending: Map<string, (data: unknown) => void> = new Map();
 let _msgSeq = 0;
-
-function visualDebug(message: string) {
-  try {
-    if (typeof window !== 'undefined' && typeof window.alert === 'function') {
-      window.alert(message);
-    }
-  } catch (err) {
-    console.warn('[cloud sync] visualDebug alert 失败', err);
-  }
-
-  try {
-    const toastMsgId = `debug_${++_msgSeq}_${Date.now()}`;
-    wx.miniProgram?.postMessage({
-      data: {
-        msgId: toastMsgId,
-        type: 'DEBUG_TOAST',
-        payload: { title: message.slice(0, 7), fullText: message },
-      },
-    });
-  } catch (err) {
-    console.warn('[cloud sync] DEBUG_TOAST 发送失败', err);
-  }
-}
 
 // 监听小程序回复（降级方案使用）
 if (typeof window !== 'undefined') {
@@ -182,21 +158,15 @@ async function dbAdd(collection: string, data: Record<string, unknown>): Promise
           : null;
         if (result?.success) {
           console.log(`[cloud sync] 云函数写入成功: ${collection}`, result);
-          visualDebug(`[fn ok] ${collection}`);
           return;
         }
         console.warn(`[cloud sync] 云函数写入返回失败: ${collection}`, result);
-        visualDebug(`[fn fail:${collection}] ${result?.error || 'unknown'}`);
       } catch (e) {
         console.warn(`[cloud sync] 云函数写入异常，降级 postMessage: ${collection}`, e);
-        visualDebug(`[fn error:${collection}] ${String(e).slice(0, 80)}`);
       }
-    } else {
-      visualDebug(`[auth not ready] ${collection}`);
     }
   }
   console.log('[cloud sync] dbAdd fallback to postMessage', { collection, data: finalData });
-  visualDebug(`[fallback postMessage] ${collection}`);
   await postToMiniProgram('DB_ADD', { collection, data: finalData });
 }
 
@@ -259,7 +229,6 @@ export async function cloudSaveTestResult(result: Record<string, unknown>): Prom
 export async function cloudSaveDiary(diary: Record<string, unknown>): Promise<void> {
   const payload = { ...diary, localId: String(diary['id'] || '') };
   console.log('[cloud sync] cloudSaveDiary hit', payload);
-  visualDebug('[cloud] saveDiary');
   await dbAdd('diaries', payload);
   console.log('[cloud sync] cloudSaveDiary done', diary['id'] || payload.localId || 'unknown');
 }
