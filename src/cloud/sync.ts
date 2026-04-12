@@ -1,73 +1,31 @@
 /**
  * 云数据库同步模块
  *
- * 通信方案（双轨）：
- * - 优先：tcb-js-sdk 直连云数据库（不依赖 postMessage，实时生效）
- * - 降级：wx.miniProgram.postMessage（仅在 SDK 不可用时使用）
- *
- * 为什么需要双轨：
- * - wx.miniProgram.postMessage 存在平台限制：bindmessage 只在后退/销毁/分享时才触发
- * - tcb-js-sdk 直接 HTTP 调用云函数，无此限制
+ * 通信方案：
+ * - 优先：fetch 调用本地 server /api/db（Node.js @cloudbase/node-sdk，无鉴权限制）
+ * - 降级：wx.miniProgram.postMessage（小程序 webview 环境，后退时触发）
  */
 
-import cloudbase from '@cloudbase/js-sdk';
+// ─── 服务端代理配置 ───────────────────────────────────────
+const API_BASE = import.meta.env.VITE_API_SERVER_URL || 'http://localhost:3001';
 
-// ─── 云开发配置 ──────────────────────────────────────────
-const ENV_ID = 'cloudbase-3g22c9ce5bcf0e55';
-
-type CloudbaseApp = ReturnType<typeof cloudbase.init>;
-type CloudbaseDb = ReturnType<CloudbaseApp['database']>;
-
-// 延迟初始化，避免 SSR 报错
-let _app: CloudbaseApp | null = null;
-let _db: CloudbaseDb | null = null;
-let _sdkReady = false;
-let _authReadyPromise: Promise<boolean> | null = null;
-
-function getDb(): CloudbaseDb | null {
-  if (_db) return _db;
+async function dbViaServer(
+  collection: string,
+  action: string,
+  opts: { data?: Record<string, unknown>; query?: Record<string, unknown>; openid?: string; limit?: number; skip?: number } = {}
+): Promise<{ success: boolean; [k: string]: unknown }> {
   try {
-    _app = cloudbase.init({
-      env: ENV_ID,
-      region: 'ap-shanghai',
+    const res = await fetch(`${API_BASE}/api/db`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ collection, action, ...opts }),
     });
-    _db = _app.database();
-    _sdkReady = true;
-    console.log('[cloud sync] tcb-js-sdk 初始化成功');
+    const json = await res.json() as { success: boolean; [k: string]: unknown };
+    return json;
   } catch (e) {
-    console.warn('[cloud sync] tcb-js-sdk 初始化失败，将降级使用 postMessage:', e);
-    _sdkReady = false;
+    console.error(`[cloud sync] server proxy 失败 ${collection}/${action}:`, e);
+    return { success: false, error: String(e) };
   }
-  return _db;
-}
-
-async function ensureCloudAuth(): Promise<boolean> {
-  const db = getDb();
-  if (!db || !_app || !_sdkReady) return false;
-  if (_authReadyPromise) return _authReadyPromise;
-
-  _authReadyPromise = (async () => {
-    try {
-      const auth = _app!.auth();
-      const loginState = auth.hasLoginState();
-      if (loginState) {
-        console.log('[cloud sync] 已存在云开发登录态');
-        return true;
-      }
-      console.log('[cloud sync] 无登录态，开始匿名登录');
-      await auth.signInAnonymously();
-      console.log('[cloud sync] 匿名登录成功');
-      return true;
-    } catch (err) {
-      console.error('[cloud sync] 匿名登录失败:', err);
-      visualDebug(`[cloud auth fail] ${String(err).slice(0, 80)}`);
-      return false;
-    }
-  })();
-
-  const ok = await _authReadyPromise;
-  if (!ok) _authReadyPromise = null;
-  return ok;
 }
 
 // ─── postMessage 降级方案 ────────────────────────────────
@@ -149,9 +107,9 @@ export function getOpenid(): string { return _openid; }
 
 /** 测试连通性 */
 export async function pingMp(): Promise<boolean> {
-  const db = getDb();
-  if (db) {
-    console.log('[cloud sync] ping: tcb-js-sdk 可用');
+  const result = await dbViaServer('_ping', 'list', { limit: 1 });
+  if (result.success !== false) {
+    console.log('[cloud sync] ping: server proxy 可用');
     return true;
   }
   const r = await postToMiniProgram('PING', {}) as { type?: string };
@@ -164,77 +122,35 @@ export async function pingMp(): Promise<boolean> {
 
 async function dbAdd(collection: string, data: Record<string, unknown>): Promise<void> {
   const finalData = { ...data, createdAt: Date.now() };
-  console.log('[cloud sync] dbAdd start', { collection, data: finalData, sdkReady: _sdkReady });
-  const db = getDb();
-  if (db && _sdkReady) {
-    const authOk = await ensureCloudAuth();
-    if (authOk) {
-      try {
-        const res = await db.collection('feleme_' + collection).add({ data: finalData });
-        console.log(`[cloud sync] SDK 直写成功: ${collection}`, res);
-        return;
-      } catch (e) {
-        console.warn(`[cloud sync] SDK 直写异常，降级 postMessage: ${collection}`, e);
-        visualDebug(`[sdk error:${collection}] ${String(e).slice(0, 80)}`);
-      }
-    } else {
-      visualDebug(`[auth not ready] ${collection}`);
-    }
+  console.log('[cloud sync] dbAdd start', { collection });
+  // 优先走服务端代理（Node.js @cloudbase/node-sdk，无 SDK 鉴权限制）
+  const result = await dbViaServer(collection, 'add', { data: finalData });
+  if (result.success) {
+    console.log(`[cloud sync] server proxy 写入成功: ${collection}`, result.id);
+    return;
   }
-  console.log('[cloud sync] dbAdd fallback to postMessage', { collection, data: finalData });
-  visualDebug(`[fallback postMessage] ${collection}`);
+  console.warn(`[cloud sync] server proxy 写入失败，降级 postMessage: ${collection}`, result.error);
+  visualDebug(`[proxy fail] ${collection}: ${String(result.error).slice(0, 50)}`);
   await postToMiniProgram('DB_ADD', { collection, data: finalData });
 }
 
 async function dbUpdate(collection: string, query: Record<string, unknown>, data: Record<string, unknown>): Promise<void> {
-  const db = getDb();
-  if (db && _sdkReady) {
-    const authOk = await ensureCloudAuth();
-    if (!authOk) { await postToMiniProgram('DB_UPDATE', { collection, query, data }); return; }
-    try {
-      const _ = db.command;
-      // 处理 _delta 风格增量字段
-      const setData: Record<string, unknown> = {};
-      const incData: Record<string, unknown> = {};
-      for (const [k, v] of Object.entries(data)) {
-        if (k.endsWith('_delta')) {
-          incData[k.replace(/_delta$/, '')] = _.inc(v as number);
-        } else {
-          setData[k] = v;
-        }
-      }
-      const updateData: Record<string, unknown> = {};
-      if (Object.keys(setData).length) Object.assign(updateData, setData);
-      if (Object.keys(incData).length) Object.assign(updateData, incData);
-      await db.collection('feleme_' + collection).where(query).update({ data: updateData });
-      console.log(`[cloud sync] SDK 更新成功: ${collection}`);
-      return;
-    } catch (e) {
-      console.warn(`[cloud sync] SDK 更新失败，降级 postMessage: ${collection}`, e);
-    }
+  const result = await dbViaServer(collection, 'update', { query, data });
+  if (result.success) {
+    console.log(`[cloud sync] server proxy 更新成功: ${collection}`);
+    return;
   }
+  console.warn(`[cloud sync] server proxy 更新失败，降级 postMessage: ${collection}`, result.error);
   await postToMiniProgram('DB_UPDATE', { collection, query, data });
 }
 
 async function dbSet(collection: string, query: Record<string, unknown>, data: Record<string, unknown>): Promise<void> {
-  const db = getDb();
-  if (db && _sdkReady) {
-    const authOk = await ensureCloudAuth();
-    if (!authOk) { await postToMiniProgram('DB_SET', { collection, query, data }); return; }
-    try {
-      const col = db.collection('feleme_' + collection);
-      const existing = await col.where(query).limit(1).get();
-      if ((existing.data as unknown[]).length > 0) {
-        const oldId = (existing.data as Array<{ _id: string }>)[0]._id;
-        await col.doc(oldId).remove();
-      }
-      await col.add({ data: { ...query, ...data, createdAt: Date.now() } });
-      console.log(`[cloud sync] SDK upsert 成功: ${collection}`);
-      return;
-    } catch (e) {
-      console.warn(`[cloud sync] SDK upsert 失败，降级 postMessage: ${collection}`, e);
-    }
+  const result = await dbViaServer(collection, 'upsert', { query, data });
+  if (result.success) {
+    console.log(`[cloud sync] server proxy upsert 成功: ${collection}`);
+    return;
   }
+  console.warn(`[cloud sync] server proxy upsert 失败，降级 postMessage: ${collection}`, result.error);
   await postToMiniProgram('DB_SET', { collection, query, data });
 }
 
