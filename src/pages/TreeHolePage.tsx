@@ -32,11 +32,17 @@ export default function TreeHolePage({ onNavigate: _onNavigate }: TreeHolePagePr
   const currentDiary = diaries.find(d => d.id === currentDiaryId);
 
   function submitDiary() {
+    if (typeof window !== 'undefined' && typeof window.alert === 'function') {
+      window.alert('[treehole] submitDiary hit');
+    }
     if (!emotion || !content.trim()) {
       console.warn('[treehole] submitDiary blocked: missing emotion or content', {
         emotion,
         contentLength: content.trim().length,
       });
+      if (typeof window !== 'undefined' && typeof window.alert === 'function') {
+        window.alert('[treehole] submitDiary blocked');
+      }
       return;
     }
     const id = generateId();
