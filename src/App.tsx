@@ -178,14 +178,7 @@ function AppContent() {
   if (isTabPage) {
     return (
       <div className="min-h-screen bg-gray-50 relative flex flex-col" style={{ height: '100vh', maxWidth: '100vw' }}>
-        {/* WebView 内嵌时显示紧凑导航 */}
-        {isInWebview && (
-          <WebviewNavBar
-            title="A里味"
-            onBack={webviewGoBack}
-            showBack={false}
-          />
-        )}
+        {/* Tab 页面在小程序 WebView 内嵌时，小程序自带导航栏已足够，不再显示 H5 导航栏，避免双重标题 */}
         {/* 页面内容 */}
         <div className="flex-1 overflow-y-auto">
           {renderPage()}

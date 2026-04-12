@@ -106,7 +106,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       deepseekKey: saved.deepseekKey || '',
       onboardingDone: saved.onboardingDone ?? false,
       isDarkMode: saved.isDarkMode ?? false,
-      appName: saved.appName || 'A里味',
+      appName: 'A里味', // 固定品牌名，不从缓存读取
     };
   });
 
