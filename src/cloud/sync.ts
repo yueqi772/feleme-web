@@ -29,6 +29,7 @@ function getDb(): CloudbaseDb | null {
   try {
     _app = cloudbase.init({
       env: ENV_ID,
+      region: 'ap-shanghai',
     });
     _db = _app.database();
     _sdkReady = true;
@@ -165,31 +166,16 @@ async function dbAdd(collection: string, data: Record<string, unknown>): Promise
   const finalData = { ...data, createdAt: Date.now() };
   console.log('[cloud sync] dbAdd start', { collection, data: finalData, sdkReady: _sdkReady });
   const db = getDb();
-  if (_app && db && _sdkReady) {
+  if (db && _sdkReady) {
     const authOk = await ensureCloudAuth();
     if (authOk) {
       try {
-        const res = await _app.callFunction({
-          name: 'tcb',
-          data: {
-            collection,
-            action: 'add',
-            data: finalData,
-          },
-        });
-        const result = (res && typeof res === 'object' && 'result' in res)
-          ? (res.result as { success?: boolean; id?: string; error?: string })
-          : null;
-        if (result?.success) {
-          console.log(`[cloud sync] 云函数写入成功: ${collection}`, result);
-          visualDebug(`[fn ok] ${collection}`);
-          return;
-        }
-        console.warn(`[cloud sync] 云函数写入返回失败: ${collection}`, result);
-        visualDebug(`[fn fail:${collection}] ${result?.error || 'unknown'}`);
+        const res = await db.collection('feleme_' + collection).add({ data: finalData });
+        console.log(`[cloud sync] SDK 直写成功: ${collection}`, res);
+        return;
       } catch (e) {
-        console.warn(`[cloud sync] 云函数写入异常，降级 postMessage: ${collection}`, e);
-        visualDebug(`[fn error:${collection}] ${String(e).slice(0, 80)}`);
+        console.warn(`[cloud sync] SDK 直写异常，降级 postMessage: ${collection}`, e);
+        visualDebug(`[sdk error:${collection}] ${String(e).slice(0, 80)}`);
       }
     } else {
       visualDebug(`[auth not ready] ${collection}`);
@@ -203,6 +189,8 @@ async function dbAdd(collection: string, data: Record<string, unknown>): Promise
 async function dbUpdate(collection: string, query: Record<string, unknown>, data: Record<string, unknown>): Promise<void> {
   const db = getDb();
   if (db && _sdkReady) {
+    const authOk = await ensureCloudAuth();
+    if (!authOk) { await postToMiniProgram('DB_UPDATE', { collection, query, data }); return; }
     try {
       const _ = db.command;
       // 处理 _delta 风格增量字段
@@ -231,6 +219,8 @@ async function dbUpdate(collection: string, query: Record<string, unknown>, data
 async function dbSet(collection: string, query: Record<string, unknown>, data: Record<string, unknown>): Promise<void> {
   const db = getDb();
   if (db && _sdkReady) {
+    const authOk = await ensureCloudAuth();
+    if (!authOk) { await postToMiniProgram('DB_SET', { collection, query, data }); return; }
     try {
       const col = db.collection('feleme_' + collection);
       const existing = await col.where(query).limit(1).get();
