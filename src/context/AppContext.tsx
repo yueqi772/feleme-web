@@ -106,7 +106,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       deepseekKey: saved.deepseekKey || '',
       onboardingDone: saved.onboardingDone ?? false,
       isDarkMode: saved.isDarkMode ?? false,
-      appName: saved.appName || 'Feleme',
+      appName: saved.appName || 'A里味',
     };
   });
 

@@ -25,7 +25,7 @@ type PageName = 'home' | 'test' | 'report' | 'tools'
   | 'onboarding' | 'wechat-callback';
 
 const PAGE_TITLES: Record<PageName, string> = {
-  home: '职场清醒笔记', test: '识别测试', report: '测试报告',
+  home: 'A里味', test: '识别测试', report: '测试报告',
   tools: '工具箱', 'scripts-detail': '话术详情', practice: '情景练习',
   treehole: '情绪树洞', community: '互助社区', 'new-post': '发布帖子',
   'post-detail': '帖子详情', profile: '我的',
@@ -181,7 +181,7 @@ function AppContent() {
         {/* WebView 内嵌时显示紧凑导航 */}
         {isInWebview && (
           <WebviewNavBar
-            title="职场清醒笔记"
+            title="A里味"
             onBack={webviewGoBack}
             showBack={false}
           />

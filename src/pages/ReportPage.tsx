@@ -92,7 +92,7 @@ export default function ReportPage({ onNavigate, result }: ReportPageProps) {
         {/* Quote */}
         <div className="card bg-brand-50 text-center">
           <p className="text-lg italic text-brand-700">"你的感受是真实的。"</p>
-          <p className="text-xs text-brand-500 mt-1">— 职场清醒笔记</p>
+          <p className="text-xs text-brand-500 mt-1">— A里味</p>
         </div>
 
         {/* Actions */}
