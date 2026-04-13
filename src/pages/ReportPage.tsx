@@ -1,6 +1,7 @@
 import type { TestResult } from '../types';
 import { getRiskInfo, formatDate } from '../utils';
 import { PUA_TYPE_COLORS } from '../data';
+import { postShare } from '../cloud';
 
 interface ReportPageProps {
   onNavigate: (page: string, params?: Record<string, unknown>) => void;
@@ -24,7 +25,7 @@ export default function ReportPage({ onNavigate, result }: ReportPageProps) {
       <div className="px-4 space-y-4 pt-2 pb-8">
         {/* Hero Score */}
         <div className={`card text-center py-8 ${risk.bg}`}>
-          <p className="text-sm text-gray-500 mb-2">你的职场环境</p>
+          <p className="text-sm text-gray-500 mb-2">抗PUA能力</p>
           <div className="flex items-center justify-center gap-2 mb-2">
             <span className="text-5xl">{risk.emoji}</span>
             <div className="text-left">
@@ -102,6 +103,22 @@ export default function ReportPage({ onNavigate, result }: ReportPageProps) {
           </button>
           <button onClick={() => onNavigate('tools', { tab: 'scripts' })} className="flex-1 btn-secondary py-3">
             🛡️ 学应对技巧
+          </button>
+        </div>
+
+        {/* 分享 */}
+        <div className="flex gap-3">
+          <button
+            className="flex-1 flex items-center justify-center gap-1.5 bg-[#07c160] text-white rounded-xl py-3 text-sm font-medium"
+            onClick={() => postShare({ title: `我的抗PUA能力：${result.score}分 · ${risk.desc}`, path: '/pages/webview/index', imageUrl: '' })}
+          >
+            💬 分享给朋友
+          </button>
+          <button
+            className="flex-1 flex items-center justify-center gap-1.5 bg-white border border-[#07c160] text-[#07c160] rounded-xl py-3 text-sm font-medium"
+            onClick={() => postShare({ title: `我的抗PUA能力：${result.score}分 · ${risk.desc}`, path: '/pages/webview/index', imageUrl: '', timeline: true })}
+          >
+            🌟 发朋友圈
           </button>
         </div>
 

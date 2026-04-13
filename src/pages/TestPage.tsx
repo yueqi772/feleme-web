@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { postShare } from '../cloud';
 import { useApp } from '../context/AppContext';
 import { countPuaTypes, calcScore, getRiskInfo, generateId } from '../utils';
 import DigitalHuman, { type MoodKey } from '../components/DigitalHuman';
@@ -388,11 +389,11 @@ export default function TestPage({ onNavigate }: TestPageProps) {
     const ratio = answers.filter(a => a.replyId === 'a').length / 10;
     const finalMood: MoodKey = ratio >= 0.7 ? 'empowered' : ratio >= 0.4 ? 'confident' : 'broken';
     const info = ratio >= 0.7
-      ? { e: '🌟', t: '觉醒者', d: '你帮助小林找到了职场边界的力量！' }
+      ? { e: '🛡️', t: '职场边界大师', d: '你的边界感超强，PUA在你面前无处遁形！' }
       : ratio >= 0.4
-      ? { e: '🌱', t: '觉醒中', d: '小林开始意识到问题，但还需要更多勇气。' }
-      : { e: '😢', t: '迷失中', d: '小林还没有找到力量，但故事还没结束。' };
-    const finalScore = Math.round((1 - ratio) * 100);
+      ? { e: '🌱', t: '觉醒中', d: '你开始有了边界意识，继续加油！' }
+      : { e: '💡', t: '需要练习', d: '别担心，识别PUA是一种可以训练的能力。' };
+    const finalScore = Math.round(ratio * 100);
     const risk = getRiskInfo(finalScore);
 
     return (
@@ -423,7 +424,7 @@ export default function TestPage({ onNavigate }: TestPageProps) {
           </div>
 
           <div className={`rounded-2xl p-4 text-center ${risk.bg}`}>
-            <p className="text-xs text-[#888] mb-1">职场压力指数</p>
+            <p className="text-xs text-[#888] mb-1">抗PUA能力指数</p>
             <div className="flex items-center justify-center gap-2 mb-1">
               <span className="text-3xl">{risk.emoji}</span>
               <span className={`text-4xl font-bold ${risk.color}`}>{finalScore}</span>
@@ -458,6 +459,22 @@ export default function TestPage({ onNavigate }: TestPageProps) {
 
           <div className="text-center py-2">
             <p className="text-lg italic text-[#07c160]">"你的感受是真实的。"</p>
+          </div>
+
+          {/* 分享按钮 */}
+          <div className="flex gap-3 pb-2">
+            <button
+              className="flex-1 flex items-center justify-center gap-1.5 bg-[#07c160] text-white rounded-2xl py-3 text-sm font-medium active:opacity-80"
+              onClick={() => postShare({ title: `我的抗PUA能力：${finalScore}分 · ${risk.desc}`, path: '/pages/webview/index', imageUrl: '' })}
+            >
+              <span>💬</span> 分享给朋友
+            </button>
+            <button
+              className="flex-1 flex items-center justify-center gap-1.5 bg-white border border-[#07c160] text-[#07c160] rounded-2xl py-3 text-sm font-medium active:opacity-80"
+              onClick={() => postShare({ title: `我的抗PUA能力：${finalScore}分 · ${risk.desc}`, path: '/pages/webview/index', imageUrl: '', timeline: true })}
+            >
+              <span>🌟</span> 发朋友圈
+            </button>
           </div>
         </div>
       </div>

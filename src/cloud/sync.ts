@@ -292,6 +292,31 @@ export async function cloudIncrementPracticeCount(): Promise<void> {
   await dbUpdate('userProfile', { openid: _openid }, { practiceCount_delta: 1 });
 }
 
+/** 触发小程序分享 */
+export async function postShare(options: {
+  title: string;
+  path: string;
+  imageUrl: string;
+  timeline?: boolean;
+}): Promise<void> {
+  try {
+    wx.miniProgram?.postMessage({
+      data: {
+        msgId: `share_${Date.now()}`,
+        type: options.timeline ? 'SHARE_TIMELINE' : 'SHARE_FRIEND',
+        payload: {
+          title: options.title,
+          path: options.path,
+          imageUrl: options.imageUrl,
+        },
+      },
+    });
+    console.log('[cloud sync] 分享消息已发送:', options.timeline ? '朋友圈' : '好友');
+  } catch (e) {
+    console.warn('[cloud sync] 分享消息发送失败:', e);
+  }
+}
+
 /** 批量同步 */
 export async function cloudSyncAll(localData: Record<string, unknown>): Promise<void> {
   if (!_openid) return;

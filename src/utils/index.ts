@@ -1,9 +1,11 @@
 import type { PuaType, RiskLevel, AiRole, EmotionType } from '../types';
 
+// score = 抗PUA能力值（0~100），越高越强
+// 选对（a）越多 → score 越高 → 抗PUA越强
 export function getRiskInfo(score: number): { level: RiskLevel; color: string; bg: string; emoji: string; desc: string } {
-  if (score <= 30) return { level: '健康', color: 'text-green-600', bg: 'bg-green-50', emoji: '🟢', desc: '职场环境正常' };
-  else if (score <= 60) return { level: '警戒', color: 'text-amber-600', bg: 'bg-amber-50', emoji: '🟡', desc: '存在风险，建议关注' };
-  else return { level: '高危', color: 'text-red-600', bg: 'bg-red-50', emoji: '🔴', desc: '明显PUA特征，建议寻求帮助' };
+  if (score >= 70) return { level: '健康', color: 'text-green-600', bg: 'bg-green-50', emoji: '💪', desc: '抗PUA能力强，边界感清晰' };
+  else if (score >= 40) return { level: '警戒', color: 'text-amber-600', bg: 'bg-amber-50', emoji: '🌱', desc: '有一定意识，仍有提升空间' };
+  else return { level: '高危', color: 'text-red-600', bg: 'bg-red-50', emoji: '⚠️', desc: '容易受操控，需要加强边界意识' };
 }
 
 // 题目与 PUA 类型映射（共10题）
@@ -31,9 +33,11 @@ export function countPuaTypes(answers: Record<number, boolean>): Record<PuaType,
   return counts;
 }
 
+// counts 记录的是「未能正确识别/应对」的题数（选了非a）
+// 抗PUA能力 = (10 - 未正确题数) / 10 * 100
 export function calcScore(counts: Record<PuaType, number>): number {
-  const total = Object.values(counts).reduce((a, b) => a + b, 0);
-  return Math.round((total / 10) * 100);
+  const wrongCount = Object.values(counts).reduce((a, b) => a + b, 0);
+  return Math.round(((10 - wrongCount) / 10) * 100);
 }
 
 const EMOTION_RESPONSES: Record<EmotionType, string> = {
