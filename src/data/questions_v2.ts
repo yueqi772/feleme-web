@@ -46,27 +46,9 @@ export const PUA_QUESTIONS: PuaQuestion[] = [
     emotionalShift: 'empowered',
   },
 
-  // ── Chapter 2: 第一次表扬 ─────────────────────────────────
+  // ── Chapter 2: 开始加班 ────────────────────────────────────
   {
     id: 2,
-    type: '否定价值',
-    shortTitle: '第一次当众表扬',
-    context: '5月中旬 · 项目上线后第一次复盘会',
-    chat: [
-      { role: 'boss', name: '王总监', content: '这次项目整体完成度不错，尤其是小李，速度快、质量也在线。', time: '14:02', highlight: true },
-      { role: 'colleague', name: '同事B', content: '👍' },
-      { role: 'boss', name: '王总监', content: '小李，继续保持，你是团队的中坚力量。',
-        time: '14:03' },
-    ],
-    monologue: '散会后我反复看那条消息，嘴角忍不住往上扬。原来被看见是这种感觉。',
-    quote: '你是我们团队最有潜力的那个，别骄傲就行。',
-    tags: ['否定价值', '画大饼'],
-    emotionalShift: 'empowered',
-  },
-
-  // ── Chapter 3: 开始加班 ────────────────────────────────────
-  {
-    id: 3,
     type: '情感勒索',
     shortTitle: '连续加班第三周',
     context: '6月 · 项目冲刺期 · 晚上9:47 · 你还在公司',
@@ -82,9 +64,9 @@ export const PUA_QUESTIONS: PuaQuestion[] = [
     emotionalShift: 'confused',
   },
 
-  // ── Chapter 4: 第一次当众批评 ───────────────────────────────
+  // ── Chapter 3: 第一次当众批评 ───────────────────────────────
   {
-    id: 4,
+    id: 3,
     type: '否定价值',
     shortTitle: '会议室变成了审判台',
     context: '7月第二个周三 · 下午2点 · 部门全员周会 · 所有人都在',
@@ -102,9 +84,9 @@ export const PUA_QUESTIONS: PuaQuestion[] = [
     emotionalShift: 'negative',
   },
 
-  // ── Chapter 5: 被质疑记忆 ──────────────────────────────────
+  // ── Chapter 4: 被质疑记忆 ──────────────────────────────────
   {
-    id: 5,
+    id: 4,
     type: '煤气灯效应',
     shortTitle: '那次谈话，你记得吗？',
     context: '批评会后第二天 · 王总监叫你去办公室',
@@ -122,9 +104,9 @@ export const PUA_QUESTIONS: PuaQuestion[] = [
     emotionalShift: 'confused',
   },
 
-  // ── Chapter 6: 道德绑架 ──────────────────────────────────────
+  // ── Chapter 5: 道德绑架 ──────────────────────────────────────
   {
-    id: 6,
+    id: 5,
     type: '情感勒索',
     shortTitle: '"你要感恩"',
     context: '周五傍晚6:28 · 公司群 · 下班时间到了',
@@ -142,9 +124,9 @@ export const PUA_QUESTIONS: PuaQuestion[] = [
     emotionalShift: 'negative',
   },
 
-  // ── Chapter 7: 被孤立 ──────────────────────────────────────
+  // ── Chapter 6: 被孤立 ──────────────────────────────────────
   {
-    id: 7,
+    id: 6,
     type: '孤立排挤',
     shortTitle: '那条消息你没收到',
     context: '8月第三周 · 周三上午 · 你发现有什么不对劲',
@@ -160,27 +142,9 @@ export const PUA_QUESTIONS: PuaQuestion[] = [
     emotionalShift: 'negative',
   },
 
-  // ── Chapter 8: 再次承诺 ─────────────────────────────────────
+  // ── Chapter 7: 承诺落空 ────────────────────────────────────
   {
-    id: 8,
-    type: '画大饼',
-    shortTitle: '第三次"下季度一定"',
-    context: '9月底 · 季度末 · 王总监主动找你谈话',
-    chat: [
-      { role: 'boss', name: '王总监', content: '小李，进来坐。这次叫你来，是想跟你谈谈发展的事。', time: '15:03' },
-      { role: 'boss', name: '王总监', content: '今年的晋升名额很紧张，但我把你的名字报上去了。',
-        time: '15:05', highlight: true },
-      { role: 'boss', name: '王总监', content: '回去好好干，不要让我失望。我对你期望很高的。', time: '15:06' },
-    ],
-    monologue: '又是"期望"。\n\n今年3月说"年底一定"，7月说"下季度一定"，这次又说"我把名字报上去了"。\n\n但我已经开始害怕相信了。每次他说"好好干"，我都分不清他是真心还是在给我打鸡血让我继续干活。\n\n走出他办公室，路过HR那个方向的时候我下意识低下头。不想看到任何人的眼神。',
-    quote: '我把你的名字已经报上去了。放心，这次稳了。',
-    tags: ['画大饼', '否定价值'],
-    emotionalShift: 'confused',
-  },
-
-  // ── Chapter 9: 承诺再次落空 ────────────────────────────────
-  {
-    id: 9,
+    id: 7,
     type: '画大饼',
     shortTitle: '名单上没有我的名字',
     context: '10月第二个周五 · 下午4点 · HR群发了一封邮件',
@@ -195,9 +159,9 @@ export const PUA_QUESTIONS: PuaQuestion[] = [
     emotionalShift: 'negative',
   },
 
-  // ── Chapter 10: 深夜消息 ──────────────────────────────────
+  // ── Chapter 8: 深夜消息 ──────────────────────────────────
   {
-    id: 10,
+    id: 8,
     type: '边界侵犯',
     shortTitle: '11点23分的消息',
     context: '11月 · 周三 · 晚上11:23 · 你刚躺下准备睡觉',
@@ -214,9 +178,9 @@ export const PUA_QUESTIONS: PuaQuestion[] = [
     emotionalShift: 'negative',
   },
 
-  // ── Chapter 11: 假借关心施压 ───────────────────────────────
+  // ── Chapter 9: 假借关心施压 ───────────────────────────────
   {
-    id: 11,
+    id: 9,
     type: '情感勒索',
     shortTitle: '"我这是为你好"',
     context: '12月 · 王总监以"绩效辅导"名义找你谈话',
@@ -232,9 +196,9 @@ export const PUA_QUESTIONS: PuaQuestion[] = [
     emotionalShift: 'confused',
   },
 
-  // ── Chapter 12: 做出选择 ──────────────────────────────────
+  // ── Chapter 10: 做出选择 ──────────────────────────────────
   {
-    id: 12,
+    id: 10,
     type: '边界侵犯',
     shortTitle: '周一的早上，你做了一个决定',
     context: '1月 · 新年后第一个周一 · 早8:47 · 你站在公司楼下',
