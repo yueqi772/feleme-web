@@ -207,8 +207,8 @@ function AppContent() {
   // 非 Tab 子页面：白色顶栏 + 内容
   return (
     <div className="min-h-screen bg-gray-50 relative flex flex-col" style={{ height: '100vh', maxWidth: '100vw' }}>
-      {/* 标准导航栏（PC / H5 独立访问） */}
-      {!isInWebview && (
+      {/* 标准导航栏（PC / H5 独立访问，自带导航栏的页面跳过） */}
+      {!isInWebview && currentPage !== 'practice' && currentPage !== 'test' && (
         <div className="bg-white border-b border-gray-100 flex items-center justify-between px-4 shrink-0" style={{ height: '48px' }}>
           <div className="w-14">
             <button onClick={() => navigate('home')} className="text-brand-500 text-sm font-medium">‹ 返回</button>
@@ -221,8 +221,8 @@ function AppContent() {
           </div>
         </div>
       )}
-      {/* 小程序 WebView 内嵌导航栏 */}
-      {isInWebview && (
+      {/* 小程序 WebView 内嵌导航栏（自带导航栏的页面跳过，避免双重标题） */}
+      {isInWebview && currentPage !== 'practice' && currentPage !== 'test' && (
         <WebviewNavBar
           title={PAGE_TITLES[currentPage]}
           onBack={webviewGoBack}
