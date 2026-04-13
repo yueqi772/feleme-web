@@ -227,12 +227,12 @@ async function dbSet(collection: string, query: Record<string, unknown>, data: R
 
 /** 存储测试结果 */
 export async function cloudSaveTestResult(result: Record<string, unknown>): Promise<void> {
-  await dbAdd('testHistory', { ...result, localId: String(result['id'] || '') });
+  await dbAdd('testHistory', { ...result, openid: _openid, localId: String(result['id'] || '') });
 }
 
 /** 存储情绪日记 */
 export async function cloudSaveDiary(diary: Record<string, unknown>): Promise<void> {
-  const payload = { ...diary, localId: String(diary['id'] || '') };
+  const payload = { ...diary, openid: _openid, localId: String(diary['id'] || '') };
   console.log('[cloud sync] cloudSaveDiary hit', payload);
   await dbAdd('diaries', payload);
   console.log('[cloud sync] cloudSaveDiary done', diary['id'] || payload.localId || 'unknown');
@@ -240,12 +240,12 @@ export async function cloudSaveDiary(diary: Record<string, unknown>): Promise<vo
 
 /** 日记追加对话消息 */
 export async function cloudAddChatMessage(diaryId: string, message: Record<string, unknown>): Promise<void> {
-  await dbAdd('diaryMessages', { diaryId, ...message, localId: String(message['id'] || '') });
+  await dbAdd('diaryMessages', { diaryId, openid: _openid, ...message, localId: String(message['id'] || '') });
 }
 
 /** 发布社区帖子 */
 export async function cloudAddPost(post: Record<string, unknown>): Promise<void> {
-  await dbAdd('posts', { ...post, localId: String(post['id'] || '') });
+  await dbAdd('posts', { ...post, openid: _openid, localId: String(post['id'] || '') });
 }
 
 /** 帖子点赞 */
@@ -262,7 +262,7 @@ export async function cloudToggleResonate(postId: string, cloudId: string, reson
 
 /** 添加评论 */
 export async function cloudAddComment(comment: Record<string, unknown>): Promise<void> {
-  await dbAdd('comments', { ...comment, localId: String(comment['id'] || '') });
+  await dbAdd('comments', { ...comment, openid: _openid, localId: String(comment['id'] || '') });
 }
 
 /** 解锁成就 */
