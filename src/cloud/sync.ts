@@ -337,19 +337,26 @@ function ensureAIMessageListener() {
   if (_aiMsgListenerAttached) return;
   _aiMsgListenerAttached = true;
 
+  console.log('[AI bridge] window message 监听器已注册');
   window.addEventListener('message', (event: MessageEvent) => {
     // 小程序通过 webviewCtx.postMessage 发来的消息
     const msg = event.data;
+    console.log('[AI bridge] 收到 window.message，origin=', event.origin, ' data=', JSON.stringify(msg)?.slice(0, 120));
     if (!msg || typeof msg !== 'object') return;
 
     // 兼容多种包装格式
-    const inner = msg.data || msg;
+    const inner = (msg as Record<string, unknown>).data || msg;
     const { msgId, type, chunk, accumulated, text, error } = inner as Record<string, unknown>;
+
+    console.log('[AI bridge] 解析后 msgId=', msgId, ' type=', type, ' 待处理回调数=', _aiCallbacks.size);
 
     if (!msgId || typeof msgId !== 'string') return;
 
     const cb = _aiCallbacks.get(msgId as string);
-    if (!cb) return;
+    if (!cb) {
+      console.warn('[AI bridge] 未找到 msgId 对应回调:', msgId, ' 当前 map keys=', [..._aiCallbacks.keys()]);
+      return;
+    }
 
     if (type === 'AI_CHUNK') {
       cb.onChunk((chunk as string) || '', (accumulated as string) || '');
@@ -379,6 +386,7 @@ export function callAIStream(
   _aiCallbacks.set(msgId, callbacks);
 
   // 发送到小程序
+  console.log('[AI bridge] 发送 AI_CHAT msgId=', msgId, ' model=', model, ' messages=', messages.length, ' wx.miniProgram=', !!(window as unknown as Record<string,unknown>).wx);
   try {
     wx.miniProgram?.postMessage({
       data: {
@@ -387,7 +395,9 @@ export function callAIStream(
         payload: { messages, model },
       },
     });
+    console.log('[AI bridge] postMessage 发送成功');
   } catch (e) {
+    console.error('[AI bridge] postMessage 发送失败:', e);
     _aiCallbacks.delete(msgId);
     callbacks.onError(`postMessage 发送失败: ${e}`);
   }
