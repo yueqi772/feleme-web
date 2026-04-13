@@ -76,12 +76,6 @@ function scoreResponses(messages: Array<{ role: string; content: string }>): { s
   return { score, label };
 }
 
-/** 检测是否在小程序 WebView 中 */
-function isInMiniprogram(): boolean {
-  return typeof window !== 'undefined' &&
-    !!(window as unknown as Record<string, unknown>).wx &&
-    typeof (window as unknown as Record<string, unknown>).__wxjs_environment === 'string';
-}
 
 export default function PracticePage({ onNavigate, scenario }: PracticePageProps) {
   const { incrementPracticeCount, unlockAchievement, practiceCount } = useApp();
@@ -97,13 +91,15 @@ export default function PracticePage({ onNavigate, scenario }: PracticePageProps
   const [aiAnalysis, setAiAnalysis] = useState('');
   const [analysisLoading, setAnalysisLoading] = useState(false);
   const [analysisStreamText, setAnalysisStreamText] = useState('');
-  // 是否在小程序中（决定是否使用 AI 桥接）
-  const [inMiniprogram, setInMiniprogram] = useState(false);
+  const cancelAIRef = useRef<AbortController | null>(null);
 
-  const cancelAIRef = useRef<(() => void) | null>(null);
+  // callAIStream 是直接 HTTP 调用，不再需要检测小程序环境
+  // 保留此标记仅用于展示「AI 已就绪」的提示
+  const [aiReady, setAiReady] = useState(false);
 
   useEffect(() => {
-    setInMiniprogram(isInMiniprogram());
+    // AI 直接通过 @cloudbase/js-sdk 调用，只要 SDK 初始化就可用
+    setAiReady(true);
   }, []);
 
   function doStart() {
@@ -128,42 +124,40 @@ export default function PracticePage({ onNavigate, scenario }: PracticePageProps
 
     setStep('feedback');
 
-    // 尝试 AI 分析（在小程序中通过云开发 AI）
-    if (inMiniprogram) {
-      setAnalysisLoading(true);
-      setAnalysisStreamText('');
-      const historyForAnalysis: AIMessage[] = [
-        { role: 'system', content: '你是一名温暖的职场心理顾问，擅长分析PUA场景下的应对方式，语言温暖、支持性强。' },
-        { role: 'user', content: buildAnalysisPrompt(scenario, messages.map(m => ({
-          role: m.role === 'ai' ? 'assistant' : 'user',
-          content: m.content,
-        }))) },
-      ];
+    // AI 分析（直接调用云开发 AI）
+    setAnalysisLoading(true);
+    setAnalysisStreamText('');
+    const historyForAnalysis: AIMessage[] = [
+      { role: 'system', content: '你是一名温暖的职场心理顾问，擅长分析PUA场景下的应对方式，语言温暖、支持性强。' },
+      { role: 'user', content: buildAnalysisPrompt(scenario, messages.map(m => ({
+        role: m.role === 'ai' ? 'assistant' : 'user',
+        content: m.content,
+      }))) },
+    ];
 
-      let accumulated = '';
-      cancelAIRef.current = callAIStream(
-        historyForAnalysis,
-        {
-          onChunk: (_chunk, acc) => {
-            accumulated = acc;
-            setAnalysisStreamText(acc);
-          },
-          onDone: (fullText) => {
-            setAiAnalysis(fullText || accumulated);
-            setAnalysisStreamText('');
-            setAnalysisLoading(false);
-          },
-          onError: () => {
-            setAiAnalysis('');
-            setAnalysisStreamText('');
-            setAnalysisLoading(false);
-          },
+    let accAnalysis = '';
+    callAIStream(
+      historyForAnalysis,
+      {
+        onChunk: (_chunk, acc) => {
+          accAnalysis = acc;
+          setAnalysisStreamText(acc);
         },
-      );
-    }
+        onDone: (fullText) => {
+          setAiAnalysis(fullText || accAnalysis);
+          setAnalysisStreamText('');
+          setAnalysisLoading(false);
+        },
+        onError: () => {
+          setAiAnalysis('');
+          setAnalysisStreamText('');
+          setAnalysisLoading(false);
+        },
+      },
+    ).then(ctrl => { cancelAIRef.current = ctrl; });
   }
 
-  async function submitAnswer() {
+  function submitAnswer() {
     if (!input.trim() || isTyping) return;
     const userMsg = input.trim();
     const newMessages = [...messages, { role: 'user' as const, content: userMsg }];
@@ -173,75 +167,48 @@ export default function PracticePage({ onNavigate, scenario }: PracticePageProps
     setStreamingText('');
     setApiError('');
 
-    if (inMiniprogram) {
-      // ─── 云开发 AI 流式对话 ─────────────────────────
-      const history: AIMessage[] = newMessages.map(m => ({
-        role: (m.role === 'ai' ? 'assistant' : m.role) as 'user' | 'assistant',
-        content: m.content,
-      }));
+    // ─── 云开发 AI 流式对话（直接 HTTP，无需 postMessage）─────────────────
+    const history: AIMessage[] = newMessages.map(m => ({
+      role: (m.role === 'ai' ? 'assistant' : m.role) as 'user' | 'assistant',
+      content: m.content,
+    }));
 
-      let streamAccumulated = '';
+    let streamAccumulated = '';
 
-      cancelAIRef.current = callAIStream(
-        [{ role: 'system', content: buildSystemPrompt(scenario) }, ...history],
-        {
-          onChunk: (_chunk, acc) => {
-            streamAccumulated = acc;
-            setStreamingText(acc);
-          },
-          onDone: (fullText) => {
-            const reply = fullText || streamAccumulated || getFallback(round);
-            setStreamingText('');
-            setIsTyping(false);
-            if (round < TOTAL_ROUNDS) {
-              setMessages([...newMessages, { role: 'ai' as const, content: reply }]);
-              setRound(r => r + 1);
-            } else {
-              setMessages([...newMessages, { role: 'ai' as const, content: reply }]);
-              setRound(r => r + 1);
-              setTimeout(() => showFeedback(userMsg), 1500);
-            }
-          },
-          onError: (error) => {
-            const fallback = getFallback(round);
-            setStreamingText('');
-            setIsTyping(false);
-            setMessages([...newMessages, { role: 'ai' as const, content: fallback }]);
-            setApiError(`AI调用失败（已切换本地模式）：${error}`);
-            if (round < TOTAL_ROUNDS) {
-              setRound(r => r + 1);
-            } else {
-              setTimeout(() => showFeedback(userMsg), 1500);
-            }
-          },
+    callAIStream(
+      [{ role: 'system', content: buildSystemPrompt(scenario) }, ...history],
+      {
+        onChunk: (_chunk, acc) => {
+          streamAccumulated = acc;
+          setStreamingText(acc);
         },
-      );
-    } else {
-      // ─── 本地备用模式（非小程序环境）─────────────────
-      try {
-        await new Promise(resolve => setTimeout(resolve, 800));
-        const reply = getFallback(round);
-        setIsTyping(false);
-        if (round < TOTAL_ROUNDS) {
-          setMessages([...newMessages, { role: 'ai' as const, content: reply }]);
-          setRound(r => r + 1);
-        } else {
-          setMessages([...newMessages, { role: 'ai' as const, content: reply }]);
-          setRound(r => r + 1);
-          setTimeout(() => showFeedback(userMsg), 1500);
-        }
-      } catch (err) {
-        setIsTyping(false);
-        const fallback = getFallback(round);
-        setMessages([...newMessages, { role: 'ai' as const, content: fallback }]);
-        setApiError(`调用失败：${err instanceof Error ? err.message : '未知错误'}`);
-        if (round < TOTAL_ROUNDS) {
-          setRound(r => r + 1);
-        } else {
-          setTimeout(() => showFeedback(userMsg), 1500);
-        }
-      }
-    }
+        onDone: (fullText) => {
+          const reply = fullText || streamAccumulated || getFallback(round);
+          setStreamingText('');
+          setIsTyping(false);
+          if (round < TOTAL_ROUNDS) {
+            setMessages([...newMessages, { role: 'ai' as const, content: reply }]);
+            setRound(r => r + 1);
+          } else {
+            setMessages([...newMessages, { role: 'ai' as const, content: reply }]);
+            setRound(r => r + 1);
+            setTimeout(() => showFeedback(userMsg), 1500);
+          }
+        },
+        onError: (error) => {
+          const fallback = getFallback(round);
+          setStreamingText('');
+          setIsTyping(false);
+          setMessages([...newMessages, { role: 'ai' as const, content: fallback }]);
+          setApiError(`AI调用失败（已切换本地模式）：${error}`);
+          if (round < TOTAL_ROUNDS) {
+            setRound(r => r + 1);
+          } else {
+            setTimeout(() => showFeedback(userMsg), 1500);
+          }
+        },
+      },
+    ).then(ctrl => { cancelAIRef.current = ctrl; });
   }
 
   // ── Feedback Step ────────────────────────────────────
@@ -401,7 +368,7 @@ export default function PracticePage({ onNavigate, scenario }: PracticePageProps
           </p>
 
           <div className="w-full max-w-xs space-y-3">
-            {inMiniprogram && (
+            {aiReady && (
               <div className="flex items-center justify-center gap-1.5 bg-green-50 rounded-full py-1.5 px-4 mb-1">
                 <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
                 <span className="text-xs text-green-600">🤖 云开发 AI · 流式对话已就绪</span>

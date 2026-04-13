@@ -317,7 +317,7 @@ export async function postShare(options: {
   }
 }
 
-// ─── AI 桥接（通过小程序 wx.cloud.extend.AI 调用）────────────────────────────
+// ─── AI 直连（@cloudbase/js-sdk ai() 流式接口）────────────────────────────────
 
 export interface AIMessage {
   role: 'user' | 'assistant' | 'system';
@@ -330,82 +330,68 @@ export interface AIStreamCallbacks {
   onError: (error: string) => void;
 }
 
-let _aiMsgListenerAttached = false;
-const _aiCallbacks = new Map<string, AIStreamCallbacks>();
-
-function ensureAIMessageListener() {
-  if (_aiMsgListenerAttached) return;
-  _aiMsgListenerAttached = true;
-
-  console.log('[AI bridge] window message 监听器已注册');
-  window.addEventListener('message', (event: MessageEvent) => {
-    // 小程序通过 webviewCtx.postMessage 发来的消息
-    const msg = event.data;
-    console.log('[AI bridge] 收到 window.message，origin=', event.origin, ' data=', JSON.stringify(msg)?.slice(0, 120));
-    if (!msg || typeof msg !== 'object') return;
-
-    // 兼容多种包装格式
-    const inner = (msg as Record<string, unknown>).data || msg;
-    const { msgId, type, chunk, accumulated, text, error } = inner as Record<string, unknown>;
-
-    console.log('[AI bridge] 解析后 msgId=', msgId, ' type=', type, ' 待处理回调数=', _aiCallbacks.size);
-
-    if (!msgId || typeof msgId !== 'string') return;
-
-    const cb = _aiCallbacks.get(msgId as string);
-    if (!cb) {
-      console.warn('[AI bridge] 未找到 msgId 对应回调:', msgId, ' 当前 map keys=', [..._aiCallbacks.keys()]);
-      return;
-    }
-
-    if (type === 'AI_CHUNK') {
-      cb.onChunk((chunk as string) || '', (accumulated as string) || '');
-    } else if (type === 'AI_DONE') {
-      _aiCallbacks.delete(msgId as string);
-      cb.onDone((text as string) || '');
-    } else if (type === 'AI_ERROR') {
-      _aiCallbacks.delete(msgId as string);
-      cb.onError((error as string) || 'AI调用失败');
-    }
-  });
-}
-
 /**
- * 通过小程序桥接调用云开发 AI（流式）
- * 在小程序 WebView 内调用时，通过 postMessage → wx.cloud.extend.AI → webviewCtx.postMessage 实现
- * 返回 unsubscribe 函数（超时/取消时使用）
+ * 通过 @cloudbase/js-sdk 的 ai() 接口流式调用大模型
+ * - 直接 HTTP 调用，无需 postMessage，真正实时
+ * - 支持 hunyuan-lite / hunyuan-turbos-latest / deepseek 等模型
+ * - 返回 AbortController，可随时取消
  */
-export function callAIStream(
+export async function callAIStream(
   messages: AIMessage[],
   callbacks: AIStreamCallbacks,
-  model = 'hunyuan-turbos-latest',
-): () => void {
-  const msgId = `ai_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+  model = 'hunyuan-lite',
+): Promise<AbortController> {
+  const ctrl = new AbortController();
 
-  ensureAIMessageListener();
-  _aiCallbacks.set(msgId, callbacks);
+  getDb(); // 触发 SDK 初始化（确保 _app 已创建）
+  const authOk = await ensureCloudAuth();
 
-  // 发送到小程序
-  console.log('[AI bridge] 发送 AI_CHAT msgId=', msgId, ' model=', model, ' messages=', messages.length, ' wx.miniProgram=', !!(window as unknown as Record<string,unknown>).wx);
-  try {
-    wx.miniProgram?.postMessage({
-      data: {
-        msgId,
-        type: 'AI_CHAT',
-        payload: { messages, model },
-      },
-    });
-    console.log('[AI bridge] postMessage 发送成功');
-  } catch (e) {
-    console.error('[AI bridge] postMessage 发送失败:', e);
-    _aiCallbacks.delete(msgId);
-    callbacks.onError(`postMessage 发送失败: ${e}`);
+  if (!_app || !authOk) {
+    callbacks.onError('tcb-js-sdk 未就绪，请检查网络或云开发配置');
+    return ctrl;
   }
 
-  // 返回取消函数
-  return () => {
-    _aiCallbacks.delete(msgId);
-  };
+  console.log('[AI] 开始流式调用, model=', model, ' messages=', messages.length);
+
+  // 异步执行，不阻塞调用方
+  (async () => {
+    try {
+      type StreamResult = {
+        textStream: AsyncIterable<string>;
+        messages: Promise<Array<{ role: string; content: unknown }>>;
+      };
+      const aiModel = _app!.ai().createModel(model);
+      const res = await (aiModel.streamText as unknown as (input: Record<string, unknown>) => Promise<StreamResult>)({
+        model,
+        messages,
+        abortSignal: ctrl.signal,
+      });
+
+      let accumulated = '';
+      for await (const text of res.textStream) {
+        if (ctrl.signal.aborted) break;
+        accumulated += text;
+        callbacks.onChunk(text, accumulated);
+      }
+
+      // 等待最终完整文本
+      const finalMessages = await res.messages;
+      const fullText = finalMessages
+        .filter(m => m.role === 'assistant')
+        .map(m => (typeof m.content === 'string' ? m.content : ''))
+        .join('') || accumulated;
+
+      console.log('[AI] 流式完成，总长度:', fullText.length);
+      callbacks.onDone(fullText || accumulated);
+    } catch (err: unknown) {
+      if (ctrl.signal.aborted) return; // 主动取消不报错
+      const msg = err instanceof Error ? err.message : String(err);
+      console.error('[AI] 流式调用失败:', msg);
+      callbacks.onError(msg);
+    }
+  })();
+
+  return ctrl;
 }
 
 /** 批量同步 */
