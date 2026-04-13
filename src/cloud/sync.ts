@@ -317,6 +317,87 @@ export async function postShare(options: {
   }
 }
 
+// ─── AI 桥接（通过小程序 wx.cloud.extend.AI 调用）────────────────────────────
+
+export interface AIMessage {
+  role: 'user' | 'assistant' | 'system';
+  content: string;
+}
+
+export interface AIStreamCallbacks {
+  onChunk: (chunk: string, accumulated: string) => void;
+  onDone: (fullText: string) => void;
+  onError: (error: string) => void;
+}
+
+let _aiMsgListenerAttached = false;
+const _aiCallbacks = new Map<string, AIStreamCallbacks>();
+
+function ensureAIMessageListener() {
+  if (_aiMsgListenerAttached) return;
+  _aiMsgListenerAttached = true;
+
+  window.addEventListener('message', (event: MessageEvent) => {
+    // 小程序通过 webviewCtx.postMessage 发来的消息
+    const msg = event.data;
+    if (!msg || typeof msg !== 'object') return;
+
+    // 兼容多种包装格式
+    const inner = msg.data || msg;
+    const { msgId, type, chunk, accumulated, text, error } = inner as Record<string, unknown>;
+
+    if (!msgId || typeof msgId !== 'string') return;
+
+    const cb = _aiCallbacks.get(msgId as string);
+    if (!cb) return;
+
+    if (type === 'AI_CHUNK') {
+      cb.onChunk((chunk as string) || '', (accumulated as string) || '');
+    } else if (type === 'AI_DONE') {
+      _aiCallbacks.delete(msgId as string);
+      cb.onDone((text as string) || '');
+    } else if (type === 'AI_ERROR') {
+      _aiCallbacks.delete(msgId as string);
+      cb.onError((error as string) || 'AI调用失败');
+    }
+  });
+}
+
+/**
+ * 通过小程序桥接调用云开发 AI（流式）
+ * 在小程序 WebView 内调用时，通过 postMessage → wx.cloud.extend.AI → webviewCtx.postMessage 实现
+ * 返回 unsubscribe 函数（超时/取消时使用）
+ */
+export function callAIStream(
+  messages: AIMessage[],
+  callbacks: AIStreamCallbacks,
+  model = 'hunyuan-turbos-latest',
+): () => void {
+  const msgId = `ai_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+
+  ensureAIMessageListener();
+  _aiCallbacks.set(msgId, callbacks);
+
+  // 发送到小程序
+  try {
+    wx.miniProgram?.postMessage({
+      data: {
+        msgId,
+        type: 'AI_CHAT',
+        payload: { messages, model },
+      },
+    });
+  } catch (e) {
+    _aiCallbacks.delete(msgId);
+    callbacks.onError(`postMessage 发送失败: ${e}`);
+  }
+
+  // 返回取消函数
+  return () => {
+    _aiCallbacks.delete(msgId);
+  };
+}
+
 /** 批量同步 */
 export async function cloudSyncAll(localData: Record<string, unknown>): Promise<void> {
   if (!_openid) return;
