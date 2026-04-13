@@ -35,7 +35,7 @@ export default function ReportPage({ onNavigate, result }: ReportPageProps) {
           <p className={`tag text-sm px-4 py-1.5 ${risk.bg} ${risk.color} mx-auto`} style={{ width: 'fit-content' }}>
             {risk.desc}
           </p>
-          <p className="text-xs text-gray-400 mt-3">识别准确率 {Math.round((result.totalAnswered / 12) * 100)}% · {formatDate(result.date)}</p>
+          <p className="text-xs text-gray-400 mt-3">完成 {result.totalAnswered} 题 · {formatDate(result.date)}</p>
         </div>
 
         {/* Hotlines for high risk */}
