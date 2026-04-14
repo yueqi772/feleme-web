@@ -292,6 +292,42 @@ export async function cloudIncrementPracticeCount(): Promise<void> {
   await dbUpdate('userProfile', { openid: _openid }, { practiceCount_delta: 1 });
 }
 
+/** 保存情景练习记录 */
+export async function cloudSavePracticeRecord(record: {
+  scenarioId: string;
+  scenarioTitle: string;
+  scenarioIcon: string;
+  difficulty: number;
+  messages: Array<{ role: 'user' | 'ai'; content: string }>;
+  score: number;
+  scoreLabel: string;
+  aiAnalysis: string;
+  finishedAt: number;
+}): Promise<void> {
+  const payload = {
+    ...record,
+    openid: _openid,
+    localId: `practice_${record.finishedAt}`,
+  };
+  console.log('[practice] 开始保存练习记录', {
+    scenarioId: payload.scenarioId,
+    scenarioTitle: payload.scenarioTitle,
+    score: payload.score,
+    scoreLabel: payload.scoreLabel,
+    messageCount: payload.messages.length,
+    hasAiAnalysis: !!payload.aiAnalysis,
+    openid: payload.openid || '(无openid)',
+    localId: payload.localId,
+  });
+  try {
+    await dbAdd('practiceHistory', payload);
+    console.log('[practice] ✅ 练习记录保存成功', payload.localId);
+  } catch (err) {
+    console.error('[practice] ❌ 练习记录保存失败', err);
+    throw err;
+  }
+}
+
 /** 触发小程序分享 */
 export async function postShare(options: {
   title: string;
@@ -389,15 +425,11 @@ export async function callAIStream(
 
       console.log('[AI] 步骤5: textStream 消费完毕，accumulated.length=', accumulated.length);
 
-      // 等待最终完整文本
-      const finalMessages = await res.messages;
-      const fullText = finalMessages
-        .filter(m => m.role === 'assistant')
-        .map(m => (typeof m.content === 'string' ? m.content : ''))
-        .join('') || accumulated;
-
-      console.log('[AI] 流式完成，总长度:', fullText.length);
-      callbacks.onDone(fullText || accumulated);
+      // 直接使用流式累积的文本作为最终结果
+      // 注意：res.messages 包含完整对话历史，不能全部 join，只需要本轮新生成的内容
+      // accumulated 就是本次 streamText 流式输出的完整新内容
+      console.log('[AI] 流式完成，总长度:', accumulated.length);
+      callbacks.onDone(accumulated);
     } catch (err: unknown) {
       if (ctrl.signal.aborted) return; // 主动取消不报错
       // 深度序列化错误，方便排查 SDK 抛出的非标准错误对象

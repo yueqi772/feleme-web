@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import type { PracticeScenario } from '../types';
 import { useApp } from '../context/AppContext';
 import { getPracticeFeedback } from '../utils';
-import { callAIStream } from '../cloud/sync';
+import { callAIStream, cloudSavePracticeRecord } from '../cloud/sync';
 import type { AIMessage } from '../cloud/sync';
 
 interface PracticePageProps {
@@ -23,7 +23,9 @@ function buildSystemPrompt(scenario: PracticeScenario): string {
 - 说话简短、命令式，经常在深夜或休息日发消息
 - 会煤气灯效应，让员工怀疑自己
 
-请一步步施压，每条消息不超过50字，保持角色。`;
+重要规则：
+- 每次只输出你这一轮要说的新内容，不要重复之前说过的话
+- 不超过50字，保持角色，直接输出对话内容。`;
 }
 
 function buildAnalysisPrompt(
@@ -124,6 +126,11 @@ export default function PracticePage({ onNavigate, scenario }: PracticePageProps
 
     setStep('feedback');
 
+    // 快照当前对话记录和得分（用于保存，messages state 后续可能变化）
+    const snapshotMessages = [...messages];
+    const { score, label: scoreLabel } = scoreResponses(messages);
+    const finishedAt = Date.now();
+
     // AI 分析（直接调用云开发 AI）
     setAnalysisLoading(true);
     setAnalysisStreamText('');
@@ -144,14 +151,43 @@ export default function PracticePage({ onNavigate, scenario }: PracticePageProps
           setAnalysisStreamText(acc);
         },
         onDone: (fullText) => {
-          setAiAnalysis(fullText || accAnalysis);
+          const analysisText = fullText || accAnalysis;
+          setAiAnalysis(analysisText);
           setAnalysisStreamText('');
           setAnalysisLoading(false);
+
+          // AI 分析完成后，保存完整练习记录到云端
+          console.log('[practice] AI分析完成，准备保存记录（含AI分析）');
+          cloudSavePracticeRecord({
+            scenarioId: scenario.id,
+            scenarioTitle: scenario.title,
+            scenarioIcon: scenario.icon,
+            difficulty: scenario.difficulty,
+            messages: snapshotMessages,
+            score,
+            scoreLabel,
+            aiAnalysis: analysisText,
+            finishedAt,
+          }).catch(err => console.error('[practice] ❌ 保存练习记录异常:', err));
         },
         onError: () => {
           setAiAnalysis('');
           setAnalysisStreamText('');
           setAnalysisLoading(false);
+
+          // AI 分析失败时，仍然保存练习记录（aiAnalysis 为空）
+          console.log('[practice] AI分析失败，仍准备保存记录（aiAnalysis为空）');
+          cloudSavePracticeRecord({
+            scenarioId: scenario.id,
+            scenarioTitle: scenario.title,
+            scenarioIcon: scenario.icon,
+            difficulty: scenario.difficulty,
+            messages: snapshotMessages,
+            score,
+            scoreLabel,
+            aiAnalysis: '',
+            finishedAt,
+          }).catch(err => console.error('[practice] ❌ 保存练习记录异常:', err));
         },
       },
     ).then(ctrl => { cancelAIRef.current = ctrl; });
@@ -168,10 +204,27 @@ export default function PracticePage({ onNavigate, scenario }: PracticePageProps
     setApiError('');
 
     // ─── 云开发 AI 流式对话（直接 HTTP，无需 postMessage）─────────────────
-    const history: AIMessage[] = newMessages.map(m => ({
+    // 传完整对话历史（user/assistant 交替）让 AI 有上下文
+    // 规则：跳过开头的 ai 开场白，确保从 user 开始、user/assistant 严格交替
+    const allMapped: AIMessage[] = newMessages.map(m => ({
       role: (m.role === 'ai' ? 'assistant' : m.role) as 'user' | 'assistant',
       content: m.content,
     }));
+    const firstUserIdx = allMapped.findIndex(m => m.role === 'user');
+    const history: AIMessage[] = [];
+    if (firstUserIdx >= 0) {
+      let expectRole: 'user' | 'assistant' = 'user';
+      for (let i = firstUserIdx; i < allMapped.length; i++) {
+        if (allMapped[i].role === expectRole) {
+          history.push(allMapped[i]);
+          expectRole = expectRole === 'user' ? 'assistant' : 'user';
+        }
+      }
+      // 确保最后一条是 user
+      while (history.length > 0 && history[history.length - 1].role === 'assistant') {
+        history.pop();
+      }
+    }
 
     let streamAccumulated = '';
 
