@@ -351,28 +351,36 @@ export async function callAIStream(
     return ctrl;
   }
 
-  console.log('[AI] 开始流式调用, model=', model, ' messages=', messages.length);
+  console.log('[AI] 开始流式调用, model=', model, ' messages=', messages.length, ' authOk=', authOk, ' _app=', !!_app);
 
   // 异步执行，不阻塞调用方
   (async () => {
     try {
+      console.log('[AI] 步骤1: 创建 ai() 实例');
+      const aiInstance = _app!.ai();
+      console.log('[AI] 步骤2: createModel', model);
+      const aiModel = aiInstance.createModel(model);
+      console.log('[AI] 步骤3: 调用 streamText, messages=', JSON.stringify(messages).slice(0, 100));
+
       type StreamResult = {
         textStream: AsyncIterable<string>;
         messages: Promise<Array<{ role: string; content: unknown }>>;
       };
-      const aiModel = _app!.ai().createModel(model);
       const res = await (aiModel.streamText as unknown as (input: Record<string, unknown>) => Promise<StreamResult>)({
         model,
         messages,
         abortSignal: ctrl.signal,
       });
 
+      console.log('[AI] 步骤4: streamText 返回，开始消费 textStream');
       let accumulated = '';
       for await (const text of res.textStream) {
         if (ctrl.signal.aborted) break;
         accumulated += text;
         callbacks.onChunk(text, accumulated);
       }
+
+      console.log('[AI] 步骤5: textStream 消费完毕，accumulated.length=', accumulated.length);
 
       // 等待最终完整文本
       const finalMessages = await res.messages;
@@ -385,8 +393,21 @@ export async function callAIStream(
       callbacks.onDone(fullText || accumulated);
     } catch (err: unknown) {
       if (ctrl.signal.aborted) return; // 主动取消不报错
-      const msg = err instanceof Error ? err.message : String(err);
-      console.error('[AI] 流式调用失败:', msg);
+      // 深度序列化错误，方便排查 SDK 抛出的非标准错误对象
+      console.error('[AI] 流式调用失败 (原始):', err);
+      let msg = '未知错误';
+      if (err instanceof Error) {
+        msg = err.message || String(err);
+      } else if (typeof err === 'string') {
+        msg = err;
+      } else {
+        try {
+          msg = JSON.stringify(err) || String(err);
+        } catch {
+          msg = String(err);
+        }
+      }
+      console.error('[AI] 流式调用失败 (message):', msg);
       callbacks.onError(msg);
     }
   })();
