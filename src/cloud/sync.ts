@@ -339,8 +339,8 @@ export interface AIStreamCallbacks {
 // createModel 的 provider 名 → 对应 streamText 里应传的 model 字段
 // hunyuan: 混元 API，model 字段用 hunyuan-turbos-latest / hunyuan-pro 等
 // deepseek: deepseek-chat / deepseek-r1-0528 等
-const AI_PROVIDER = 'hunyuan';           // createModel 的 provider key
-const AI_MODEL_NAME = 'hunyuan-pro';     // streamText 里的 model 字段（混元具体模型）
+const AI_PROVIDER = 'hunyuan-exp';                 // createModel 的 provider key（云开发控制台模型分组名）
+const AI_MODEL_NAME = 'hunyuan-turbos-latest';     // streamText 里的 model 字段（速度最快）
 
 export async function callAIStream(
   messages: AIMessage[],
