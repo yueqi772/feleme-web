@@ -336,38 +336,45 @@ export interface AIStreamCallbacks {
  * - 支持 hunyuan-lite / hunyuan-turbos-latest / deepseek 等模型
  * - 返回 AbortController，可随时取消
  */
+// createModel 的 provider 名 → 对应 streamText 里应传的 model 字段
+// hunyuan: 混元 API，model 字段用 hunyuan-turbos-latest / hunyuan-pro 等
+// deepseek: deepseek-chat / deepseek-r1-0528 等
+const AI_PROVIDER = 'hunyuan';           // createModel 的 provider key
+const AI_MODEL_NAME = 'hunyuan-pro';     // streamText 里的 model 字段（混元具体模型）
+
 export async function callAIStream(
   messages: AIMessage[],
   callbacks: AIStreamCallbacks,
-  model = 'hunyuan-lite',
+  modelName = AI_MODEL_NAME,
 ): Promise<AbortController> {
   const ctrl = new AbortController();
 
   getDb(); // 触发 SDK 初始化（确保 _app 已创建）
   const authOk = await ensureCloudAuth();
 
-  if (!_app || !authOk) {
-    callbacks.onError('tcb-js-sdk 未就绪，请检查网络或云开发配置');
+  console.log('[AI] 开始流式调用, provider=', AI_PROVIDER, ' model=', modelName, ' messages=', messages.length, ' authOk=', authOk, ' _app=', !!_app);
+
+  if (!_app) {
+    callbacks.onError('tcb-js-sdk 初始化失败，请检查网络');
     return ctrl;
   }
 
-  console.log('[AI] 开始流式调用, model=', model, ' messages=', messages.length, ' authOk=', authOk, ' _app=', !!_app);
-
+  // authOk=false 时（匿名登录失败）也尝试继续，部分环境不需要登录态
   // 异步执行，不阻塞调用方
   (async () => {
     try {
       console.log('[AI] 步骤1: 创建 ai() 实例');
       const aiInstance = _app!.ai();
-      console.log('[AI] 步骤2: createModel', model);
-      const aiModel = aiInstance.createModel(model);
-      console.log('[AI] 步骤3: 调用 streamText, messages=', JSON.stringify(messages).slice(0, 100));
+      console.log('[AI] 步骤2: createModel provider=', AI_PROVIDER);
+      const aiModel = aiInstance.createModel(AI_PROVIDER);
+      console.log('[AI] 步骤3: 调用 streamText, model=', modelName, ' messages=', JSON.stringify(messages).slice(0, 100));
 
       type StreamResult = {
         textStream: AsyncIterable<string>;
         messages: Promise<Array<{ role: string; content: unknown }>>;
       };
       const res = await (aiModel.streamText as unknown as (input: Record<string, unknown>) => Promise<StreamResult>)({
-        model,
+        model: modelName,
         messages,
         abortSignal: ctrl.signal,
       });
