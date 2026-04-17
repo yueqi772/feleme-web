@@ -465,13 +465,13 @@ export default function TestPage({ onNavigate }: TestPageProps) {
           <div className="flex gap-3 pb-2">
             <button
               className="flex-1 flex items-center justify-center gap-1.5 bg-[#07c160] text-white rounded-2xl py-3 text-sm font-medium active:opacity-80"
-              onClick={() => postShare({ title: `我的抗PUA能力：${finalScore}分 · ${risk.desc}`, path: '/pages/webview/index', imageUrl: '' })}
+              onClick={() => postShare({ type: 'h5' as const,  title: `我的抗PUA能力：${finalScore}分 · ${risk.desc}`, path: '/pages/webview/index', imageUrl: '' })}
             >
               <span>💬</span> 分享给朋友
             </button>
             <button
               className="flex-1 flex items-center justify-center gap-1.5 bg-white border border-[#07c160] text-[#07c160] rounded-2xl py-3 text-sm font-medium active:opacity-80"
-              onClick={() => postShare({ title: `我的抗PUA能力：${finalScore}分 · ${risk.desc}`, path: '/pages/webview/index', imageUrl: '', timeline: true })}
+              onClick={() => postShare({ type: 'h5', title: `我的抗PUA能力：${finalScore}分 · ${risk.desc}`, path: '/pages/webview/index', imageUrl: '' })}
             >
               <span>🌟</span> 发朋友圈
             </button>

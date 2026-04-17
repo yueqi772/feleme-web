@@ -1,6 +1,6 @@
 // 云数据库同步统一导出
 export {
-  setOpenid, getOpenid, pingMp,
+  setOpenid, getOpenid,
   cloudSaveTestResult, cloudSaveDiary, cloudAddChatMessage,
   cloudAddPost, cloudToggleLike, cloudToggleResonate,
   cloudAddComment, cloudUnlockAchievement,

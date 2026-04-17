@@ -135,7 +135,7 @@ export default function PracticePage({ onNavigate, scenario }: PracticePageProps
     setAnalysisLoading(true);
     setAnalysisStreamText('');
     const historyForAnalysis: AIMessage[] = [
-      { role: 'system', content: '你是一名温暖的职场心理顾问，擅长分析PUA场景下的应对方式，语言温暖、支持性强。' },
+      { role: 'assistant' as const, content: '你是一名温暖的职场心理顾问，擅长分析PUA场景下的应对方式，语言温暖、支持性强。' },
       { role: 'user', content: buildAnalysisPrompt(scenario, messages.map(m => ({
         role: m.role === 'ai' ? 'assistant' : 'user',
         content: m.content,
@@ -147,8 +147,8 @@ export default function PracticePage({ onNavigate, scenario }: PracticePageProps
       historyForAnalysis,
       {
         onChunk: (_chunk, acc) => {
-          accAnalysis = acc;
-          setAnalysisStreamText(acc);
+          accAnalysis = acc || '';
+          setAnalysisStreamText(acc || '');
         },
         onDone: (fullText) => {
           const analysisText = fullText || accAnalysis;
@@ -229,11 +229,11 @@ export default function PracticePage({ onNavigate, scenario }: PracticePageProps
     let streamAccumulated = '';
 
     callAIStream(
-      [{ role: 'system', content: buildSystemPrompt(scenario) }, ...history],
+      [{ role: 'assistant' as const, content: buildSystemPrompt(scenario) }, ...history],
       {
         onChunk: (_chunk, acc) => {
-          streamAccumulated = acc;
-          setStreamingText(acc);
+          streamAccumulated = acc || '';
+          setStreamingText(acc || '');
         },
         onDone: (fullText) => {
           const reply = fullText || streamAccumulated || getFallback(round);

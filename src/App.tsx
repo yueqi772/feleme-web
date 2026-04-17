@@ -122,12 +122,8 @@ function AppContent() {
       setCurrentPage(prev);
     } else {
       // 历史栈为空，通过微信 API 返回小程序
-      try {
-        if (typeof (window as any).wx !== 'undefined' && (window as any).wx.miniProgram) {
-          (window as any).wx.miniProgram.navigateBack();
+      // WebView back disabled in H5 standalone
         }
-      } catch {}
-    }
   }, [historyStack]);
 
   useEffect(() => {
