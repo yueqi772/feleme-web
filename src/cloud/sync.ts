@@ -1,205 +1,180 @@
 /**
- * 云数据库同步模块 — H5 独立版
- *
- * 通信方案（单轨）：
- * - tcb-js-sdk 直连云数据库，匿名登录
- * - 不依赖任何微信客户端 API
+ * 数据库同步模块 — Supabase H5 独立版（原生fetch版）
+ * 直接调用 Supabase REST API，无需 SDK，彻底避免跨域/Invocation 问题
  */
-
-import cloudbase from '@cloudbase/js-sdk';
-
-const ENV_ID = 'cloudbase-3g22c9ce5bcf0e55';
+const SUPABASE_URL = 'https://zphandtlrxbvfwbwucvk.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpwaGFuZHRscnhidmZ3Ynd1Y3ZrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ2MDM0ODgsImV4cCI6MjA5MDE3OTQ4OH0.4FYehdmhw5AmTAVZcrBehHodLzkIsyuwC654XtKL72Q';
 const OID_KEY = '_feleme_openid';
 
-type CloudbaseApp = ReturnType<typeof cloudbase.init>;
-type CloudbaseDb = ReturnType<CloudbaseApp['database']>;
+export function setOpenid(id: string) { try { localStorage.setItem(OID_KEY, id); } catch {} }
+export function getOpenid(): string { try { return localStorage.getItem(OID_KEY) || ''; } catch { return ''; } }
 
-// ─── SDK 初始化 ──────────────────────────────────────────
-let _app: CloudbaseApp | null = null;
-let _db: CloudbaseDb | null = null;
-let _ready = false;
-
-function getDb(): CloudbaseDb | null {
-  if (_db) return _db;
-  try {
-    _app = cloudbase.init({ env: ENV_ID, region: 'ap-shanghai' });
-    _db = _app.database();
-    _ready = true;
-    console.log('[cloud] SDK 初始化成功');
-  } catch (e) {
-    console.warn('[cloud] SDK 初始化失败:', e);
-    _ready = false;
-  }
-  return _db;
+// ─── 工具函数 ─────────────────────────────────────────────
+function uid(): string {
+  const id = getOpenid();
+  if (id) return id;
+  const newId = (typeof crypto !== 'undefined' && (crypto as any).randomUUID)
+    ? (crypto as any).randomUUID()
+    : Math.random().toString(36).slice(2) + Date.now().toString(36);
+  setOpenid(newId);
+  console.log('[supabase] 生成新用户ID:', newId);
+  return newId;
 }
 
-// ─── openid 管理（localStorage 匿名）──────────────────────
-export function setOpenid(id: string) {
-  try { localStorage.setItem(OID_KEY, id); } catch {}
-}
-export function getOpenid(): string {
-  try { return localStorage.getItem(OID_KEY) || ''; } catch { return ''; }
-}
-
-// ─── 匿名登录 ────────────────────────────────────────────
-let _authPromise: Promise<boolean> | null = null;
-
-async function ensureAuth(): Promise<boolean> {
-  if (!_ready) return false;
-  if (_authPromise) return _authPromise;
-  _authPromise = (async () => {
-    try {
-      const auth = _app!.auth();
-      if (auth.hasLoginState()) return true;
-      await auth.signInAnonymously();
-      return true;
-    } catch (e) {
-      console.warn('[cloud] 匿名登录失败:', e);
-      return false;
-    }
-  })();
-  return _authPromise;
-}
-
-// ─── 内部工具 ────────────────────────────────────────────
-function openidOf(): string {
-  return getOpenid();
-}
-
-async function dbAdd(collection: string, data: Record<string, unknown>): Promise<void> {
-  const db = getDb();
-  if (!db) return;
-  await ensureAuth();
-  const finalData = { ...data, openid: openidOf(), createdAt: Date.now() };
-  try {
-    const res = await db.collection('feleme_' + collection).add({ data: finalData });
-    console.log(`[cloud] 云端写入成功: ${collection}`, res.id);
-  } catch (e) {
-    console.warn(`[cloud] 云端写入失败: ${collection}`, e);
-  }
-}
-
-async function dbUpdate(
-  collection: string,
-  query: Record<string, unknown>,
-  data: Record<string, unknown>
+async function request(
+  table: string,
+  method: 'POST' | 'GET' | 'PATCH' | 'DELETE',
+  body?: Record<string, unknown>
 ): Promise<void> {
-  const db = getDb();
-  if (!db) return;
-  await ensureAuth();
-  const setData: Record<string, unknown> = {};
-  const incData: Record<string, unknown> = {};
-  for (const [k, v] of Object.entries(data)) {
-    if (String(k).endsWith('_delta')) {
-      incData[String(k).replace(/_delta$/, '')] = v;
-    } else {
-      setData[k] = v;
-    }
-  }
-  const update: Record<string, unknown> = {};
-  if (Object.keys(setData).length) update.$set = setData;
-  if (Object.keys(incData).length) update.$inc = incData;
+  const userId = uid();
+  const payload = body
+    ? { ...body, user_id: userId, created_at: new Date().toISOString() }
+    : undefined;
+  const url = `${SUPABASE_URL}/rest/v1/${table}`;
+  console.log(`[supabase] ${method} ${url}`, payload);
   try {
-    await db.collection('feleme_' + collection).where(query).update({ data: update });
+    const opts: RequestInit = {
+      method,
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal',
+      },
+    };
+    if (payload) opts.body = JSON.stringify(payload);
+    const res = await fetch(url, opts);
+    const text = await res.text();
+    if (!res.ok) {
+      console.error(`[supabase] 失败 ${res.status}:`, text);
+    } else {
+      console.log(`[supabase] 成功 ${table}`);
+    }
   } catch (e) {
-    console.warn(`[cloud] 云端更新失败: ${collection}`, e);
+    console.error(`[supabase] 异常 ${table}:`, e);
   }
 }
 
-async function dbSet(
-  collection: string,
-  query: Record<string, unknown>,
-  data: Record<string, unknown>
-): Promise<void> {
-  const db = getDb();
-  if (!db) return;
-  await ensureAuth();
-  try {
-    const col = db.collection('feleme_' + collection);
-    const existing = await col.where(query).get();
-    if ((existing.data as unknown[]).length > 0) {
-      const oldId = (existing.data as Array<{ _id: string }>)[0]._id;
-      await col.doc(oldId).update({ data: { ...data, updatedAt: Date.now() } });
-    } else {
-      await col.add({ data: { ...query, ...data, createdAt: Date.now() } });
-    }
-  } catch (e) {
-    console.warn(`[cloud] 云端 set 失败: ${collection}`, e);
-  }
-}
-
-// ─── 业务函数 ────────────────────────────────────────────
+// ─── 业务函数 ─────────────────────────────────────────────
 
 export async function cloudSaveTestResult(result: Record<string, unknown>): Promise<void> {
-  await dbAdd('testHistory', { ...result, localId: String(result['id'] || '') });
+  console.log('[supabase] cloudSaveTestResult called');
+  await request('test_history', 'POST', { ...result, local_id: result['id'] });
 }
 
 export async function cloudSaveDiary(diary: Record<string, unknown>): Promise<void> {
-  await dbAdd('diaries', { ...diary, localId: String(diary['id'] || '') });
+  console.log('[supabase] cloudSaveDiary called', diary);
+  await request('diaries', 'POST', { ...diary, local_id: diary['id'] });
 }
 
 export async function cloudAddChatMessage(
   diaryId: string,
   message: Record<string, unknown>
 ): Promise<void> {
-  await dbAdd('diaryMessages', { diaryId, ...message, localId: String(message['id'] || '') });
+  console.log('[supabase] cloudAddChatMessage called', diaryId);
+  await request('diary_messages', 'POST', { diary_id: diaryId, ...message, local_id: message['id'] });
 }
 
 export async function cloudAddPost(post: Record<string, unknown>): Promise<void> {
-  await dbAdd('posts', { ...post, localId: String(post['id'] || '') });
+  console.log('[supabase] cloudAddPost called', post);
+  await request('posts', 'POST', { ...post, local_id: post['id'] });
 }
 
 export async function cloudToggleLike(
-  postId: string,
+  _postId: string,
   cloudId: string,
   liked: boolean
 ): Promise<void> {
   if (!cloudId) return;
-  await dbUpdate('posts', { _id: cloudId }, { likes_delta: liked ? 1 : -1 });
+  try {
+    const userId = uid();
+    const url = `${SUPABASE_URL}/rest/v1/posts?id=eq.${cloudId}`;
+    const res = await fetch(url, {
+      method: 'PATCH',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal',
+      },
+      body: JSON.stringify({ likes: liked ? 1 : -1, updated_at: new Date().toISOString() }),
+    });
+    if (!res.ok) console.error('[supabase] cloudToggleLike失败', res.status);
+    else console.log('[supabase] cloudToggleLike成功');
+  } catch (e) { console.error('[supabase] cloudToggleLike异常', e); }
 }
 
 export async function cloudToggleResonate(
-  postId: string,
+  _postId: string,
   cloudId: string,
   resonated: boolean
 ): Promise<void> {
   if (!cloudId) return;
-  await dbUpdate('posts', { _id: cloudId }, { resonances_delta: resonated ? 1 : -1 });
+  try {
+    const url = `${SUPABASE_URL}/rest/v1/posts?id=eq.${cloudId}`;
+    await fetch(url, {
+      method: 'PATCH',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal',
+      },
+      body: JSON.stringify({ resonances: resonated ? 1 : -1, updated_at: new Date().toISOString() }),
+    });
+  } catch (e) { console.error('[supabase] cloudToggleResonate异常', e); }
 }
 
 export async function cloudAddComment(comment: Record<string, unknown>): Promise<void> {
-  await dbAdd('comments', { ...comment, localId: String(comment['id'] || '') });
+  console.log('[supabase] cloudAddComment called');
+  await request('comments', 'POST', { ...comment, local_id: comment['id'] });
 }
 
 export async function cloudUnlockAchievement(achievement: Record<string, unknown>): Promise<void> {
-  await dbAdd('achievements', { ...achievement, unlocked: true, unlockedAt: new Date().toISOString() });
+  console.log('[supabase] cloudUnlockAchievement called');
+  await request('achievements', 'POST', { ...achievement, unlocked: true, unlocked_at: new Date().toISOString() });
 }
 
 export async function cloudUpdateUserProfile(profile: Record<string, unknown>): Promise<void> {
-  const oid = openidOf();
-  if (!oid) { console.warn('[cloud] cloudUpdateUserProfile: 无 openid'); return; }
-  await dbSet('userProfile', { openid: oid }, { ...profile, openid: oid });
+  console.log('[supabase] cloudUpdateUserProfile called', profile);
+  await request('user_profile', 'POST', { ...profile, user_id: uid() });
 }
 
 export async function cloudToggleFavoriteScript(scriptId: string, liked: boolean): Promise<void> {
-  const oid = openidOf();
-  if (!oid) return;
-  await dbSet('userProfile', { openid: oid }, { favoriteScripts: liked ? [scriptId] : [], openid: oid });
+  console.log('[supabase] cloudToggleFavoriteScript', scriptId, liked);
+  await request('user_profile', 'POST', { favorite_scripts: liked ? [scriptId] : [], user_id: uid() });
 }
 
 export async function cloudIncrementPracticeCount(): Promise<void> {
-  const oid = openidOf();
-  if (!oid) return;
-  await dbUpdate('userProfile', { openid: oid }, { practiceCount_delta: 1 });
+  console.log('[supabase] cloudIncrementPracticeCount called');
+  try {
+    const userId = uid();
+    const url = `${SUPABASE_URL}/rest/v1/user_profile?user_id=eq.${userId}&select=id,practice_count`;
+    const res = await fetch(url, {
+      method: 'GET',
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` },
+    });
+    const data = await res.json();
+    if (Array.isArray(data) && data.length > 0) {
+      await fetch(`${SUPABASE_URL}/rest/v1/user_profile?id=eq.${data[0].id}`, {
+        method: 'PATCH',
+        headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+        body: JSON.stringify({ practice_count: (data[0].practice_count || 0) + 1, updated_at: new Date().toISOString() }),
+      });
+    } else {
+      await request('user_profile', 'POST', { user_id: userId, practice_count: 1 });
+    }
+  } catch (e) { console.error('[supabase] cloudIncrementPracticeCount异常', e); }
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function cloudSavePracticeRecord(record: Record<string, any>): Promise<void> {
-  await dbAdd('practiceRecords', { ...record });
+  console.log('[supabase] cloudSavePracticeRecord called', record);
+  await request('practice_records', 'POST', record);
 }
 
 export async function cloudSyncAll(_localData: Record<string, unknown>): Promise<void> {
-  console.log('[cloud] cloudSyncAll called (H5 standalone)');
+  console.log('[supabase] cloudSyncAll called (no-op, writes are immediate)');
 }
 
 export async function postShare(options: {
@@ -208,7 +183,7 @@ export async function postShare(options: {
   path: string;
   imageUrl?: string;
 }): Promise<void> {
-  console.log('[cloud] postShare called:', options);
+  console.log('[supabase] postShare called:', options);
 }
 
 // ─── AI 对话（腾讯云开发 Hunyuan）────────────────────────
@@ -218,7 +193,6 @@ export interface AIMessage {
 }
 
 export interface AIStreamCallbacks {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onChunk?: (text: string, accumulated?: string) => void;
   onComplete?: () => void;
   onDone?: (fullText: string) => void;
@@ -231,9 +205,6 @@ export async function callAIStream(
   messages: AIMessage[],
   callbacks: AIStreamCallbacks
 ): Promise<AbortController | null> {
-  const db = getDb();
-  if (!db) { callbacks.onError?.(new Error('SDK 未就绪')); return null; }
-
   const systemPrompt =
     '你是一个专业、温暖的心理咨询师，擅长职场情绪管理和PUA识别。请根据用户描述的场景，给出专业的心理分析和应对建议。回复简洁、有同理心，控制在200字以内。';
 

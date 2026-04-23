@@ -5,5 +5,6 @@ export {
   cloudAddPost, cloudToggleLike, cloudToggleResonate,
   cloudAddComment, cloudUnlockAchievement,
   cloudUpdateUserProfile, cloudToggleFavoriteScript,
-  cloudIncrementPracticeCount, cloudSyncAll, postShare,
+  cloudIncrementPracticeCount, cloudSavePracticeRecord,
+  cloudSyncAll, postShare,
 } from './sync';
