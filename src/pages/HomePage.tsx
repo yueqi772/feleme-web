@@ -96,6 +96,26 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           ))}
         </div>
 
+        {/* 💬 9.9 咨询入口 */}
+        <div
+          className="card bg-gradient-to-br from-brand-500 to-brand-600 text-white cursor-pointer active:scale-[0.98] transition-transform"
+          onClick={() => onNavigate('consult')}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-11 h-11 bg-white/20 rounded-xl flex items-center justify-center text-2xl shrink-0">💬</div>
+              <div>
+                <div className="flex items-center gap-2 mb-0.5">
+                  <span className="text-sm font-bold">专属职场咨询</span>
+                  <span className="text-[10px] bg-white/25 px-2 py-0.5 rounded-full font-medium">¥9.9</span>
+                </div>
+                <p className="text-xs opacity-80">AI 顾问在线 · 识别PUA · 情绪疏导 · 去留分析</p>
+              </div>
+            </div>
+            <span className="text-white/70 text-lg shrink-0">›</span>
+          </div>
+        </div>
+
         {/* 🌟 Featured: Practice Scenarios */}
         <div className="card">
           <div className="flex items-center justify-between mb-3">

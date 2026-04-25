@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useApp } from '../context/AppContext';
+import { h5Login } from '../auth/h5';
+import { cloudRegisterUser } from '../cloud';
 import type { Industry, WorkYears } from '../types';
 
 interface OnboardingPageProps {
@@ -18,17 +20,45 @@ const PAIN_POINTS = [
   { id: '其他', label: '其他', emoji: '💬' },
 ];
 
-const STEPS = ['选择行业', '工作年限', '主要痛点', '功能介绍'];
+// 注册步骤在最前，后面是原有的引导步骤
+const STEPS = ['创建账号', '选择行业', '工作年限', '主要痛点', '功能介绍'];
+
+function validatePhone(phone: string): string {
+  if (!phone.trim()) return '请输入手机号';
+  if (!/^1[3-9]\d{9}$/.test(phone.trim())) return '请输入正确的手机号';
+  return '';
+}
 
 export default function OnboardingPage({ onNavigate }: OnboardingPageProps) {
   const { completeOnboarding, setUserInfo, appName } = useApp();
   const [step, setStep] = useState(0);
+  // 注册信息
+  const [phone, setPhone] = useState('');
+  const [nickname, setNickname] = useState('');
+  const [phoneError, setPhoneError] = useState('');
+  const [nicknameError, setNicknameError] = useState('');
+  // 原有引导信息
   const [industry, setIndustry] = useState<Industry>('互联网');
   const [workYears, setWorkYears] = useState<WorkYears>('1-3年');
   const [painPoints, setPainPoints] = useState<string[]>([]);
 
   const togglePainPoint = (id: string) => {
     setPainPoints(prev => prev.includes(id) ? prev.filter(p => p !== id) : [...prev, id]);
+  };
+
+  const handleNextStep = () => {
+    if (step === 0) {
+      // 校验注册信息
+      const pErr = validatePhone(phone);
+      const nErr = nickname.trim() ? '' : '请输入昵称';
+      setPhoneError(pErr);
+      setNicknameError(nErr);
+      if (pErr || nErr) return;
+      // 创建本地用户并同步到云端
+      h5Login(nickname.trim(), phone.trim());
+      cloudRegisterUser(nickname.trim(), phone.trim());
+    }
+    setStep(s => s + 1);
   };
 
   const handleFinish = () => {
@@ -70,10 +100,52 @@ export default function OnboardingPage({ onNavigate }: OnboardingPageProps) {
       </div>
 
       {/* Step content */}
-      <div className="flex-1 px-6 pt-4">
+      <div className="flex-1 px-6 pt-4 overflow-y-auto">
+
+        {/* ── Step 0: 注册 ── */}
         {step === 0 && (
           <div className="animate-fade-in">
-            <h2 className="text-xl font-bold text-gray-800 mb-1">欢迎来到 {appName}</h2>
+            <div className="text-center mb-8">
+              <div className="text-5xl mb-3">🌿</div>
+              <h2 className="text-xl font-bold text-gray-800 mb-1">欢迎来到 {appName}</h2>
+              <p className="text-sm text-gray-500">创建你的账号，开始职场情绪管理之旅</p>
+            </div>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">手机号</label>
+                <input
+                  type="tel"
+                  value={phone}
+                  onChange={e => { setPhone(e.target.value); setPhoneError(''); }}
+                  placeholder="请输入手机号"
+                  maxLength={11}
+                  className={`input-field w-full ${phoneError ? 'ring-2 ring-red-300 bg-red-50' : ''}`}
+                />
+                {phoneError && <p className="text-xs text-red-500 mt-1">{phoneError}</p>}
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">昵称</label>
+                <input
+                  type="text"
+                  value={nickname}
+                  onChange={e => { setNickname(e.target.value); setNicknameError(''); }}
+                  placeholder="给自己起个昵称吧"
+                  maxLength={16}
+                  className={`input-field w-full ${nicknameError ? 'ring-2 ring-red-300 bg-red-50' : ''}`}
+                />
+                {nicknameError && <p className="text-xs text-red-500 mt-1">{nicknameError}</p>}
+              </div>
+              <p className="text-xs text-gray-400 leading-relaxed pt-1">
+                📱 手机号仅用于账号找回，不会公开展示
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* ── Step 1: 行业 ── */}
+        {step === 1 && (
+          <div className="animate-fade-in">
+            <h2 className="text-xl font-bold text-gray-800 mb-1">你在哪个行业？</h2>
             <p className="text-sm text-gray-500 mb-8">告诉我们你的背景，以便更好地帮助你</p>
             <div className="grid grid-cols-2 gap-3">
               {INDUSTRIES.map(ind => (
@@ -93,7 +165,8 @@ export default function OnboardingPage({ onNavigate }: OnboardingPageProps) {
           </div>
         )}
 
-        {step === 1 && (
+        {/* ── Step 2: 工作年限 ── */}
+        {step === 2 && (
           <div className="animate-fade-in">
             <h2 className="text-xl font-bold text-gray-800 mb-1">你的工作年限？</h2>
             <p className="text-sm text-gray-500 mb-8">帮助我们了解你的职场经验</p>
@@ -115,7 +188,8 @@ export default function OnboardingPage({ onNavigate }: OnboardingPageProps) {
           </div>
         )}
 
-        {step === 2 && (
+        {/* ── Step 3: 痛点 ── */}
+        {step === 3 && (
           <div className="animate-fade-in">
             <h2 className="text-xl font-bold text-gray-800 mb-1">你在职场中遇到了什么？</h2>
             <p className="text-sm text-gray-500 mb-6">可多选，我们会为你提供针对性支持</p>
@@ -138,7 +212,8 @@ export default function OnboardingPage({ onNavigate }: OnboardingPageProps) {
           </div>
         )}
 
-        {step === 3 && (
+        {/* ── Step 4: 功能介绍 ── */}
+        {step === 4 && (
           <div className="animate-fade-in">
             <h2 className="text-xl font-bold text-gray-800 mb-1">{appName} 能帮你做什么？</h2>
             <p className="text-sm text-gray-500 mb-6">了解产品核心功能</p>
@@ -176,10 +251,10 @@ export default function OnboardingPage({ onNavigate }: OnboardingPageProps) {
             </button>
           )}
           <button
-            onClick={step < STEPS.length - 1 ? () => setStep(s => s + 1) : handleFinish}
+            onClick={step < STEPS.length - 1 ? handleNextStep : handleFinish}
             className="flex-1 py-3 rounded-xl bg-brand-500 text-white text-sm font-medium active:scale-95 transition-transform"
           >
-            {step < STEPS.length - 1 ? '下一步' : '开始使用 🌿'}
+            {step === 0 ? '注册并继续 →' : step < STEPS.length - 1 ? '下一步' : '开始使用 🌿'}
           </button>
         </div>
       </div>

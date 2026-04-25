@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useApp } from '../context/AppContext';
 import { EMOTION_MAP } from '../data';
 import { generateId } from '../utils';
+import { callAIStream } from '../cloud/sync';
+import type { AIMessage } from '../cloud/sync';
 import type { EmotionType, AiRole } from '../types';
 
 interface TreeHolePageProps {
@@ -16,7 +18,7 @@ const AI_ROLES: { id: AiRole; icon: string; label: string }[] = [
   { id: '行动教练', icon: '💪', label: '行动' },
 ];
 
-export default function TreeHolePage({ onNavigate: _onNavigate }: TreeHolePageProps) {
+export default function TreeHolePage({ onNavigate: _onNavigate }: TreeHolePageProps) { // eslint-disable-line @typescript-eslint/no-unused-vars
   const { diaries, saveDiary, unlockAchievement } = useApp();
   const [step, setStep] = useState<'list' | 'write' | 'chat'>('list');
   const [emotion, setEmotion] = useState<EmotionType | null>(null);
@@ -28,80 +30,76 @@ export default function TreeHolePage({ onNavigate: _onNavigate }: TreeHolePagePr
   const [chatInput, setChatInput] = useState('');
   const [aiRole, setAiRole] = useState<AiRole>('温柔倾听者');
   const [isTyping, setIsTyping] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const cancelAIRef = useRef<AbortController | null>(null);
 
   const currentDiary = diaries.find(d => d.id === currentDiaryId);
 
   function submitDiary() {
-    if (typeof window !== 'undefined' && typeof window.alert === 'function') {
-      window.alert('[treehole] submitDiary hit');
-    }
-    if (!emotion || !content.trim()) {
-      console.warn('[treehole] submitDiary blocked: missing emotion or content', {
-        emotion,
-        contentLength: content.trim().length,
-      });
-      if (typeof window !== 'undefined' && typeof window.alert === 'function') {
-        window.alert('[treehole] submitDiary blocked');
-      }
-      return;
-    }
+    if (!emotion || !content.trim()) return;
+    setIsSaving(true);
     const id = generateId();
     const diary = {
       id, date: new Date().toISOString().slice(0, 10),
       emotion, events, content, privacy, messages: [],
     };
-    console.log('[treehole] submitDiary hit', diary);
     saveDiary(diary);
     unlockAchievement('a3');
-    setCurrentDiaryId(id);
-    setChatMessages([{ role: 'ai', content: getAIGreeting(emotion, aiRole, content) }]);
-    setStep('chat');
+    // 短暂 loading 反馈后进入聊天
+    setTimeout(() => {
+      setIsSaving(false);
+      setCurrentDiaryId(id);
+      setChatMessages([{ role: 'ai', content: getAIGreeting(emotion, aiRole, content) }]);
+      setStep('chat');
+    }, 600);
+  }
+
+  function buildChatSystemPrompt(em: EmotionType, role: AiRole): string {
+    const roleDesc: Record<AiRole, string> = {
+      '温柔倾听者': '你是一个温柔、有同理心的心理倾听者。多表达理解和接纳，让用户感到被联接。',
+      '理性分析师': '你是一个理性、清晰的职场心理顾问。帮用户梳理情况、分析问题根源，提出实际建议。',
+      '行动教练': '你是一个务实的行动导师。帮用户找到具体可操作的应对方法和边界设立方式。',
+    };
+    return `你是一个专业的职场情绪支持顾问。当前用户正处于「${em}」的情绪状态。\n${roleDesc[role]}\n请直接回应用户的话语内容，不要加时间、天气、打招呼等与心理支持无关的开场白。回复要简洁、有同理心，控制在150字内。`;
   }
 
   function getAIGreeting(em: EmotionType, role: AiRole, userContent: string): string {
-    // Extract a short snippet from the content
     const snippet = userContent.length > 40 ? userContent.slice(0, 40) + '…' : userContent;
     const greetings: Record<AiRole, string> = {
-      '温柔倾听者': `${EMOTION_MAP[em]} 我在这里，收到了你说的：「${snippet}」${em === '愤怒' ? '听起来你真的很受委屈。' : em === '焦虑' ? '我能感受到你的紧张。' : '我能理解这件事让你有多难受。'}想继续说吗？我在这里听。`,
-      '理性分析师': `${EMOTION_MAP[em]} 收到你的记录：「${snippet}」这种情况确实值得认真梳理。让我先确认几个关键细节，帮你把事情看清楚一些。`,
-      '行动教练': `${EMOTION_MAP[em]} 收到了。「${snippet}」——基于你描述的情况，我的第一个建议是：先不要急着做决定，我们可以先聊清楚你想要什么结果。`,
+      '温柔倾听者': `收到了你说的：「${snippet}」${em === '愤怒' ? '听起来你真的很受委屈。' : em === '焦虑' ? '我能感受到你的紧张。' : '我能理解这件事让你有多难受。'}想继续说吗？我在这里听。`,
+      '理性分析师': `收到你的记录：「${snippet}」这种情况确实值得认真梳理。让我先确认几个关键细节，帮你把事情看清楚一些。`,
+      '行动教练': `收到了。「${snippet}」——基于你描述的情况，我的第一个建议是：先不要急着做决定，我们可以先聊清楚你想要什么结果。`,
     };
     return greetings[role];
   }
 
   function sendChat() {
-    if (!chatInput.trim()) return;
+    if (!chatInput.trim() || isTyping) return;
     const userMsg = chatInput;
     const newMsgs = [...chatMessages, { role: 'user' as const, content: userMsg }];
     setChatMessages(newMsgs);
     setChatInput('');
     setIsTyping(true);
-    setTimeout(() => {
-      setIsTyping(false);
-      const resp = generateAIResponse(currentDiary?.emotion || '愤怒', aiRole, userMsg, chatMessages);
-      setChatMessages(m => [...m, { role: 'ai' as const, content: resp }]);
-    }, 1500);
-  }
 
-  function generateAIResponse(emotion: EmotionType, role: AiRole, _userMsg: string, history: Array<{ role: string; content: string }>): string {
-    const prev = history.filter(m => m.role === 'user').slice(-2).join(' ');
-    if (role === '理性分析师') {
-      if (prev.length > 50) return '继续说。我在听。';
-      return '你描述的情况里有几个关键细节我想确认：对方是在什么场景下这样说的？除了这一次，之前有类似的情况吗？';
-    }
-    if (role === '行动教练') {
-      if (history.length < 3) return '好的，收到了。现在，你打算怎么处理这件事？';
-      return '基于你说的情况，我的建议是：今晚先给自己一个放松，不要急着做决定。明天清醒的时候，我们可以再梳理一下。';
-    }
-    const pools: Record<string, string[]> = {
-      '愤怒': ['我听到了。这种被压制的感觉真的很让人愤怒。', '你有权感到愤怒。不要压抑它。', '那种被不公正对待的感觉，我完全能理解。'],
-      '委屈': ['你明明很努力，却被这样对待，这种委屈是真实的。', '我很心疼你经历这些。你值得被尊重。', '这种不被理解的感觉，真的很让人难过。'],
-      '焦虑': ['这件事的不确定性确实会让人焦虑。你已经很努力了。', '先深呼吸。我在这里陪着你。', '焦虑是因为你在乎，这也是你认真负责的证明。'],
-      '失落': ['被这样对待之后感到失落，这是很自然的反应。', '我知道那种"为什么是我"的感觉。你不是一个人。', '低落的时候，允许自己休息。'],
-      '麻木': ['有时候，大脑会用麻木来保护你。不要责怪自己。', '什么感觉都没有，也是一种感觉。这是你在保护自己。', '慢慢来。你不需要强迫自己有感觉。'],
-    };
-    const pool = pools[emotion] || pools['失落'];
-    return pool[Math.floor(Math.random() * pool.length)] + ' 愿意继续说吗？我在这里。';
+    const history: AIMessage[] = newMsgs.map(m => ({
+      role: (m.role === 'ai' ? 'assistant' : 'user') as 'user' | 'assistant',
+      content: m.content,
+    }));
+
+    callAIStream(
+      history,
+      {
+        onDone: (fullText) => {
+          setIsTyping(false);
+          setChatMessages(m => [...m, { role: 'ai' as const, content: fullText || '我在这里，请继续说。' }]);
+        },
+        onError: () => {
+          setIsTyping(false);
+          setChatMessages(m => [...m, { role: 'ai' as const, content: '稍等，我连接中断了，可以再说一遍吗？' }]);
+        },
+      },
+      buildChatSystemPrompt(currentDiary?.emotion || '失落', aiRole),
+    ).then(ctrl => { cancelAIRef.current = ctrl; });
   }
 
   function openChat(diaryId: string) {
@@ -120,6 +118,23 @@ export default function TreeHolePage({ onNavigate: _onNavigate }: TreeHolePagePr
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
 
+      {/* ── 顶部导航栏 ───────────────────────────── */}
+      <div className="bg-white border-b border-gray-100 flex items-center justify-between px-4 shrink-0" style={{ height: '48px' }}>
+        <div className="w-14">
+          {step !== 'list' && (
+            <button
+              onClick={() => setStep(step === 'chat' ? 'list' : 'list')}
+              className="text-brand-500 text-sm font-medium"
+            >
+              ‹ 返回
+            </button>
+          )}
+        </div>
+        <span className="text-sm font-semibold text-gray-700">
+          {step === 'list' ? '情绪树洞' : step === 'write' ? '写日记' : 'AI 倾听'}
+        </span>
+        <div className="w-14" />
+      </div>
 
       {/* ── List ─────────────────────────────────── */}
       {step === 'list' && (
@@ -132,7 +147,7 @@ export default function TreeHolePage({ onNavigate: _onNavigate }: TreeHolePagePr
               ✏️
             </div>
             <div className="flex-1 text-left">
-              <p className="text-sm font-semibold text-gray-700">向树洞倾诉11</p>
+              <p className="text-sm font-semibold text-gray-700">向树洞倾诉</p>
               <p className="text-xs text-gray-400 mt-0.5">写下今天发生的事，AI陪你聊聊</p>
             </div>
             <span className="text-brand-300 text-lg font-medium">›</span>
@@ -282,10 +297,15 @@ export default function TreeHolePage({ onNavigate: _onNavigate }: TreeHolePagePr
 
           <button
             onClick={submitDiary}
-            disabled={!emotion || !content.trim()}
-            className="w-full btn-primary py-3 disabled:opacity-50"
+            disabled={!emotion || !content.trim() || isSaving}
+            className="w-full btn-primary py-3 disabled:opacity-50 flex items-center justify-center gap-2"
           >
-            向树洞倾诉11
+            {isSaving ? (
+              <>
+                <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                保存中...
+              </>
+            ) : '向树洞倾诉'}
           </button>
         </div>
       )}

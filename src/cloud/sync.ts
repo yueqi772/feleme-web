@@ -39,7 +39,8 @@ async function request(
         'apikey': SUPABASE_ANON_KEY,
         'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
         'Content-Type': 'application/json',
-        'Prefer': 'return=minimal',
+        // upsert：POST 时主键冲突则更新而非报错（避免重复写入 409）
+        'Prefer': method === 'POST' ? 'return=minimal,resolution=merge-duplicates' : 'return=minimal',
       },
     };
     if (payload) opts.body = JSON.stringify(payload);
@@ -135,6 +136,16 @@ export async function cloudUnlockAchievement(achievement: Record<string, unknown
   await request('achievements', 'POST', { ...achievement, unlocked: true, unlocked_at: new Date().toISOString() });
 }
 
+export async function cloudRegisterUser(nickname: string, phone: string): Promise<void> {
+  console.log('[supabase] cloudRegisterUser called');
+  await request('user_profile', 'POST', {
+    user_id: uid(),
+    nickname,
+    phone,
+    registered_at: new Date().toISOString(),
+  });
+}
+
 export async function cloudUpdateUserProfile(profile: Record<string, unknown>): Promise<void> {
   console.log('[supabase] cloudUpdateUserProfile called', profile);
   await request('user_profile', 'POST', { ...profile, user_id: uid() });
@@ -186,7 +197,7 @@ export async function postShare(options: {
   console.log('[supabase] postShare called:', options);
 }
 
-// ─── AI 对话（腾讯云开发 Hunyuan）────────────────────────
+// ─── AI 对话（DeepSeek via OpenAI 兼容接口）────────────────────────
 export interface AIMessage {
   role: 'user' | 'assistant';
   content: string;
@@ -199,13 +210,16 @@ export interface AIStreamCallbacks {
   onError?: (e: Error) => void;
 }
 
-const AI_MODEL_NAME = 'hunyuan-turbos-latest';
+const DEEPSEEK_API_KEY = 'sk-da717cc4b6164e7eb36d2c423f12a13e';
+const DEEPSEEK_BASE_URL = 'https://api.deepseek.com';
+const AI_MODEL_NAME = 'deepseek-chat';
 
 export async function callAIStream(
   messages: AIMessage[],
-  callbacks: AIStreamCallbacks
+  callbacks: AIStreamCallbacks,
+  systemPromptOverride?: string,
 ): Promise<AbortController | null> {
-  const systemPrompt =
+  const systemPrompt = systemPromptOverride ||
     '你是一个专业、温暖的心理咨询师，擅长职场情绪管理和PUA识别。请根据用户描述的场景，给出专业的心理分析和应对建议。回复简洁、有同理心，控制在200字以内。';
 
   const fullMessages: Array<{ role: 'system' | 'user' | 'assistant'; content: string }> = [
@@ -216,10 +230,12 @@ export async function callAIStream(
   const controller = new AbortController();
 
   try {
-    const base = 'https://cloudbase-3g22c9ce5bcf0e55.service.cloudbase.cn';
-    const res = await fetch(`${base}/api/v1/chat/completions`, {
+    const res = await fetch(`${DEEPSEEK_BASE_URL}/chat/completions`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${DEEPSEEK_API_KEY}`,
+      },
       body: JSON.stringify({ model: AI_MODEL_NAME, messages: fullMessages, stream: false }),
       signal: controller.signal,
     });

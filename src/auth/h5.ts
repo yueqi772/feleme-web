@@ -10,6 +10,7 @@ export interface H5User {
   id: string;          // 匿名UUID
   nickname: string;   // 用户自设昵称
   avatar: string;     // 固定emoji头像
+  phone?: string;     // 手机号（可选）
 }
 
 const STORAGE_KEY = 'feleme_h5_user';
@@ -25,11 +26,12 @@ export function saveH5User(user: H5User): void {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
 }
 
-export function createH5User(nickname: string): H5User {
+export function createH5User(nickname: string, phone?: string): H5User {
   const user: H5User = {
     id: generateUUID(),
     nickname: nickname.trim() || '匿名用户',
     avatar: getEmojiAvatar(),
+    phone: phone?.trim() || undefined,
   };
   saveH5User(user);
   return user;
@@ -54,7 +56,7 @@ export function isH5Standalone(): boolean {
   } catch { return true; }
 }
 
-export function h5Login(nickname: string): void {
-  const user = createH5User(nickname);
+export function h5Login(nickname: string, phone?: string): void {
+  const user = createH5User(nickname, phone);
   setOpenid(user.id);
 }

@@ -134,8 +134,8 @@ export default function PracticePage({ onNavigate, scenario }: PracticePageProps
     // AI 分析（直接调用云开发 AI）
     setAnalysisLoading(true);
     setAnalysisStreamText('');
+    const analysisSystemPrompt = '你是一名温暖的职场心理顾问，擅长分析PUA场景下的应对方式，语言温暖、支持性强。请直接输出分析内容，不要加时间、问候等无关开场白。';
     const historyForAnalysis: AIMessage[] = [
-      { role: 'assistant' as const, content: '你是一名温暖的职场心理顾问，擅长分析PUA场景下的应对方式，语言温暖、支持性强。' },
       { role: 'user', content: buildAnalysisPrompt(scenario, messages.map(m => ({
         role: m.role === 'ai' ? 'assistant' : 'user',
         content: m.content,
@@ -190,6 +190,7 @@ export default function PracticePage({ onNavigate, scenario }: PracticePageProps
           }).catch(err => console.error('[practice] ❌ 保存练习记录异常:', err));
         },
       },
+      analysisSystemPrompt,
     ).then(ctrl => { cancelAIRef.current = ctrl; });
   }
 
@@ -229,7 +230,7 @@ export default function PracticePage({ onNavigate, scenario }: PracticePageProps
     let streamAccumulated = '';
 
     callAIStream(
-      [{ role: 'assistant' as const, content: buildSystemPrompt(scenario) }, ...history],
+      history,
       {
         onChunk: (_chunk, acc) => {
           streamAccumulated = acc || '';
@@ -261,6 +262,7 @@ export default function PracticePage({ onNavigate, scenario }: PracticePageProps
           }
         },
       },
+      buildSystemPrompt(scenario),
     ).then(ctrl => { cancelAIRef.current = ctrl; });
   }
 
@@ -421,12 +423,7 @@ export default function PracticePage({ onNavigate, scenario }: PracticePageProps
           </p>
 
           <div className="w-full max-w-xs space-y-3">
-            {aiReady && (
-              <div className="flex items-center justify-center gap-1.5 bg-green-50 rounded-full py-1.5 px-4 mb-1">
-                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                <span className="text-xs text-green-600">🤖 云开发 AI · 流式对话已就绪</span>
-              </div>
-            )}
+  
             <button onClick={doStart} className="btn-primary w-full">
               🚀 开始练习
             </button>

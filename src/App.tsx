@@ -16,13 +16,14 @@ import TestHistoryPage from './pages/TestHistoryPage';
 import LeaveDecisionPage from './pages/LeaveDecisionPage';
 import OnboardingPage from './pages/OnboardingPage';
 import WechatCallbackPage from './pages/WechatCallbackPage';
+import ConsultPage from './pages/ConsultPage';
 import type { TestResult, ScriptItem, PracticeScenario, Post } from './types';
 
 type PageName = 'home' | 'test' | 'report' | 'tools'
   | 'scripts-detail' | 'practice'
   | 'treehole' | 'community' | 'new-post' | 'post-detail'
   | 'profile' | 'test-history' | 'leave-decision'
-  | 'onboarding' | 'wechat-callback';
+  | 'onboarding' | 'wechat-callback' | 'consult';
 
 const PAGE_TITLES: Record<PageName, string> = {
   home: 'A里味', test: '识别测试', report: '测试报告',
@@ -31,6 +32,7 @@ const PAGE_TITLES: Record<PageName, string> = {
   'post-detail': '帖子详情', profile: '我的',
   'test-history': '测试历史', 'leave-decision': '去留决策',
   onboarding: '欢迎', 'wechat-callback': '微信登录',
+  consult: '专属咨询',
 };
 
 const TAB_PAGES: PageName[] = ['home', 'tools', 'treehole', 'community', 'profile'];
@@ -161,6 +163,7 @@ function AppContent() {
       case 'profile': return <ProfilePage onNavigate={navigate} />;
       case 'test-history': return <TestHistoryPage onNavigate={navigate} />;
       case 'leave-decision': return <LeaveDecisionPage onNavigate={navigate} />;
+      case 'consult': return <ConsultPage onNavigate={navigate} />;
       default: return <HomePage onNavigate={navigate} />;
     }
   }
