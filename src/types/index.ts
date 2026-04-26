@@ -106,3 +106,10 @@ export interface LeaveDecision {
   cons: string[];
   advice: string;
 }
+
+export interface WechatUser {
+  openid: string;
+  unionid?: string;
+  nickname: string;
+  headimgurl: string;
+}

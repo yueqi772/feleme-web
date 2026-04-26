@@ -16,21 +16,23 @@ import TestHistoryPage from './pages/TestHistoryPage';
 import LeaveDecisionPage from './pages/LeaveDecisionPage';
 import OnboardingPage from './pages/OnboardingPage';
 import WechatCallbackPage from './pages/WechatCallbackPage';
+import ConsultPage from './pages/ConsultPage';
 import type { TestResult, ScriptItem, PracticeScenario, Post } from './types';
 
 type PageName = 'home' | 'test' | 'report' | 'tools'
   | 'scripts-detail' | 'practice'
   | 'treehole' | 'community' | 'new-post' | 'post-detail'
   | 'profile' | 'test-history' | 'leave-decision'
-  | 'onboarding' | 'wechat-callback';
+  | 'onboarding' | 'wechat-callback' | 'consult';
 
 const PAGE_TITLES: Record<PageName, string> = {
-  home: '职场清醒笔记', test: '识别测试', report: '测试报告',
+  home: 'A里味', test: '识别测试', report: '测试报告',
   tools: '工具箱', 'scripts-detail': '话术详情', practice: '情景练习',
   treehole: '情绪树洞', community: '互助社区', 'new-post': '发布帖子',
   'post-detail': '帖子详情', profile: '我的',
   'test-history': '测试历史', 'leave-decision': '去留决策',
   onboarding: '欢迎', 'wechat-callback': '微信登录',
+  consult: '专属咨询',
 };
 
 const TAB_PAGES: PageName[] = ['home', 'tools', 'treehole', 'community', 'profile'];
@@ -122,12 +124,8 @@ function AppContent() {
       setCurrentPage(prev);
     } else {
       // 历史栈为空，通过微信 API 返回小程序
-      try {
-        if (typeof (window as any).wx !== 'undefined' && (window as any).wx.miniProgram) {
-          (window as any).wx.miniProgram.navigateBack();
+      // WebView back disabled in H5 standalone
         }
-      } catch {}
-    }
   }, [historyStack]);
 
   useEffect(() => {
@@ -165,6 +163,7 @@ function AppContent() {
       case 'profile': return <ProfilePage onNavigate={navigate} />;
       case 'test-history': return <TestHistoryPage onNavigate={navigate} />;
       case 'leave-decision': return <LeaveDecisionPage onNavigate={navigate} />;
+      case 'consult': return <ConsultPage onNavigate={navigate} />;
       default: return <HomePage onNavigate={navigate} />;
     }
   }
@@ -178,14 +177,7 @@ function AppContent() {
   if (isTabPage) {
     return (
       <div className="min-h-screen bg-gray-50 relative flex flex-col" style={{ height: '100vh', maxWidth: '100vw' }}>
-        {/* WebView 内嵌时显示紧凑导航 */}
-        {isInWebview && (
-          <WebviewNavBar
-            title="职场清醒笔记"
-            onBack={webviewGoBack}
-            showBack={false}
-          />
-        )}
+        {/* Tab 页面在小程序 WebView 内嵌时，小程序自带导航栏已足够，不再显示 H5 导航栏，避免双重标题 */}
         {/* 页面内容 */}
         <div className="flex-1 overflow-y-auto">
           {renderPage()}
@@ -214,8 +206,8 @@ function AppContent() {
   // 非 Tab 子页面：白色顶栏 + 内容
   return (
     <div className="min-h-screen bg-gray-50 relative flex flex-col" style={{ height: '100vh', maxWidth: '100vw' }}>
-      {/* 标准导航栏（PC / H5 独立访问） */}
-      {!isInWebview && (
+      {/* 标准导航栏（PC / H5 独立访问，自带导航栏的页面跳过） */}
+      {!isInWebview && currentPage !== 'practice' && currentPage !== 'test' && (
         <div className="bg-white border-b border-gray-100 flex items-center justify-between px-4 shrink-0" style={{ height: '48px' }}>
           <div className="w-14">
             <button onClick={() => navigate('home')} className="text-brand-500 text-sm font-medium">‹ 返回</button>
@@ -228,8 +220,8 @@ function AppContent() {
           </div>
         </div>
       )}
-      {/* 小程序 WebView 内嵌导航栏 */}
-      {isInWebview && (
+      {/* 小程序 WebView 内嵌导航栏（自带导航栏的页面跳过，避免双重标题） */}
+      {isInWebview && currentPage !== 'practice' && currentPage !== 'test' && (
         <WebviewNavBar
           title={PAGE_TITLES[currentPage]}
           onBack={webviewGoBack}

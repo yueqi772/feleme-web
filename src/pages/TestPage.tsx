@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { postShare } from '../cloud';
 import { useApp } from '../context/AppContext';
 import { countPuaTypes, calcScore, getRiskInfo, generateId } from '../utils';
 import DigitalHuman, { type MoodKey } from '../components/DigitalHuman';
@@ -15,64 +16,64 @@ export type ReplyOption = {
 };
 
 const ALL_REPLIES: Record<number, ReplyOption[]> = {
+  // 题1：a 在第2位
   1: [
-    { id: 'a', reactionMood: 'confident', hint: '表达感激，但保持分寸，不卑微也不对抗', text: '谢谢王总，我刚来还在学习阶段，有什么做得不到位的地方还请您多指点，我一定努力跟上大家的节奏。' },
     { id: 'b', reactionMood: 'nervous', hint: '全力顺从，给自己加了很多压力', text: '谢谢王总！我一定不辜负您的期望，我会的！您放心，我一定拼尽全力，绝对不让您失望！' },
+    { id: 'a', reactionMood: 'confident', hint: '表达感激，但保持分寸，不卑微也不对抗', text: '谢谢王总，我刚来还在学习阶段，有什么做得不到位的地方还请您多指点，我一定努力跟上大家的节奏。' },
     { id: 'c', reactionMood: 'confused', hint: '直接追问晋升条件，可能显得急功近利', text: '王总，请问这次晋升主要是看哪方面的表现？我想提前了解清楚，也好有个努力的方向。' },
   ],
+  // 题2：a 在第3位
   2: [
-    { id: 'a', reactionMood: 'confident', hint: '得体回应，感谢但不卑微', text: '谢谢王总！这个项目能做好也是大家一起配合的结果，我一个人的力量做不到的。后续我会继续保持，也希望多向大家学习。' },
-    { id: 'b', reactionMood: 'nervous', hint: '过度谦逊，给自己积累压力', text: '谢谢王总，其实这次做得还不够好，有几个地方我自己都觉得可以更好...我会继续努力的，不让您失望。' },
-    { id: 'c', reactionMood: 'confused', hint: '立刻追问晋升时间节点，显得急躁', text: '谢谢王总！对了您说的晋升机会，具体是什么时候呢？我想提前做好准备。' },
-  ],
-  3: [
-    { id: 'a', reactionMood: 'anxious', hint: '设立边界，但语气温和，给出替代方案', text: '收到王总。不过我今天已经在地铁上了，信号不太稳定。我到家之后第一时间处理，明早七点前发您可以吗？辛苦您了。' },
     { id: 'b', reactionMood: 'sad', hint: '二话不说直接答应，牺牲个人时间和健康', text: '好的王总，我马上打车回去处理，大概一个半小时能搞定，您稍等。' },
     { id: 'c', reactionMood: 'anxious', hint: '指出安排冲突，但没有明确拒绝，可能激化矛盾', text: '王总，今天这个需求当时没说要今晚交，我现在在外面的，和之前安排有冲突。这种临时变更以后能提前说一声吗？' },
+    { id: 'a', reactionMood: 'confident', hint: '设立边界，但语气温和，给出替代方案', text: '收到王总。不过我今天已经在地铁上了，信号不太稳定。我到家之后第一时间处理，明早七点前发您可以吗？辛苦您了。' },
   ],
-  4: [
-    { id: 'a', reactionMood: 'confused', hint: '聚焦具体问题，不陷入自我否定', text: '王总，这个方案交付时您审过，数据没达到预期我想具体了解下是哪个指标出了问题，也好有针对性地改。我能约您十分钟详细聊聊吗？' },
+  // 题3：a 在第2位
+  3: [
     { id: 'b', reactionMood: 'sad', hint: '默默承受，可能陷入深深的自我怀疑', text: '...好的王总，我知道了。我回去重新做一份，明天一早发您。这次一定做好。' },
+    { id: 'a', reactionMood: 'determined', hint: '聚焦具体问题，不陷入自我否定', text: '王总，这个方案交付时您审过，数据没达到预期我想具体了解下是哪个指标出了问题，也好有针对性地改。我能约您十分钟详细聊聊吗？' },
     { id: 'c', reactionMood: 'humiliated', hint: '直接反驳但当场被压制，可能更难受', text: '王总，这个方案您之前审批过的，当时您说的是"可以"。我想知道中间是哪里变了，还是我理解错了什么？' },
   ],
-  5: [
-    { id: 'a', reactionMood: 'gaslit', hint: '温和提出证据，但可能被再次否认', text: '王总，我在您的邮件里看到过这条记录，可能是沟通上有误会，方便的话我把截图发您确认一下？我很尊重您的意见，但想确保我们理解是一致的。' },
+  // 题4：a 在第3位
+  4: [
     { id: 'b', reactionMood: 'gaslit', hint: '立刻认同对方说法，内心陷入深深的自我怀疑', text: '...哦，可能是吧，对不起王总，可能是我记混了。不好意思打扰您了，我去忙了。' },
     { id: 'c', reactionMood: 'confused', hint: '直接拿出截图对峙，可能被说"想太多"后更迷茫', text: '王总，我发了您邮箱截图确认，应该不是我记错了。是不是当时的情况有变化？方便的话我们聊一下？' },
+    { id: 'a', reactionMood: 'determined', hint: '温和提出证据，不轻易否定自己的记忆', text: '王总，我在您的邮件里看到过这条记录，可能是沟通上有误会，方便的话我把截图发您确认一下？我很尊重您的意见，但想确保我们理解是一致的。' },
   ],
-  6: [
-    { id: 'a', reactionMood: 'sad', hint: '温和拒绝，给出合理理由，但不卑不亢', text: '谢谢王总组织这次活动！不过这次周末我提前有家里安排好的事情，下次团建我一定积极参加，这周末实在不好意思啦。大家玩得开心～' },
-    { id: 'b', reactionMood: 'sad', hint: '退让自己的安排，默默承受委屈', text: '好的王总，我去。那我跟家里说一声改一下安排。请问费用是AA吗？我提前转给大家。' },
+  // 题5：a 在第1位（保持）
+  5: [
+    { id: 'a', reactionMood: 'confident', hint: '温和拒绝，给出合理理由，不卑不亢', text: '谢谢王总组织这次活动！不过这次周末我提前有家里安排好的事情，下次团建我一定积极参加，这周末实在不好意思啦。大家玩得开心～' },
     { id: 'c', reactionMood: 'anxious', hint: '质疑"自愿"定义，可能引发群体压力', text: '王总，我看通知上写的是"自愿参加"，不过大家好像都去了...请问是必须参加吗？如果是的话下次能提前说吗，这样我好提前安排。' },
+    { id: 'b', reactionMood: 'sad', hint: '退让自己的安排，默默承受委屈', text: '好的王总，我去。那我跟家里说一声改一下安排。请问费用是AA吗？我提前转给大家。' },
   ],
-  7: [
-    { id: 'a', reactionMood: 'isolated', hint: '温和询问，不指责但表达困惑', text: '不好意思问一下，这次项目对焦会的议题我关注了一下，感觉有些内容和我目前跟的项目相关，方便让我旁听了解一下吗？主要想对齐一下进度。' },
-    { id: 'b', reactionMood: 'isolated', hint: '不追问，默默消化被排斥的感觉', text: '好的，可能是我漏看群消息了...下次有类似会议我关注一下。' },
+  // 题6：a 在第3位
+  6: [
     { id: 'c', reactionMood: 'angry', hint: '情绪爆发，直接质问，但可能引发更大的压力', text: '请问为什么每次开会都不叫我？我明明是这个项目的核心成员。这已经不是第一次了，我想知道是我哪里做得不好，还是有什么其他原因。' },
+    { id: 'b', reactionMood: 'isolated', hint: '不追问，默默消化被排斥的感觉', text: '好的，可能是我漏看群消息了...下次有类似会议我关注一下。' },
+    { id: 'a', reactionMood: 'hopeful', hint: '温和询问，不指责但表达困惑', text: '不好意思问一下，这次项目对焦会的议题我关注了一下，感觉有些内容和我目前跟的项目相关，方便让我旁听了解一下吗？主要想对齐一下进度。' },
   ],
-  8: [
-    { id: 'a', reactionMood: 'confused', hint: '要求具体承诺和时间，推进落实', text: '谢谢王总一直帮我争取机会。我有个不情之请，想确认一下这次Q4的晋升，具体评审时间是什么时候？需要我这边准备什么材料吗？我想好好准备一下。' },
-    { id: 'b', reactionMood: 'sad', hint: '接受模糊承诺，默默等待，积累失落感', text: '好的王总，谢谢您一直记着我的事。我会继续努力做事的，也希望有机会能更进一步。辛苦您了。' },
-    { id: 'c', reactionMood: 'angry', hint: '直接揭穿历史，可能被说不够耐心', text: '王总，冒昧问一句，您之前说Q3会提名，后来没成，这次又说Q4...我理解公司有公司的考虑，但我想确认一下这个承诺大概是多大概率可以实现？如果确实有困难，我也想早做准备。' },
-  ],
-  9: [
-    { id: 'a', reactionMood: 'sad', hint: '正式询问，但不指责，保持职业态度', text: '王总，不好意思打扰您。想跟您确认一下这次晋升的事，您之前说把我名字报上去了，但名单里没有我，是中间有什么变化吗？我想了解一下原因，也好知道自己还需要在哪些方面提升。' },
+  // 题7：a 在第2位
+  7: [
     { id: 'b', reactionMood: 'sad', hint: '默默接受委屈，不敢追问', text: '好的王总，我知道了。可能是我哪里还做得不够，我继续努力，下次一定争取。谢谢您。' },
+    { id: 'a', reactionMood: 'determined', hint: '正式询问，不指责，保持职业态度', text: '王总，不好意思打扰您。想跟您确认一下这次晋升的事，您之前说把我名字报上去了，但名单里没有我，是中间有什么变化吗？我想了解一下原因，也好知道自己还需要在哪些方面提升。' },
     { id: 'c', reactionMood: 'angry', hint: '直接质问，可能被敷衍或施压', text: '王总，我直说了。您之前说把我名字报上去了，但名单出来没有我，我想知道是什么原因。另外，您前两次也说过同样的话然后没有兑现。我想了解一下实际情况，也想听听您的解释。' },
   ],
-  10: [
-    { id: 'a', reactionMood: 'anxious', hint: '设立边界，给出可行方案，不卑不亢', text: '收到王总。不过我现在在外面，不太方便处理电脑。明早七点前我可以处理完发您，这个时间可以吗？如果特别紧急的话，您看能不能协调其他同事先处理一下，我回来第一时间补上。' },
+  // 题8：a 在第3位
+  8: [
     { id: 'b', reactionMood: 'sad', hint: '二话不说立刻答应，牺牲睡眠和健康', text: '好的王总，我马上处理，大概一个小时左右能搞定，您等我。' },
     { id: 'c', reactionMood: 'anxious', hint: '指出问题但表达困难，可能被说找借口', text: '收到，但这个需求变更我这边是刚收到通知，没有提前沟通。我明早七点前处理可以吗？另外建议之后变更能提前说一声，这样我能更好地安排时间。' },
+    { id: 'a', reactionMood: 'confident', hint: '设立边界，给出可行方案，不卑不亢', text: '收到王总。不过我现在在外面，不太方便处理电脑。明早七点前我可以处理完发您，这个时间可以吗？如果特别紧急的话，您看能不能协调其他同事先处理一下，我回来第一时间补上。' },
   ],
-  11: [
-    { id: 'a', reactionMood: 'gaslit', hint: '接受关心，同时要求具体反馈，不轻易否定自己', text: '谢谢王总关心。我确实最近压力比较大，有些困惑。坦白讲，我不清楚您说的"状态不对"具体指哪些方面，方便给我一些具体的例子或者反馈吗？我很愿意改进，但需要一些方向。' },
-    { id: 'b', reactionMood: 'sad', hint: '全盘接受，不去质疑核心问题，加深困惑', text: '谢谢王总关心。我会的，我会努力调整自己的状态，可能最近确实有些疲惫，我会尽快调整过来的。' },
+  // 题9：a 在第1位（保持）
+  9: [
+    { id: 'a', reactionMood: 'determined', hint: '接受关心，同时要求具体反馈，不轻易否定自己', text: '谢谢王总关心。我确实最近压力比较大，有些困惑。坦白讲，我不清楚您说的"状态不对"具体指哪些方面，方便给我一些具体的例子或者反馈吗？我很愿意改进，但需要一些方向。' },
     { id: 'c', reactionMood: 'confused', hint: '要求具体证据，可能被更模糊地回应', text: '王总，谢谢您找我谈话。我想请教一下，您说的"外面的人想进来"，这个情况我是第一次听说，具体是指什么？另外，我最近哪些表现让您觉得状态不对，能给我一两个具体例子吗？' },
+    { id: 'b', reactionMood: 'sad', hint: '全盘接受，不去质疑核心问题，加深困惑', text: '谢谢王总关心。我会的，我会努力调整自己的状态，可能最近确实有些疲惫，我会尽快调整过来的。' },
   ],
-  12: [
-    { id: 'a', reactionMood: 'determined', hint: '接受任务，同时提出边界问题——这是觉醒时刻！', text: '好的王总，9点前发您。另外正好想跟您说，我最近也在思考工作边界的事情，想找个时间和您聊十分钟，关于工作量和承受压力的一些想法，希望您能听听，也听听我的建议。' },
+  // 题10：a 在第2位
+  10: [
     { id: 'b', reactionMood: 'sad', hint: '默默接受，继续等待，不开启改变', text: '好的王总，9点前发您。谢谢王总。' },
+    { id: 'a', reactionMood: 'determined', hint: '接受任务，同时提出边界问题——这是觉醒时刻！', text: '好的王总，9点前发您。另外正好想跟您说，我最近也在思考工作边界的事情，想找个时间和您聊十分钟，关于工作量和承受压力的一些想法，希望您能听听，也听听我的建议。' },
     { id: 'c', reactionMood: 'determined', hint: '表达困难，可能引发冲突但也是觉醒的开始', text: '王总，我现在手上有两个项目都在关键阶段，精力确实有些顾不过来。我想跟您说一下实际情况，也想请教您如何协调一下优先级，因为我担心同时做两件事反而都做不好。' },
   ],
 };
@@ -300,7 +301,7 @@ function ReplyBar({ replies, onSelect }: { replies: ReplyOption[]; onSelect: (r:
 function ProgressDots({ current }: { current: number }) {
   return (
     <div className="bg-white/90 backdrop-blur-sm flex items-center justify-center gap-1.5 py-2 border-b border-[#e8e8e8]">
-      {Array.from({ length: 12 }, (_, i) => (
+      {Array.from({ length: 10 }, (_, i) => (
         <div
           key={i}
           className="h-1.5 rounded-full transition-all duration-500"
@@ -369,7 +370,7 @@ export default function TestPage({ onNavigate }: TestPageProps) {
       const counts = countPuaTypes(Object.fromEntries(newAnswers.map((a, i) => [i + 1, a.replyId !== 'a'])));
       const score = calcScore(counts);
       const risk = getRiskInfo(score);
-      saveTestResult({ id: generateId(), date: new Date().toISOString(), score, riskLevel: risk.level, counts, totalAnswered: 12 });
+      saveTestResult({ id: generateId(), date: new Date().toISOString(), score, riskLevel: risk.level, counts, totalAnswered: 10 });
       unlockAchievement('a2');
       setStep('result');
     } else {
@@ -385,14 +386,14 @@ export default function TestPage({ onNavigate }: TestPageProps) {
 
   // ── RESULT ───────────────────────────────────────────────
   if (step === 'result') {
-    const ratio = answers.filter(a => a.replyId === 'a').length / 12;
+    const ratio = answers.filter(a => a.replyId === 'a').length / 10;
     const finalMood: MoodKey = ratio >= 0.7 ? 'empowered' : ratio >= 0.4 ? 'confident' : 'broken';
     const info = ratio >= 0.7
-      ? { e: '🌟', t: '觉醒者', d: '你帮助小林找到了职场边界的力量！' }
+      ? { e: '🛡️', t: '职场边界大师', d: '你的边界感超强，PUA在你面前无处遁形！' }
       : ratio >= 0.4
-      ? { e: '🌱', t: '觉醒中', d: '小林开始意识到问题，但还需要更多勇气。' }
-      : { e: '😢', t: '迷失中', d: '小林还没有找到力量，但故事还没结束。' };
-    const finalScore = Math.round((1 - ratio) * 100);
+      ? { e: '🌱', t: '觉醒中', d: '你开始有了边界意识，继续加油！' }
+      : { e: '💡', t: '需要练习', d: '别担心，识别PUA是一种可以训练的能力。' };
+    const finalScore = Math.round(ratio * 100);
     const risk = getRiskInfo(finalScore);
 
     return (
@@ -423,7 +424,7 @@ export default function TestPage({ onNavigate }: TestPageProps) {
           </div>
 
           <div className={`rounded-2xl p-4 text-center ${risk.bg}`}>
-            <p className="text-xs text-[#888] mb-1">职场压力指数</p>
+            <p className="text-xs text-[#888] mb-1">抗PUA能力指数</p>
             <div className="flex items-center justify-center gap-2 mb-1">
               <span className="text-3xl">{risk.emoji}</span>
               <span className={`text-4xl font-bold ${risk.color}`}>{finalScore}</span>
@@ -458,6 +459,22 @@ export default function TestPage({ onNavigate }: TestPageProps) {
 
           <div className="text-center py-2">
             <p className="text-lg italic text-[#07c160]">"你的感受是真实的。"</p>
+          </div>
+
+          {/* 分享按钮 */}
+          <div className="flex gap-3 pb-2">
+            <button
+              className="flex-1 flex items-center justify-center gap-1.5 bg-[#07c160] text-white rounded-2xl py-3 text-sm font-medium active:opacity-80"
+              onClick={() => postShare({ type: 'h5' as const,  title: `我的抗PUA能力：${finalScore}分 · ${risk.desc}`, path: '/pages/webview/index', imageUrl: '' })}
+            >
+              <span>💬</span> 分享给朋友
+            </button>
+            <button
+              className="flex-1 flex items-center justify-center gap-1.5 bg-white border border-[#07c160] text-[#07c160] rounded-2xl py-3 text-sm font-medium active:opacity-80"
+              onClick={() => postShare({ type: 'h5', title: `我的抗PUA能力：${finalScore}分 · ${risk.desc}`, path: '/pages/webview/index', imageUrl: '' })}
+            >
+              <span>🌟</span> 发朋友圈
+            </button>
           </div>
         </div>
       </div>

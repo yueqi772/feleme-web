@@ -16,6 +16,7 @@
 
 import express from 'express';
 import cors from 'cors';
+import tcb from '@cloudbase/node-sdk';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -23,12 +24,106 @@ const PORT = process.env.PORT || 3001;
 // 微信接口基础地址
 const WECHAT_API_BASE = 'https://api.weixin.qq.com';
 
+// ─── 云开发初始化 ─────────────────────────────────────────
+const ENV_ID = 'cloudbase-3g22c9ce5bcf0e55';
+let _db: ReturnType<ReturnType<typeof tcb.init>['database']> | null = null;
+
+function getDb() {
+  if (_db) return _db;
+  const secretId = process.env.TCB_SECRET_ID;
+  const secretKey = process.env.TCB_SECRET_KEY;
+  if (!secretId || !secretKey) {
+    console.error('[cloud] 未配置 TCB_SECRET_ID / TCB_SECRET_KEY，请到腾讯云控制台获取');
+    return null;
+  }
+  try {
+    const app = tcb.init({ env: ENV_ID, secretId, secretKey });
+    _db = app.database();
+    console.log('[cloud] node-sdk 初始化成功');
+  } catch (e) {
+    console.error('[cloud] node-sdk 初始化失败:', e);
+  }
+  return _db;
+}
+
 app.use(cors({
   // 开发时允许前端地址，生产环境请改为你的前端域名
   origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
   credentials: true,
 }));
 app.use(express.json());
+
+/**
+ * POST /api/db
+ * 通用数据库操作代理（H5 端直接调用，绕过 tcb-js-sdk 鉴权限制）
+ * 请求体：{ collection, action, data?, query?, openid?, limit?, skip? }
+ */
+app.post('/api/db', async (req, res) => {
+  const { collection, action, data, query, openid, limit = 20, skip = 0 } = req.body as Record<string, unknown>;
+
+  if (!collection || !action) {
+    return res.status(400).json({ success: false, error: '缺少 collection 或 action 参数' });
+  }
+
+  const db = getDb();
+  if (!db) {
+    return res.status(500).json({ success: false, error: '云数据库未初始化' });
+  }
+
+  const colName = 'feleme_' + String(collection);
+  const col = db.collection(colName);
+
+  try {
+    if (action === 'add' && data) {
+      const finalData = { ...(data as Record<string, unknown>), createdAt: Date.now() };
+      const result = await col.add(finalData);
+      console.log(`[cloud] add ${colName}`, result.id);
+      return res.json({ success: true, id: result.id });
+    }
+
+    if (action === 'list') {
+      let q = col.orderBy('createdAt', 'desc').limit(Number(limit)).skip(Number(skip));
+      if (openid) q = q.where({ openid });
+      const result = await q.get();
+      return res.json({ success: true, list: result.data, count: result.data.length });
+    }
+
+    if (action === 'get' && query) {
+      const result = await col.where(query as Record<string, unknown>).limit(1).get();
+      return res.json({ success: true, data: result.data[0] || null });
+    }
+
+    if (action === 'update' && query && data) {
+      const _ = db.command;
+      const dataObj = data as Record<string, unknown>;
+      const updateData: Record<string, unknown> = {};
+      for (const [k, v] of Object.entries(dataObj)) {
+        if (k.endsWith('_delta')) {
+          updateData[k.replace(/_delta$/, '')] = _.inc(v as number);
+        } else {
+          updateData[k] = v;
+        }
+      }
+      const result = await col.where(query as Record<string, unknown>).update(updateData);
+      return res.json({ success: true, updated: result.updated });
+    }
+
+    if (action === 'upsert' && query && data) {
+      const existing = await col.where(query as Record<string, unknown>).limit(1).get();
+      if (existing.data.length > 0) {
+        await col.doc((existing.data[0] as { _id: string })._id).remove();
+      }
+      const result = await col.add({ ...(query as object), ...(data as object), createdAt: Date.now() });
+      return res.json({ success: true, id: result.id });
+    }
+
+    return res.status(400).json({ success: false, error: `不支持的 action: ${action}` });
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error(`[cloud] ${action} ${colName} 失败:`, msg);
+    return res.status(500).json({ success: false, error: msg });
+  }
+});
 
 /**
  * POST /auth/wechat/exchange

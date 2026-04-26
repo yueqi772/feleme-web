@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { handleMiniProgramLogin } from './miniprogram';
-import { getWechatAuthUrl, isWechatLoginConfigured, validateState } from './wechat';
+import { getH5User, createH5User, isH5Standalone, type H5User, h5Login as doH5Login } from './h5';
 import { setOpenid, cloudSyncAll, getOpenid } from '../cloud';
 
 export interface WechatUser {
@@ -13,6 +13,7 @@ export interface WechatUser {
 interface AuthContextType {
   isLoggedIn: boolean;
   wechatUser: WechatUser | null;
+  h5User: H5User | null;
   isLoading: boolean;
   error: string | null;
   loginWithWechat: () => void;
@@ -22,17 +23,18 @@ interface AuthContextType {
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
-const STORAGE_KEY = 'feleme_wechat_user';
+const WX_STORAGE_KEY = 'feleme_wechat_user';
 
-function loadSavedUser(): WechatUser | null {
+function loadSavedWxUser(): WechatUser | null {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(WX_STORAGE_KEY);
     return raw ? JSON.parse(raw) : null;
   } catch { return null; }
 }
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [wechatUser, setWechatUser] = useState<WechatUser | null>(loadSavedUser);
+  const [wechatUser, setWechatUser] = useState<WechatUser | null>(loadSavedWxUser);
+  const [h5User, setH5User] = useState<H5User | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -54,63 +56,55 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           if (raw) cloudSyncAll(JSON.parse(raw));
         } catch (_) { /* ignore */ }
       }
-    } else {
-      const savedOpenid = getOpenid();
-      if (savedOpenid) console.log('[auth] restored openid:', savedOpenid);
+    } else if (isH5Standalone()) {
+      const saved = getH5User();
+      if (saved) { setH5User(saved); setOpenid(saved.id); }
     }
   }, []);
 
   useEffect(() => {
     if (wechatUser) {
       if (wechatUser.openid) setOpenid(wechatUser.openid);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(wechatUser));
+      localStorage.setItem(WX_STORAGE_KEY, JSON.stringify(wechatUser));
     } else {
-      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(WX_STORAGE_KEY);
     }
   }, [wechatUser]);
 
   const loginWithWechat = useCallback(() => {
-    if (!isWechatLoginConfigured()) { setError('微信登录未配置'); return; }
-    sessionStorage.setItem('pre_login_path', window.location.pathname);
-    window.location.href = getWechatAuthUrl();
+    setError('微信授权登录仅在小程序中可用');
   }, []);
 
-  const handleWechatCallback = useCallback(async (code: string, state: string) => {
-    if (!validateState(state)) { setError('授权验证失败'); return; }
-    setIsLoading(true);
-    setError(null);
-    try {
-      const response = await fetch(
-        `${import.meta.env.VITE_AUTH_SERVER_URL || 'http://localhost:3001'}/auth/wechat/exchange`,
-        { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ code, state }) }
-      );
-      const data = await response.json() as { error?: string; openid?: string; nickname?: string; headimgurl?: string };
-      if (!response.ok || data.error) throw new Error(data.error || '登录失败');
-      const openid = data.openid || '';
-      if (openid) setOpenid(openid);
-      const user: WechatUser = { openid, nickname: data.nickname || '微信用户', headimgurl: data.headimgurl || '' };
-      setWechatUser(user);
-      cloudSyncAll({});
-    } catch (err) {
-      setError(err instanceof Error ? err.message : '登录失败');
-    } finally {
-      setIsLoading(false);
-    }
+  const handleWechatCallback = useCallback(async (_code: string, _state: string) => {
+    setError('微信授权登录仅在小程序中可用');
   }, []);
 
   const logout = useCallback(() => {
     setWechatUser(null);
-    sessionStorage.removeItem('wechat_oauth_state');
-    sessionStorage.removeItem('pre_login_path');
-    try { localStorage.removeItem('_feleme_openid'); } catch (_) { /* ignore */ }
+    setH5User(null);
+    localStorage.removeItem(WX_STORAGE_KEY);
+    localStorage.removeItem('feleme_h5_user');
   }, []);
 
   const clearError = useCallback(() => { setError(null); }, []);
 
+  if (!wechatUser && !h5User) {
+    // 尝试恢复 H5 用户
+    const saved = getH5User();
+    if (saved) { setH5User(saved); setOpenid(saved.id); }
+  }
+
   return (
     <AuthContext.Provider value={{
-      isLoggedIn: wechatUser !== null, wechatUser, isLoading, error,
-      loginWithWechat, handleWechatCallback, logout, clearError,
+      isLoggedIn: wechatUser !== null || h5User !== null,
+      wechatUser,
+      h5User,
+      isLoading,
+      error,
+      loginWithWechat,
+      handleWechatCallback,
+      logout,
+      clearError,
     }}>
       {children}
     </AuthContext.Provider>
@@ -122,3 +116,6 @@ export function useAuth() {
   if (!ctx) throw new Error('useAuth must be used within AuthProvider');
   return ctx;
 }
+
+// 暴露给外部调用的 H5 登录（设置昵称）
+export { doH5Login as h5Login };

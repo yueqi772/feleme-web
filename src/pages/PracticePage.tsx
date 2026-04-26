@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import type { PracticeScenario } from '../types';
 import { useApp } from '../context/AppContext';
 import { getPracticeFeedback } from '../utils';
-import { getDeepseekKey } from '../data/settings';
+import { callAIStream, cloudSavePracticeRecord } from '../cloud/sync';
+import type { AIMessage } from '../cloud/sync';
 
 interface PracticePageProps {
   onNavigate: (page: string, params?: Record<string, unknown>) => void;
@@ -22,33 +23,9 @@ function buildSystemPrompt(scenario: PracticeScenario): string {
 - 说话简短、命令式，经常在深夜或休息日发消息
 - 会煤气灯效应，让员工怀疑自己
 
-请一步步施压，每条消息不超过50字，保持角色。`;
-}
-
-async function callDeepseek(
-  key: string,
-  messages: Array<{ role: string; content: string }>,
-  maxTokens = 150,
-): Promise<string> {
-  const res = await fetch('https://api.deepseek.com/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${key}`,
-    },
-    body: JSON.stringify({
-      model: 'deepseek-chat',
-      messages,
-      max_tokens: maxTokens,
-      temperature: 0.7,
-    }),
-  });
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`DeepSeek API error ${res.status}: ${err}`);
-  }
-  const data = await res.json();
-  return data.choices?.[0]?.message?.content?.trim() || '';
+重要规则：
+- 每次只输出你这一轮要说的新内容，不要重复之前说过的话
+- 不超过50字，保持角色，直接输出对话内容。`;
 }
 
 function buildAnalysisPrompt(
@@ -76,18 +53,6 @@ ${turns}
 格式清晰，语言温暖真挚。`;
 }
 
-async function fetchAIAnalysis(
-  key: string,
-  scenario: PracticeScenario,
-  messages: Array<{ role: string; content: string }>,
-): Promise<string> {
-  const prompt = buildAnalysisPrompt(scenario, messages);
-  return callDeepseek(key, [
-    { role: 'system', content: '你是一名温暖的职场心理顾问，擅长分析PUA场景下的应对方式，语言温暖、支持性强。' },
-    { role: 'user', content: prompt },
-  ]);
-}
-
 const FALLBACK_RESPONSES = [
   '我不管你有什么安排，今天必须完成。',
   '你这么说就是在推卸责任，大家都能加班就你特殊？',
@@ -113,6 +78,7 @@ function scoreResponses(messages: Array<{ role: string; content: string }>): { s
   return { score, label };
 }
 
+
 export default function PracticePage({ onNavigate, scenario }: PracticePageProps) {
   const { incrementPracticeCount, unlockAchievement, practiceCount } = useApp();
   const [step, setStep] = useState<'intro' | 'chat' | 'feedback'>('intro');
@@ -120,14 +86,23 @@ export default function PracticePage({ onNavigate, scenario }: PracticePageProps
   const [messages, setMessages] = useState<Array<{ role: 'user' | 'ai'; content: string }>>([]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [streamingText, setStreamingText] = useState('');
   const [apiError, setApiError] = useState('');
   // feedback step data
   const [localFeedback, setLocalFeedback] = useState<ReturnType<typeof getPracticeFeedback> | null>(null);
   const [aiAnalysis, setAiAnalysis] = useState('');
   const [analysisLoading, setAnalysisLoading] = useState(false);
+  const [analysisStreamText, setAnalysisStreamText] = useState('');
+  const cancelAIRef = useRef<AbortController | null>(null);
 
-  const deepseekKey = getDeepseekKey();
-  const useDeepseek = !!deepseekKey.trim();
+  // callAIStream 是直接 HTTP 调用，不再需要检测小程序环境
+  // 保留此标记仅用于展示「AI 已就绪」的提示
+  const [aiReady, setAiReady] = useState(false);
+
+  useEffect(() => {
+    // AI 直接通过 @cloudbase/js-sdk 调用，只要 SDK 初始化就可用
+    setAiReady(true);
+  }, []);
 
   function doStart() {
     setStep('chat');
@@ -136,7 +111,9 @@ export default function PracticePage({ onNavigate, scenario }: PracticePageProps
     setInput('');
     setLocalFeedback(null);
     setAiAnalysis('');
+    setAnalysisStreamText('');
     setApiError('');
+    setStreamingText('');
   }
 
   function showFeedback(userMsg: string) {
@@ -147,72 +124,146 @@ export default function PracticePage({ onNavigate, scenario }: PracticePageProps
     if (newCount >= 5) unlockAchievement('a1');
     if (newCount >= 20) unlockAchievement('a6');
 
-    // Try AI analysis via DeepSeek
-    if (useDeepseek) {
-      setAnalysisLoading(true);
-      const historyForAnalysis = messages.map(m => ({
+    setStep('feedback');
+
+    // 快照当前对话记录和得分（用于保存，messages state 后续可能变化）
+    const snapshotMessages = [...messages];
+    const { score, label: scoreLabel } = scoreResponses(messages);
+    const finishedAt = Date.now();
+
+    // AI 分析（直接调用云开发 AI）
+    setAnalysisLoading(true);
+    setAnalysisStreamText('');
+    const analysisSystemPrompt = '你是一名温暖的职场心理顾问，擅长分析PUA场景下的应对方式，语言温暖、支持性强。请直接输出分析内容，不要加时间、问候等无关开场白。';
+    const historyForAnalysis: AIMessage[] = [
+      { role: 'user', content: buildAnalysisPrompt(scenario, messages.map(m => ({
         role: m.role === 'ai' ? 'assistant' : 'user',
         content: m.content,
-      }));
-      fetchAIAnalysis(deepseekKey.trim(), scenario, historyForAnalysis)
-        .then(analysis => {
-          setAiAnalysis(analysis);
-          setAnalysisLoading(false);
-        })
-        .catch(() => {
-          setAiAnalysis('');
-          setAnalysisLoading(false);
-        });
-    }
+      }))) },
+    ];
 
-    setStep('feedback');
+    let accAnalysis = '';
+    callAIStream(
+      historyForAnalysis,
+      {
+        onChunk: (_chunk, acc) => {
+          accAnalysis = acc || '';
+          setAnalysisStreamText(acc || '');
+        },
+        onDone: (fullText) => {
+          const analysisText = fullText || accAnalysis;
+          setAiAnalysis(analysisText);
+          setAnalysisStreamText('');
+          setAnalysisLoading(false);
+
+          // AI 分析完成后，保存完整练习记录到云端
+          console.log('[practice] AI分析完成，准备保存记录（含AI分析）');
+          cloudSavePracticeRecord({
+            scenarioId: scenario.id,
+            scenarioTitle: scenario.title,
+            scenarioIcon: scenario.icon,
+            difficulty: scenario.difficulty,
+            messages: snapshotMessages,
+            score,
+            scoreLabel,
+            aiAnalysis: analysisText,
+            finishedAt,
+          }).catch(err => console.error('[practice] ❌ 保存练习记录异常:', err));
+        },
+        onError: () => {
+          setAiAnalysis('');
+          setAnalysisStreamText('');
+          setAnalysisLoading(false);
+
+          // AI 分析失败时，仍然保存练习记录（aiAnalysis 为空）
+          console.log('[practice] AI分析失败，仍准备保存记录（aiAnalysis为空）');
+          cloudSavePracticeRecord({
+            scenarioId: scenario.id,
+            scenarioTitle: scenario.title,
+            scenarioIcon: scenario.icon,
+            difficulty: scenario.difficulty,
+            messages: snapshotMessages,
+            score,
+            scoreLabel,
+            aiAnalysis: '',
+            finishedAt,
+          }).catch(err => console.error('[practice] ❌ 保存练习记录异常:', err));
+        },
+      },
+      analysisSystemPrompt,
+    ).then(ctrl => { cancelAIRef.current = ctrl; });
   }
 
-  async function submitAnswer() {
+  function submitAnswer() {
     if (!input.trim() || isTyping) return;
     const userMsg = input.trim();
     const newMessages = [...messages, { role: 'user' as const, content: userMsg }];
     setMessages(newMessages);
     setInput('');
     setIsTyping(true);
+    setStreamingText('');
     setApiError('');
 
-    try {
-      let reply: string;
-      if (useDeepseek) {
-        const history = newMessages.map(m => ({
-          role: (m.role === 'ai' ? 'assistant' : m.role) as 'user' | 'assistant',
-          content: m.content,
-        }));
-        reply = await callDeepseek(deepseekKey.trim(), [
-          { role: 'system', content: buildSystemPrompt(scenario) },
-          ...history,
-        ]);
-      } else {
-        reply = getFallback(round);
+    // ─── 云开发 AI 流式对话（直接 HTTP，无需 postMessage）─────────────────
+    // 传完整对话历史（user/assistant 交替）让 AI 有上下文
+    // 规则：跳过开头的 ai 开场白，确保从 user 开始、user/assistant 严格交替
+    const allMapped: AIMessage[] = newMessages.map(m => ({
+      role: (m.role === 'ai' ? 'assistant' : m.role) as 'user' | 'assistant',
+      content: m.content,
+    }));
+    const firstUserIdx = allMapped.findIndex(m => m.role === 'user');
+    const history: AIMessage[] = [];
+    if (firstUserIdx >= 0) {
+      let expectRole: 'user' | 'assistant' = 'user';
+      for (let i = firstUserIdx; i < allMapped.length; i++) {
+        if (allMapped[i].role === expectRole) {
+          history.push(allMapped[i]);
+          expectRole = expectRole === 'user' ? 'assistant' : 'user';
+        }
       }
-
-      setIsTyping(false);
-
-      if (round < TOTAL_ROUNDS) {
-        setMessages([...newMessages, { role: 'ai' as const, content: reply }]);
-        setRound(r => r + 1);
-      } else {
-        setMessages([...newMessages, { role: 'ai' as const, content: reply }]);
-        setRound(r => r + 1);
-        setTimeout(() => showFeedback(userMsg), 1500);
-      }
-    } catch (err) {
-      setIsTyping(false);
-      const fallback = getFallback(round);
-      setMessages([...newMessages, { role: 'ai' as const, content: fallback }]);
-      setApiError(`API调用失败（已切换本地模式）：${err instanceof Error ? err.message : '未知错误'}`);
-      if (round < TOTAL_ROUNDS) {
-        setRound(r => r + 1);
-      } else {
-        setTimeout(() => showFeedback(userMsg), 1500);
+      // 确保最后一条是 user
+      while (history.length > 0 && history[history.length - 1].role === 'assistant') {
+        history.pop();
       }
     }
+
+    let streamAccumulated = '';
+
+    callAIStream(
+      history,
+      {
+        onChunk: (_chunk, acc) => {
+          streamAccumulated = acc || '';
+          setStreamingText(acc || '');
+        },
+        onDone: (fullText) => {
+          const reply = fullText || streamAccumulated || getFallback(round);
+          setStreamingText('');
+          setIsTyping(false);
+          if (round < TOTAL_ROUNDS) {
+            setMessages([...newMessages, { role: 'ai' as const, content: reply }]);
+            setRound(r => r + 1);
+          } else {
+            setMessages([...newMessages, { role: 'ai' as const, content: reply }]);
+            setRound(r => r + 1);
+            setTimeout(() => showFeedback(userMsg), 1500);
+          }
+        },
+        onError: (error) => {
+          const fallback = getFallback(round);
+          setStreamingText('');
+          setIsTyping(false);
+          setMessages([...newMessages, { role: 'ai' as const, content: fallback }]);
+          setApiError(`AI调用失败（已切换本地模式）：${error}`);
+          if (round < TOTAL_ROUNDS) {
+            setRound(r => r + 1);
+          } else {
+            setTimeout(() => showFeedback(userMsg), 1500);
+          }
+        },
+      },
+      buildSystemPrompt(scenario),
+    ).then(ctrl => { cancelAIRef.current = ctrl; });
   }
 
   // ── Feedback Step ────────────────────────────────────
@@ -220,6 +271,8 @@ export default function PracticePage({ onNavigate, scenario }: PracticePageProps
     const { score, label } = scoreResponses(messages);
     const scoreColor = score >= 70 ? 'text-green-500' : score >= 40 ? 'text-amber-500' : 'text-red-500';
     const scoreBg = score >= 70 ? 'bg-green-50' : score >= 40 ? 'bg-amber-50' : 'bg-red-50';
+
+    const displayAnalysis = aiAnalysis || analysisStreamText;
 
     return (
       <div className="min-h-screen bg-[#f7f7f7] flex flex-col">
@@ -251,38 +304,38 @@ export default function PracticePage({ onNavigate, scenario }: PracticePageProps
           </div>
 
           {/* AI Analysis */}
-          {analysisLoading ? (
+          {(analysisLoading || displayAnalysis) && (
             <div className="bg-white rounded-2xl p-5 shadow-sm">
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-lg">🤖</span>
                 <p className="text-sm font-semibold text-gray-700">AI 逐轮分析</p>
-                <span className="ml-auto w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                {analysisLoading && (
+                  <span className="ml-auto w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                )}
               </div>
-              <div className="space-y-2">
-                {[1,2,3].map(i => (
-                  <div key={i} className="h-3 bg-gray-100 rounded animate-pulse" style={{ width: `${70 + i * 8}%` }} />
-                ))}
-              </div>
+              {displayAnalysis ? (
+                <div className="prose-sm text-gray-600 leading-relaxed whitespace-pre-wrap">
+                  {displayAnalysis.split('\n').map((line, i) => {
+                    if (!line.trim()) return null;
+                    return (
+                      <p key={i} className="mb-1" style={{ fontSize: '13px' }}>
+                        {line}
+                      </p>
+                    );
+                  })}
+                  {analysisLoading && (
+                    <span className="inline-block w-1.5 h-4 bg-gray-400 animate-pulse ml-0.5 align-middle" />
+                  )}
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  {[1,2,3].map(i => (
+                    <div key={i} className="h-3 bg-gray-100 rounded animate-pulse" style={{ width: `${70 + i * 8}%` }} />
+                  ))}
+                </div>
+              )}
             </div>
-          ) : aiAnalysis ? (
-            <div className="bg-white rounded-2xl p-5 shadow-sm">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-lg">🤖</span>
-                <p className="text-sm font-semibold text-gray-700">AI 逐轮分析</p>
-              </div>
-              <div className="prose-sm text-gray-600 leading-relaxed whitespace-pre-wrap">
-                {aiAnalysis.split('\n').map((line, i) => {
-                  if (!line.trim()) return null;
-                  const isHeader = /^[^a-zA-Z\u4e00-\u9fa5]/.test(line) && line.length < 30;
-                  return (
-                    <p key={i} className={`${i === 0 ? 'font-bold text-gray-800 mb-1' : 'mb-1'}`} style={{ fontSize: isHeader ? '13px' : '13px' }}>
-                      {line}
-                    </p>
-                  );
-                })}
-              </div>
-            </div>
-          ) : null}
+          )}
 
           {/* Local feedback (always show) */}
           {localFeedback && (
@@ -370,12 +423,7 @@ export default function PracticePage({ onNavigate, scenario }: PracticePageProps
           </p>
 
           <div className="w-full max-w-xs space-y-3">
-            {useDeepseek && (
-              <div className="flex items-center justify-center gap-1.5 bg-green-50 rounded-full py-1.5 px-4 mb-1">
-                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                <span className="text-xs text-green-600">🤖 DeepSeek 已连接 · AI全程分析</span>
-              </div>
-            )}
+  
             <button onClick={doStart} className="btn-primary w-full">
               🚀 开始练习
             </button>
@@ -418,14 +466,22 @@ export default function PracticePage({ onNavigate, scenario }: PracticePageProps
           </div>
         ))}
 
+        {/* 流式输出气泡 */}
         {isTyping && (
           <div className="flex justify-start">
-            <div className="bg-white rounded-2xl rounded-bl-sm px-4 py-3 shadow-sm border border-gray-100">
-              <div className="flex gap-1">
-                <span className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" />
-                <span className="w-2 h-2 bg-gray-300 rounded-full animate-bounce [animation-delay:0.1s]" />
-                <span className="w-2 h-2 bg-gray-300 rounded-full animate-bounce [animation-delay:0.2s]" />
-              </div>
+            <div className="bg-white rounded-2xl rounded-bl-sm px-4 py-2.5 shadow-sm border border-gray-100 max-w-[80%] text-sm leading-relaxed text-gray-700">
+              {streamingText ? (
+                <>
+                  {streamingText}
+                  <span className="inline-block w-1 h-4 bg-gray-400 animate-pulse ml-0.5 align-middle" />
+                </>
+              ) : (
+                <div className="flex gap-1 py-0.5">
+                  <span className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" />
+                  <span className="w-2 h-2 bg-gray-300 rounded-full animate-bounce [animation-delay:0.1s]" />
+                  <span className="w-2 h-2 bg-gray-300 rounded-full animate-bounce [animation-delay:0.2s]" />
+                </div>
+              )}
             </div>
           </div>
         )}

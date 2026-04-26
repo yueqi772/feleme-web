@@ -1,1 +1,367 @@
-LyoqCiAqIOS6keaVsOaNruW6k+WQjOatpeaooeWdlwogKgogKiDmoLjlv4Pljp/nkIbvvJoKICogSDUg6L+Q6KGM5Zyo5b6u5L+hIFdlYlZpZXcg5Lit77yM6YCa6L+HIHd4Lm1pbmlQcm9ncmFtLnBvc3RNZXNzYWdlIOWPkea2iOaBr+e7meWwj+eoi+W6j++8jAogKiDlsI/nqIvluo/mlLbliLDlkI7osIPnlKggd3guY2xvdWQuY2FsbEZ1bmN0aW9uIOWGmeWFpeiFvuiur+S6keaVsOaNruW6k+OAggogKgogKiDosIPnlKjmlrnlvI/vvJrlhajpg6jmlLnkuLrnuq8gUHJvbWlzZe+8jOiwg+eUqOiAheiHquihjCAudGhlbi8uY2F0Y2gg5aSE55CGCiAqLwoKLyogZXNsaW50LWRpc2FibGUgQHR5cGVzY3JpcHQtZXNsaW50L25vLWV4cGxpY2l0LWFueSAqLwpkZWNsYXJlIGNvbnN0IHd4OiBhbnk7CgpsZXQgX29wZW5pZCA9ICcnOwpsZXQgX3BlbmRpbmdDYWxsYmFja3M6IE1hcDxzdHJpbmcsIChkYXRhOiB1bmtub3duKSA9PiB2b2lkPiA9IG5ldyBNYXAoKTsKbGV0IF9tc2dTZXEgPSAwOwpsZXQgX2lzUmVhZHkgPSBmYWxzZTsKCi8vIOKUgOKUgOKUgCDlt6Xlhbflh73mlbAg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACgovKiog562J5b6F5bCP56iL5bqP5bCx57uqICovCmZ1bmN0aW9uIHdhaXRGb3JNcCh0aW1lb3V0ID0gNTAwMCk6IFByb21pc2U8dm9pZD4gewogIGlmIChfaXNSZWFkeSkgcmV0dXJuIFByb21pc2UucmVzb2x2ZSgpOwogIHJldHVybiBuZXcgUHJvbWlzZSgocmVzb2x2ZSwgcmVqZWN0KSA9PiB7CiAgICBjb25zdCB0aW1lciA9IHNldFRpbWVvdXQoKCkgPT4gcmVqZWN0KG5ldyBFcnJvcign5bCP56iL5bqP546v5aKD5pyq5bCx57uqJykpLCB0aW1lb3V0KTsKICAgIHdpbmRvdy5hZGRFdmVudExpc3RlbmVyKCdtZXNzYWdlJywgZnVuY3Rpb24gb25Nc2coZTogTWVzc2FnZUV2ZW50KSB7CiAgICAgIGNvbnN0IGQgPSBlLmRhdGE7CiAgICAgIGlmIChkPy50eXBlID09PSAnTVBfUkVBRFknKSB7IF9pc1JlYWR5ID0gdHJ1ZTsgY2xlYXJUaW1lb3V0KHRpbWVyKTsgcmVzb2x2ZSgpOyB9CiAgICB9LCB7IG9uY2U6IHRydWUgfSk7CiAgfSk7Cn0KCi8qKiDlj5HpgIHmtojmga/nu5nlsI/nqIvluo/lubbnrYnlvoXlm57lpI0gKi8KZnVuY3Rpb24gc2VuZFRvTXAodHlwZTogc3RyaW5nLCBwYXlsb2FkOiBSZWNvcmQ8c3RyaW5nLCB1bmtub3duPik6IFByb21pc2U8dW5rbm93bj4gewogIHJldHVybiBuZXcgUHJvbWlzZShhc3luYyAocmVzb2x2ZSwgcmVqZWN0KSA9PiB7CiAgICBhd2FpdCB3YWl0Rm9yTXAoKS5jYXRjaChyZWplY3QpOwogICAgY29uc3QgbXNnSWQgPSBgbXNnXyR7KytfbXNnU2VxfV8ke0RhdGUubm93KCl9YDsKICAgIGNvbnN0IHRpbWVvdXQgPSBzZXRUaW1lb3V0KCgpID0+IHJlamVjdChuZXcgRXJyb3IoYFske3R5cGV9XSDotoXml7ZgKSksIDE1MDAwKTsKICAgIF9wZW5kaW5nQ2FsbGJhY2tzLnNldChtc2dJZCwgKGRhdGE6IHVua25vd24pID0+IHsgY2xlYXJUaW1lb3V0KHRpbWVvdXQpOyByZXNvbHZlKGRhdGEpOyB9KTsKICAgIHRyeSB7CiAgICAgICh3eCBhcyBhbnkpLm1pbmlQcm9ncmFtLnBvc3RNZXNzYWdlKHsgZGF0YTogeyB0eXBlLCBwYXlsb2FkOiB7IC4uLnBheWxvYWQsIF9tc2dJZDogbXNnSWQgfSB9IH0pOwogICAgfSBjYXRjaCAoZSkgewogICAgICBjbGVhclRpbWVvdXQodGltZW91dCk7IF9wZW5kaW5nQ2FsbGJhY2tzLmRlbGV0ZShtc2dJZCk7IHJlamVjdChlKTsKICAgIH0KICB9KTsKfQoKLy8g55uR5ZCs5bCP56iL5bqP5Zue5aSNCmlmICh0eXBlb2Ygd2luZG93ICE9PSAndW5kZWZpbmVkJykgewogIHdpbmRvdy5hZGRFdmVudExpc3RlbmVyKCdtZXNzYWdlJywgKGU6IE1lc3NhZ2VFdmVudCkgPT4gewogICAgY29uc3QgZCA9IGUuZGF0YTsKICAgIGlmICghZCB8fCAhZC5tc2dJZCkgcmV0dXJuOwogICAgY29uc3QgY2IgPSBfcGVuZGluZ0NhbGxiYWNrcy5nZXQoZC5tc2dJZCk7CiAgICBpZiAoY2IpIHsgX3BlbmRpbmdDYWxsYmFja3MuZGVsZXRlKGQubXNnSWQpOyBjYihkKTsgfQogIH0pOwoKICAvLyDlkK/liqjml7blsJ3or5Xku44gVVJMIOWPguaVsOivu+WPliBvcGVuaWQKICB0cnkgewogICAgY29uc3QgcGFyYW1zID0gbmV3IFVSTFNlYXJjaFBhcmFtcyh3aW5kb3cubG9jYXRpb24uc2VhcmNoKTsKICAgIGNvbnN0IG9wZW5pZCA9IHBhcmFtcy5nZXQoJ29wZW5pZCcpIHx8ICcnOwogICAgaWYgKG9wZW5pZCkgX29wZW5pZCA9IG9wZW5pZDsKICB9IGNhdGNoIHt9Cn0KCi8vIOKUgOKUgOKUgCDlhazlvIDlh73mlbAg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACgpleHBvcnQgZnVuY3Rpb24gc2V0T3BlbmlkKG9wZW5pZDogc3RyaW5nKSB7IF9vcGVuaWQgPSBvcGVuaWQ7IH0KZXhwb3J0IGZ1bmN0aW9uIGdldE9wZW5pZCgpOiBzdHJpbmcgeyByZXR1cm4gX29wZW5pZDsgfQpleHBvcnQgZnVuY3Rpb24gaXNNcFJlYWR5KCk6IGJvb2xlYW4geyByZXR1cm4gX2lzUmVhZHk7IH0KCi8qKiDlrZjlgqjmtYvor5Xnu5PmnpwgKi8KZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGNsb3VkU2F2ZVRlc3RSZXN1bHQocmVzdWx0OiBSZWNvcmQ8c3RyaW5nLCB1bmtub3duPik6IFByb21pc2U8dm9pZD4gewogIGF3YWl0IHNlbmRUb01wKCdEQl9BREQnLCB7IGNvbGxlY3Rpb246ICd0ZXN0SGlzdG9yeScsIGRhdGE6IHsgLi4ucmVzdWx0LCBsb2NhbElkOiBTdHJpbmcocmVzdWx0WydpZCddIHx8ICcnKSB9IH0pOwp9CgovKiog5a2Y5YKo5oOF57uq5pel6K6wICovCmV4cG9ydCBhc3luYyBmdW5jdGlvbiBjbG91ZFNhdmVEaWFyeShkaWFyeTogUmVjb3JkPHN0cmluZywgdW5rbm93bj4pOiBQcm9taXNlPHZvaWQ+IHsKICBhd2FpdCBzZW5kVG9NcCgnREJfQUREJywgeyBjb2xsZWN0aW9uOiAnZGlhcmllcycsIGRhdGE6IHsgLi4uZGlhcnksIGxvY2FsSWQ6IFN0cmluZyhkaWFyeVsnaWQnXSB8fCAnJykgfSB9KTsKfQoKLyoqIOaXpeiusOi/veWKoOWvueivnea2iOaBryAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gY2xvdWRBZGRDaGF0TWVzc2FnZShkaWFyeUlkOiBzdHJpbmcsIG1lc3NhZ2U6IFJlY29yZDxzdHJpbmcsIHVua25vd24+KTogUHJvbWlzZTx2b2lkPiB7CiAgYXdhaXQgc2VuZFRvTXAoJ0RCX0FERCcsIHsgY29sbGVjdGlvbjogJ2RpYXJ5TWVzc2FnZXMnLCBkYXRhOiB7IGRpYXJ5SWQsIC4uLm1lc3NhZ2UsIGxvY2FsSWQ6IFN0cmluZyhtZXNzYWdlWydpZCddIHx8ICcnKSB9IH0pOwp9CgovKiog5Y+R5biD56S+5Yy65biW5a2QICovCmV4cG9ydCBhc3luYyBmdW5jdGlvbiBjbG91ZEFkZFBvc3QocG9zdDogUmVjb3JkPHN0cmluZywgdW5rbm93bj4pOiBQcm9taXNlPHZvaWQ+IHsKICBhd2FpdCBzZW5kVG9NcCgnREJfQUREJywgeyBjb2xsZWN0aW9uOiAncG9zdHMnLCBkYXRhOiB7IC4uLnBvc3QsIGxvY2FsSWQ6IFN0cmluZyhwb3N0WydpZCddIHx8ICcnKSB9IH0pOwp9CgovKiog5biW5a2Q54K56LWeICovCmV4cG9ydCBhc3luYyBmdW5jdGlvbiBjbG91ZFRvZ2dsZUxpa2UocG9zdElkOiBzdHJpbmcsIGNsb3VkSWQ6IHN0cmluZywgbGlrZWQ6IGJvb2xlYW4pOiBQcm9taXNlPHZvaWQ+IHsKICBpZiAoIWNsb3VkSWQpIHJldHVybjsKICBhd2FpdCBzZW5kVG9NcCgnREJfVVBEQVRFJywgeyBjb2xsZWN0aW9uOiAncG9zdHMnLCBkYXRhOiB7IGxpa2VzX2RlbHRhOiBsaWtlZCA/IDEgOiAtMSB9LCBxdWVyeTogeyBfaWQ6IGNsb3VkSWQgfSB9KTsKfQoKLyoqIOW4luWtkOWFsem4oyAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gY2xvdWRUb2dnbGVSZXNvbmF0ZShwb3N0SWQ6IHN0cmluZywgY2xvdWRJZDogc3RyaW5nLCByZXNvbmF0ZWQ6IGJvb2xlYW4pOiBQcm9taXNlPHZvaWQ+IHsKICBpZiAoIWNsb3VkSWQpIHJldHVybjsKICBhd2FpdCBzZW5kVG9NcCgnREJfVVBEQVRFJywgeyBjb2xsZWN0aW9uOiAncG9zdHMnLCBkYXRhOiB7IHJlc29uYW5jZXNfZGVsdGE6IHJlc29uYXRlZCA/IDEgOiAtMSB9LCBxdWVyeTogeyBfaWQ6IGNsb3VkSWQgfSB9KTsKfQoKLyoqIOa3u+WKoOivhOiuuiAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gY2xvdWRBZGRDb21tZW50KGNvbW1lbnQ6IFJlY29yZDxzdHJpbmcsIHVua25vd24+KTogUHJvbWlzZTx2b2lkPiB7CiAgYXdhaXQgc2VuZFRvTXAoJ0RCX0FERCcsIHsgY29sbGVjdGlvbjogJ2NvbW1lbnRzJywgZGF0YTogeyAuLi5jb21tZW50LCBsb2NhbElkOiBTdHJpbmcoY29tbWVudFsnaWQnXSB8fCAnJykgfSB9KTsKfQoKLyoqIOino+mUgeaIkOWwsSAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gY2xvdWRVbmxvY2tBY2hpZXZlbWVudChhY2hpZXZlbWVudDogUmVjb3JkPHN0cmluZywgdW5rbm93bj4pOiBQcm9taXNlPHZvaWQ+IHsKICBhd2FpdCBzZW5kVG9NcCgnREJfQUREJywgeyBjb2xsZWN0aW9uOiAnYWNoaWV2ZW1lbnRzJywgZGF0YTogeyAuLi5hY2hpZXZlbWVudCwgdW5sb2NrZWQ6IHRydWUsIHVubG9ja2VkQXQ6IG5ldyBEYXRlKCkudG9JU09TdHJpbmcoKSB9IH0pOwp9CgovKiog5pu05paw55So5oi35qGj5qGIICovCmV4cG9ydCBhc3luYyBmdW5jdGlvbiBjbG91ZFVwZGF0ZVVzZXJQcm9maWxlKHByb2ZpbGU6IFJlY29yZDxzdHJpbmcsIHVua25vd24+KTogUHJvbWlzZTx2b2lkPiB7CiAgaWYgKCFfb3BlbmlkKSByZXR1cm47CiAgYXdhaXQgc2VuZFRvTXAoJ0RCX0FERCcsIHsgY29sbGVjdGlvbjogJ3VzZXJQcm9maWxlJywgZGF0YTogeyAuLi5wcm9maWxlLCBvcGVuaWQ6IF9vcGVuaWQgfSB9KTsKfQoKLyoqIOivneacr+aUtuiXjyAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gY2xvdWRUb2dnbGVGYXZvcml0ZVNjcmlwdChzY3JpcHRJZDogc3RyaW5nLCBsaWtlZDogYm9vbGVhbik6IFByb21pc2U8dm9pZD4gewogIGlmICghX29wZW5pZCkgcmV0dXJuOwogIGF3YWl0IHNlbmRUb01wKCdEQl9BREQnLCB7IGNvbGxlY3Rpb246ICd1c2VyUHJvZmlsZScsIGRhdGE6IHsgb3BlbmlkOiBfb3BlbmlkLCBmYXZvcml0ZVNjcmlwdHM6IGxpa2VkID8gW3NjcmlwdElkXSA6IFtdIH0gfSk7Cn0KCi8qKiDnu4PkuaDmrKHmlbAgKzEgKi8KZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGNsb3VkSW5jcmVtZW50UHJhY3RpY2VDb3VudCgpOiBQcm9taXNlPHZvaWQ+IHsKICBpZiAoIV9vcGVuaWQpIHJldHVybjsKICBhd2FpdCBzZW5kVG9NcCgnREJfQUREJywgeyBjb2xsZWN0aW9uOiAndXNlclByb2ZpbGUnLCBkYXRhOiB7IG9wZW5pZDogX29wZW5pZCwgcHJhY3RpY2VDb3VudF9kZWx0YTogMSB9IH0pOwp9CgovKiog5om56YeP5ZCM5q2lICovCmV4cG9ydCBhc3luYyBmdW5jdGlvbiBjbG91ZFN5bmNBbGwobG9jYWxEYXRhOiBSZWNvcmQ8c3RyaW5nLCB1bmtub3duPik6IFByb21pc2U8dm9pZD4gewogIGNvbnN0IG9wZW5pZCA9IGdldE9wZW5pZCgpOwogIGlmICghb3BlbmlkKSByZXR1cm47CiAgY29uc3QgbGlzdHMgPSBbJ3Rlc3RIaXN0b3J5JywgJ2RpYXJpZXMnLCAncG9zdHMnXSBhcyBjb25zdDsKICBmb3IgKGNvbnN0IGtleSBvZiBsaXN0cykgewogICAgY29uc3QgbGlzdCA9IGxvY2FsRGF0YVtrZXldOwogICAgaWYgKCFBcnJheS5pc0FycmF5KGxpc3QpKSBjb250aW51ZTsKICAgIGZvciAoY29uc3QgaXRlbSBvZiBsaXN0IGFzIFJlY29yZDxzdHJpbmcsIHVua25vd24+W10pIHsKICAgICAgaWYgKGl0ZW0/LmlkKSB7CiAgICAgICAgdHJ5IHsKICAgICAgICAgIGlmIChrZXkgPT09ICd0ZXN0SGlzdG9yeScpIGF3YWl0IGNsb3VkU2F2ZVRlc3RSZXN1bHQoaXRlbSk7CiAgICAgICAgICBpZiAoa2V5ID09PSAnZGlhcmllcycpIGF3YWl0IGNsb3VkU2F2ZURpYXJ5KGl0ZW0pOwogICAgICAgICAgaWYgKGtleSA9PT0gJ3Bvc3RzJykgYXdhaXQgY2xvdWRBZGRQb3N0KGl0ZW0pOwogICAgICAgIH0gY2F0Y2gge30KICAgICAgfQogICAgfQogIH0KfQo=
+/**
+ * 数据库同步模块 — Supabase H5 独立版（原生fetch版）
+ * 直接调用 Supabase REST API，无需 SDK，彻底避免跨域/Invocation 问题
+ */
+const SUPABASE_URL = 'https://zphandtlrxbvfwbwucvk.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpwaGFuZHRscnhidmZ3Ynd1Y3ZrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ2MDM0ODgsImV4cCI6MjA5MDE3OTQ4OH0.4FYehdmhw5AmTAVZcrBehHodLzkIsyuwC654XtKL72Q';
+const OID_KEY = '_feleme_openid';
+
+export function setOpenid(id: string) { try { localStorage.setItem(OID_KEY, id); } catch {} }
+export function getOpenid(): string { try { return localStorage.getItem(OID_KEY) || ''; } catch { return ''; } }
+
+// ─── 工具函数 ─────────────────────────────────────────────
+function uid(): string {
+  const id = getOpenid();
+  if (id) return id;
+  const newId = (typeof crypto !== 'undefined' && (crypto as any).randomUUID)
+    ? (crypto as any).randomUUID()
+    : Math.random().toString(36).slice(2) + Date.now().toString(36);
+  setOpenid(newId);
+  console.log('[supabase] 生成新用户ID:', newId);
+  return newId;
+}
+
+async function request(
+  table: string,
+  method: 'POST' | 'GET' | 'PATCH' | 'DELETE',
+  body?: Record<string, unknown>
+): Promise<void> {
+  const userId = uid();
+  const payload = body
+    ? { ...body, user_id: userId, created_at: new Date().toISOString() }
+    : undefined;
+  const url = `${SUPABASE_URL}/rest/v1/${table}`;
+  console.log(`[supabase] ${method} ${url}`, payload);
+  try {
+    const opts: RequestInit = {
+      method,
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Content-Type': 'application/json',
+        // upsert：POST 时主键冲突则更新而非报错（避免重复写入 409）
+        'Prefer': method === 'POST' ? 'return=minimal,resolution=merge-duplicates' : 'return=minimal',
+      },
+    };
+    if (payload) opts.body = JSON.stringify(payload);
+    const res = await fetch(url, opts);
+    const text = await res.text();
+    if (!res.ok) {
+      console.error(`[supabase] 失败 ${res.status}:`, text);
+    } else {
+      console.log(`[supabase] 成功 ${table}`);
+    }
+  } catch (e) {
+    console.error(`[supabase] 异常 ${table}:`, e);
+  }
+}
+
+// ─── 业务函数 ─────────────────────────────────────────────
+
+export async function cloudSaveTestResult(result: Record<string, unknown>): Promise<void> {
+  console.log('[supabase] cloudSaveTestResult called');
+  await request('test_history', 'POST', { ...result, local_id: result['id'] });
+}
+
+export async function cloudSaveDiary(diary: Record<string, unknown>): Promise<void> {
+  console.log('[supabase] cloudSaveDiary called', diary);
+  await request('diaries', 'POST', { ...diary, local_id: diary['id'] });
+}
+
+export async function cloudAddChatMessage(
+  diaryId: string,
+  message: Record<string, unknown>
+): Promise<void> {
+  console.log('[supabase] cloudAddChatMessage called', diaryId);
+  await request('diary_messages', 'POST', { diary_id: diaryId, ...message, local_id: message['id'] });
+}
+
+export async function cloudAddPost(post: Record<string, unknown>): Promise<void> {
+  console.log('[supabase] cloudAddPost called', post);
+  await request('posts', 'POST', { ...post, local_id: post['id'] });
+}
+
+export async function cloudToggleLike(
+  _postId: string,
+  cloudId: string,
+  liked: boolean
+): Promise<void> {
+  if (!cloudId) return;
+  try {
+    const userId = uid();
+    const url = `${SUPABASE_URL}/rest/v1/posts?id=eq.${cloudId}`;
+    const res = await fetch(url, {
+      method: 'PATCH',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal',
+      },
+      body: JSON.stringify({ likes: liked ? 1 : -1, updated_at: new Date().toISOString() }),
+    });
+    if (!res.ok) console.error('[supabase] cloudToggleLike失败', res.status);
+    else console.log('[supabase] cloudToggleLike成功');
+  } catch (e) { console.error('[supabase] cloudToggleLike异常', e); }
+}
+
+export async function cloudToggleResonate(
+  _postId: string,
+  cloudId: string,
+  resonated: boolean
+): Promise<void> {
+  if (!cloudId) return;
+  try {
+    const url = `${SUPABASE_URL}/rest/v1/posts?id=eq.${cloudId}`;
+    await fetch(url, {
+      method: 'PATCH',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal',
+      },
+      body: JSON.stringify({ resonances: resonated ? 1 : -1, updated_at: new Date().toISOString() }),
+    });
+  } catch (e) { console.error('[supabase] cloudToggleResonate异常', e); }
+}
+
+export async function cloudAddComment(comment: Record<string, unknown>): Promise<void> {
+  console.log('[supabase] cloudAddComment called');
+  await request('comments', 'POST', { ...comment, local_id: comment['id'] });
+}
+
+export async function cloudUnlockAchievement(achievement: Record<string, unknown>): Promise<void> {
+  console.log('[supabase] cloudUnlockAchievement called');
+  await request('achievements', 'POST', { ...achievement, unlocked: true, unlocked_at: new Date().toISOString() });
+}
+
+export async function cloudRegisterUser(nickname: string, phone: string): Promise<void> {
+  console.log('[supabase] cloudRegisterUser called');
+  await request('user_profile', 'POST', {
+    user_id: uid(),
+    nickname,
+    phone,
+    registered_at: new Date().toISOString(),
+  });
+}
+
+export async function cloudSavePayment(options: {
+  amount: number;       // 单位：分，如 990 = ¥9.9
+  product: string;      // 商品名称
+  status: 'pending_verify'; // 待核验（赞赏码模式，人工确认）
+}): Promise<void> {
+  console.log('[supabase] cloudSavePayment called', options);
+  await request('payments', 'POST', {
+    user_id: uid(),
+    amount: options.amount,
+    product: options.product,
+    status: options.status,
+    paid_at: new Date().toISOString(),
+  });
+}
+
+export async function cloudUpdateUserProfile(profile: Record<string, unknown>): Promise<void> {
+  console.log('[supabase] cloudUpdateUserProfile called', profile);
+  await request('user_profile', 'POST', { ...profile, user_id: uid() });
+}
+
+export async function cloudToggleFavoriteScript(scriptId: string, liked: boolean): Promise<void> {
+  console.log('[supabase] cloudToggleFavoriteScript', scriptId, liked);
+  await request('user_profile', 'POST', { favorite_scripts: liked ? [scriptId] : [], user_id: uid() });
+}
+
+export async function cloudIncrementPracticeCount(): Promise<void> {
+  console.log('[supabase] cloudIncrementPracticeCount called');
+  try {
+    const userId = uid();
+    const url = `${SUPABASE_URL}/rest/v1/user_profile?user_id=eq.${userId}&select=id,practice_count`;
+    const res = await fetch(url, {
+      method: 'GET',
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` },
+    });
+    const data = await res.json();
+    if (Array.isArray(data) && data.length > 0) {
+      await fetch(`${SUPABASE_URL}/rest/v1/user_profile?id=eq.${data[0].id}`, {
+        method: 'PATCH',
+        headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+        body: JSON.stringify({ practice_count: (data[0].practice_count || 0) + 1, updated_at: new Date().toISOString() }),
+      });
+    } else {
+      await request('user_profile', 'POST', { user_id: userId, practice_count: 1 });
+    }
+  } catch (e) { console.error('[supabase] cloudIncrementPracticeCount异常', e); }
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function cloudSavePracticeRecord(record: Record<string, any>): Promise<void> {
+  console.log('[supabase] cloudSavePracticeRecord called', record);
+  await request('practice_records', 'POST', record);
+}
+
+export async function cloudSyncAll(_localData: Record<string, unknown>): Promise<void> {
+  console.log('[supabase] cloudSyncAll called (no-op, writes are immediate)');
+}
+
+// ─── 微信分享 ──────────────────────────────────────────────
+
+/** 判断是否在微信浏览器中 */
+export function isWechatBrowser(): boolean {
+  return /MicroMessenger/i.test(navigator.userAgent);
+}
+
+/** 判断是否在微信小程序 WebView 中 */
+export function isWechatMiniProgram(): boolean {
+  return /miniProgram/i.test(navigator.userAgent) ||
+    window.location.search.includes('from=miniprogram');
+}
+
+// 微信 JS-SDK 签名接口（需要后端提供，这里预留接入点）
+const WX_JSSDK_API = ''; // 填入你的后端签名接口地址
+
+interface WxSDK {
+  config: (cfg: Record<string, unknown>) => void;
+  ready: (fn: () => void) => void;
+  updateAppMessageShareData?: (opts: Record<string, string>) => void;
+  updateTimelineShareData?: (opts: Record<string, string>) => void;
+  onMenuShareAppMessage?: (opts: Record<string, string>) => void;
+  onMenuShareTimeline?: (opts: Record<string, string>) => void;
+}
+
+function getWx(): WxSDK | null {
+  return (window as unknown as { wx?: WxSDK }).wx ?? null;
+}
+
+/** 初始化微信 JS-SDK 配置 */
+async function initWxConfig(): Promise<boolean> {
+  if (!WX_JSSDK_API) return false;
+  try {
+    const res = await fetch(`${WX_JSSDK_API}?url=${encodeURIComponent(window.location.href)}`);
+    const cfg = await res.json();
+    const wx = getWx();
+    if (!wx) return false;
+    wx.config({
+      debug: false,
+      appId: cfg.appId,
+      timestamp: cfg.timestamp,
+      nonceStr: cfg.nonceStr,
+      signature: cfg.signature,
+      jsApiList: ['updateAppMessageShareData', 'updateTimelineShareData', 'onMenuShareAppMessage', 'onMenuShareTimeline'],
+    });
+    return true;
+  } catch { return false; }
+}
+
+export async function postShare(options: {
+  type: 'miniprogram' | 'h5';
+  title: string;
+  path: string;
+  imageUrl?: string;
+  desc?: string;
+}): Promise<void> {
+  const shareTitle = options.title;
+  const shareDesc = options.desc || '职场情绪管理 · PUA识别 · 边界设立';
+  const shareLink = window.location.origin + (options.path || '/');
+  const shareImg = options.imageUrl || window.location.origin + '/favicon.svg';
+
+  // ── 微信内置浏览器：使用 JS-SDK ───────────────────────────
+  if (isWechatBrowser()) {
+    const wx = getWx();
+    const configOk = wx ? await initWxConfig() : false;
+
+    if (configOk && wx) {
+      wx.ready(() => {
+        // 分享给朋友
+        if (wx.updateAppMessageShareData) {
+          wx.updateAppMessageShareData({ title: shareTitle, desc: shareDesc, link: shareLink, imgUrl: shareImg });
+        } else {
+          wx.onMenuShareAppMessage?.({ title: shareTitle, desc: shareDesc, link: shareLink, imgUrl: shareImg });
+        }
+        // 分享到朋友圈
+        if (wx.updateTimelineShareData) {
+          wx.updateTimelineShareData({ title: shareTitle, link: shareLink, imgUrl: shareImg });
+        } else {
+          wx.onMenuShareTimeline?.({ title: shareTitle, link: shareLink, imgUrl: shareImg });
+        }
+      });
+      return;
+    }
+
+    // JS-SDK 未配置时，引导用户手动分享
+    const msg = `点击右上角「···」→「分享给朋友」或「分享到朋友圈」`;
+    alert(msg);
+    return;
+  }
+
+  // ── 非微信环境：使用原生 Web Share API ───────────────────
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: shareTitle, text: shareDesc, url: shareLink });
+      return;
+    } catch { /* 用户取消，忽略 */ }
+  }
+
+  // ── 最终降级：复制链接 ────────────────────────────────────
+  try {
+    await navigator.clipboard.writeText(shareLink);
+    alert('链接已复制，粘贴给朋友吧 🌿');
+  } catch {
+    alert(`复制此链接分享：${shareLink}`);
+  }
+}
+
+// ─── AI 对话（DeepSeek via OpenAI 兼容接口）────────────────────────
+export interface AIMessage {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
+export interface AIStreamCallbacks {
+  onChunk?: (text: string, accumulated?: string) => void;
+  onComplete?: () => void;
+  onDone?: (fullText: string) => void;
+  onError?: (e: Error) => void;
+}
+
+const DEEPSEEK_API_KEY = 'sk-da717cc4b6164e7eb36d2c423f12a13e';
+const DEEPSEEK_BASE_URL = 'https://api.deepseek.com';
+const AI_MODEL_NAME = 'deepseek-chat';
+
+export async function callAIStream(
+  messages: AIMessage[],
+  callbacks: AIStreamCallbacks,
+  systemPromptOverride?: string,
+): Promise<AbortController | null> {
+  const systemPrompt = systemPromptOverride ||
+    '你是一个专业、温暖的心理咨询师，擅长职场情绪管理和PUA识别。请根据用户描述的场景，给出专业的心理分析和应对建议。回复简洁、有同理心，控制在200字以内。';
+
+  const fullMessages: Array<{ role: 'system' | 'user' | 'assistant'; content: string }> = [
+    { role: 'system', content: systemPrompt },
+    ...messages.map(m => ({ role: m.role as 'user' | 'assistant', content: m.content })),
+  ];
+
+  const controller = new AbortController();
+
+  try {
+    const res = await fetch(`${DEEPSEEK_BASE_URL}/chat/completions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${DEEPSEEK_API_KEY}`,
+      },
+      body: JSON.stringify({ model: AI_MODEL_NAME, messages: fullMessages, stream: false }),
+      signal: controller.signal,
+    });
+    if (!res.ok) throw new Error('AI request failed: ' + res.status);
+    const json = await (res.json() as Promise<{ choices?: Array<{ message?: { content?: string } }> }>);
+    const text = json?.choices?.[0]?.message?.content || '';
+    callbacks.onChunk?.(text, text);
+    callbacks.onDone?.(text);
+    callbacks.onComplete?.();
+    return controller;
+  } catch (e) {
+    if ((e as Error).name === 'AbortError') return null;
+    callbacks.onError?.(e instanceof Error ? e : new Error(String(e)));
+    return null;
+  }
+}

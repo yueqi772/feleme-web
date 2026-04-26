@@ -33,7 +33,7 @@ export default function ProfilePage({ onNavigate }: ProfilePageProps) {
   };
 
   const handleMpLoginHint = () => {
-    alert('请在微信中搜索"职场清醒笔记"小程序，从首页点击"微信授权登录"');
+    alert('请在微信中搜索「A里味」小程序，从首页点击『微信授权登录』');
   };
 
   return (
