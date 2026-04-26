@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import type { TestResult } from '../types';
 import { getRiskInfo, formatDate } from '../utils';
 import { PUA_TYPE_COLORS } from '../data';
-import { postShare } from '../cloud';
+import { postShare, isWechatBrowser } from '../cloud';
 
 interface ReportPageProps {
   onNavigate: (page: string, params?: Record<string, unknown>) => void;
@@ -13,6 +14,31 @@ export default function ReportPage({ onNavigate, result }: ReportPageProps) {
   const sortedTypes = Object.entries(result.counts)
     .filter(([, c]) => c > 0)
     .sort(([, a], [, b]) => b - a) as [string, number][];
+  const [shareTip, setShareTip] = useState('');
+  const inWechat = isWechatBrowser();
+
+  const shareTitle = `我测了一下职场环境，抗PUA能力：${result.score}分（${risk.desc}）`;
+
+  async function handleShareFriend() {
+    if (inWechat) {
+      // 微信内置浏览器：调用 JS-SDK 设置分享内容后提示点右上角
+      await postShare({ type: 'h5', title: shareTitle, path: '/', desc: '你也来测测？' });
+      setShareTip('👆 点右上角「···」→「分享给朋友」');
+      setTimeout(() => setShareTip(''), 4000);
+    } else {
+      await postShare({ type: 'h5', title: shareTitle, path: '/', desc: '你也来测测？' });
+    }
+  }
+
+  async function handleShareMoments() {
+    if (inWechat) {
+      await postShare({ type: 'h5', title: shareTitle, path: '/', desc: '你也来测测？' });
+      setShareTip('👆 点右上角「···」→「分享到朋友圈」');
+      setTimeout(() => setShareTip(''), 4000);
+    } else {
+      await postShare({ type: 'h5', title: shareTitle, path: '/', desc: '你也来测测？' });
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -107,19 +133,26 @@ export default function ReportPage({ onNavigate, result }: ReportPageProps) {
         </div>
 
         {/* 分享 */}
-        <div className="flex gap-3">
-          <button
-            className="flex-1 flex items-center justify-center gap-1.5 bg-[#07c160] text-white rounded-xl py-3 text-sm font-medium"
-            onClick={() => postShare({ type: 'h5' as const,  title: `我的抗PUA能力：${result.score}分 · ${risk.desc}`, path: '/pages/webview/index', imageUrl: '' })}
-          >
-            💬 分享给朋友
-          </button>
-          <button
-            className="flex-1 flex items-center justify-center gap-1.5 bg-white border border-[#07c160] text-[#07c160] rounded-xl py-3 text-sm font-medium"
-            onClick={() => postShare({ type: 'h5', title: `我的抗PUA能力：${result.score}分 · ${risk.desc}`, path: '/pages/webview/index', imageUrl: '' })}
-          >
-            🌟 发朋友圈
-          </button>
+        <div className="space-y-2">
+          {shareTip && (
+            <div className="bg-gray-800/90 text-white text-xs text-center py-2.5 px-4 rounded-xl">
+              {shareTip}
+            </div>
+          )}
+          <div className="flex gap-3">
+            <button
+              className="flex-1 flex items-center justify-center gap-1.5 bg-[#07c160] text-white rounded-xl py-3 text-sm font-medium active:scale-95 transition-transform"
+              onClick={handleShareFriend}
+            >
+              💬 {inWechat ? '分享给朋友' : '分享'}
+            </button>
+            <button
+              className="flex-1 flex items-center justify-center gap-1.5 bg-white border border-[#07c160] text-[#07c160] rounded-xl py-3 text-sm font-medium active:scale-95 transition-transform"
+              onClick={handleShareMoments}
+            >
+              🌟 {inWechat ? '发朋友圈' : '复制链接'}
+            </button>
+          </div>
         </div>
 
         {/* Histogram of test history could go here */}

@@ -146,6 +146,21 @@ export async function cloudRegisterUser(nickname: string, phone: string): Promis
   });
 }
 
+export async function cloudSavePayment(options: {
+  amount: number;       // 单位：分，如 990 = ¥9.9
+  product: string;      // 商品名称
+  status: 'pending_verify'; // 待核验（赞赏码模式，人工确认）
+}): Promise<void> {
+  console.log('[supabase] cloudSavePayment called', options);
+  await request('payments', 'POST', {
+    user_id: uid(),
+    amount: options.amount,
+    product: options.product,
+    status: options.status,
+    paid_at: new Date().toISOString(),
+  });
+}
+
 export async function cloudUpdateUserProfile(profile: Record<string, unknown>): Promise<void> {
   console.log('[supabase] cloudUpdateUserProfile called', profile);
   await request('user_profile', 'POST', { ...profile, user_id: uid() });
@@ -188,13 +203,111 @@ export async function cloudSyncAll(_localData: Record<string, unknown>): Promise
   console.log('[supabase] cloudSyncAll called (no-op, writes are immediate)');
 }
 
+// ─── 微信分享 ──────────────────────────────────────────────
+
+/** 判断是否在微信浏览器中 */
+export function isWechatBrowser(): boolean {
+  return /MicroMessenger/i.test(navigator.userAgent);
+}
+
+/** 判断是否在微信小程序 WebView 中 */
+export function isWechatMiniProgram(): boolean {
+  return /miniProgram/i.test(navigator.userAgent) ||
+    window.location.search.includes('from=miniprogram');
+}
+
+// 微信 JS-SDK 签名接口（需要后端提供，这里预留接入点）
+const WX_JSSDK_API = ''; // 填入你的后端签名接口地址
+
+interface WxSDK {
+  config: (cfg: Record<string, unknown>) => void;
+  ready: (fn: () => void) => void;
+  updateAppMessageShareData?: (opts: Record<string, string>) => void;
+  updateTimelineShareData?: (opts: Record<string, string>) => void;
+  onMenuShareAppMessage?: (opts: Record<string, string>) => void;
+  onMenuShareTimeline?: (opts: Record<string, string>) => void;
+}
+
+function getWx(): WxSDK | null {
+  return (window as unknown as { wx?: WxSDK }).wx ?? null;
+}
+
+/** 初始化微信 JS-SDK 配置 */
+async function initWxConfig(): Promise<boolean> {
+  if (!WX_JSSDK_API) return false;
+  try {
+    const res = await fetch(`${WX_JSSDK_API}?url=${encodeURIComponent(window.location.href)}`);
+    const cfg = await res.json();
+    const wx = getWx();
+    if (!wx) return false;
+    wx.config({
+      debug: false,
+      appId: cfg.appId,
+      timestamp: cfg.timestamp,
+      nonceStr: cfg.nonceStr,
+      signature: cfg.signature,
+      jsApiList: ['updateAppMessageShareData', 'updateTimelineShareData', 'onMenuShareAppMessage', 'onMenuShareTimeline'],
+    });
+    return true;
+  } catch { return false; }
+}
+
 export async function postShare(options: {
   type: 'miniprogram' | 'h5';
   title: string;
   path: string;
   imageUrl?: string;
+  desc?: string;
 }): Promise<void> {
-  console.log('[supabase] postShare called:', options);
+  const shareTitle = options.title;
+  const shareDesc = options.desc || '职场情绪管理 · PUA识别 · 边界设立';
+  const shareLink = window.location.origin + (options.path || '/');
+  const shareImg = options.imageUrl || window.location.origin + '/favicon.svg';
+
+  // ── 微信内置浏览器：使用 JS-SDK ───────────────────────────
+  if (isWechatBrowser()) {
+    const wx = getWx();
+    const configOk = wx ? await initWxConfig() : false;
+
+    if (configOk && wx) {
+      wx.ready(() => {
+        // 分享给朋友
+        if (wx.updateAppMessageShareData) {
+          wx.updateAppMessageShareData({ title: shareTitle, desc: shareDesc, link: shareLink, imgUrl: shareImg });
+        } else {
+          wx.onMenuShareAppMessage?.({ title: shareTitle, desc: shareDesc, link: shareLink, imgUrl: shareImg });
+        }
+        // 分享到朋友圈
+        if (wx.updateTimelineShareData) {
+          wx.updateTimelineShareData({ title: shareTitle, link: shareLink, imgUrl: shareImg });
+        } else {
+          wx.onMenuShareTimeline?.({ title: shareTitle, link: shareLink, imgUrl: shareImg });
+        }
+      });
+      return;
+    }
+
+    // JS-SDK 未配置时，引导用户手动分享
+    const msg = `点击右上角「···」→「分享给朋友」或「分享到朋友圈」`;
+    alert(msg);
+    return;
+  }
+
+  // ── 非微信环境：使用原生 Web Share API ───────────────────
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: shareTitle, text: shareDesc, url: shareLink });
+      return;
+    } catch { /* 用户取消，忽略 */ }
+  }
+
+  // ── 最终降级：复制链接 ────────────────────────────────────
+  try {
+    await navigator.clipboard.writeText(shareLink);
+    alert('链接已复制，粘贴给朋友吧 🌿');
+  } catch {
+    alert(`复制此链接分享：${shareLink}`);
+  }
 }
 
 // ─── AI 对话（DeepSeek via OpenAI 兼容接口）────────────────────────

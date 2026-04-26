@@ -6,5 +6,6 @@ export {
   cloudAddComment, cloudUnlockAchievement,
   cloudUpdateUserProfile, cloudToggleFavoriteScript,
   cloudIncrementPracticeCount, cloudSavePracticeRecord,
-  cloudSyncAll, postShare, cloudRegisterUser,
+  cloudSyncAll, postShare, cloudRegisterUser, cloudSavePayment,
+  isWechatBrowser, isWechatMiniProgram,
 } from './sync';

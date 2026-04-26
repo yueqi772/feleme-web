@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { callAIStream } from '../cloud/sync';
 import type { AIMessage } from '../cloud/sync';
+import { cloudSavePayment } from '../cloud';
 
 interface ConsultPageProps {
   onNavigate: (page: string, params?: Record<string, unknown>) => void;
@@ -53,6 +54,8 @@ function PayModal({ onPay, onClose }: { onPay: () => void; onClose: () => void }
 
   const handleConfirm = () => {
     markPaid();
+    // 记录支付信息到 Supabase（赞赏码模式，标记为待核验）
+    cloudSavePayment({ amount: 990, product: '职场咨询9.9', status: 'pending_verify' });
     setStep('wechat');
   };
 
