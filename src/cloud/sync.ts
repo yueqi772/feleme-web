@@ -200,7 +200,6 @@ export async function cloudSavePracticeRecord(record: Record<string, any>): Prom
   await request('practice_records', 'POST', {
     scenario_id:    record['scenarioId']    ?? record['scenario_id'],
     scenario_title: record['scenarioTitle'] ?? record['scenario_title'],
-    scenario_icon:  record['scenarioIcon']  ?? record['scenario_icon'],
     difficulty:     record['difficulty'],
     messages:       record['messages'],
     score:          record['score'],
