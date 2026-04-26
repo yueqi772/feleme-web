@@ -60,7 +60,14 @@ async function request(
 
 export async function cloudSaveTestResult(result: Record<string, unknown>): Promise<void> {
   console.log('[supabase] cloudSaveTestResult called');
-  await request('test_history', 'POST', { ...result, local_id: result['id'] });
+  // counts 是 JSON 对象，Supabase 需要 jsonb 列；序列化成字符串以兼容 text 列，
+  // 若已建 jsonb 列则直接传对象也可，此处统一转字符串避免 PGRST204 报错
+  const { counts, ...rest } = result;
+  const payload: Record<string, unknown> = { ...rest, local_id: result['id'] };
+  if (counts !== undefined) {
+    payload['counts'] = typeof counts === 'string' ? counts : JSON.stringify(counts);
+  }
+  await request('test_history', 'POST', payload);
 }
 
 export async function cloudSaveDiary(diary: Record<string, unknown>): Promise<void> {
