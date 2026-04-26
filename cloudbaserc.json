@@ -1,0 +1,12 @@
+{
+  "version": "2.0",
+  "envId": "feleme-d5ggb9ls0b47f925f",
+  "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json",
+  "app": {
+    "serviceName": "fengleme",
+    "framework": "vite",
+    "installCommand": "npm install",
+    "buildCommand": "npm run build",
+    "outputDir": "./dist"
+  }
+}
