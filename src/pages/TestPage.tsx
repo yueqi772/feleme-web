@@ -343,6 +343,7 @@ export default function TestPage({ onNavigate }: TestPageProps) {
   const [answers, setAnswers] = useState<Array<{ replyId: ReplyType; reactionMood: MoodKey }>>([]);
   const [selectedReply, setSelectedReply] = useState<ReplyOption | null>(null);
   const [historyMoods, setHistoryMoods] = useState<MoodKey[]>([]);
+  const [saving, setSaving] = useState(false);
 
   const question = PUA_QUESTIONS[currentQ];
   const replies = question ? getReplies(question) : [];
@@ -370,7 +371,9 @@ export default function TestPage({ onNavigate }: TestPageProps) {
       const counts = countPuaTypes(Object.fromEntries(newAnswers.map((a, i) => [i + 1, a.replyId !== 'a'])));
       const score = calcScore(counts);
       const risk = getRiskInfo(score);
-      saveTestResult({ id: generateId(), date: new Date().toISOString(), score, riskLevel: risk.level, counts, totalAnswered: 10 });
+      setSaving(true);
+      saveTestResult({ id: generateId(), date: new Date().toISOString(), score, riskLevel: risk.level, counts, totalAnswered: 10 })
+        .finally(() => setSaving(false));
       unlockAchievement('a2');
       setStep('result');
     } else {
@@ -398,6 +401,15 @@ export default function TestPage({ onNavigate }: TestPageProps) {
 
     return (
       <div className="min-h-screen bg-[#f0f0f0] flex flex-col">
+        {/* 保存中 loading 遮罩 */}
+        {saving && (
+          <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/40 backdrop-blur-sm">
+            <div className="bg-white rounded-2xl px-8 py-6 flex flex-col items-center gap-3 shadow-xl">
+              <div className="w-8 h-8 border-4 border-[#07c160] border-t-transparent rounded-full animate-spin" />
+              <p className="text-sm text-[#333] font-medium">正在保存结果…</p>
+            </div>
+          </div>
+        )}
         <WxHeader onBack={() => onNavigate('home')} />
         <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 pb-8">
           <div className="bg-white rounded-2xl p-5 text-center shadow-sm">

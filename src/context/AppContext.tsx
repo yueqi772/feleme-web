@@ -34,7 +34,7 @@ interface AppState {
 }
 
 interface AppContextType extends AppState {
-  saveTestResult: (result: TestResult) => void;
+  saveTestResult: (result: TestResult) => Promise<void>;
   saveDiary: (diary: DiaryEntry) => void;
   addChatMessage: (diaryId: string, message: ChatMessage) => void;
   addPost: (post: Post) => void;
@@ -119,13 +119,13 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   }, [state.isDarkMode]);
 
   // ─── 1. 保存测试结果 ─────────────────────────────────────
-  const saveTestResult = useCallback((result: TestResult) => {
+  const saveTestResult = useCallback(async (result: TestResult): Promise<void> => {
     setState(s => ({
       ...s,
       testHistory: [result, ...s.testHistory].slice(0, 20),
       currentTestResult: result,
     }));
-    cloudSaveTestResult(result as unknown as Record<string, unknown>);
+    await cloudSaveTestResult(result as unknown as Record<string, unknown>);
   }, []);
 
   // ─── 2. 保存情绪日记 ────────────────────────────────────
