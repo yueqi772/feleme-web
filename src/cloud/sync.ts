@@ -60,16 +60,14 @@ async function request(
 
 export async function cloudSaveTestResult(result: Record<string, unknown>): Promise<void> {
   console.log('[supabase] cloudSaveTestResult called');
-  // 统一将驼峰字段转为下划线，与 Supabase 表结构对齐；counts 序列化为字符串兼容 text/jsonb 列
+  // 统一将驼峰字段转为下划线，与 Supabase 表结构对齐；counts 列为 jsonb，直接传对象
   await request('test_history', 'POST', {
     local_id:       result['id'],
     date:           result['date'],
     score:          result['score'],
     risk_level:     result['riskLevel'],
     total_answered: result['totalAnswered'],
-    counts: typeof result['counts'] === 'string'
-      ? result['counts']
-      : JSON.stringify(result['counts']),
+    counts: result['counts'],
   });
 }
 
