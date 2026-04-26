@@ -196,7 +196,17 @@ export async function cloudIncrementPracticeCount(): Promise<void> {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function cloudSavePracticeRecord(record: Record<string, any>): Promise<void> {
   console.log('[supabase] cloudSavePracticeRecord called', record);
-  await request('practice_records', 'POST', record);
+  // 统一转换为下划线字段名，与 Supabase 表结构对齐
+  await request('practice_records', 'POST', {
+    scenario_id:    record['scenarioId']    ?? record['scenario_id'],
+    scenario_title: record['scenarioTitle'] ?? record['scenario_title'],
+    difficulty:     record['difficulty'],
+    messages:       record['messages'],
+    score:          record['score'],
+    score_label:    record['scoreLabel']    ?? record['score_label'],
+    ai_analysis:    record['aiAnalysis']    ?? record['ai_analysis'],
+    finished_at:    record['finishedAt']    ?? record['finished_at'],
+  });
 }
 
 export async function cloudSyncAll(_localData: Record<string, unknown>): Promise<void> {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useApp } from '../context/AppContext';
 import { useAuth } from '../auth/AuthContext';
 import { EMOTION_MAP } from '../data';
@@ -22,6 +22,7 @@ export default function ProfilePage({ onNavigate }: ProfilePageProps) {
   const { isLoggedIn, wechatUser, loginWithWechat, logout, isLoading: authLoading, error: authError, clearError } = useAuth();
   const [showSettings, setShowSettings] = useState(false);
   const [apiKeyInput, setApiKeyInput] = useState(deepseekKey);
+  const usedDays = useMemo(() => Math.floor((Date.now() - new Date(joinDate).getTime()) / (1000 * 60 * 60 * 24)), [joinDate]);
 
   const unlockedAchievements = achievements.filter(a => a.unlocked);
   const today = new Date().toISOString().slice(0, 10);
@@ -53,7 +54,7 @@ export default function ProfilePage({ onNavigate }: ProfilePageProps) {
             ) : (
               <>
                 <p className="text-sm opacity-80">{userIndustry} · {userWorkYears}</p>
-                <p className="text-xs opacity-60 mt-0.5">使用 {Math.floor((Date.now() - new Date(joinDate).getTime()) / (1000 * 60 * 60 * 24))} 天</p>
+                <p className="text-xs opacity-60 mt-0.5">使用 {usedDays} 天</p>
               </>
             )}
           </div>
@@ -192,7 +193,7 @@ export default function ProfilePage({ onNavigate }: ProfilePageProps) {
         </div>
 
         <div className="text-center py-4">
-          <p className="text-xs text-gray-300">{appName} v1.0</p>
+          <p className="text-xs text-gray-300">{appName} v{__APP_VERSION__}</p>
           <p className="text-xs text-gray-300 mt-0.5">你的感受是真实的</p>
         </div>
       </div>
